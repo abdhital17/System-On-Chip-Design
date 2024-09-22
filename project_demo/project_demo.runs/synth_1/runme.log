@@ -1,0 +1,373 @@
+
+*** Running vivado
+    with args -log demo.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source demo.tcl
+
+
+****** Vivado v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Fri Sep 20 13:44:05 2024
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source demo.tcl -notrace
+create_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.648 ; gain = 0.023 ; free physical = 1256 ; free virtual = 10112
+Command: synth_design -top demo -part xc7z007sclg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Device 21-403] Loading part xc7z007sclg400-1
+INFO: [Device 21-9227] Part: xc7z007sclg400-1 does not have CEAM library.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1272035
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2124.582 ; gain = 413.660 ; free physical = 295 ; free virtual = 9126
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'demo' [/home/moonknight/SoC/project_demo/project_demo.srcs/sources_1/imports/Downloads/demo.sv:11]
+INFO: [Synth 8-6155] done synthesizing module 'demo' (0#1) [/home/moonknight/SoC/project_demo/project_demo.srcs/sources_1/imports/Downloads/demo.sv:11]
+WARNING: [Synth 8-3917] design demo has port LED[9] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[8] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[7] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[6] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[5] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[4] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[3] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB0[2] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB0[1] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB0[0] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB1[2] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB1[1] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB1[0] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_ANODE[3] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_ANODE[2] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_ANODE[1] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_ANODE[0] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[7] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[6] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[5] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[4] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[3] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[2] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[1] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[0] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SERVO[3] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SERVO[2] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SERVO[1] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SERVO[0] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port PDM_SPEAKER driven by constant 0
+WARNING: [Synth 8-3917] design demo has port PDM_MIC_CLK driven by constant 0
+WARNING: [Synth 8-3917] design demo has port ESP32_UART1_TXD driven by constant 0
+WARNING: [Synth 8-3917] design demo has port IMU_SCLK driven by constant 0
+WARNING: [Synth 8-3917] design demo has port IMU_SDI driven by constant 0
+WARNING: [Synth 8-3917] design demo has port IMU_CS_AG driven by constant 1
+WARNING: [Synth 8-3917] design demo has port IMU_CS_M driven by constant 1
+WARNING: [Synth 8-3917] design demo has port IMU_DEN_AG driven by constant 0
+WARNING: [Synth 8-7129] Port GPIO[23] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[22] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[21] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[20] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[19] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[18] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[17] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[16] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[15] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[14] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[13] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[12] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[11] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[10] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[9] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[8] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[7] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[6] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[5] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[4] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[3] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[2] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[1] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[0] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK100 in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[11] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[10] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[9] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[8] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[7] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[6] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[5] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[4] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[3] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[3] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[2] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[1] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[0] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PDM_MIC_DATA in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ESP32_UART1_RXD in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_AG in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_M in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_DRDY_M in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT1_AG in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT_M in module demo is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2200.551 ; gain = 489.629 ; free physical = 252 ; free virtual = 9071
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2215.395 ; gain = 504.473 ; free physical = 250 ; free virtual = 9069
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2215.395 ; gain = 504.473 ; free physical = 250 ; free virtual = 9069
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2215.395 ; gain = 0.000 ; free physical = 250 ; free virtual = 9069
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/moonknight/SoC/project_demo/project_demo.srcs/constrs_1/new/blackboard.xdc]
+Finished Parsing XDC File [/home/moonknight/SoC/project_demo/project_demo.srcs/constrs_1/new/blackboard.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/moonknight/SoC/project_demo/project_demo.srcs/constrs_1/new/blackboard.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/demo_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/demo_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2294.270 ; gain = 0.000 ; free physical = 233 ; free virtual = 9046
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2294.270 ; gain = 0.000 ; free physical = 233 ; free virtual = 9046
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2294.270 ; gain = 583.348 ; free physical = 239 ; free virtual = 9053
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 239 ; free virtual = 9053
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 239 ; free virtual = 9053
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 237 ; free virtual = 9052
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 66 (col length:40)
+BRAMs: 100 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design demo has port LED[9] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[8] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[7] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[6] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[5] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[4] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port LED[3] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB0[2] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB0[1] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB0[0] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB1[2] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB1[1] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port RGB1[0] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_ANODE[3] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_ANODE[2] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_ANODE[1] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_ANODE[0] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[7] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[6] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[5] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[4] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[3] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[2] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[1] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SS_CATHODE[0] driven by constant 1
+WARNING: [Synth 8-3917] design demo has port SERVO[3] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SERVO[2] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SERVO[1] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port SERVO[0] driven by constant 0
+WARNING: [Synth 8-3917] design demo has port PDM_SPEAKER driven by constant 0
+WARNING: [Synth 8-3917] design demo has port PDM_MIC_CLK driven by constant 0
+WARNING: [Synth 8-3917] design demo has port ESP32_UART1_TXD driven by constant 0
+WARNING: [Synth 8-3917] design demo has port IMU_SCLK driven by constant 0
+WARNING: [Synth 8-3917] design demo has port IMU_SDI driven by constant 0
+WARNING: [Synth 8-3917] design demo has port IMU_CS_AG driven by constant 1
+WARNING: [Synth 8-3917] design demo has port IMU_CS_M driven by constant 1
+WARNING: [Synth 8-3917] design demo has port IMU_DEN_AG driven by constant 0
+WARNING: [Synth 8-7129] Port GPIO[23] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[22] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[21] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[20] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[19] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[18] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[17] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[16] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[15] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[14] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[13] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[12] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[11] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[10] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[9] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[8] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[7] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[6] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[5] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[4] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[3] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[2] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[1] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[0] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK100 in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[11] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[10] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[9] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[8] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[7] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[6] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[5] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[4] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[3] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[3] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[2] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[1] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[0] in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PDM_MIC_DATA in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ESP32_UART1_RXD in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_AG in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_M in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_DRDY_M in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT1_AG in module demo is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT_M in module demo is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:26 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 226 ; free virtual = 9057
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 231 ; free virtual = 9045
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 231 ; free virtual = 9045
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 231 ; free virtual = 9045
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 192 ; free virtual = 8981
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 200 ; free virtual = 8984
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 201 ; free virtual = 8982
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 201 ; free virtual = 8982
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 200 ; free virtual = 8982
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 200 ; free virtual = 8982
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LUT2 |     2|
+|2     |LUT3 |     1|
+|3     |IBUF |     3|
+|4     |OBUF |    40|
++------+-----+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:46 ; elapsed = 00:00:46 . Memory (MB): peak = 2302.273 ; gain = 591.352 ; free physical = 199 ; free virtual = 8981
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 83 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:43 ; elapsed = 00:00:43 . Memory (MB): peak = 2302.273 ; gain = 512.477 ; free physical = 170 ; free virtual = 8964
+Synthesis Optimization Complete : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 2302.281 ; gain = 591.352 ; free physical = 170 ; free virtual = 8964
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2302.281 ; gain = 0.000 ; free physical = 169 ; free virtual = 8963
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2358.301 ; gain = 0.000 ; free physical = 413 ; free virtual = 9180
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 2c092a72
+INFO: [Common 17-83] Releasing license: Synthesis
+16 Infos, 165 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:03 ; elapsed = 00:00:58 . Memory (MB): peak = 2358.301 ; gain = 943.652 ; free physical = 414 ; free virtual = 9180
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1892.356; main = 1540.009; forked = 402.436
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3334.516; main = 2358.305; forked = 1032.238
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2382.312 ; gain = 0.000 ; free physical = 414 ; free virtual = 9180
+INFO: [Common 17-1381] The checkpoint '/home/moonknight/SoC/project_demo/project_demo.runs/synth_1/demo.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file demo_utilization_synth.rpt -pb demo_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 20 13:45:24 2024...

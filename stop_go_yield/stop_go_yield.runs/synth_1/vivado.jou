@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Fri Sep 20 15:36:59 2024
+# Process ID: 1291774
+# Current directory: /home/moonknight/SoC/stop_go_yield/stop_go_yield.runs/synth_1
+# Command line: vivado -log stop_go_yield.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source stop_go_yield.tcl
+# Log file: /home/moonknight/SoC/stop_go_yield/stop_go_yield.runs/synth_1/stop_go_yield.vds
+# Journal file: /home/moonknight/SoC/stop_go_yield/stop_go_yield.runs/synth_1/vivado.jou
+# Running On        :inspiron-7472
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 22.04.5 LTS
+# Processor Detail  :Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
+# CPU Frequency     :2000.000 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :16656 MB
+# Swap memory       :2147 MB
+# Total Virtual     :18803 MB
+# Available Virtual :9480 MB
+#-----------------------------------------------------------
+source stop_go_yield.tcl -notrace
