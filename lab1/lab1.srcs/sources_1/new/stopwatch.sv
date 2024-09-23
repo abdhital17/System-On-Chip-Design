@@ -1,4 +1,4 @@
-module stopwatch(
+module lab1(
     input CLK100,           // 100 MHz clock input
     output [9:0] LED,       // RGB1, RGB0, LED 9..0 placed from left to right
     output [2:0] RGB0,      
@@ -27,11 +27,9 @@ module stopwatch(
     );
      
     // Terminate all of the unused outputs or i/o's
-    // assign LED = 10'b0000000000;
     assign RGB0 = 3'b000;
     assign RGB1 = 3'b000;
-    // assign SS_ANODE = 4'b0000;
-    // assign SS_CATHODE = 8'b11111111;
+    assign RGB2 = 3'b000;
     assign GPIO = 24'bzzzzzzzzzzzzzzzzzzzzzzzz;
     assign SERVO = 4'b0000;
     assign PDM_SPEAKER = 1'b0;
@@ -47,75 +45,88 @@ module stopwatch(
     wire clk = CLK100;
     
     // handle input metastability safely
-    reg reset, pre_reset;
-    reg enable, pre_enable;
-    reg [5:0] trigger_min;
-    reg [5:0] trigger_sec;
     
-    assign pre_reset = PB[0];
-    assign pre_enable = PB[1];
+    reg reset, pre_reset;
     always_ff @ (posedge(clk))
     begin
+        pre_reset <= PB[0];
         reset <= pre_reset;
-        enable <= pre_enable;
+    end
+
+    reg button1, pre_button1;
+    always_ff @ (posedge(clk))
+    begin
+        pre_button1 <= PB[1];
+        button1 <= pre_button1;
+    end
+    
+    reg [5:0] trigger_min, trigger_sec;    
+    always_ff @ (posedge(clk))
+    begin
         trigger_min <= SW[11:6];
         trigger_sec <= SW[5:0];
     end
-    
-//    reg [3:0] dec0, dec1, dec2, dec3;
-    reg [6:0] sec_disp0, sec_disp1, min_disp0, min_disp1;
-    wire sec_tick;
-    reg led;
+        
     reg [5:0] sec_count, min_count;
+    reg led, led1;
     assign led = LED[0];
+    assign led1 = LED[1];
+    reg start_stop; // = 1;
+    reg alarm;
 
-    always_ff @ (posedge(clk))
-    begin
-        if (reset)
-        begin
-            sec_count <= 0;
-            min_count <= 0;
-        end
-    end
+//    always_ff @(posedge(clk) or posedge(reset))
+//    begin
+//        if(reset)
+//        begin
+//            start_stop <= 0;
+//            led <= 0;
+//        end
+//    end
     
-    // Start the timer
-    counter counter1(clk, 100000000, sec_tick);    
-    always_ff @ (posedge(clk))
-    begin
-        if (sec_tick) // && !disable
-        begin
-            led <= ~led;
-            if (sec_count == 59)
-            begin
-                sec_count <= 0;
-                if(min_count < 59)
-                begin
-                    min_count <= min_count + 1;
-                end
-                else
-                begin
-                    min_count <= 0;
-                end
-            end
-            else
-            begin
-                sec_count <= sec_count + 1;
-            end
-        end 
-    end
+//    always_ff @(posedge(clk) or posedge(button1))
+//    begin
+//        if(button1)
+//        begin
+//            start_stop <= ~start_stop;
+//        end
+//    end
     
-//    assign dec0 = sec_count % 10;
-//    assign dec1 = sec_count / 10;
-//    assign dec2 = min_count % 10;
-//    assign dec3 = min_count / 10;
+//instantiate the stopwatch
+    stopwatch watch1(
+	.clk (clk),
+	.reset (reset),
+	.trigger_sec (trigger_sec),
+	.trigger_min (trigger_min),
+    .start_stop (start_stop),
+	.sec_count (sec_count),
+	.min_count (min_count),
+	.alarm (alarm),
+	.led(led1));
     
-    decTo7 converter1(.dec (sec_count % 10), 
+//    always_ff @ (posedge(clk))
+//    begin
+//        if(alarm)
+//        begin
+//            led <= 1;
+//            start_stop <= 1;
+//        end
+//    end
+    reg [6:0] sec_disp0, sec_disp1, min_disp0, min_disp1;
+//    instantiate 4 decTo7 converters for the 4 digits of the timer
+    decTo7 converter1
+    (.dec (sec_count % 10), 
     .disp (sec_disp0));
-    decTo7 converter2(.dec (sec_count / 10), 
+    
+    decTo7 converter2
+    (.dec (sec_count / 10), 
     .disp (sec_disp1));
-    decTo7 converter3(.dec (min_count % 10), 
+    
+    decTo7 converter3
+    (.dec (min_count % 10), 
     .disp (min_disp0));
-    decTo7 converter4(.dec(min_count / 10), 
+    
+    decTo7 converter4
+    (.dec(min_count / 10), 
     .disp (min_disp1));
              
 // instantiate seven_seg module with all the calculated timer values
@@ -136,7 +147,6 @@ endmodule
 
 module seven_seg(
     input clk,
-//    input reg [6:0] data [0:3],
     input reg [6:0] data0,
     input reg [6:0] data1,
     input reg [6:0] data2,
@@ -145,10 +155,14 @@ module seven_seg(
     output reg [7:0] cathode_out
     );
     
-    // 50 Hz tick
+    // 500 Hz tick ->  cycles to the next 7-seg display every 2ms
     wire switch_display;
     reg [1:0] display_select;
-    counter counter2(clk, 200000, switch_display);
+    
+    counter counter2
+    (.clk (clk), 
+    .ticks (200000), 
+    .out (switch_display));
     
     always_ff @ (posedge(clk))
     begin
@@ -192,6 +206,65 @@ module seven_seg(
    
 endmodule
               
+
+module stopwatch(
+	input clk,
+	input reset,
+	input [5:0] trigger_sec,
+	input [5:0] trigger_min,
+	input reg start_stop,
+	output reg [5:0] sec_count,
+	output reg [5:0] min_count,
+	output reg alarm,
+	output reg led);
+
+    wire sec_tick;
+    
+    counter counter1
+    (.clk (clk), 
+    .ticks (100000000), 
+    .out (sec_tick));    
+    
+    always_ff @ (posedge(clk) or posedge (reset))
+    begin
+    	if (reset)
+    	begin
+    		sec_count <= 0;
+    		min_count <= 0;
+    	end
+    	else if (!start_stop)
+    	begin
+		if (sec_tick)
+		begin
+		    led <= ~led;
+		    if (sec_count == 59)
+		    begin
+		        sec_count <= 0;
+		        if(min_count < 59)
+		        begin
+		            min_count <= min_count + 1;
+		        end
+		        else
+		        begin
+		            min_count <= 0;
+		        end
+		    end
+		    else
+		    begin
+		        sec_count <= sec_count + 1;
+		    end
+		end
+	end
+    end
+    
+    always_ff @ (posedge(clk))
+    begin
+    	if (sec_count == trigger_sec && min_count == trigger_min)
+    	begin
+    		alarm <= 1;
+    	end
+    end
+endmodule
 
 module decTo7(
     input [3:0] dec,

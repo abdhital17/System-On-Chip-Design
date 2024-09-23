@@ -7,4 +7,4 @@
 # Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 #
 
-vivado -log stopwatch.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source stopwatch.tcl
+vivado -log lab1.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source lab1.tcl

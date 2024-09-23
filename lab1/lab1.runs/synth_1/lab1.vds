@@ -1,0 +1,399 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Mon Sep 23 00:24:41 2024
+# Process ID: 1768601
+# Current directory: /home/moonknight/SoC/lab1/lab1.runs/synth_1
+# Command line: vivado -log lab1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source lab1.tcl
+# Log file: /home/moonknight/SoC/lab1/lab1.runs/synth_1/lab1.vds
+# Journal file: /home/moonknight/SoC/lab1/lab1.runs/synth_1/vivado.jou
+# Running On        :inspiron-7472
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 22.04.5 LTS
+# Processor Detail  :Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
+# CPU Frequency     :2000.000 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :16656 MB
+# Swap memory       :2147 MB
+# Total Virtual     :18803 MB
+# Available Virtual :8545 MB
+#-----------------------------------------------------------
+source lab1.tcl -notrace
+create_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1372.109 ; gain = 19.867 ; free physical = 1814 ; free virtual = 7838
+Command: read_checkpoint -auto_incremental -incremental /home/moonknight/SoC/lab1/lab1.srcs/utils_1/imports/synth_1/stopwatch.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/moonknight/SoC/lab1/lab1.srcs/utils_1/imports/synth_1/stopwatch.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top lab1 -part xc7z007sclg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Device 21-403] Loading part xc7z007sclg400-1
+INFO: [Device 21-9227] Part: xc7z007sclg400-1 does not have CEAM library.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1768645
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2127.941 ; gain = 413.684 ; free physical = 766 ; free virtual = 6791
+---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'RGB2', assumed default net type 'wire' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:32]
+WARNING: [Synth 8-9694] invalid size of integer constant literal [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:190]
+INFO: [Synth 8-6157] synthesizing module 'lab1' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:1]
+WARNING: [Synth 8-6104] Input port 'GPIO' has an internal driver [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:33]
+INFO: [Synth 8-6157] synthesizing module 'stopwatch' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:210]
+INFO: [Synth 8-6157] synthesizing module 'counter' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:292]
+INFO: [Synth 8-6155] done synthesizing module 'counter' (0#1) [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:292]
+INFO: [Synth 8-6155] done synthesizing module 'stopwatch' (0#1) [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:210]
+INFO: [Synth 8-6157] synthesizing module 'decTo7' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:269]
+INFO: [Synth 8-6155] done synthesizing module 'decTo7' (0#1) [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:269]
+WARNING: [Synth 8-689] width (32) of port connection 'dec' does not match port width (4) of module 'decTo7' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:117]
+WARNING: [Synth 8-689] width (32) of port connection 'dec' does not match port width (4) of module 'decTo7' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:121]
+WARNING: [Synth 8-689] width (32) of port connection 'dec' does not match port width (4) of module 'decTo7' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:125]
+WARNING: [Synth 8-689] width (32) of port connection 'dec' does not match port width (4) of module 'decTo7' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:129]
+INFO: [Synth 8-6157] synthesizing module 'seven_seg' [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:148]
+INFO: [Synth 8-226] default block is never used [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:174]
+INFO: [Synth 8-6155] done synthesizing module 'seven_seg' (0#1) [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:148]
+INFO: [Synth 8-6155] done synthesizing module 'lab1' (0#1) [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:1]
+WARNING: [Synth 8-7137] Register led_reg in module stopwatch has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:239]
+WARNING: [Synth 8-6014] Unused sequential element pre_button1_reg was removed.  [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:59]
+WARNING: [Synth 8-6014] Unused sequential element button1_reg was removed.  [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:60]
+WARNING: [Synth 8-3848] Net LED in module/entity lab1 does not have driver. [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:3]
+WARNING: [Synth 8-3848] Net SS_ANODE in module/entity lab1 does not have driver. [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:6]
+WARNING: [Synth 8-3848] Net SS_CATHODE in module/entity lab1 does not have driver. [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:7]
+WARNING: [Synth 8-3848] Net start_stop in module/entity lab1 does not have driver. [/home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv:74]
+WARNING: [Synth 8-3917] design lab1 has port RGB0[2] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB0[1] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB0[0] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB1[2] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB1[1] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB1[0] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port SERVO[3] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port SERVO[2] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port SERVO[1] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port SERVO[0] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port PDM_SPEAKER driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port PDM_MIC_CLK driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port ESP32_UART1_TXD driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port IMU_SCLK driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port IMU_SDI driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port IMU_CS_AG driven by constant 1
+WARNING: [Synth 8-3917] design lab1 has port IMU_CS_M driven by constant 1
+WARNING: [Synth 8-3917] design lab1 has port IMU_DEN_AG driven by constant 0
+WARNING: [Synth 8-7129] Port LED[9] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[8] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[7] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[6] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[5] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[4] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[3] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[2] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[0] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[3] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[2] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[1] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[23] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[22] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[21] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[20] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[19] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[18] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[17] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[16] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[15] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[14] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[13] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[12] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[11] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[10] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[9] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[8] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[7] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[6] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[5] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[4] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[3] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[2] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[1] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[0] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PDM_MIC_DATA in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ESP32_UART1_RXD in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_AG in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_M in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_DRDY_M in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT1_AG in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT_M in module lab1 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2203.910 ; gain = 489.652 ; free physical = 666 ; free virtual = 6696
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2218.754 ; gain = 504.496 ; free physical = 663 ; free virtual = 6693
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2218.754 ; gain = 504.496 ; free physical = 663 ; free virtual = 6693
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2218.754 ; gain = 0.000 ; free physical = 663 ; free virtual = 6693
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/moonknight/SoC/lab1/lab1.srcs/constrs_1/new/blackboard.xdc]
+Finished Parsing XDC File [/home/moonknight/SoC/lab1/lab1.srcs/constrs_1/new/blackboard.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/moonknight/SoC/lab1/lab1.srcs/constrs_1/new/blackboard.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/lab1_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/lab1_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2361.504 ; gain = 0.000 ; free physical = 659 ; free virtual = 6688
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2361.504 ; gain = 0.000 ; free physical = 659 ; free virtual = 6688
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 2361.504 ; gain = 647.246 ; free physical = 653 ; free virtual = 6679
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 653 ; free virtual = 6679
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 650 ; free virtual = 6679
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 649 ; free virtual = 6679
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    6 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                6 Bit    Registers := 4     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   4 Input    8 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 66 (col length:40)
+BRAMs: 100 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design lab1 has port RGB0[2] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB0[1] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB0[0] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB1[2] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB1[1] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port RGB1[0] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port SERVO[3] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port SERVO[2] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port SERVO[1] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port SERVO[0] driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port PDM_SPEAKER driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port PDM_MIC_CLK driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port ESP32_UART1_TXD driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port IMU_SCLK driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port IMU_SDI driven by constant 0
+WARNING: [Synth 8-3917] design lab1 has port IMU_CS_AG driven by constant 1
+WARNING: [Synth 8-3917] design lab1 has port IMU_CS_M driven by constant 1
+WARNING: [Synth 8-3917] design lab1 has port IMU_DEN_AG driven by constant 0
+WARNING: [Synth 8-7129] Port LED[9] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[8] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[7] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[6] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[5] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[4] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[3] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[2] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[0] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[3] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[2] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[1] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[23] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[22] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[21] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[20] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[19] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[18] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[17] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[16] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[15] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[14] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[13] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[12] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[11] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[10] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[9] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[8] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[7] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[6] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[5] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[4] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[3] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[2] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[1] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[0] in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PDM_MIC_DATA in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ESP32_UART1_RXD in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_AG in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_M in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_DRDY_M in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT1_AG in module lab1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT_M in module lab1 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 634 ; free virtual = 6666
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:42 ; elapsed = 00:00:42 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 620 ; free virtual = 6654
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:43 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 628 ; free virtual = 6663
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:42 ; elapsed = 00:00:43 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 628 ; free virtual = 6663
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:50 ; elapsed = 00:00:50 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 631 ; free virtual = 6663
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:50 ; elapsed = 00:00:50 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 631 ; free virtual = 6663
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:50 ; elapsed = 00:00:50 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 628 ; free virtual = 6663
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:50 ; elapsed = 00:00:50 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 628 ; free virtual = 6663
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:50 ; elapsed = 00:00:50 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 628 ; free virtual = 6663
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:50 ; elapsed = 00:00:50 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 628 ; free virtual = 6663
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    14|
+|3     |LUT1   |     5|
+|4     |LUT2   |     3|
+|5     |LUT3   |     2|
+|6     |LUT4   |     3|
+|7     |LUT5   |    15|
+|8     |LUT6   |    32|
+|9     |MUXF7  |     7|
+|10    |MUXF8  |     2|
+|11    |FDCE   |    12|
+|12    |FDRE   |    68|
+|13    |FDSE   |     4|
+|14    |IBUF   |     2|
+|15    |OBUF   |    31|
+|16    |OBUFT  |     9|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:50 ; elapsed = 00:00:50 . Memory (MB): peak = 2369.508 ; gain = 655.250 ; free physical = 628 ; free virtual = 6663
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 62 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 2369.508 ; gain = 512.500 ; free physical = 628 ; free virtual = 6663
+Synthesis Optimization Complete : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2369.516 ; gain = 655.250 ; free physical = 628 ; free virtual = 6663
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2369.516 ; gain = 0.000 ; free physical = 884 ; free virtual = 6919
+INFO: [Netlist 29-17] Analyzing 23 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 6 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2425.535 ; gain = 0.000 ; free physical = 934 ; free virtual = 6965
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: b980f40c
+INFO: [Common 17-83] Releasing license: Synthesis
+34 Infos, 136 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:07 ; elapsed = 00:01:01 . Memory (MB): peak = 2425.535 ; gain = 1048.457 ; free physical = 930 ; free virtual = 6965
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1888.770; main = 1539.720; forked = 393.222
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3401.750; main = 2425.539; forked = 1032.238
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2449.547 ; gain = 0.000 ; free physical = 930 ; free virtual = 6965
+INFO: [Common 17-1381] The checkpoint '/home/moonknight/SoC/lab1/lab1.runs/synth_1/lab1.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file lab1_utilization_synth.rpt -pb lab1_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 23 00:26:02 2024...
