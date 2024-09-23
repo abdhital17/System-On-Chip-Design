@@ -72,7 +72,7 @@ set_property ip_output_repo /home/moonknight/SoC/lab1/lab1.cache/ip [current_pro
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib -sv /home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/stopwatch.sv
+read_verilog -library xil_defaultlib -sv /home/moonknight/SoC/lab1/lab1.srcs/sources_1/new/lab1.sv
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

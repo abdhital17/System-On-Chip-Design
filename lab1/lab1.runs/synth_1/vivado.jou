@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Mon Sep 23 00:24:41 2024
-# Process ID: 1768601
+# Start of session at: Mon Sep 23 02:21:14 2024
+# Process ID: 1806566
 # Current directory: /home/moonknight/SoC/lab1/lab1.runs/synth_1
 # Command line: vivado -log lab1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source lab1.tcl
 # Log file: /home/moonknight/SoC/lab1/lab1.runs/synth_1/lab1.vds
@@ -19,6 +19,6 @@
 # Host memory       :16656 MB
 # Swap memory       :2147 MB
 # Total Virtual     :18803 MB
-# Available Virtual :8545 MB
+# Available Virtual :8750 MB
 #-----------------------------------------------------------
 source lab1.tcl -notrace

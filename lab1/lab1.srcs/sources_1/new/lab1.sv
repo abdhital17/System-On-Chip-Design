@@ -68,28 +68,13 @@ module lab1(
     end
         
     reg [5:0] sec_count, min_count;
-    reg led, led1;
+    reg led, led1, led2;
     assign led = LED[0];
     assign led1 = LED[1];
-    reg start_stop; // = 1;
+    assign led2 = LED[2];
+    reg start_stop;// = 1;
     reg alarm;
 
-//    always_ff @(posedge(clk) or posedge(reset))
-//    begin
-//        if(reset)
-//        begin
-//            start_stop <= 0;
-//            led <= 0;
-//        end
-//    end
-    
-//    always_ff @(posedge(clk) or posedge(button1))
-//    begin
-//        if(button1)
-//        begin
-//            start_stop <= ~start_stop;
-//        end
-//    end
     
 //instantiate the stopwatch
     stopwatch watch1(
@@ -103,14 +88,25 @@ module lab1(
 	.alarm (alarm),
 	.led(led1));
     
-//    always_ff @ (posedge(clk))
+//    always_ff @ (posedge(clk)) //or posedge(reset) or posedge(button1))
 //    begin
 //        if(alarm)
 //        begin
 //            led <= 1;
 //            start_stop <= 1;
 //        end
+//        else if (reset)
+//        begin
+//            led <= 0;
+//            start_stop = 0;
+//        end
+//        else if(button1)
+//        begin
+//            start_stop <= ~start_stop;
+//            led2 <= 1;
+//        end
 //    end
+    
     reg [6:0] sec_disp0, sec_disp1, min_disp0, min_disp1;
 //    instantiate 4 decTo7 converters for the 4 digits of the timer
     decTo7 converter1
@@ -142,7 +138,7 @@ module lab1(
     .data3(min_disp1), 
     .anode_out(anode_out), 
     .cathode_out(cathode_out));
-
+    
 endmodule
 
 module seven_seg(
@@ -229,41 +225,42 @@ module stopwatch(
     begin
     	if (reset)
     	begin
+    	    led <= 0;
     		sec_count <= 0;
     		min_count <= 0;
     	end
     	else if (!start_stop)
     	begin
-		if (sec_tick)
-		begin
-		    led <= ~led;
-		    if (sec_count == 59)
-		    begin
-		        sec_count <= 0;
-		        if(min_count < 59)
-		        begin
-		            min_count <= min_count + 1;
-		        end
-		        else
-		        begin
-		            min_count <= 0;
-		        end
-		    end
-		    else
-		    begin
-		        sec_count <= sec_count + 1;
-		    end
-		end
-	end
+            if (sec_tick)
+            begin
+                led <= ~led;
+                if (sec_count == 59)
+                begin
+                    sec_count <= 0;
+                    if(min_count < 59)
+                    begin
+                        min_count <= min_count + 1;
+                    end
+                    else
+                    begin
+                        min_count <= 0;
+                    end
+                end
+                else
+                begin
+                    sec_count <= sec_count + 1;
+                end
+            end
+        end     
     end
     
-    always_ff @ (posedge(clk))
-    begin
-    	if (sec_count == trigger_sec && min_count == trigger_min)
-    	begin
-    		alarm <= 1;
-    	end
-    end
+//    always_ff @ (posedge(clk))
+//    begin
+//    	if (sec_count == trigger_sec && min_count == trigger_min)
+//    	begin
+//    		alarm <= 1;
+//    	end
+//    end
 endmodule
 
 module decTo7(
