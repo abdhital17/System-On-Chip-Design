@@ -66,13 +66,10 @@ module lab1(
         trigger_min <= SW[11:6];
         trigger_sec <= SW[5:0];
     end
-        
+    
     reg [5:0] sec_count, min_count;
     reg led0;
     assign led0 = LED[0];
-//    assign led1 = LED[1];
-//    assign led2 = LED[2];
-    assign LED[9:4] = trigger_sec;
     reg start_stop = 1;
 
     
@@ -134,10 +131,10 @@ module seven_seg(
     output reg [7:0] cathode_out
     );
     
-    // 500 Hz tick ->  cycles to the next 7-seg display every 2ms
     wire switch_display;
     reg [1:0] display_select;
     
+    // 500 Hz tick ->  cycles to the next 7-seg display every 2ms
     counter counter2
     (.clk (clk), 
     .ticks (200000), 
@@ -151,22 +148,22 @@ module seven_seg(
         end
             
         case(display_select)
-            2'b00:  
+            2'b00:  // first 7-seg display from the right
             begin
                 anode_out <= 4'b1110; 
                 cathode_out <= {1'b1, data0};
             end
-            2'b01:  
+            2'b01:  // second 7-seg display from the right
             begin
                 anode_out <= 4'b1101; 
                 cathode_out <= {1'b1, data1};
             end
-            2'b10:  
+            2'b10:  // third 7-seg display from the right
             begin
                 anode_out <= 4'b1011; 
                 cathode_out <= {0'b1, data2};
             end
-            2'b11:  
+            2'b11:  // fourth 7-seg display from the right
             begin
                 anode_out <= 4'b0111; 
                 cathode_out <= {1'b1, data3};
@@ -181,7 +178,7 @@ module seven_seg(
    
 endmodule
               
-
+// stopwatch module that counts every second and can be reset and stopped at a given trigger time
 module stopwatch(
 	input clk,
 	input reset,
@@ -195,6 +192,7 @@ module stopwatch(
 
     wire sec_tick;
     
+    // 1Hz tick
     counter counter1
     (.clk (clk), 
     .ticks (100000000), 
@@ -202,13 +200,13 @@ module stopwatch(
     
     always_ff @ (posedge(clk) or posedge (reset))
     begin
-    	if (reset)
+    	if (reset)     // if reset is pressed, clear led0 and the minute and second count incurred
     	begin
     	    led <= 0;
     		sec_count <= 0;
     		min_count <= 0;
     	end
-    	else if (!start_stop)
+    	else if (!start_stop)  // if the start_stop flag is 0 (not-set) continue the counter
     	begin
             if (sec_tick)
             begin
@@ -234,7 +232,7 @@ module stopwatch(
     
     always_ff @ (posedge(clk))
     begin
-        if (button1)
+        if (button1)        // if PB[1] is pressed, set the start_stop flag
         begin
             start_stop <= ~start_stop; 
         end
@@ -244,18 +242,10 @@ module stopwatch(
     		start_stop <= 1;
     	end
     end
-    
-//    always_ff @ (posedge(clk))
-//    begin
-//    	if (sec_count == trigger_sec && min_count == trigger_min)
-//    	begin
-//    		start_stop <= 1;
-//    		led <= 1;
-//    	end
-//    end
-    
 endmodule
 
+// module that multiplexes a 4-bit decimal number to a 
+// 7-bit binary output to drive the SS_CATHODE of seven segment display
 module decTo7(
     input [3:0] dec,
     output reg [6:0] disp);
@@ -279,6 +269,8 @@ module decTo7(
 endmodule
 
 
+
+// counter module that counts to given 'ticks' and sets 'out' flag to 1
 module counter(
     input clk,
     input reg [26:0] ticks,     
