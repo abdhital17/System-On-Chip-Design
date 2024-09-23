@@ -68,10 +68,10 @@ module lab1(
     end
         
     reg [5:0] sec_count, min_count;
-    reg led, led1, led2;
-    assign led = LED[0];
-    assign led1 = LED[1];
-    assign led2 = LED[2];
+    reg led0;
+    assign led0 = LED[0];
+//    assign led1 = LED[1];
+//    assign led2 = LED[2];
     assign LED[9:4] = trigger_sec;
     reg start_stop = 1;
 
@@ -88,7 +88,9 @@ module lab1(
 	.min_count (min_count),
 	.led(led0));
     
+//    registers to hold the 7 bit binary values for 4 digits
     reg [6:0] sec_disp0, sec_disp1, min_disp0, min_disp1;
+
 //    instantiate 4 decTo7 converters for the 4 digits of the timer
     decTo7 converter1
     (.dec (sec_count % 10), 
@@ -236,6 +238,11 @@ module stopwatch(
         begin
             start_stop <= ~start_stop; 
         end
+        else if (sec_count == trigger_sec && min_count == trigger_min)
+    	begin
+    	    led <= 1;
+    		start_stop <= 1;
+    	end
     end
     
 //    always_ff @ (posedge(clk))
