@@ -72,8 +72,8 @@ module lab1(
     assign led = LED[0];
     assign led1 = LED[1];
     assign led2 = LED[2];
-    reg start_stop;// = 1;
-    reg alarm;
+    assign LED[9:4] = trigger_sec;
+    reg start_stop = 1;
 
     
 //instantiate the stopwatch
@@ -82,30 +82,11 @@ module lab1(
 	.reset (reset),
 	.trigger_sec (trigger_sec),
 	.trigger_min (trigger_min),
+	.button1 (button1),
     .start_stop (start_stop),
 	.sec_count (sec_count),
 	.min_count (min_count),
-	.alarm (alarm),
-	.led(led1));
-    
-//    always_ff @ (posedge(clk)) //or posedge(reset) or posedge(button1))
-//    begin
-//        if(alarm)
-//        begin
-//            led <= 1;
-//            start_stop <= 1;
-//        end
-//        else if (reset)
-//        begin
-//            led <= 0;
-//            start_stop = 0;
-//        end
-//        else if(button1)
-//        begin
-//            start_stop <= ~start_stop;
-//            led2 <= 1;
-//        end
-//    end
+	.led(led0));
     
     reg [6:0] sec_disp0, sec_disp1, min_disp0, min_disp1;
 //    instantiate 4 decTo7 converters for the 4 digits of the timer
@@ -172,25 +153,21 @@ module seven_seg(
             begin
                 anode_out <= 4'b1110; 
                 cathode_out <= {1'b1, data0};
-//                cathode_out <= 8'b11000000;
             end
             2'b01:  
             begin
                 anode_out <= 4'b1101; 
                 cathode_out <= {1'b1, data1};
-//                cathode_out <= 8'b11111001;
             end
             2'b10:  
             begin
                 anode_out <= 4'b1011; 
                 cathode_out <= {0'b1, data2};
-//                cathode_out <= 8'b10100100;
             end
             2'b11:  
             begin
                 anode_out <= 4'b0111; 
                 cathode_out <= {1'b1, data3};
-//                cathode_out <= 8'b10110000;
             end
             default:
             begin
@@ -208,10 +185,10 @@ module stopwatch(
 	input reset,
 	input [5:0] trigger_sec,
 	input [5:0] trigger_min,
-	input reg start_stop,
+	input reg button1,
+	output reg start_stop,
 	output reg [5:0] sec_count,
 	output reg [5:0] min_count,
-	output reg alarm,
 	output reg led);
 
     wire sec_tick;
@@ -233,7 +210,6 @@ module stopwatch(
     	begin
             if (sec_tick)
             begin
-                led <= ~led;
                 if (sec_count == 59)
                 begin
                     sec_count <= 0;
@@ -254,13 +230,23 @@ module stopwatch(
         end     
     end
     
+    always_ff @ (posedge(clk))
+    begin
+        if (button1)
+        begin
+            start_stop <= ~start_stop; 
+        end
+    end
+    
 //    always_ff @ (posedge(clk))
 //    begin
 //    	if (sec_count == trigger_sec && min_count == trigger_min)
 //    	begin
-//    		alarm <= 1;
+//    		start_stop <= 1;
+//    		led <= 1;
 //    	end
 //    end
+    
 endmodule
 
 module decTo7(
