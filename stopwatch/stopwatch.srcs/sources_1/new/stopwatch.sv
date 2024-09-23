@@ -7,7 +7,7 @@ module stopwatch(
     output [7:0] SS_CATHODE, // Bit order: DP, G, F, E, D, C, B, A
     input [11:0] SW,         // SWs 11..0 placed from left to right
     input [3:0] PB,          // PBs 3..0 placed from left to right
-    inout [23:0] GPIO,       // PMODA-C 1P, 1N, ... 3P, 3N order
+    input [23:0] GPIO,       // PMODA-C 1P, 1N, ... 3P, 3N order
     output [3:0] SERVO,      // Servo outputs
     output PDM_SPEAKER,      // PDM signals for mic and speaker
     input PDM_MIC_DATA,      
@@ -42,17 +42,6 @@ module stopwatch(
     assign IMU_CS_AG = 1'b1;
     assign IMU_CS_M = 1'b1;
     assign IMU_DEN_AG = 1'b0;
-
-//    // display d (demo) on left seven segment display
-//    assign SS_ANODE = 4'b0111;
-//    assign SS_CATHODE = 8'b10100001;
-
-//    // directly use switch inputs without conditioning
-//    // since the design has no clocks (no metastability)
-//    wire x = SW[0] || SW[1];	 
-//    wire y = SW[0] && SW[1];
-//    wire z = x || SW[2];
-//    assign LED = {7'b0, z, y, x};
 
     // use a simpler clock name
     wire clk = CLK100;
@@ -115,23 +104,22 @@ module stopwatch(
             end
         end 
     end
-    
-    always_ff @ (posedge(clk))
-    begin
-        decTo7((sec_count % 10), sec0);
-        decTo7(((sec_count / 10) % 10), sec1);
-        decTo7((min_count % 10), min0);
-        decTo7(((min_count / 10) % 10), min1);
-    end
-    
+
+// convert the calculated values into 4 7-segment display inputs    
+//    decTo7 converter1, converter2, converter3, converter4;
+    decTo7((sec_count % 10), sec0);
+    decTo7(((sec_count / 10) % 10), sec1);
+    decTo7((min_count % 10), min0);
+    decTo7(((min_count / 10) % 10), min1);
+
+// instantiate seven_seg module with all the calculated timer values
+//    seven_seg ss1;
     reg [3:0] anode_out;
     reg [7:0] cathode_out;
-
-    always_ff @ (posedge(clk))
-    begin
-        seven_seg(clk, {sec0, sec1, min0, min1}, anode_out, cathode_out);
-    end
+    seven_seg(clk, {sec0, sec1, min0, min1}, anode_out, cathode_out);
     
+    // update the seven-segment display
     assign SS_ANODE = anode_out;
     assign SS_CATHODE = cathode_out;
+    
 endmodule

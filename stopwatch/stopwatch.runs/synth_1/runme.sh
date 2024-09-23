@@ -37,4 +37,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log stopwatch.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source stopwatch.tcl
+EAStep vivado -log counter.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source counter.tcl
