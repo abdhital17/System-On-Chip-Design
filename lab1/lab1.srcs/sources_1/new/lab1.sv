@@ -68,8 +68,6 @@ module lab1(
     end
     
     reg [5:0] sec_count, min_count;
-    reg led0;
-    assign led0 = LED[0];
     reg start_stop = 1;
 
     
@@ -83,7 +81,7 @@ module lab1(
     .start_stop (start_stop),
 	.sec_count (sec_count),
 	.min_count (min_count),
-	.led(led0));
+	.led(LED[0]));
     
 //    registers to hold the 7 bit binary values for 4 digits
     reg [6:0] sec_disp0, sec_disp1, min_disp0, min_disp1;
@@ -202,10 +200,19 @@ module stopwatch(
     begin
     	if (reset)     // if reset is pressed, clear led0 and the minute and second count incurred
     	begin
-    	    led <= 0;
+    	    led <= 1'b0;
     		sec_count <= 0;
     		min_count <= 0;
     	end
+    	else if (sec_count == trigger_sec && min_count == trigger_min)
+    	begin
+    	    led <= 1'b1;
+    		start_stop <= 1;
+    	end
+    	else if (button1)        // if PB[1] is pressed, set the start_stop flag
+        begin
+            start_stop <= ~start_stop; 
+        end
     	else if (!start_stop)  // if the start_stop flag is 0 (not-set) continue the counter
     	begin
             if (sec_tick)
@@ -230,18 +237,6 @@ module stopwatch(
         end     
     end
     
-    always_ff @ (posedge(clk))
-    begin
-        if (button1)        // if PB[1] is pressed, set the start_stop flag
-        begin
-            start_stop <= ~start_stop; 
-        end
-        else if (sec_count == trigger_sec && min_count == trigger_min)
-    	begin
-    	    led <= 1;
-    		start_stop <= 1;
-    	end
-    end
 endmodule
 
 // module that multiplexes a 4-bit decimal number to a 
