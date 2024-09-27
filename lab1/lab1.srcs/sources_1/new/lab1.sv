@@ -17,7 +17,7 @@ module lab1(
     output IMU_SCLK,         // IMU spi clk
     output IMU_SDI,          // IMU spi data input
     input IMU_SDO_AG,        // IMU spi data output (accel/gyro)
-    input IMU_SDO_M,         // IMU spi data output (mag)
+    input IMU_SDO_M,         // IMU spi data output (mag    )
     output IMU_CS_AG,        // IMU cs (accel/gyro) 
     output IMU_CS_M,         // IMU cs (mag)
     input IMU_DRDY_M,        // IMU data ready (mag)
@@ -68,7 +68,7 @@ module lab1(
     end
     
     reg [5:0] sec_count, min_count;
-    reg start_stop = 1;
+    reg start_stop = 0;
 
     
 //instantiate the stopwatch
@@ -203,11 +203,17 @@ module stopwatch(
     	    led <= 1'b0;
     		sec_count <= 0;
     		min_count <= 0;
+    		start_stop <= 0;
     	end
-    	else if (sec_count == trigger_sec && min_count == trigger_min)
+    	else if ((sec_count == trigger_sec && min_count == trigger_min) && (trigger_sec != 0 || trigger_min != 0))
     	begin
-    	    led <= 1'b1;
-    		start_stop <= 1;
+              led <= 1'b1;
+    		  start_stop <= 1;
+//    	   if ((trigger_sec == 0 || trigger_min == 0))
+//    	   begin
+//    	      led <= 1'b0;
+//    		  start_stop <= 0;
+//    	   end
     	end
     	else if (button1)        // if PB[1] is pressed, set the start_stop flag
         begin
