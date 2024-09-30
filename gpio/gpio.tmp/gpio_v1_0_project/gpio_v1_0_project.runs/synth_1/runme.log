@@ -1,0 +1,229 @@
+
+*** Running vivado
+    with args -log gpio.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source gpio.tcl
+
+
+****** Vivado v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Mon Sep 30 16:28:28 2024
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source gpio.tcl -notrace
+create_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1414.617 ; gain = 0.023 ; free physical = 1321 ; free virtual = 10605
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/moonknight/SoC/gpio/ip_repo/gpio_1_0'.
+WARNING: [IP_Flow 19-2207] Repository '/home/moonknight/SoC/gpio/ip_repo/gpio_1_0' already exists; ignoring attempt to add it again.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/moonknight/SoC/gpio/ip_repo/gpio_1_0'.
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/moonknight/SoC/ip_repo/gpio_1_0'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2024.1/data/ip'.
+Command: synth_design -top gpio -part xc7z007sclg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 191865
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1808.363 ; gain = 393.746 ; free physical = 679 ; free virtual = 9962
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'gpio' [/home/moonknight/SoC/gpio/ip_repo/gpio_1_0/hdl/gpio.v:4]
+INFO: [Synth 8-6157] synthesizing module 'gpio_v1_0_AXI' [/home/moonknight/SoC/gpio/ip_repo/gpio_1_0/hdl/gpio_v1_0_AXI.v:13]
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gpio_v1_0_AXI' (0#1) [/home/moonknight/SoC/gpio/ip_repo/gpio_1_0/hdl/gpio_v1_0_AXI.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'gpio' (0#1) [/home/moonknight/SoC/gpio/ip_repo/gpio_1_0/hdl/gpio.v:4]
+WARNING: [Synth 8-6014] Unused sequential element waddr_reg was removed.  [/home/moonknight/SoC/gpio/ip_repo/gpio_1_0/hdl/gpio_v1_0_AXI.v:175]
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[1] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[0] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[2] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[1] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[0] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[2] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[1] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[0] in module gpio_v1_0_AXI is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1897.332 ; gain = 482.715 ; free physical = 570 ; free virtual = 9856
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1915.145 ; gain = 500.527 ; free physical = 570 ; free virtual = 9856
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1923.148 ; gain = 508.531 ; free physical = 570 ; free virtual = 9856
+INFO: [Device 21-403] Loading part xc7z007sclg400-1
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:14 . Memory (MB): peak = 1948.070 ; gain = 533.453 ; free physical = 499 ; free virtual = 9788
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 13    
+	                5 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 137   
+	   8 Input   32 Bit        Muxes := 8     
+	   2 Input    1 Bit        Muxes := 193   
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+INFO: [Device 21-9227] Part: xc7z007sclg400-1 does not have CEAM library.
+Part Resources:
+DSPs: 66 (col length:40)
+BRAMs: 100 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[1] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[0] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[2] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[1] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[0] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[2] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[1] in module gpio_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[0] in module gpio_v1_0_AXI is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 2053.648 ; gain = 639.031 ; free physical = 369 ; free virtual = 9659
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 359 ; free virtual = 9650
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 359 ; free virtual = 9650
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |BUFG  |     1|
+|2     |LUT1  |     1|
+|3     |LUT2  |     1|
+|4     |LUT3  |    33|
+|5     |LUT4  |    19|
+|6     |LUT5  |    63|
+|7     |LUT6  |   104|
+|8     |MUXF7 |    32|
+|9     |FDRE  |   424|
+|10    |FDSE  |     1|
+|11    |IBUF  |    81|
+|12    |OBUF  |   106|
++------+------+------+
+
+Report Instance Areas: 
++------+---------------------+--------------+------+
+|      |Instance             |Module        |Cells |
++------+---------------------+--------------+------+
+|1     |top                  |              |   866|
+|2     |  gpio_v1_0_AXI_inst |gpio_v1_0_AXI |   678|
++------+---------------------+--------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 18 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.617 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 2056.625 ; gain = 642.000 ; free physical = 405 ; free virtual = 9694
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2065.523 ; gain = 0.000 ; free physical = 700 ; free virtual = 9990
+INFO: [Netlist 29-17] Analyzing 32 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2194.301 ; gain = 0.000 ; free physical = 644 ; free virtual = 9934
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 5924ed87
+INFO: [Common 17-83] Releasing license: Synthesis
+21 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:00:36 . Memory (MB): peak = 2194.301 ; gain = 779.684 ; free physical = 644 ; free virtual = 9934
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1822.193; main = 1596.002; forked = 431.473
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3088.863; main = 2194.305; forked = 1032.242
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2218.312 ; gain = 0.000 ; free physical = 645 ; free virtual = 9935
+INFO: [Common 17-1381] The checkpoint '/home/moonknight/SoC/gpio/gpio.tmp/gpio_v1_0_project/gpio_v1_0_project.runs/synth_1/gpio.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file gpio_utilization_synth.rpt -pb gpio_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 30 16:29:24 2024...
