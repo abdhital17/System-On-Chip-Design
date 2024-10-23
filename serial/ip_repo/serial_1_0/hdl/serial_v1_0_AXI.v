@@ -14,11 +14,13 @@
         parameter integer C_S_AXI_ADDR_WIDTH = 4
     )
     (
-        // Ports to top level module (what makes this the GPIO IP module)
-        input wire [31:0] gpio_data_in,
-        output wire [31:0] gpio_data_out,
-        output wire [31:0] gpio_data_oe,
-        output wire intr,
+        // Ports to top level module (what makes this the Serial IP module)
+		output empty,
+		output full,
+        output reg overflow,
+        output reg [4:0] wr_index,
+        output reg [4:0] rd_index,
+        output reg [4:0] watermark,
 
         // AXI clock and reset        
         input wire S_AXI_ACLK,
@@ -55,38 +57,34 @@
         output wire S_AXI_RVALID,
         input wire S_AXI_RREADY
     );
-
+    
+    
+    // Internal signals
+    wire reset_signal;
+    reg [8:0] wr_data;
+    reg [9:0] rd_data;
+    reg clear_overflow_request;
+    reg write_request_pulse;
+    reg read_request_pulse;
+    
     // Internal registers
     reg [31:0] latch_data;
-    reg [31:0] out;
-    reg [31:0] od;
-    reg [31:0] int_enable;
-    reg [31:0] int_positive;
-    reg [31:0] int_negative;
-    reg [31:0] int_edge_mode;
-    reg [31:0] int_status;
-    reg [31:0] int_clear_request;
+    reg [31:0] status;
+    reg [31:0] control;
+    reg [31:0] brd;
     
     // Register map
     // ofs  fn
     //   0  data (r/w)
-    //   4  out (r/w)
-    //   8  od (r/w)
-    //  12  int_enable (r/w)
-    //  16  int_positive (r/w)
-    //  20  int_negative (r/w)
-    //  24  int_edge_mode (r/w)
-    //  28  int_status_clear (r/w1c)
+    //   4  status (r/w1c)
+    //   8  control (r/w)
+    //  12  brd (r/w)
     
     // Register numbers
-    localparam integer DATA_REG             = 3'b000;
-    localparam integer OUT_REG              = 3'b001;
-    localparam integer ODR_REG              = 3'b010;
-    localparam integer INT_ENABLE_REG       = 3'b011;
-    localparam integer INT_POSITIVE_REG     = 3'b100;
-    localparam integer INT_NEGATIVE_REG     = 3'b101;
-    localparam integer INT_EDGE_MODE_REG    = 3'b110;
-    localparam integer INT_STATUS_CLEAR_REG = 3'b111;
+    localparam integer DATA_REG             = 2'b00;
+    localparam integer STATUS_REG           = 2'b01;
+    localparam integer CONTROL_REG          = 2'b10;
+    localparam integer BRD_REG              = 2'b11;
     
     // AXI4-lite signals
     reg axi_awready;
@@ -119,15 +117,6 @@
     assign S_AXI_RDATA   = axi_rdata;
     assign S_AXI_RRESP   = axi_rresp;
     assign S_AXI_RVALID  = axi_rvalid;
-    
-    // Handle gpio input metastability safely
-    reg [31:0] read_port_data;
-    reg [31:0] pre_read_port_data;
-    always_ff @ (posedge(axi_clk))
-    begin
-        pre_read_port_data <= gpio_data_in;
-        read_port_data <= pre_read_port_data;
-    end
 
     // Assert address ready handshake (axi_awready) 
     // - after address is valid (axi_awvalid)
@@ -186,7 +175,7 @@
         else
             axi_wready <= (wr_add_data_valid && ~axi_wready && aw_en);
     end       
-
+    
     // Write data to internal registers
     // - after address is valid (axi_awvalid)
     // - after write data is valid (axi_wvalid)
@@ -195,61 +184,48 @@
     // write correct bytes in 32-bit word based on byte enables (axi_wstrb)
     // int_clear_request write is only active for one clock
     wire wr = wr_add_data_valid && axi_awready && axi_wready;
+    //instantiate a edge detector module that detects the rising edge of a write request
+    edge_detector write_request_detector(
+        .clk(axi_clk),
+        .rw_request_signal(wr),
+        .pulse(write_request_pulse));
+    
     integer byte_index;
     always_ff @ (posedge axi_clk)
     begin
         if (axi_resetn == 1'b0)
         begin
             latch_data[31:0] <= 32'b0;
-            out <= 32'b0;
-            od <= 32'b0;
-            int_enable <= 32'b0;
-            int_positive <= 32'b0;
-            int_negative <= 32'b0;
-            int_edge_mode <= 32'b0;
-            int_clear_request <= 32'b0;
+            status <= 32'b0;
+            control <= 32'b0;
+            brd <= 32'b0;
         end 
         else 
         begin
-            if (wr)
+            if (wr && write_request_pulse)
             begin
-                case (axi_awaddr[4:2])
-                    DATA_REG:
+                case (axi_awaddr[3:2])
+                    DATA_REG:                        
                         for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
                             if ( axi_wstrb[byte_index] == 1) 
                                 latch_data[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    OUT_REG:
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                out[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    ODR_REG: 
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                od[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    INT_ENABLE_REG:
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                int_enable[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    INT_POSITIVE_REG:
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1) 
-                                int_positive[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    INT_NEGATIVE_REG:
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                int_negative[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    INT_EDGE_MODE_REG:
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                int_edge_mode[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    INT_STATUS_CLEAR_REG:
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                int_clear_request[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+                            
+//                    STATUS_REG:
+//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+//                            if (axi_wstrb[byte_index] == 1)
+//                                status[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+//                    CONTROL_REG: 
+//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+//                            if (axi_wstrb[byte_index] == 1)
+//                                control[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+//                    BRD_REG:
+//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+//                            if (axi_wstrb[byte_index] == 1)
+//                                brd[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
                 endcase
             end
-            else
-                int_clear_request <= 32'b0;
+//            else
+//                int_clear_request <= 32'b0;
         end
     end    
 
@@ -309,6 +285,11 @@
     // - before the module asserts the data is valid (~axi_rvalid)
     //   (don't change the data while asserting read data is valid)
     wire rd = axi_arvalid && axi_arready && ~axi_rvalid;
+    //instantiate a edge detector module that detects the rising edge of a read request
+    edge_detector read_request_detector(
+        .clk(axi_clk),
+        .rw_request_signal(wr),
+        .pulse(read_request_pulse));
     always_ff @ (posedge axi_clk)
     begin
         if (axi_resetn == 1'b0)
@@ -317,26 +298,19 @@
         end 
         else
         begin    
-            if (rd)
+            if (rd && read_request_pulse)
             begin
 		// Address decoding for reading registers
-		case (raddr[4:2])
+		case (raddr[3:2])
 		    DATA_REG: 
-		        axi_rdata <= read_port_data;
-		    OUT_REG:
-		        axi_rdata <= out;
-		    ODR_REG: 
-		        axi_rdata <= od;
-		    INT_ENABLE_REG: 
-			axi_rdata <= int_enable;
-		    INT_POSITIVE_REG:
-			axi_rdata <= int_positive;
-		    INT_NEGATIVE_REG:
-			axi_rdata <= int_negative;
-		    INT_EDGE_MODE_REG:
-			axi_rdata <= int_edge_mode;
-		    INT_STATUS_CLEAR_REG:
-		        axi_rdata <= int_status;
+		    //ADD FIFO LINES HERE
+		        axi_rdata <= rd_data;
+//		    STATUS_REG:
+//		        axi_rdata <= status;
+//		    CONTROL_REG: 
+//			axi_rdata <= control;
+//		    BRD_REG: 
+//		        axi_rdata <= brd;
 		endcase
             end   
         end
@@ -363,56 +337,73 @@
         end
     end    
 
-    // pin control
-    // OUT LATCH ODR   PIN
-    //  0    x    x    hi-Z
-    //  1    0    x     0
-    //  1    1    0     1
-    //  1    1    1    hi-Z
-    genvar j;
-    for (j = 0; j < 32; j = j + 1)
-    begin
-        assign gpio_data_oe[j] = out[j] && (!latch_data[j] || !od[j]);
-    end
-    assign gpio_data_out = latch_data;
+    // Fifo
+    fifo16x9 fifo1(
+    .clk(axi_clk), 
+    .reset(reset_signal), 
+    .wr_data(wr_data), 
+    .wr_request(wr && write_request_pulse), 
+    .rd_request(rd && read_request_pulse), 
+    .clear_overflow_request(clear_overflow_request), 
+    .empty(empty), 
+    .full(full), 
+    .overflow(overflow), 
+    .rd_data(rd_data),
+    .wr_index(wr_index), 
+    .rd_index(rd_index),
+    .watermark(watermark));
     
-    // Interrupt generation
-    integer i;
-    reg [31:0] last_read_port_data;
-    always_ff @ (posedge axi_clk)
-    begin
-        if (axi_resetn == 1'b0)
-        begin
-            last_read_port_data <= 32'b0;
-            int_status <= 32'b0;
-        end
-        else if (int_clear_request != 32'b0)
-            int_status <= int_status & ~int_clear_request;
-        else
-        begin
-            last_read_port_data <= read_port_data;
-            for (i = 0; i < 32; i = i + 1)
-            begin
-                if (int_enable[i])
-                begin
-                    if (int_edge_mode[i])
-                    begin
-                        if (int_positive[i] && read_port_data[i] && !last_read_port_data[i])
-                            int_status[i] <= 1'b1;
-                        if (int_negative[i] && !read_port_data[i] && last_read_port_data[i])
-                            int_status[i] <= 1'b1;
-                    end
-                    else
-                    begin
-                        if (int_positive[i] && read_port_data[i])
-                            int_status[i] <= 1'b1;
-                        if (int_negative[i] && !read_port_data[i])
-                            int_status[i] <= 1'b1;
-                    end
-                end
-            end
-        end
-    end
-    assign intr = int_status != 32'b0;
+
+//    // pin control
+//    // OUT LATCH ODR   PIN
+//    //  0    x    x    hi-Z
+//    //  1    0    x     0
+//    //  1    1    0     1
+//    //  1    1    1    hi-Z
+//    genvar j;
+//    for (j = 0; j < 32; j = j + 1)
+//    begin
+//        assign gpio_data_oe[j] = out[j] && (!latch_data[j] || !od[j]);
+//    end
+//    assign gpio_data_out = latch_data;
+    
+//    // Interrupt generation
+//    integer i;
+//    reg [31:0] last_read_port_data;
+//    always_ff @ (posedge axi_clk)
+//    begin
+//        if (axi_resetn == 1'b0)
+//        begin
+//            last_read_port_data <= 32'b0;
+//            int_status <= 32'b0;
+//        end
+//        else if (int_clear_request != 32'b0)
+//            int_status <= int_status & ~int_clear_request;
+//        else
+//        begin
+//            last_read_port_data <= read_port_data;
+//            for (i = 0; i < 32; i = i + 1)
+//            begin
+//                if (int_enable[i])
+//                begin
+//                    if (int_edge_mode[i])
+//                    begin
+//                        if (int_positive[i] && read_port_data[i] && !last_read_port_data[i])
+//                            int_status[i] <= 1'b1;
+//                        if (int_negative[i] && !read_port_data[i] && last_read_port_data[i])
+//                            int_status[i] <= 1'b1;
+//                    end
+//                    else
+//                    begin
+//                        if (int_positive[i] && read_port_data[i])
+//                            int_status[i] <= 1'b1;
+//                        if (int_negative[i] && !read_port_data[i])
+//                            int_status[i] <= 1'b1;
+//                    end
+//                end
+//            end
+//        end
+//    end
+//    assign intr = int_status != 32'b0;
     
 endmodule

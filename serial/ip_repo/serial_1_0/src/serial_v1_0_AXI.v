@@ -57,7 +57,16 @@
         output wire S_AXI_RVALID,
         input wire S_AXI_RREADY
     );
-
+    
+    
+    // Internal signals
+    wire reset_signal;
+    reg [8:0] wr_data;
+    reg [9:0] rd_data;
+    reg clear_overflow_request;
+    reg write_request_pulse;
+    reg read_request_pulse;
+    
     // Internal registers
     reg [31:0] latch_data;
     reg [31:0] status;
@@ -108,15 +117,6 @@
     assign S_AXI_RDATA   = axi_rdata;
     assign S_AXI_RRESP   = axi_rresp;
     assign S_AXI_RVALID  = axi_rvalid;
-    
-    // Handle gpio input metastability safely
-//    reg [31:0] read_port_data;
-//    reg [31:0] pre_read_port_data;
-//    always_ff @ (posedge(axi_clk))
-//    begin
-//        pre_read_port_data <= gpio_data_in;
-//        read_port_data <= pre_read_port_data;
-//    end
 
     // Assert address ready handshake (axi_awready) 
     // - after address is valid (axi_awvalid)
@@ -175,7 +175,7 @@
         else
             axi_wready <= (wr_add_data_valid && ~axi_wready && aw_en);
     end       
-
+    
     // Write data to internal registers
     // - after address is valid (axi_awvalid)
     // - after write data is valid (axi_wvalid)
@@ -184,11 +184,12 @@
     // write correct bytes in 32-bit word based on byte enables (axi_wstrb)
     // int_clear_request write is only active for one clock
     wire wr = wr_add_data_valid && axi_awready && axi_wready;
-    wire write_request_pulse;
+    //instantiate a edge detector module that detects the rising edge of a write request
     edge_detector write_request_detector(
         .clk(axi_clk),
-        .signal(wr),
-        .pulse(wire_request_pulse));
+        .rw_request_signal(wr),
+        .pulse(write_request_pulse));
+    
     integer byte_index;
     always_ff @ (posedge axi_clk)
     begin
@@ -201,25 +202,26 @@
         end 
         else 
         begin
-            if (wr)
+            if (wr && write_request_pulse)
             begin
                 case (axi_awaddr[3:2])
-                    DATA_REG:
+                    DATA_REG:                        
                         for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
                             if ( axi_wstrb[byte_index] == 1) 
                                 latch_data[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    STATUS_REG:
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                status[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    CONTROL_REG: 
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                control[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                    BRD_REG:
-                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-                            if (axi_wstrb[byte_index] == 1)
-                                brd[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+                            
+//                    STATUS_REG:
+//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+//                            if (axi_wstrb[byte_index] == 1)
+//                                status[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+//                    CONTROL_REG: 
+//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+//                            if (axi_wstrb[byte_index] == 1)
+//                                control[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+//                    BRD_REG:
+//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+//                            if (axi_wstrb[byte_index] == 1)
+//                                brd[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
                 endcase
             end
 //            else
@@ -283,6 +285,11 @@
     // - before the module asserts the data is valid (~axi_rvalid)
     //   (don't change the data while asserting read data is valid)
     wire rd = axi_arvalid && axi_arready && ~axi_rvalid;
+    //instantiate a edge detector module that detects the rising edge of a read request
+    edge_detector read_request_detector(
+        .clk(axi_clk),
+        .rw_request_signal(wr),
+        .pulse(read_request_pulse));
     always_ff @ (posedge axi_clk)
     begin
         if (axi_resetn == 1'b0)
@@ -291,26 +298,19 @@
         end 
         else
         begin    
-            if (rd)
+            if (rd && read_request_pulse)
             begin
 		// Address decoding for reading registers
-		case (raddr[4:2])
+		case (raddr[3:2])
 		    DATA_REG: 
-		        axi_rdata <= read_port_data;
-		    OUT_REG:
-		        axi_rdata <= out;
-		    ODR_REG: 
-		        axi_rdata <= od;
-		    INT_ENABLE_REG: 
-			axi_rdata <= int_enable;
-		    INT_POSITIVE_REG:
-			axi_rdata <= int_positive;
-		    INT_NEGATIVE_REG:
-			axi_rdata <= int_negative;
-		    INT_EDGE_MODE_REG:
-			axi_rdata <= int_edge_mode;
-		    INT_STATUS_CLEAR_REG:
-		        axi_rdata <= int_status;
+		    //ADD FIFO LINES HERE
+		        axi_rdata <= rd_data;
+//		    STATUS_REG:
+//		        axi_rdata <= status;
+//		    CONTROL_REG: 
+//			axi_rdata <= control;
+//		    BRD_REG: 
+//		        axi_rdata <= brd;
 		endcase
             end   
         end
@@ -336,6 +336,23 @@
                 axi_rvalid <= 1'b0;
         end
     end    
+
+    // Fifo
+    fifo16x9 fifo1(
+    .clk(axi_clk), 
+    .reset(reset_signal), 
+    .wr_data(wr_data), 
+    .wr_request(wr && write_request_pulse), 
+    .rd_request(rd && read_request_pulse), 
+    .clear_overflow_request(clear_overflow_request), 
+    .empty(empty), 
+    .full(full), 
+    .overflow(overflow), 
+    .rd_data(rd_data),
+    .wr_index(wr_index), 
+    .rd_index(rd_index),
+    .watermark(watermark));
+    
 
 //    // pin control
 //    // OUT LATCH ODR   PIN

@@ -1,13 +1,14 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x306F13E324E7E20E",
+      "boundary_crc": "0x306F13E319E107C0",
       "device": "xc7z007sclg400-1",
       "gen_directory": "../../../../gpio.gen/sources_1/bd/system",
       "name": "system",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2024.1"
+      "tool_version": "2024.1",
+      "validated": "true"
     },
     "design_tree": {
       "processing_system7_0": "",
@@ -18,8 +19,7 @@
         }
       },
       "gpio_0": "",
-      "xlconcat_1": "",
-      "serial_0": ""
+      "xlconcat_1": ""
     },
     "interface_ports": {
       "DDR": {
@@ -209,7 +209,17 @@
       },
       "intr": {
         "type": "intr",
-        "direction": "O"
+        "direction": "O",
+        "parameters": {
+          "PortWidth": {
+            "value": "1",
+            "value_src": "default_prop"
+          },
+          "SENSITIVITY": {
+            "value": "LEVEL_HIGH",
+            "value_src": "const_prop"
+          }
+        }
       }
     },
     "components": {
@@ -1416,13 +1426,6 @@
             "value": "3"
           }
         }
-      },
-      "serial_0": {
-        "vlnv": "user.org:user:serial:1.0",
-        "ip_revision": "1",
-        "xci_name": "system_serial_0_0",
-        "xci_path": "ip/system_serial_0_0/system_serial_0_0.xci",
-        "inst_hier_path": "serial_0"
       }
     },
     "interface_nets": {
