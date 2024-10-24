@@ -5,8 +5,8 @@ module fifo16x9(
     input wr_request, 
     input rd_request, 
     input clear_overflow_request, 
-    output empty, 
-    output full, 
+    output wire empty, 
+    output wire full, 
     output reg overflow, 
     output reg [8:0] rd_data,
     output reg [4:0] wr_index, 
@@ -15,7 +15,12 @@ module fifo16x9(
     );
 
     // buffer that stores the fifo data
-    reg [8:0] fifo[15:0];
+    reg [8:0] fifo[0:15];
+    
+    assign full = ((wr_index[3:0] == rd_index[3:0]) && (wr_index[4] != rd_index[4]));
+    assign empty = (wr_index[4:0] == rd_index[4:0]);
+    assign watermark = wr_index[4:0] - rd_index[4:0];
+    
     always_ff @ (posedge(clk))
     begin
         if(reset)
@@ -23,20 +28,22 @@ module fifo16x9(
             wr_index  <= 5'b0;
             rd_index  <= 5'b0;
             watermark <= 5'b0;
-            overflow  <= 0;
+            overflow  <= 1'b0;
         end
-        if (clear_overflow_request)
+        else if (clear_overflow_request)
         begin
-            overflow <= 0;
-        end
-        if (wr_request && !full)
-        begin
-            fifo[wr_index[3:0]] <= wr_data;
-            wr_index <= ((wr_index + 1) % 16);
+            overflow <= 1'b0;
         end
         else if (full)
         begin
-            overflow <= 1;
+            overflow <= 1'b1;
+        end
+        else if (wr_request && !full)
+        begin
+            fifo[wr_index[3:0]] <= wr_data;
+            wr_index <= ((wr_index + 1) % 16);
+            // remove this line after debug complete
+            overflow <= ~overflow;
         end
         else if (rd_request && !empty)
         begin
@@ -45,7 +52,4 @@ module fifo16x9(
         end
     end
     
-    assign full = ((wr_index[3:0] == rd_index[3:0]) && (wr_index[4] != rd_index[4]));
-    assign empty = (wr_index[4:0] == rd_index[4:0]);
-    assign watermark = wr_index[4:0] - rd_index[4:0];
 endmodule

@@ -73,9 +73,9 @@ module system_top (
     assign IMU_CS_M = 1'b1;
     assign IMU_DEN_AG = 1'b0;
 
-    // display g (gpio) on left seven segment display
+    // display S (serial) on left seven segment display
     assign SS_ANODE = 4'b0111;
-    assign SS_CATHODE = 8'b10010000;
+    assign SS_CATHODE = 8'b10010010;
 
     // Tie gpio to PMOD connectors
     wire [31:0] gpio_data_in;
@@ -93,10 +93,20 @@ module system_top (
     assign RGB0 = {1'b0, intr, 1'b0};
     
     // Serial output registers
-    reg overflow;
-    reg [4:0] wr_index;
-    reg [4:0] rd_index;
-    reg [4:0] watermark;
+    wire full;
+    wire empty;
+    wire overflow;
+    wire [4:0] wr_index;
+    wire [4:0] rd_index;
+    wire [4:0] watermark;
+    
+//    assign LED[9:5] = wr_index;
+//    assign LED[4:0] = rd_index;
+    assign LED[0] = overflow;
+    assign LED[1] = full;
+    assign LED[2] = empty;
+    assign LED[5:3] = rd_index[2:0];
+    assign LED[8:6] = wr_index[2:0];
     
     // Instantiate system wrapper
     system_wrapper system (
@@ -125,6 +135,8 @@ module system_top (
         .gpio_data_out(gpio_data_out),
         .gpio_data_oe(gpio_data_oe),
         .intr(intr),
+        .full(full),
+        .empty(empty),
         .overflow(overflow),
         .rd_index(rd_index),
         .watermark(watermark),
