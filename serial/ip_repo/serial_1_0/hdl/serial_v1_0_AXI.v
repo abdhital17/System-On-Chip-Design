@@ -64,8 +64,6 @@
     reg [31:0] wr_data;
     reg [31:0] rd_data;
     reg clear_overflow_request;
-    reg write_request_pulse;
-    reg read_request_pulse;
     reg full_local;
     reg empty_local;
     reg overflow_local;
@@ -157,6 +155,8 @@
         end 
     end
 
+    reg ok_to_read, ok_to_write;
+
     // Capture the write address (axi_awaddr) in the first clock (~axi_awready)
     // - after write address is valid (axi_awvalid)
     // - after write data is valid (axi_wvalid)
@@ -182,6 +182,12 @@
             axi_wready <= (wr_add_data_valid && ~axi_wready && aw_en);
     end       
     
+    //instantiate a edge detector module that detects the rising edge of a write request
+    edge_detector write_request_detector(
+    .clk(axi_clk),
+    .rw_request_signal(wr_add_data_valid && axi_awready && axi_wready),
+    .pulse(ok_to_write));
+
     // Write data to internal registers
     // - after address is valid (axi_awvalid)
     // - after write data is valid (axi_wvalid)
@@ -189,7 +195,7 @@
     // - after this module asserts ready for data handshake (axi_wready)
     // write correct bytes in 32-bit word based on byte enables (axi_wstrb)
     // int_clear_request write is only active for one clock
-    wire wr = wr_add_data_valid && axi_awready && axi_wready;
+    // wire wr = wr_add_data_valid && axi_awready && axi_wready;
     integer byte_index;
     always_ff @ (posedge axi_clk)
     begin
@@ -202,7 +208,7 @@
         end 
         else 
         begin
-            if (wr)
+            if (ok_to_write)
             begin
                 case (axi_awaddr[3:2])
                     DATA_REG: begin     
@@ -277,13 +283,19 @@
                 axi_arready <= 1'b0;
         end 
     end       
-        
+
+    //instantiate a edge detector module that detects the rising edge of a read request
+    edge_detector read_request_detector(
+    .clk(axi_clk),
+    .rw_request_signal(axi_arvalid && axi_arready),
+    .pulse(ok_to_read));
+
     // Update register read data
     // - after this module receives a valid address (axi_arvalid)
     // - after this module asserts ready for address handshake (axi_arready)
     // - before the module asserts the data is valid (~axi_rvalid)
     //   (don't change the data while asserting read data is valid)
-    wire rd = axi_arvalid && axi_arready && ~axi_rvalid;
+    // wire rd = axi_arvalid && axi_arready && ~axi_rvalid;
     always_ff @ (posedge axi_clk)
     begin
         if (axi_resetn == 1'b0)
@@ -292,23 +304,24 @@
         end 
         else
         begin    
-            if (rd)
+            if (ok_to_read)
             begin
-		// Address decoding for reading registers
-		case (raddr[3:2])
-		    DATA_REG: begin
-		    //ADD FIFO LINES HERE
-		        axi_rdata[8:0] <= rd_data[8:0];
-                // empty_local <= ~empty_local;
-                // axi_rdata <= rd_data;
+		        // Address decoding for reading registers
+		        case (raddr[3:2])
+		            DATA_REG:
+                begin
+		            //ADD FIFO LINES HERE
+		            axi_rdata[8:0] <= rd_data[8:0];
+                    // empty_local <= ~empty_local;
+                    // axi_rdata <= rd_data;
                 end
-		    STATUS_REG:
-		        axi_rdata <= status;
-		    CONTROL_REG:
-			axi_rdata <= control;
-		    BRD_REG:
-		        axi_rdata <= brd;
-		endcase
+		        STATUS_REG:
+		            axi_rdata <= status;
+		        CONTROL_REG:
+			    axi_rdata <= control;
+		        BRD_REG:
+		            axi_rdata <= brd;
+		        endcase
             end   
         end
     end    
@@ -337,10 +350,10 @@
   // Fifo
    fifo16x9 fifo1(
    .clk(axi_clk),
-   .reset(reset_signal),
+   .reset(axi_resetn),
    .wr_data(wr_data[8:0]),
-   .wr_request(wr_add_data_valid && axi_awready && axi_wready),
-   .rd_request(axi_arvalid && axi_arready && ~axi_rvalid),
+   .wr_request(ok_to_write),
+   .rd_request(ok_to_read),
    .clear_overflow_request(clear_overflow_request),
    .empty(empty), // debug
    .full(full),   // debug
@@ -349,9 +362,7 @@
    .wr_index(wr_index_local),
    .rd_index(rd_index_local),
    .watermark(watermark_local));
-   
-   assign full = full_local;
-   assign empty = empty_local;
+
    assign overflow = overflow_local;
    assign wr_index[4:0] = wr_index_local[4:0];
    assign rd_index[4:0] = rd_index_local[4:0];

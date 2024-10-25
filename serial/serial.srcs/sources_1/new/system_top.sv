@@ -100,10 +100,10 @@ module system_top (
     wire [4:0] rd_index;
     wire [4:0] watermark;
     
-    assign LED[9:5] = rd_index;
-    assign LED[4:0] = wr_index;
-//    assign LED[0] = full;
-//    assign LED[1] = empty;
+    assign LED[9:6] = rd_index[3:0];
+    assign LED[5:2] = wr_index[3:0];
+    assign LED[0] = full;
+    assign LED[1] = empty;
 //    assign LED[2] = empty;
 //    assign LED[9:6] = rd_index[3:0];
 //    assign LED[5:2] = wr_index[3:0];

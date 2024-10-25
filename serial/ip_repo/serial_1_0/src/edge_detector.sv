@@ -4,17 +4,13 @@ module edge_detector(
     output reg pulse
 );
 
-    reg current_state, previous_state;
+    reg previous_state;
     always_ff @ (posedge(clk))
     begin
-    	current_state <= rw_request_signal;
-        if(current_state != previous_state)
+        pulse <= 0;
+        if (rw_request_signal && !previous_state)
         begin
-        	pulse <= 1;
-        end
-        else
-        begin
-        	pulse <= 0;
+            pulse <= 1;
         end
         previous_state <= rw_request_signal;
     end
