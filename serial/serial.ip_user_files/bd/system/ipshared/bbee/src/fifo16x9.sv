@@ -5,8 +5,8 @@ module fifo16x9(
     input wr_request, 
     input rd_request, 
     input clear_overflow_request, 
-    output wire empty,
-    output wire full,
+    output reg empty,
+    output reg full,
     output reg overflow, 
     output reg [8:0] rd_data,
     output reg [4:0] wr_index, 
@@ -54,9 +54,9 @@ module fifo16x9(
         begin
             // if (!full)
             // begin
-                fifo[wr_index[3:0]][8:0] <= wr_data[8:0];
+                fifo[wr_index[3:0]] <= wr_data;
                 wr_index <= ((wr_index + 1) % 16);
-                // full <= ~full;
+                full <= ~full;
             // end
             // else
             // begin
@@ -67,9 +67,9 @@ module fifo16x9(
         begin
             // if (!empty)
             // begin
-                rd_data[8:0] <= fifo[rd_index[3:0]][8:0];
+                rd_data <= fifo[rd_index[3:0]];
                 rd_index <= ((rd_index + 1) % 16);
-                // empty <= ~empty;
+                empty <= ~empty;
             // end
         end
     end

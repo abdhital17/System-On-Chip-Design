@@ -15,12 +15,12 @@
 	)
 	(
 		// Users to add ports here
-		output empty,
-		output full,
-        output reg overflow,
-        output reg [4:0] wr_index,
-        output reg [4:0] rd_index,
-        output reg [4:0] watermark,
+		output wire empty,
+		output wire full,
+        output wire overflow,
+        output wire [4:0] wr_index,
+        output wire [4:0] rd_index,
+        output wire [4:0] watermark,
         
 		// User ports ends
 		// Do not modify the ports beyond this line

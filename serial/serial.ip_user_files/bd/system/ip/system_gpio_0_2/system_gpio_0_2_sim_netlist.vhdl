@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
--- Date        : Wed Oct 23 17:14:41 2024
+-- Date        : Wed Oct 23 17:14:40 2024
 -- Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/moonknight/SoC/gpio/gpio.gen/sources_1/bd/system/ip/system_gpio_0_2/system_gpio_0_2_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top system_gpio_0_2 -prefix
+--               system_gpio_0_2_ system_gpio_0_2_sim_netlist.vhdl
 -- Design      : system_gpio_0_2
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -41,8 +41,6 @@ entity system_gpio_0_2_gpio_v1_0_AXI is
     axi_wvalid : in STD_LOGIC;
     axi_awvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_gpio_0_2_gpio_v1_0_AXI : entity is "gpio_v1_0_AXI";
 end system_gpio_0_2_gpio_v1_0_AXI;
 
 architecture STRUCTURE of system_gpio_0_2_gpio_v1_0_AXI is
@@ -6854,8 +6852,6 @@ entity system_gpio_0_2_gpio is
     axi_bready : in STD_LOGIC;
     axi_rready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_gpio_0_2_gpio : entity is "gpio";
 end system_gpio_0_2_gpio;
 
 architecture STRUCTURE of system_gpio_0_2_gpio is

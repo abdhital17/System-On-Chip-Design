@@ -190,12 +190,6 @@
     // write correct bytes in 32-bit word based on byte enables (axi_wstrb)
     // int_clear_request write is only active for one clock
     wire wr = wr_add_data_valid && axi_awready && axi_wready;
-    //instantiate a edge detector module that detects the rising edge of a write request
-    edge_detector write_request_detector(
-        .clk(axi_clk),
-        .rw_request_signal(wr),
-        .pulse(write_request_pulse));
-    
     integer byte_index;
     always_ff @ (posedge axi_clk)
     begin
@@ -215,7 +209,8 @@
                         for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
                             if ( axi_wstrb[byte_index] == 1) 
                                 wr_data[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                        full_local <= ~full_local;  end //debug
+                        // full_local <= ~full_local;
+                        end //debug
                     STATUS_REG:
                         for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
                             if (axi_wstrb[byte_index] == 1)
@@ -289,11 +284,6 @@
     // - before the module asserts the data is valid (~axi_rvalid)
     //   (don't change the data while asserting read data is valid)
     wire rd = axi_arvalid && axi_arready && ~axi_rvalid;
-    //instantiate a edge detector module that detects the rising edge of a read request
-    edge_detector read_request_detector(
-        .clk(axi_clk),
-        .rw_request_signal(rd),
-        .pulse(read_request_pulse));
     always_ff @ (posedge axi_clk)
     begin
         if (axi_resetn == 1'b0)
@@ -307,10 +297,10 @@
 		// Address decoding for reading registers
 		case (raddr[3:2])
 		    DATA_REG: begin
-		        empty_local <= ~empty_local; // debug
 		    //ADD FIFO LINES HERE
-//		        axi_rdata[7:0] <= rd_data[7:0];
-                axi_rdata <= rd_data;
+		        axi_rdata[8:0] <= rd_data[8:0];
+                // empty_local <= ~empty_local;
+                // axi_rdata <= rd_data;
                 end
 		    STATUS_REG:
 		        axi_rdata <= status;
@@ -326,7 +316,7 @@
     // Assert data is valid for reading (axi_rvalid)
     // - after address is valid (axi_arvalid)
     // - after this module asserts ready for address handshake (axi_arready)
-    // De-assert data valid (axi_rvalid) 
+    // De-assert data valid (axi_rvalid)
     // - after master ready handshake is received (axi_rready)
     always_ff @ (posedge axi_clk)
     begin
@@ -338,32 +328,30 @@
             begin
                 axi_rvalid <= 1'b1;
                 axi_rresp <= 2'b0;
-            end   
+            end
             else if (axi_rvalid && axi_rready)
                 axi_rvalid <= 1'b0;
         end
-    end    
-    
-//   // Fifo
+    end
+
+  // Fifo
    fifo16x9 fifo1(
    .clk(axi_clk),
    .reset(reset_signal),
    .wr_data(wr_data[8:0]),
-//    .wr_request(wr),// && write_request_pulse),
-//    .rd_request(rd),// && read_request_pulse),
-   .wr_request(write_request_pulse),
-   .rd_request(read_request_pulse),
+   .wr_request(wr_add_data_valid && axi_awready && axi_wready),
+   .rd_request(axi_arvalid && axi_arready && ~axi_rvalid),
    .clear_overflow_request(clear_overflow_request),
-   .empty(empty),
-   .full(full),
+   .empty(empty), // debug
+   .full(full),   // debug
    .overflow(overflow_local),
    .rd_data(rd_data),
    .wr_index(wr_index_local),
    .rd_index(rd_index_local),
    .watermark(watermark_local));
    
-//   assign empty = empty_local;
-//   assign full = full_local;
+   assign full = full_local;
+   assign empty = empty_local;
    assign overflow = overflow_local;
    assign wr_index[4:0] = wr_index_local[4:0];
    assign rd_index[4:0] = rd_index_local[4:0];
