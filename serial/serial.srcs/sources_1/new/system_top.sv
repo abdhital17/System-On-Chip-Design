@@ -99,14 +99,32 @@ module system_top (
     wire [4:0] wr_index;
     wire [4:0] rd_index;
     wire [4:0] watermark;
+    wire [8:0] rd_data;
+    // handle input metastability safely
     
-    assign LED[9:6] = rd_index[3:0];
-    assign LED[5:2] = wr_index[3:0];
-    assign LED[0] = full;
-    assign LED[1] = empty;
-//    assign LED[2] = empty;
-//    assign LED[9:6] = rd_index[3:0];
-//    assign LED[5:2] = wr_index[3:0];
+    reg [1:0] mode, pre_mode;
+    reg [9:0] led_out;
+    
+    always_ff @ (posedge(CLK100))
+    begin
+        pre_mode[1:0] <= SW[1:0];
+        mode[1:0] <= pre_mode[1:0];
+    end
+    
+    always_ff @ (posedge(CLK100))
+    begin
+        case(mode[1:0])
+            00: 
+                led_out[9:0] <= {rd_index[4:0], wr_index[4:0]};
+            01: 
+                led_out[9:0] <= {full,empty,overflow,2'b0,watermark[4:0]};
+            11:
+                led_out[9:0] <= {1'b0, rd_data[8:0]};
+        endcase         
+    end
+
+
+    assign LED[9:0] = led_out[9:0];
     
     // Instantiate system wrapper
     system_wrapper system (
@@ -140,6 +158,7 @@ module system_top (
         .overflow(overflow),
         .rd_index(rd_index),
         .watermark(watermark),
-        .wr_index(wr_index));
+        .wr_index(wr_index),
+        .rd_data(rd_data));
 
 endmodule

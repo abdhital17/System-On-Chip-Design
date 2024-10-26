@@ -11,15 +11,15 @@ verilog xil_defaultlib --include "/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/in
 "../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_xlconcat_1_0/sim/system_xlconcat_1_0.v" \
 
 sv xil_defaultlib --include "/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" --include "../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" --include "../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" --include "../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" \
-"../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/bbee/hdl/serial_v1_0_AXI.v" \
-"../../../bd/system/ipshared/bbee/src/edge_detector.sv" \
-"../../../bd/system/ipshared/bbee/src/fifo16x9.sv" \
-"../../../bd/system/ipshared/bbee/hdl/serial.v" \
+"../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/e56d/hdl/serial_v1_0_AXI.v" \
+"../../../bd/system/ipshared/e56d/src/edge_detector.sv" \
+"../../../bd/system/ipshared/e56d/src/fifo16x9.sv" \
+"../../../bd/system/ipshared/e56d/hdl/serial.v" \
 
 verilog xil_defaultlib --include "/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" --include "../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" --include "../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" --include "../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" \
 "../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_serial_0_1/sim/system_serial_0_1.v" \
-"../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_auto_pc_0/sim/system_auto_pc_0.v" \
 "../../../../../gpio/gpio.gen/sources_1/bd/system/sim/system.v" \
+"../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_auto_pc_0/sim/system_auto_pc_0.v" \
 
 verilog xil_defaultlib "glbl.v"
 

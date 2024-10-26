@@ -21,6 +21,7 @@
         output wire [4:0] wr_index,
         output wire [4:0] rd_index,
         output wire [4:0] watermark,
+        output wire [8:0] rd_data,
         
 		// User ports ends
 		// Do not modify the ports beyond this line
@@ -79,7 +80,8 @@
         .overflow(overflow),
         .wr_index(wr_index),
         .rd_index(rd_index),
-        .watermark(watermark)
+        .watermark(watermark),
+        .rd_data(rd_data),
 	);
 
 	// Add user logic here

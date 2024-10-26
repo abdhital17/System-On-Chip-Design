@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:serial:1.0
-// IP Revision: 39
+// IP Revision: 61
 
 `timescale 1ns/1ps
 

@@ -113,20 +113,20 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../../gpio/gpio.gen/sources_1
 "../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_xlconcat_1_0/sim/system_xlconcat_1_0.v" \
 
 vlog -work xil_defaultlib  -sv2k12 "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" "+incdir+../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l generic_baseblocks_v2_1_2 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xlconcat_v2_1_6 -l axi_protocol_converter_v2_1_31 \
-"../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/bbee/hdl/serial_v1_0_AXI.v" \
-"../../../bd/system/ipshared/bbee/src/edge_detector.sv" \
-"../../../bd/system/ipshared/bbee/src/fifo16x9.sv" \
-"../../../bd/system/ipshared/bbee/hdl/serial.v" \
+"../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/e56d/hdl/serial_v1_0_AXI.v" \
+"../../../bd/system/ipshared/e56d/src/edge_detector.sv" \
+"../../../bd/system/ipshared/e56d/src/fifo16x9.sv" \
+"../../../bd/system/ipshared/e56d/hdl/serial.v" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" "+incdir+../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l generic_baseblocks_v2_1_2 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xlconcat_v2_1_6 -l axi_protocol_converter_v2_1_31 \
 "../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_serial_0_1/sim/system_serial_0_1.v" \
+"../../../../../gpio/gpio.gen/sources_1/bd/system/sim/system.v" \
 
 vlog -work axi_protocol_converter_v2_1_31  -v2k5 "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" "+incdir+../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l generic_baseblocks_v2_1_2 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xlconcat_v2_1_6 -l axi_protocol_converter_v2_1_31 \
 "../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/3c06/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" "+incdir+../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" -l xilinx_vip -l xpm -l axi_infrastructure_v1_1_0 -l axi_vip_v1_1_17 -l processing_system7_vip_v1_0_19 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l generic_baseblocks_v2_1_2 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xlconcat_v2_1_6 -l axi_protocol_converter_v2_1_31 \
 "../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_auto_pc_0/sim/system_auto_pc_0.v" \
-"../../../../../gpio/gpio.gen/sources_1/bd/system/sim/system.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

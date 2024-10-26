@@ -110,20 +110,20 @@ vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../../gpio/gpio.gen
 "../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_xlconcat_1_0/sim/system_xlconcat_1_0.v" \
 
 vlog -work xil_defaultlib -64 -incr -mfcu  -sv -L axi_vip_v1_1_17 -L processing_system7_vip_v1_0_19 -L xilinx_vip "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" "+incdir+../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
-"../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/bbee/hdl/serial_v1_0_AXI.v" \
-"../../../bd/system/ipshared/bbee/src/edge_detector.sv" \
-"../../../bd/system/ipshared/bbee/src/fifo16x9.sv" \
-"../../../bd/system/ipshared/bbee/hdl/serial.v" \
+"../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/e56d/hdl/serial_v1_0_AXI.v" \
+"../../../bd/system/ipshared/e56d/src/edge_detector.sv" \
+"../../../bd/system/ipshared/e56d/src/fifo16x9.sv" \
+"../../../bd/system/ipshared/e56d/hdl/serial.v" \
 
 vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" "+incdir+../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_serial_0_1/sim/system_serial_0_1.v" \
+"../../../../../gpio/gpio.gen/sources_1/bd/system/sim/system.v" \
 
 vlog -work axi_protocol_converter_v2_1_31 -64 -incr -mfcu  "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" "+incdir+../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/3c06/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib -64 -incr -mfcu  "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+../../../../../gpio/gpio.gen/sources_1/bd/system/ipshared/b28c/hdl" "+incdir+../../../../../gpio/gpio.srcs/sources_1/bd/system/ipshared/ec67/hdl" "+incdir+/tools/Xilinx/Vivado/2024.1/data/xilinx_vip/include" \
 "../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_auto_pc_0/sim/system_auto_pc_0.v" \
-"../../../../../gpio/gpio.gen/sources_1/bd/system/sim/system.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"
