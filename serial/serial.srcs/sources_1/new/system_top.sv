@@ -104,7 +104,6 @@ module system_top (
     // handle input metastability safely
     reg [1:0] mode, pre_mode;
     reg [9:0] led_out;
-    
     always_ff @ (posedge(CLK100))
     begin
         pre_mode[1:0] <= SW[1:0];
@@ -115,15 +114,16 @@ module system_top (
     always_ff @ (posedge(CLK100))
     begin
         case(mode[1:0])
-            2'b00: 
+            2'b00:              // set the LEDs to display rd_index and wr_index
                 led_out[9:0] <= {rd_index[4:0], wr_index[4:0]};
-            2'b01: 
+            2'b01:              // set the LEDs to display full, empty, overflow and watermark
                 led_out[9:0] <= {full,empty,overflow,1'b0,1'b0,watermark[4:0]};
             2'b10:
                 led_out[9:0] <= {1'b0, rd_data[8:0]};
         endcase         
     end
 
+    // assign the leds based on mode selected by SW[1:0]
     assign LED[9:0] = led_out[9:0];
     
     // Instantiate system wrapper

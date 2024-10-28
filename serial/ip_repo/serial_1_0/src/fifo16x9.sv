@@ -15,7 +15,7 @@ module fifo16x9(
     );
 
     // buffer that stores the fifo data
-    reg [8:0] fifo[0:15];
+    reg [8:0] fifo[15:0];
 
 // assign the full and empty signals
     assign full = ((wr_index[3:0] == rd_index[3:0]) && (wr_index[4] != rd_index[4]));
@@ -39,26 +39,26 @@ module fifo16x9(
             watermark <= 5'b00000;
             overflow  <= 1'b0;
         end
-        else if (clear_overflow_request)
+        else if (clear_overflow_request)            // if clear_overflow_request is received, set overflow to low
         begin
             overflow <= 1'b0;
         end
         else if (wr_request)
         begin
-            if (!full)
-            begin
+            if (!full)                  // if write request received and fifo is not full
+            begin                       // write to the fifo and update the write index
                 fifo[wr_index[3:0]] <= wr_data;
                 wr_index <= ((wr_index + 1) % 32);
             end
            else
-           begin
+           begin                // if the fifo is full, set the overflow signal to high
                overflow <= 1'b1;
            end
         end
         else if (rd_request)
         begin
-            if (!empty)
-            begin
+            if (!empty)         // if read request received and fifo is not empty
+            begin               // update rd_data and increment the rd_index
                 rd_data <= fifo[rd_index[3:0]];
                 rd_index <= ((rd_index + 1) % 32);
             end

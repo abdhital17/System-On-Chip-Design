@@ -60,20 +60,20 @@
     );
     
     
-    // Internal fifo registers
-    reg [31:0] wr_data;
+    // Internal fifo registers that drive the top level output signals
     reg [8:0] rd_data_local;
-    reg clear_overflow_request;
     reg overflow_local;
     reg [4:0] rd_index_local;
     reg [4:0] wr_index_local;
     reg [4:0] watermark_local;
 
     // Internal registers
+    reg [31:0] wr_data;
+    reg clear_overflow_request;
     reg [31:0] status;
     reg [31:0] control;
     reg [31:0] brd;
-
+    
     // Register map
     // ofs  fn
     //   0  data (r/w)
@@ -361,14 +361,14 @@
         end
     end
 
- // handle clear overflow request edge detection so that it is set only once
+ // handle clear overflow request edge detection so that it is triggered only once
      edge_detector clear_overflow_detector(
      .clk(axi_clk),
      .rw_request_signal(status[0]),
      .pulse(clear_overflow_request));
 
 
-  // Fifo
+  // Instantiate the fifo
    fifo16x9 fifo1(
    .clk(axi_clk),
    .reset(axi_resetn),
@@ -384,6 +384,7 @@
    .rd_index(rd_index_local),
    .watermark(watermark_local));
 
+// Assign the top level output signals based on the local fifo outputs
    assign overflow = overflow_local;
    assign wr_index[4:0] = wr_index_local[4:0];
    assign rd_index[4:0] = rd_index_local[4:0];
