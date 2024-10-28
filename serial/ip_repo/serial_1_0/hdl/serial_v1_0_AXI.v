@@ -179,12 +179,12 @@
             axi_wready <= (wr_add_data_valid && ~axi_wready && aw_en);
     end       
     
-    // reg fifo_rd_en, fifo_wr_en;
-    // //instantiate a edge detector module that detects the rising edge of a write request
-    // edge_detector write_request_detector(
-    // .clk(axi_clk),
-    // .rw_request_signal(wr_add_data_valid && axi_awready && axi_wready),
-    // .pulse(ok_to_write));
+     reg fifo_rd_en, fifo_wr_en;
+     //instantiate a edge detector module that detects the rising edge of a write request
+     edge_detector write_request_detector(
+     .clk(axi_clk),
+     .rw_request_signal(wr_add_data_valid && axi_awready && axi_wready),
+     .pulse(ok_to_write));
 
     // Write data to internal registers
     // - after address is valid (axi_awvalid)
@@ -197,6 +197,7 @@
     integer byte_index;
     always_ff @ (posedge axi_clk)
     begin
+        write_en <= 0;
         if (axi_resetn == 1'b0)
         begin
             wr_data[31:0] <= 32'b0;
@@ -210,14 +211,13 @@
             status[0] <= 1'b0;
             if (wr)
             begin
-
                 case (axi_awaddr[3:2])
                     DATA_REG:
                     begin
                         for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
                             if ( axi_wstrb[byte_index] == 1) 
                                 wr_data[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                        // fifo_wr_en <= 1;
+                         write_en <= 1;
                     end
                     STATUS_REG:
                     begin
@@ -264,12 +264,6 @@
         end
     end   
    
-    //instantiate a edge detector module that detects the rising edge of a write request
-    edge_detector write_request_detector(
-    .clk(axi_clk),
-    .rw_request_signal(wr_add_data_valid && wr_add_data_ready && ~axi_bvalid),
-    .pulse(ok_to_write));
-
     // In the first clock (~axi_arready) that the read address is valid
     // - capture the address (axi_araddr)
     // - output ready (axi_arready) for one clock
@@ -297,18 +291,19 @@
     //instantiate a edge detector module that detects the rising edge of a read request
     edge_detector read_request_detector(
     .clk(axi_clk),
-    .rw_request_signal(axi_arvalid),
+    .rw_request_signal(axi_arvalid && axi_arready && ~axi_rvalid),
     .pulse(ok_to_read));
-
+    
+    reg read_en, write_en;
     // Update register read data
     // - after this module receives a valid address (axi_arvalid)
     // - after this module asserts ready for address handshake (axi_arready)
     // - before the module asserts the data is valid (~axi_rvalid)
     //   (don't change the data while asserting read data is valid)
     wire rd = axi_arvalid && axi_arready && ~axi_rvalid;
-    // reg [8:0] debug_value = 9'b101010101;
     always_ff @ (posedge axi_clk)
     begin
+        read_en <= 0;
         if (axi_resetn == 1'b0)
         begin
             axi_rdata <= 32'b0;
@@ -322,13 +317,11 @@
 		        case (raddr[3:2])
                 DATA_REG:
                 begin
-                    axi_rdata[31:9] <= {23'b0};
-		            axi_rdata[8:0] <= rd_data_local[8:0];
-                    // axi_rdata <= debug_value;
-                    // debug_value <= ~debug_value;
+                   read_en <= 1;
+                   axi_rdata <= {23'b0, rd_data_local[8:0]};
                 end
 		        STATUS_REG:
-		            axi_rdata <= {full, empty, overflow, 29'b0};
+		            axi_rdata <= {full, empty, overflow, 24'b0, watermark[4:0]};
 		        CONTROL_REG:
 			        axi_rdata <= control;
 		        BRD_REG:
@@ -372,9 +365,9 @@
    fifo16x9 fifo1(
    .clk(axi_clk),
    .reset(axi_resetn),
-   .wr_data(wr_data[8:0]),
-   .wr_request(ok_to_write),
-   .rd_request(ok_to_read && axi_arready),
+   .wr_data(S_AXI_WDATA[8:0]),
+   .wr_request(ok_to_write && write_en),
+   .rd_request(ok_to_read && read_en),
    .clear_overflow_request(clear_overflow_request),
    .empty(empty), 
    .full(full),   
@@ -388,7 +381,7 @@
    assign overflow = overflow_local;
    assign wr_index[4:0] = wr_index_local[4:0];
    assign rd_index[4:0] = rd_index_local[4:0];
-   assign rd_data[8:0] = rd_data_local[8:0];
+   assign rd_data[8:0]  = axi_rdata[8:0];
    assign watermark[4:0] = watermark_local[4:0];
    
 endmodule
