@@ -7,7 +7,7 @@
 //   INTR debug output for IP module tied to RGB0[1]
 //   AXI4-lite aperature memory offset is 0x00000000
 
-module gpio_system_top (
+module system_top (
     input CLK100,
     output [9:0] LED,       // RGB1, RGB0, LED 9..0 placed from left to right
     output [2:0] RGB0,      

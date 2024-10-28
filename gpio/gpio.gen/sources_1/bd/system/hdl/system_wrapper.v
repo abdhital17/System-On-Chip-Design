@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Mon Sep 30 16:40:46 2024
+//Date        : Sun Oct 27 22:05:01 2024
 //Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target system_wrapper.bd
 //Design      : system_wrapper
@@ -32,10 +32,17 @@ module system_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    empty,
+    full,
     gpio_data_in,
     gpio_data_oe,
     gpio_data_out,
-    intr);
+    intr,
+    overflow,
+    rd_data,
+    rd_index,
+    watermark,
+    wr_index);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -57,10 +64,17 @@ module system_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output empty;
+  output full;
   input [31:0]gpio_data_in;
   output [31:0]gpio_data_oe;
   output [31:0]gpio_data_out;
   output intr;
+  output overflow;
+  output [8:0]rd_data;
+  output [4:0]rd_index;
+  output [4:0]watermark;
+  output [4:0]wr_index;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -83,10 +97,17 @@ module system_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire empty;
+  wire full;
   wire [31:0]gpio_data_in;
   wire [31:0]gpio_data_oe;
   wire [31:0]gpio_data_out;
   wire intr;
+  wire overflow;
+  wire [8:0]rd_data;
+  wire [4:0]rd_index;
+  wire [4:0]watermark;
+  wire [4:0]wr_index;
 
   system system_i
        (.DDR_addr(DDR_addr),
@@ -110,8 +131,15 @@ module system_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .empty(empty),
+        .full(full),
         .gpio_data_in(gpio_data_in),
         .gpio_data_oe(gpio_data_oe),
         .gpio_data_out(gpio_data_out),
-        .intr(intr));
+        .intr(intr),
+        .overflow(overflow),
+        .rd_data(rd_data),
+        .rd_index(rd_index),
+        .watermark(watermark),
+        .wr_index(wr_index));
 endmodule

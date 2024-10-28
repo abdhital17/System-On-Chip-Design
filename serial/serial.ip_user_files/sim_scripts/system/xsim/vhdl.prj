@@ -1,5 +1,5 @@
 vhdl xil_defaultlib  \
-"../../../../../gpio/gpio.gen/sources_1/bd/system/ip/system_proc_sys_reset_0_0/sim/system_proc_sys_reset_0_0.vhd" \
+"../../../../gpio.gen/sources_1/bd/system/ip/system_proc_sys_reset_0_0/sim/system_proc_sys_reset_0_0.vhd" \
 
 # Do not sort compile order
 nosort
