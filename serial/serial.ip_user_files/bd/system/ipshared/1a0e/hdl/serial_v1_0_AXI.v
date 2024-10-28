@@ -15,13 +15,14 @@
     )
     (
         // Ports to top level module (what makes this the Serial IP module)
-		output empty,
-		output full,
-        output reg overflow,
-        output reg [4:0] wr_index,
-        output reg [4:0] rd_index,
-        output reg [4:0] watermark,
-
+		output wire empty,
+		output wire full,
+        output wire overflow,
+        output wire [4:0] wr_index,
+        output wire [4:0] rd_index,
+        output wire [8:0] rd_data,
+        output wire [4:0] watermark,
+        
         // AXI clock and reset        
         input wire S_AXI_ACLK,
         input wire S_AXI_ARESETN,
@@ -59,20 +60,20 @@
     );
     
     
-    // Internal signals
-    wire reset_signal;
-    reg [8:0] wr_data;
-    reg [9:0] rd_data;
+    // Internal fifo registers
+    reg [31:0] wr_data;
+    reg [8:0] rd_data_local;
     reg clear_overflow_request;
-    reg write_request_pulse;
-    reg read_request_pulse;
-    
+    reg overflow_local;
+    reg [4:0] rd_index_local;
+    reg [4:0] wr_index_local;
+    reg [4:0] watermark_local;
+
     // Internal registers
-    reg [31:0] latch_data;
     reg [31:0] status;
     reg [31:0] control;
     reg [31:0] brd;
-    
+
     // Register map
     // ofs  fn
     //   0  data (r/w)
@@ -151,6 +152,8 @@
         end 
     end
 
+    reg ok_to_read, ok_to_write;
+
     // Capture the write address (axi_awaddr) in the first clock (~axi_awready)
     // - after write address is valid (axi_awvalid)
     // - after write data is valid (axi_wvalid)
@@ -176,6 +179,13 @@
             axi_wready <= (wr_add_data_valid && ~axi_wready && aw_en);
     end       
     
+    reg fifo_rd_en, fifo_wr_en;
+    //instantiate a edge detector module that detects the rising edge of a write request
+    edge_detector write_request_detector(
+    .clk(axi_clk),
+    .rw_request_signal(wr_add_data_valid && axi_awready && axi_wready),
+    .pulse(ok_to_write));
+
     // Write data to internal registers
     // - after address is valid (axi_awvalid)
     // - after write data is valid (axi_wvalid)
@@ -184,48 +194,47 @@
     // write correct bytes in 32-bit word based on byte enables (axi_wstrb)
     // int_clear_request write is only active for one clock
     wire wr = wr_add_data_valid && axi_awready && axi_wready;
-    //instantiate a edge detector module that detects the rising edge of a write request
-    edge_detector write_request_detector(
-        .clk(axi_clk),
-        .rw_request_signal(wr),
-        .pulse(write_request_pulse));
-    
     integer byte_index;
     always_ff @ (posedge axi_clk)
     begin
         if (axi_resetn == 1'b0)
         begin
-            latch_data[31:0] <= 32'b0;
+            wr_data[31:0] <= 32'b0;
             status <= 32'b0;
             control <= 32'b0;
             brd <= 32'b0;
         end 
         else 
         begin
-            if (wr && write_request_pulse)
+            if (wr)
             begin
+                // fifo_wr_en <= 0;
+                clear_overflow_request <= 1'b0;
                 case (axi_awaddr[3:2])
-                    DATA_REG:                        
+                    DATA_REG:
+                    begin
                         for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
                             if ( axi_wstrb[byte_index] == 1) 
-                                latch_data[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-                            
-//                    STATUS_REG:
-//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-//                            if (axi_wstrb[byte_index] == 1)
-//                                status[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-//                    CONTROL_REG: 
-//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-//                            if (axi_wstrb[byte_index] == 1)
-//                                control[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
-//                    BRD_REG:
-//                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
-//                            if (axi_wstrb[byte_index] == 1)
-//                                brd[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+                                wr_data[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+                        // fifo_wr_en <= 1;
+                    end
+                    STATUS_REG:
+                    begin
+                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+                            if (axi_wstrb[byte_index] == 1)
+                                status[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+                        clear_overflow_request <= status[0];
+                    end
+                    CONTROL_REG: 
+                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+                            if (axi_wstrb[byte_index] == 1)
+                                control[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+                    BRD_REG:
+                        for (byte_index = 0; byte_index <= 3; byte_index = byte_index+1)
+                            if (axi_wstrb[byte_index] == 1)
+                                brd[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
                 endcase
             end
-//            else
-//                int_clear_request <= 32'b0;
         end
     end    
 
@@ -254,7 +263,7 @@
                 axi_bvalid <= 1'b0; 
         end
     end   
-
+   
     // In the first clock (~axi_arready) that the read address is valid
     // - capture the address (axi_araddr)
     // - output ready (axi_arready) for one clock
@@ -278,18 +287,19 @@
                 axi_arready <= 1'b0;
         end 
     end       
-        
+
+    //instantiate a edge detector module that detects the rising edge of a read request
+    edge_detector read_request_detector(
+    .clk(axi_clk),
+    .rw_request_signal(axi_arvalid && axi_arready && ~axi_rvalid),
+    .pulse(ok_to_read));
+
     // Update register read data
     // - after this module receives a valid address (axi_arvalid)
     // - after this module asserts ready for address handshake (axi_arready)
     // - before the module asserts the data is valid (~axi_rvalid)
     //   (don't change the data while asserting read data is valid)
     wire rd = axi_arvalid && axi_arready && ~axi_rvalid;
-    //instantiate a edge detector module that detects the rising edge of a read request
-    edge_detector read_request_detector(
-        .clk(axi_clk),
-        .rw_request_signal(wr),
-        .pulse(read_request_pulse));
     always_ff @ (posedge axi_clk)
     begin
         if (axi_resetn == 1'b0)
@@ -298,29 +308,34 @@
         end 
         else
         begin    
-            if (rd && read_request_pulse)
+            if (rd)
             begin
-		// Address decoding for reading registers
-		case (raddr[3:2])
-		    DATA_REG: 
-		    //ADD FIFO LINES HERE
-		        axi_rdata <= rd_data;
-//		    STATUS_REG:
-//		        axi_rdata <= status;
-//		    CONTROL_REG: 
-//			axi_rdata <= control;
-//		    BRD_REG: 
-//		        axi_rdata <= brd;
-		endcase
-            end   
+                // fifo_rd_en <= 0;
+		        // Address decoding for reading registers
+		        case (raddr[3:2])
+                DATA_REG:
+                begin
+		            axi_rdata <= {23'b0, rd_data[8:0]};
+		            // fifo_rd_en <= 1;
+                end
+		        STATUS_REG:
+		            axi_rdata <= {full, empty, overflow, 29'b0};
+		        CONTROL_REG:
+			        axi_rdata <= control;
+		        BRD_REG:
+		            axi_rdata <= brd;
+		        endcase
+            end
         end
-    end    
+    end
 
     // Assert data is valid for reading (axi_rvalid)
     // - after address is valid (axi_arvalid)
     // - after this module asserts ready for address handshake (axi_arready)
-    // De-assert data valid (axi_rvalid) 
+    // - after the read index has been incremented
+    // De-assert data valid (axi_rvalid)
     // - after master ready handshake is received (axi_rready)
+
     always_ff @ (posedge axi_clk)
     begin
         if (axi_resetn == 1'b0)
@@ -331,79 +346,39 @@
             begin
                 axi_rvalid <= 1'b1;
                 axi_rresp <= 2'b0;
-            end   
+            end
             else if (axi_rvalid && axi_rready)
                 axi_rvalid <= 1'b0;
         end
-    end    
+    end
 
-    // Fifo
-    fifo16x9 fifo1(
-    .clk(axi_clk), 
-    .reset(reset_signal), 
-    .wr_data(wr_data), 
-    .wr_request(wr && write_request_pulse), 
-    .rd_request(rd && read_request_pulse), 
-    .clear_overflow_request(clear_overflow_request), 
-    .empty(empty), 
-    .full(full), 
-    .overflow(overflow), 
-    .rd_data(rd_data),
-    .wr_index(wr_index), 
-    .rd_index(rd_index),
-    .watermark(watermark));
-    
+// // handle clear overflow request edge detection so that it is set only once
+//     edge_detector clear_overflow_detector(
+//     .clk(axi_clk),
+//     .rw_request_signal(status[0]),
+//     .pulse(clear_overflow_request));
 
-//    // pin control
-//    // OUT LATCH ODR   PIN
-//    //  0    x    x    hi-Z
-//    //  1    0    x     0
-//    //  1    1    0     1
-//    //  1    1    1    hi-Z
-//    genvar j;
-//    for (j = 0; j < 32; j = j + 1)
-//    begin
-//        assign gpio_data_oe[j] = out[j] && (!latch_data[j] || !od[j]);
-//    end
-//    assign gpio_data_out = latch_data;
-    
-//    // Interrupt generation
-//    integer i;
-//    reg [31:0] last_read_port_data;
-//    always_ff @ (posedge axi_clk)
-//    begin
-//        if (axi_resetn == 1'b0)
-//        begin
-//            last_read_port_data <= 32'b0;
-//            int_status <= 32'b0;
-//        end
-//        else if (int_clear_request != 32'b0)
-//            int_status <= int_status & ~int_clear_request;
-//        else
-//        begin
-//            last_read_port_data <= read_port_data;
-//            for (i = 0; i < 32; i = i + 1)
-//            begin
-//                if (int_enable[i])
-//                begin
-//                    if (int_edge_mode[i])
-//                    begin
-//                        if (int_positive[i] && read_port_data[i] && !last_read_port_data[i])
-//                            int_status[i] <= 1'b1;
-//                        if (int_negative[i] && !read_port_data[i] && last_read_port_data[i])
-//                            int_status[i] <= 1'b1;
-//                    end
-//                    else
-//                    begin
-//                        if (int_positive[i] && read_port_data[i])
-//                            int_status[i] <= 1'b1;
-//                        if (int_negative[i] && !read_port_data[i])
-//                            int_status[i] <= 1'b1;
-//                    end
-//                end
-//            end
-//        end
-//    end
-//    assign intr = int_status != 32'b0;
-    
+
+  // Fifo
+   fifo16x9 fifo1(
+   .clk(axi_clk),
+   .reset(axi_resetn),
+   .wr_data(wr_data[8:0]),
+   .wr_request(ok_to_write),
+   .rd_request(ok_to_read),
+   .clear_overflow_request(clear_overflow_request),
+   .empty(empty), 
+   .full(full),   
+   .overflow(overflow_local),
+   .rd_data(rd_data_local),
+   .wr_index(wr_index_local),
+   .rd_index(rd_index_local),
+   .watermark(watermark_local));
+
+   assign overflow = overflow_local;
+   assign wr_index[4:0] = wr_index_local[4:0];
+   assign rd_index[4:0] = rd_index_local[4:0];
+   assign rd_data[8:0] = rd_data_local[8:0];
+   assign watermark[4:0] = watermark_local[4:0];
+   
 endmodule

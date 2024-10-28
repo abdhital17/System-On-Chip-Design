@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Sat Oct 26 12:53:34 2024
+//Date        : Sun Oct 27 16:15:44 2024
 //Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target system.bd
 //Design      : system
@@ -607,7 +607,7 @@ module s00_couplers_imp_11SE3QO
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=7,numNonXlnxBlks=2,numHierBlks=4,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=4,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=None}" *) (* HW_HANDOFF = "system.hwdef" *) 
+(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=12,numReposBlks=8,numNonXlnxBlks=2,numHierBlks=4,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=None}" *) (* HW_HANDOFF = "system.hwdef" *) 
 module system
    (DDR_addr,
     DDR_ba,
@@ -637,6 +637,7 @@ module system
     gpio_data_out,
     intr,
     overflow,
+    rd_data,
     rd_index,
     watermark,
     wr_index);
@@ -668,6 +669,7 @@ module system
   output [31:0]gpio_data_out;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.INTR INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.INTR, PortWidth 1, SENSITIVITY LEVEL_HIGH" *) output intr;
   output overflow;
+  output [8:0]rd_data;
   output [4:0]rd_index;
   output [4:0]watermark;
   output [4:0]wr_index;
@@ -779,6 +781,7 @@ module system
   wire serial_0_empty;
   wire serial_0_full;
   wire serial_0_overflow;
+  wire [8:0]serial_0_rd_data;
   wire [4:0]serial_0_rd_index;
   wire [4:0]serial_0_watermark;
   wire [4:0]serial_0_wr_index;
@@ -791,6 +794,7 @@ module system
   assign gpio_data_out[31:0] = gpio_0_gpio_data_out;
   assign intr = gpio_0_intr;
   assign overflow = serial_0_overflow;
+  assign rd_data[8:0] = serial_0_rd_data;
   assign rd_index[4:0] = serial_0_rd_index;
   assign watermark[4:0] = serial_0_watermark;
   assign wr_index[4:0] = serial_0_wr_index;
@@ -820,6 +824,27 @@ module system
         .gpio_data_oe(gpio_0_gpio_data_oe),
         .gpio_data_out(gpio_0_gpio_data_out),
         .intr(gpio_0_intr));
+  system_ila_0_0 ila_0
+       (.clk(processing_system7_0_FCLK_CLK0),
+        .probe0(ps7_0_axi_periph_M01_AXI_WREADY),
+        .probe1(ps7_0_axi_periph_M01_AXI_AWADDR[3:0]),
+        .probe10(ps7_0_axi_periph_M01_AXI_RDATA),
+        .probe11(ps7_0_axi_periph_M01_AXI_AWVALID),
+        .probe12(ps7_0_axi_periph_M01_AXI_AWREADY),
+        .probe13(ps7_0_axi_periph_M01_AXI_RRESP),
+        .probe14(ps7_0_axi_periph_M01_AXI_WDATA),
+        .probe15(ps7_0_axi_periph_M01_AXI_WSTRB),
+        .probe16(ps7_0_axi_periph_M01_AXI_RVALID),
+        .probe17(ps7_0_axi_periph_M01_AXI_ARPROT),
+        .probe18(ps7_0_axi_periph_M01_AXI_AWPROT),
+        .probe2(ps7_0_axi_periph_M01_AXI_BRESP),
+        .probe3(ps7_0_axi_periph_M01_AXI_BVALID),
+        .probe4(ps7_0_axi_periph_M01_AXI_BREADY),
+        .probe5(ps7_0_axi_periph_M01_AXI_ARADDR[3:0]),
+        .probe6(ps7_0_axi_periph_M01_AXI_RREADY),
+        .probe7(ps7_0_axi_periph_M01_AXI_WVALID),
+        .probe8(ps7_0_axi_periph_M01_AXI_ARVALID),
+        .probe9(ps7_0_axi_periph_M01_AXI_ARREADY));
   system_proc_sys_reset_0_0 proc_sys_reset_0
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),
@@ -977,7 +1002,7 @@ module system
         .S00_AXI_wready(processing_system7_0_M_AXI_GP0_WREADY),
         .S00_AXI_wstrb(processing_system7_0_M_AXI_GP0_WSTRB),
         .S00_AXI_wvalid(processing_system7_0_M_AXI_GP0_WVALID));
-  system_serial_0_1 serial_0
+  system_serial_0_3 serial_0
        (.axi_aclk(processing_system7_0_FCLK_CLK0),
         .axi_araddr(ps7_0_axi_periph_M01_AXI_ARADDR[3:0]),
         .axi_aresetn(proc_sys_reset_0_peripheral_aresetn),
@@ -1002,6 +1027,7 @@ module system
         .empty(serial_0_empty),
         .full(serial_0_full),
         .overflow(serial_0_overflow),
+        .rd_data(serial_0_rd_data),
         .rd_index(serial_0_rd_index),
         .watermark(serial_0_watermark),
         .wr_index(serial_0_wr_index));

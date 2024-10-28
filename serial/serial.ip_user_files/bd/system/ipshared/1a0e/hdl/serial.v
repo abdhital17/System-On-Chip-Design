@@ -80,8 +80,8 @@
         .overflow(overflow),
         .wr_index(wr_index),
         .rd_index(rd_index),
-        .watermark(watermark),
         .rd_data(rd_data),
+        .watermark(watermark)
 	);
 
 	// Add user logic here

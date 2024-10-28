@@ -1,18 +1,18 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Sat Oct 26 13:28:33 2024
+| Date         : Sun Oct 27 19:52:29 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 64) to (Rev. 65)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 114) to (Rev. 115)
 
 
 
@@ -22,18 +22,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Sat Oct 26 13:20:37 2024
+| Date         : Sun Oct 27 19:32:00 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 63) to (Rev. 64)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 113) to (Rev. 114)
 
 
 
@@ -43,18 +43,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Sat Oct 26 13:01:07 2024
+| Date         : Sun Oct 27 19:10:14 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 62) to (Rev. 63)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 112) to (Rev. 113)
 
 
 
@@ -64,29 +64,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Sat Oct 26 12:54:01 2024
+| Date         : Sun Oct 27 19:00:31 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-CAUTION (success, with warnings) in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 61) to (Rev. 62)
-
-After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
-
-2. Connection Warnings
-----------------------
-
-Detected external port differences while upgrading 'system_serial_0_1'. These changes may impact your design.
-
-
--Upgrade has added port 'rd_data'
-
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 111) to (Rev. 112)
 
 
 
@@ -96,18 +85,18 @@ Detected external port differences while upgrading 'system_serial_0_1'. These ch
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Sat Oct 26 12:48:09 2024
+| Date         : Sun Oct 27 18:43:20 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 60) to (Rev. 61)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 109) to (Rev. 111)
 
 
 
@@ -117,18 +106,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Sat Oct 26 12:22:58 2024
+| Date         : Sun Oct 27 18:17:29 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 57) to (Rev. 60)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 108) to (Rev. 109)
 
 
 
@@ -138,18 +127,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 18:10:01 2024
+| Date         : Sun Oct 27 17:35:00 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 56) to (Rev. 57)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 107) to (Rev. 108)
 
 
 
@@ -159,18 +148,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 17:57:15 2024
+| Date         : Sun Oct 27 17:18:43 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 55) to (Rev. 56)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 106) to (Rev. 107)
 
 
 
@@ -180,18 +169,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 17:46:12 2024
+| Date         : Sun Oct 27 17:03:29 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 54) to (Rev. 55)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 105) to (Rev. 106)
 
 
 
@@ -201,18 +190,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 17:30:21 2024
+| Date         : Sun Oct 27 16:39:04 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 53) to (Rev. 54)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 104) to (Rev. 105)
 
 
 
@@ -222,18 +211,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 17:11:32 2024
+| Date         : Sun Oct 27 16:15:32 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 52) to (Rev. 53)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 103) to (Rev. 104)
 
 
 
@@ -243,18 +232,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 14:41:16 2024
+| Date         : Sun Oct 27 15:58:54 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 51) to (Rev. 52)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 102) to (Rev. 103)
 
 
 
@@ -264,18 +253,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 14:15:12 2024
+| Date         : Sun Oct 27 15:38:31 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 50) to (Rev. 51)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 101) to (Rev. 102)
 
 
 
@@ -285,18 +274,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 13:33:33 2024
+| Date         : Sun Oct 27 15:25:24 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 49) to (Rev. 50)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 100) to (Rev. 101)
 
 
 
@@ -306,18 +295,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 13:22:07 2024
+| Date         : Sun Oct 27 15:05:52 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 47) to (Rev. 49)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 99) to (Rev. 100)
 
 
 
@@ -327,18 +316,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 13:11:02 2024
+| Date         : Sun Oct 27 15:02:21 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 46) to (Rev. 47)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 98) to (Rev. 99)
 
 
 
@@ -348,18 +337,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 02:42:13 2024
+| Date         : Sun Oct 27 14:44:46 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 45) to (Rev. 46)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 97) to (Rev. 98)
 
 
 
@@ -369,18 +358,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 02:24:38 2024
+| Date         : Sun Oct 27 13:45:52 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 44) to (Rev. 45)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 95) to (Rev. 97)
 
 
 
@@ -390,18 +379,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 02:14:36 2024
+| Date         : Sun Oct 27 13:22:26 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 43) to (Rev. 44)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 94) to (Rev. 95)
 
 
 
@@ -411,18 +400,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 01:46:05 2024
+| Date         : Sun Oct 27 13:02:59 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 42) to (Rev. 43)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 93) to (Rev. 94)
 
 
 
@@ -432,18 +421,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 01:17:05 2024
+| Date         : Sun Oct 27 12:31:40 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 41) to (Rev. 42)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 92) to (Rev. 93)
 
 
 
@@ -453,18 +442,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 01:09:01 2024
+| Date         : Sun Oct 27 12:20:26 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 40) to (Rev. 41)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 91) to (Rev. 92)
 
 
 
@@ -474,18 +463,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 00:38:24 2024
+| Date         : Sun Oct 27 12:05:43 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 39) to (Rev. 40)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 89) to (Rev. 91)
 
 
 
@@ -495,18 +484,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 00:30:07 2024
+| Date         : Sun Oct 27 11:47:53 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 38) to (Rev. 39)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 88) to (Rev. 89)
 
 
 
@@ -516,18 +505,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 00:12:21 2024
+| Date         : Sun Oct 27 11:26:13 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 37) to (Rev. 38)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 87) to (Rev. 88)
 
 
 
@@ -537,18 +526,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Fri Oct 25 00:02:16 2024
+| Date         : Sun Oct 27 01:11:05 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 35) to (Rev. 37)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 86) to (Rev. 87)
 
 
 
@@ -558,18 +547,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 23:47:27 2024
+| Date         : Sun Oct 27 00:56:46 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 34) to (Rev. 35)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 85) to (Rev. 86)
 
 
 
@@ -579,18 +568,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 23:46:41 2024
+| Date         : Sun Oct 27 00:00:00 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the update of system_serial_0_1 (user.org:user:serial:1.0 (Rev. 34)) to current project options.
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 84) to (Rev. 85)
 
 
 
@@ -600,18 +589,18 @@ SUCCESS in the update of system_serial_0_1 (user.org:user:serial:1.0 (Rev. 34)) 
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 23:43:29 2024
+| Date         : Sat Oct 26 23:32:40 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 33) to (Rev. 34)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 83) to (Rev. 84)
 
 
 
@@ -621,18 +610,18 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 23:26:13 2024
+| Date         : Sat Oct 26 23:12:48 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the update of system_serial_0_1 (user.org:user:serial:1.0 (Rev. 33)) to current project options.
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 82) to (Rev. 83)
 
 
 
@@ -642,18 +631,18 @@ SUCCESS in the update of system_serial_0_1 (user.org:user:serial:1.0 (Rev. 33)) 
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 23:09:02 2024
+| Date         : Sat Oct 26 22:19:03 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 32) to (Rev. 33)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 81) to (Rev. 82)
 
 
 
@@ -663,562 +652,16 @@ SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 22:58:58 2024
+| Date         : Sat Oct 26 22:01:53 2024
 | Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : upgrade_ip
 | Device       : xc7z007sclg400-1
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
-Upgrade Log for IP 'system_serial_0_1'
+Upgrade Log for IP 'system_serial_0_3'
 
 1. Summary
 ----------
 
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 31) to (Rev. 32)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 22:09:42 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 30) to (Rev. 31)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 21:26:53 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 29) to (Rev. 30)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 21:12:30 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 28) to (Rev. 29)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 20:55:12 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 27) to (Rev. 28)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 20:29:07 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 25) to (Rev. 27)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 15:19:06 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 24) to (Rev. 25)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 14:35:15 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 23) to (Rev. 24)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 14:24:16 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 22) to (Rev. 23)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 12:59:28 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 21) to (Rev. 22)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 12:47:43 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 20) to (Rev. 21)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 12:30:44 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 19) to (Rev. 20)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 12:06:33 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 18) to (Rev. 19)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 12:01:21 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 17) to (Rev. 18)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 11:24:13 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 16) to (Rev. 17)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 11:20:33 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 15) to (Rev. 16)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 11:09:06 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 14) to (Rev. 15)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 10:47:49 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 13) to (Rev. 14)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 02:00:58 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 12) to (Rev. 13)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 00:59:15 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 11) to (Rev. 12)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Oct 24 00:21:13 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 10) to (Rev. 11)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Wed Oct 23 23:48:59 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 9) to (Rev. 10)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Wed Oct 23 22:40:04 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 8) to (Rev. 9)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Wed Oct 23 22:28:26 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 6) to (Rev. 8)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Wed Oct 23 21:46:35 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 5) to (Rev. 6)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Wed Oct 23 21:26:49 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 4) to (Rev. 5)
-
-
-
-
-
-
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Wed Oct 23 20:36:13 2024
-| Host         : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-| Command      : upgrade_ip
-| Device       : xc7z007sclg400-1
----------------------------------------------------------------------------------------------------------------------------------------------
-
-Upgrade Log for IP 'system_serial_0_1'
-
-1. Summary
-----------
-
-SUCCESS in the upgrade of system_serial_0_1 (user.org:user:serial:1.0) from (Rev. 3) to (Rev. 4)
+SUCCESS in the upgrade of system_serial_0_3 (user.org:user:serial:1.0) from (Rev. 80) to (Rev. 81)
 

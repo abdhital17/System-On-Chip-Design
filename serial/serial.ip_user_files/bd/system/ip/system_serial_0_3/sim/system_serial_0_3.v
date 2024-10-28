@@ -48,18 +48,19 @@
 
 
 // IP VLNV: user.org:user:serial:1.0
-// IP Revision: 61
+// IP Revision: 104
 
 `timescale 1ns/1ps
 
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module system_serial_0_1 (
+module system_serial_0_3 (
   empty,
   full,
   overflow,
   wr_index,
   rd_index,
   watermark,
+  rd_data,
   axi_aclk,
   axi_aresetn,
   axi_awaddr,
@@ -89,6 +90,7 @@ output wire overflow;
 output wire [4 : 0] wr_index;
 output wire [4 : 0] rd_index;
 output wire [4 : 0] watermark;
+output wire [8 : 0] rd_data;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_CLK, ASSOCIATED_BUSIF AXI, ASSOCIATED_RESET axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 AXI_CLK CLK" *)
 input wire axi_aclk;
@@ -146,6 +148,7 @@ input wire axi_rready;
     .wr_index(wr_index),
     .rd_index(rd_index),
     .watermark(watermark),
+    .rd_data(rd_data),
     .axi_aclk(axi_aclk),
     .axi_aresetn(axi_aresetn),
     .axi_awaddr(axi_awaddr),

@@ -5,8 +5,8 @@ module fifo16x9(
     input wr_request, 
     input rd_request, 
     input clear_overflow_request, 
-    output empty, 
-    output full, 
+    output wire empty,
+    output wire full,
     output reg overflow, 
     output reg [8:0] rd_data,
     output reg [4:0] wr_index, 
@@ -15,37 +15,57 @@ module fifo16x9(
     );
 
     // buffer that stores the fifo data
-    reg [8:0] fifo[15:0];
+    reg [8:0] fifo[0:15];
+
+// assign the full and empty signals
+    assign full = ((wr_index[3:0] == rd_index[3:0]) && (wr_index[4] != rd_index[4]));
+    assign empty = (wr_index[4:0] == rd_index[4:0]);
+
+//    ila_0 ila_fifo (
+//	.clk(clk), // input wire clk
+//	.probe0(rd_request), // input wire [0:0]  probe0  
+//	.probe1(wr_request), // input wire [0:0]  probe1 
+//	.probe2(ok_to_read), // input wire [0:0]  probe2 
+//	.probe3(ok_to_write) // input wire [0:0]  probe3
+//    );
+    
+// handle reset, clear_overflow, write and read requests
     always_ff @ (posedge(clk))
     begin
-        if(reset)
+        if(~reset)
         begin
-            wr_index  <= 5'b0;
-            rd_index  <= 5'b0;
-            watermark <= 5'b0;
-            overflow  <= 0;
+            wr_index  <= 5'b00000;
+            rd_index  <= 5'b00000;
+            watermark <= 5'b00000;
+            overflow  <= 1'b0;
         end
         if (clear_overflow_request)
         begin
-            overflow <= 0;
+            overflow <= 1'b0;
         end
-        if (wr_request && !full)
+        else if (wr_request)
         begin
-            fifo[wr_index[3:0]] <= wr_data;
-            wr_index <= ((wr_index + 1) % 16);
+            if (!full)
+            begin
+                fifo[wr_index[3:0]] <= wr_data;
+                wr_index <= ((wr_index + 1) % 32);
+            end
+           else
+           begin
+               overflow <= 1'b1;
+           end
         end
-        else if (full)
+        else if (rd_request)
         begin
-            overflow <= 1;
+            if (!empty)
+            begin
+                rd_data <= fifo[rd_index[3:0]];
+                rd_index <= ((rd_index + 1) % 32);
+            end
         end
-        else if (rd_request && !empty)
-        begin
-            rd_data <= fifo[rd_index[3:0]];
-            rd_index <= ((rd_index + 1) % 16);
-        end
+
+        // assign watermark based on the rd and wr index values
+        watermark[4:0] <= (wr_index[4:0] - rd_index[4:0]) & 5'b11111;
     end
     
-    assign full = ((wr_index[3:0] == rd_index[3:0]) && (wr_index[4] != rd_index[4]));
-    assign empty = (wr_index[4:0] == rd_index[4:0]);
-    assign watermark = wr_index[4:0] - rd_index[4:0];
 endmodule

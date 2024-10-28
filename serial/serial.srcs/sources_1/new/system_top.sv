@@ -98,10 +98,10 @@ module system_top (
     wire overflow;
     wire [4:0] wr_index;
     wire [4:0] rd_index;
-    wire [4:0] watermark;
     wire [8:0] rd_data;
-    // handle input metastability safely
+    wire [4:0] watermark;
     
+    // handle input metastability safely
     reg [1:0] mode, pre_mode;
     reg [9:0] led_out;
     
@@ -111,18 +111,18 @@ module system_top (
         mode[1:0] <= pre_mode[1:0];
     end
     
+    // handle LED output modes
     always_ff @ (posedge(CLK100))
     begin
         case(mode[1:0])
-            00: 
+            2'b00: 
                 led_out[9:0] <= {rd_index[4:0], wr_index[4:0]};
-            01: 
-                led_out[9:0] <= {full,empty,overflow,2'b0,watermark[4:0]};
-            11:
+            2'b01: 
+                led_out[9:0] <= {full,empty,overflow,1'b0,1'b0,watermark[4:0]};
+            2'b10:
                 led_out[9:0] <= {1'b0, rd_data[8:0]};
         endcase         
     end
-
 
     assign LED[9:0] = led_out[9:0];
     
@@ -157,8 +157,8 @@ module system_top (
         .empty(empty),
         .overflow(overflow),
         .rd_index(rd_index),
-        .watermark(watermark),
         .wr_index(wr_index),
-        .rd_data(rd_data));
+        .rd_data(rd_data),
+        .watermark(watermark));
 
 endmodule

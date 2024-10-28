@@ -1,0 +1,295 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sat Oct 26 22:08:29 2024
+# Process ID: 2286872
+# Current directory: /home/moonknight/SoC/serial/serial.tmp/serial_v1_0_project/serial_v1_0_project.runs/synth_1
+# Command line: vivado -log serial.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source serial.tcl
+# Log file: /home/moonknight/SoC/serial/serial.tmp/serial_v1_0_project/serial_v1_0_project.runs/synth_1/serial.vds
+# Journal file: /home/moonknight/SoC/serial/serial.tmp/serial_v1_0_project/serial_v1_0_project.runs/synth_1/vivado.jou
+# Running On        :inspiron-7472
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 22.04.5 LTS
+# Processor Detail  :Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
+# CPU Frequency     :1799.997 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :16660 MB
+# Swap memory       :2147 MB
+# Total Virtual     :18808 MB
+# Available Virtual :7103 MB
+#-----------------------------------------------------------
+source serial.tcl -notrace
+create_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1414.645 ; gain = 0.023 ; free physical = 1476 ; free virtual = 6402
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/moonknight/SoC/serial/ip_repo/serial_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/moonknight/SoC/serial/ip_repo/gpio_1_0'.
+WARNING: [IP_Flow 19-2207] Repository '/home/moonknight/SoC/serial/ip_repo/gpio_1_0' already exists; ignoring attempt to add it again.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/moonknight/SoC/serial/ip_repo/gpio_1_0'.
+WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/moonknight/SoC/ip_repo/gpio_1_0'; Can't find the specified path.
+If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2024.1/data/ip'.
+Command: synth_design -top serial -part xc7z007sclg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 2286933
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1807.422 ; gain = 392.777 ; free physical = 805 ; free virtual = 5735
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'serial' [/home/moonknight/SoC/serial/ip_repo/serial_1_0/hdl/serial.v:4]
+INFO: [Synth 8-6157] synthesizing module 'serial_v1_0_AXI' [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/serial_v1_0_AXI.v:11]
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'edge_detector' [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/edge_detector.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'edge_detector' (0#1) [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/edge_detector.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'fifo16x9' [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/fifo16x9.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'fifo16x9' (0#1) [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/fifo16x9.sv:1]
+WARNING: [Synth 8-689] width (32) of port connection 'rd_data' does not match port width (9) of module 'fifo16x9' [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/serial_v1_0_AXI.v:364]
+INFO: [Synth 8-6155] done synthesizing module 'serial_v1_0_AXI' (0#1) [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/serial_v1_0_AXI.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'serial' (0#1) [/home/moonknight/SoC/serial/ip_repo/serial_1_0/hdl/serial.v:4]
+WARNING: [Synth 8-6014] Unused sequential element waddr_reg was removed.  [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/serial_v1_0_AXI.v:166]
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[1] in module serial_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWADDR[0] in module serial_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[2] in module serial_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[1] in module serial_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[0] in module serial_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[2] in module serial_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[1] in module serial_v1_0_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[0] in module serial_v1_0_AXI is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1886.391 ; gain = 471.746 ; free physical = 642 ; free virtual = 5588
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1898.266 ; gain = 483.621 ; free physical = 644 ; free virtual = 5590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1906.270 ; gain = 491.625 ; free physical = 644 ; free virtual = 5590
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1915.176 ; gain = 500.531 ; free physical = 634 ; free virtual = 5580
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    5 Bit       Adders := 3     
+	   3 Input    5 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 4     
+	                9 Bit    Registers := 1     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 12    
++---RAMs : 
+	              144 Bit	(16 X 9 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 5     
+	   4 Input   32 Bit        Muxes := 6     
+	   2 Input    1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+INFO: [Device 21-9227] Part: xc7z007sclg400-1 does not have CEAM library.
+Part Resources:
+DSPs: 66 (col length:40)
+BRAMs: 100 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port axi_awaddr[1] in module serial is either unconnected or has no load
+WARNING: [Synth 8-7129] Port axi_awaddr[0] in module serial is either unconnected or has no load
+WARNING: [Synth 8-7129] Port axi_awprot[2] in module serial is either unconnected or has no load
+WARNING: [Synth 8-7129] Port axi_awprot[1] in module serial is either unconnected or has no load
+WARNING: [Synth 8-7129] Port axi_awprot[0] in module serial is either unconnected or has no load
+WARNING: [Synth 8-7129] Port axi_arprot[2] in module serial is either unconnected or has no load
+WARNING: [Synth 8-7129] Port axi_arprot[1] in module serial is either unconnected or has no load
+WARNING: [Synth 8-7129] Port axi_arprot[0] in module serial is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 473 ; free virtual = 5427
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+-------------------------------------+-----------+----------------------+-------------+
+|Module Name | RTL Object                          | Inference | Size (Depth x Width) | Primitives  | 
++------------+-------------------------------------+-----------+----------------------+-------------+
+|serial      | serial_v1_0_AXI_inst/fifo1/fifo_reg | Implied   | 16 x 9               | RAM32M x 2  | 
++------------+-------------------------------------+-----------+----------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 474 ; free virtual = 5429
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++------------+-------------------------------------+-----------+----------------------+-------------+
+|Module Name | RTL Object                          | Inference | Size (Depth x Width) | Primitives  | 
++------------+-------------------------------------+-----------+----------------------+-------------+
+|serial      | serial_v1_0_AXI_inst/fifo1/fifo_reg | Implied   | 16 x 9               | RAM32M x 2  | 
++------------+-------------------------------------+-----------+----------------------+-------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 466 ; free virtual = 5421
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin serial_v1_0_AXI_inst/status[0] with 1st driver pin 'serial_v1_0_AXI_inst/status_reg[0]__0/Q' [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/serial_v1_0_AXI.v:203]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin serial_v1_0_AXI_inst/status[0] with 2nd driver pin 'serial_v1_0_AXI_inst/status_reg[0]/Q' [/home/moonknight/SoC/serial/ip_repo/serial_1_0/src/serial_v1_0_AXI.v:345]
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        1|Failed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |LUT1   |     3|
+|3     |LUT2   |     6|
+|4     |LUT3   |     4|
+|5     |LUT4   |    41|
+|6     |LUT5   |    17|
+|7     |LUT6   |    12|
+|8     |RAM32M |     2|
+|9     |FDRE   |   144|
+|10    |FDSE   |     1|
+|11    |IBUF   |    47|
+|12    |OBUF   |    68|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------------------------+----------------+------+
+|      |Instance                   |Module          |Cells |
++------+---------------------------+----------------+------+
+|1     |top                        |                |   346|
+|2     |  serial_v1_0_AXI_inst     |serial_v1_0_AXI |   230|
+|3     |    fifo1                  |fifo16x9        |    68|
+|4     |    read_request_detector  |edge_detector   |     4|
+|5     |    write_request_detector |edge_detector_0 |     4|
++------+---------------------------+----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 2 critical warnings and 19 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.629 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2050.637 ; gain = 635.984 ; free physical = 248 ; free virtual = 5277
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2050.637 ; gain = 0.000 ; free physical = 502 ; free virtual = 5542
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2188.344 ; gain = 0.000 ; free physical = 476 ; free virtual = 5495
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
+
+Synth Design complete | Checksum: f18a1699
+INFO: [Common 17-83] Releasing license: Synthesis
+26 Infos, 21 Warnings, 2 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:00:36 . Memory (MB): peak = 2188.344 ; gain = 773.699 ; free physical = 476 ; free virtual = 5495
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1825.815; main = 1600.651; forked = 432.563
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3082.875; main = 2188.348; forked = 1032.242
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2212.355 ; gain = 0.000 ; free physical = 476 ; free virtual = 5495
+INFO: [Common 17-1381] The checkpoint '/home/moonknight/SoC/serial/serial.tmp/serial_v1_0_project/serial_v1_0_project.runs/synth_1/serial.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file serial_utilization_synth.rpt -pb serial_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 26 22:09:26 2024...
