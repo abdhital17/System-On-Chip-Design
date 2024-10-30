@@ -69,7 +69,7 @@
 
     // Internal registers
     reg [31:0] wr_data;
-    reg clear_overflow_request;
+    wire clear_overflow_request;
     reg [31:0] status;
     reg [31:0] control;
     reg [31:0] brd;
@@ -87,8 +87,6 @@
     localparam integer CONTROL_REG          = 2'b10;
     localparam integer BRD_REG              = 2'b11;
     
-    // Macros
-    `define TXFO                    29
     // AXI4-lite signals
     reg axi_awready;
     reg axi_wready;
@@ -239,7 +237,7 @@
             end
             else
             begin
-                status[TXFO] <= 1'b0;     // clear the clear overflow request bit if set in the previous clock
+                status[26] <= 1'b0;     // clear the clear overflow request bit if set in the previous clock
                                         // Helps set the request high for duration of a single-clock
             end
         end
@@ -375,12 +373,11 @@
    .wr_data(S_AXI_WDATA[8:0]),
    .wr_request(ok_to_write && write_en),
    .rd_request(ok_to_read && read_en),
-   .clear_overflow_request(status[TXFO]),
+   .clear_overflow_request(status[26]),
    .empty(empty), 
    .full(full),   
    .overflow(overflow_local),
    .rd_data(rd_data_local),
-//    .rd_data(axi_rdata[8:0]),
    .wr_index(wr_index_local),
    .rd_index(rd_index_local),
    .watermark(watermark_local));

@@ -2559,7 +2559,7 @@
       },
       "serial_0": {
         "vlnv": "user.org:user:serial:1.0",
-        "ip_revision": "142",
+        "ip_revision": "146",
         "xci_name": "system_serial_0_0",
         "xci_path": "ip/system_serial_0_0/system_serial_0_0.xci",
         "inst_hier_path": "serial_0"
@@ -2629,8 +2629,8 @@
           "ps7_0_axi_periph/S00_ARESETN",
           "ps7_0_axi_periph/M00_ARESETN",
           "ps7_0_axi_periph/ARESETN",
-          "gpio_0/axi_aresetn",
           "ps7_0_axi_periph/M01_ARESETN",
+          "gpio_0/axi_aresetn",
           "serial_0/axi_aresetn"
         ]
       },
@@ -2642,8 +2642,8 @@
           "ps7_0_axi_periph/S00_ACLK",
           "ps7_0_axi_periph/M00_ACLK",
           "ps7_0_axi_periph/ACLK",
-          "gpio_0/axi_aclk",
           "ps7_0_axi_periph/M01_ACLK",
+          "gpio_0/axi_aclk",
           "serial_0/axi_aclk"
         ]
       },
