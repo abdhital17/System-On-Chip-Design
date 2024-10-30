@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:serial:1.0
-// IP Revision: 121
+// IP Revision: 142
 
 (* X_CORE_INFO = "serial,Vivado 2024.1" *)
 (* CHECK_LICENSE_TYPE = "system_serial_0_0,serial,{}" *)

@@ -533,7 +533,7 @@
         <net name="system/system_i/ps7_0_axi_periph_M01_AXI_ARADDR[0]"/>
       </nets>
     </probe>
-    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq3&apos;hX"/>
         <Option Id="COMPARE_VALUE.0" value="eq3&apos;hX"/>
@@ -708,7 +708,7 @@
         <net name="system/system_i/ps7_0_axi_periph_M01_AXI_BREADY"/>
       </nets>
     </probe>
-    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq2&apos;hX"/>
         <Option Id="COMPARE_VALUE.0" value="eq2&apos;hX"/>
@@ -751,7 +751,7 @@
         <net name="system/system_i/ps7_0_axi_periph_M01_AXI_BVALID"/>
       </nets>
     </probe>
-    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq32&apos;hXXXX_XXXX"/>
         <Option Id="COMPARE_VALUE.0" value="eq32&apos;hXXXX_XXXX"/>
@@ -867,7 +867,7 @@
         <net name="system/system_i/ps7_0_axi_periph_M01_AXI_RVALID"/>
       </nets>
     </probe>
-    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq32&apos;hXXXX_XXXX"/>
         <Option Id="COMPARE_VALUE.0" value="eq32&apos;hXXXX_XXXX"/>

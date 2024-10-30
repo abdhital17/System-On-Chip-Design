@@ -4,7 +4,7 @@
     "xci_name": "system_serial_0_0",
     "cell_name": "serial_0",
     "component_reference": "user.org:user:serial:1.0",
-    "ip_revision": "121",
+    "ip_revision": "142",
     "gen_directory": "../../../../../../gpio.gen/sources_1/bd/system/ip/system_serial_0_0",
     "parameters": {
       "component_parameters": {
@@ -34,7 +34,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "121" } ],
+        "IPREVISION": [ { "value": "142" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../gpio.gen/sources_1/bd/system/ip/system_serial_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],

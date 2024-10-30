@@ -87,6 +87,8 @@
     localparam integer CONTROL_REG          = 2'b10;
     localparam integer BRD_REG              = 2'b11;
     
+    // Macros
+    `define TXFO                    29
     // AXI4-lite signals
     reg axi_awready;
     reg axi_wready;
@@ -208,7 +210,7 @@
         else 
         begin
             // clear clear_overflow signal if it was set in the previous clock cycle
-            status[0] <= 1'b0;
+            // status[0] <= 1'b0;
             if (wr)
             begin
                 case (axi_awaddr[3:2])
@@ -234,6 +236,11 @@
                             if (axi_wstrb[byte_index] == 1)
                                 brd[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
                 endcase
+            end
+            else
+            begin
+                status[TXFO] <= 1'b0;     // clear the clear overflow request bit if set in the previous clock
+                                        // Helps set the request high for duration of a single-clock
             end
         end
     end    
@@ -317,8 +324,8 @@
 		        case (raddr[3:2])
                 DATA_REG:
                 begin
-                   read_en <= 1;
-                   axi_rdata <= {23'b0, rd_data_local[8:0]};
+                    read_en <= 1;        
+                    axi_rdata <= {23'b0, rd_data_local[8:0]};
                 end
 		        STATUS_REG:
 		            axi_rdata <= {full, empty, overflow, 24'b0, watermark[4:0]};
@@ -354,11 +361,11 @@
         end
     end
 
- // handle clear overflow request edge detection so that it is triggered only once
-     edge_detector clear_overflow_detector(
-     .clk(axi_clk),
-     .rw_request_signal(status[0]),
-     .pulse(clear_overflow_request));
+//  // handle clear overflow request edge detection so that it is triggered only once
+//      edge_detector clear_overflow_detector(
+//      .clk(axi_clk),
+//      .rw_request_signal(status[29]),
+//      .pulse(clear_overflow_request));
 
 
   // Instantiate the fifo
@@ -368,11 +375,12 @@
    .wr_data(S_AXI_WDATA[8:0]),
    .wr_request(ok_to_write && write_en),
    .rd_request(ok_to_read && read_en),
-   .clear_overflow_request(clear_overflow_request),
+   .clear_overflow_request(status[TXFO]),
    .empty(empty), 
    .full(full),   
    .overflow(overflow_local),
    .rd_data(rd_data_local),
+//    .rd_data(axi_rdata[8:0]),
    .wr_index(wr_index_local),
    .rd_index(rd_index_local),
    .watermark(watermark_local));
@@ -381,7 +389,7 @@
    assign overflow = overflow_local;
    assign wr_index[4:0] = wr_index_local[4:0];
    assign rd_index[4:0] = rd_index_local[4:0];
-   assign rd_data[8:0]  = axi_rdata[8:0];
+   assign rd_data[8:0]  = rd_data_local[8:0];
    assign watermark[4:0] = watermark_local[4:0];
    
 endmodule
