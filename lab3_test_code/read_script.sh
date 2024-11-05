@@ -7,8 +7,8 @@ fi
 
 reads=$1
 
-echo "Ready to read ${reads} values from the fifo"
+echo "Reading ${reads} values from the fifo"
 
 for ((i = 1; i <= reads; i++)); do        
-     sudo /home/uta/C/fifo/serial read
+     sudo ./serial read
 done

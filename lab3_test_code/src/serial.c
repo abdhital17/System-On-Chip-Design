@@ -35,15 +35,20 @@ int main(int argc, char* argv[])
         data = atoi(argv[2]);
         if (strcmp(argv[1], "write") == 0)
             writeToFifo(data);
-	else if (strcmp(argv[1], "overflow") == 0 && strcmp(argv[2], "clear") == 0)
-	{
-	    clearOverFlowBit();
-	}
-	else if (strcmp(argv[1], "get") == 0 && strcmp(argv[2], "status") == 0)
-	{
-	    uint32_t status = getStatus();
+	    else if (strcmp(argv[1], "overflow") == 0 && strcmp(argv[2], "clear") == 0)
+	    {
+	        clearOverFlowBit();
+	    }
+	    else if (strcmp(argv[1], "get") == 0 && strcmp(argv[2], "status") == 0)
+	    {
+	        uint32_t status = getStatus();
             printf("Status reg: 0x%x\n", status);
-	}
+	    }
+        else if (strcmp(argv[1], "baudrate") == 0)
+        {
+            setBaudRate(data);
+            printf("Setting baudRate to %d\n", data);
+        }
         else
             printf("argument %s not expected\n", argv[1]);
     }
@@ -57,10 +62,11 @@ int main(int argc, char* argv[])
         else if ((strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0))
         {
             printf("  usage:\n");
-            printf("  serial write data        write data to fifo\n");
-            printf("  serial read data         read data from fifo\n");
-            printf("  serial overflow clear    clear the overflow bit in status register\n");
-            printf("  serial get status        read the status register\n");
+            printf("  serial write <data>        write data to fifo\n");
+            printf("  serial read                read data from fifo\n");
+            printf("  serial overflow clear      clear the overflow bit in status register\n");
+            printf("  serial get status          read the status register\n");
+            printf("  serial baudrate <baudrate> set baudrate of the serial module\n");
         }
     }
     else

@@ -24,6 +24,7 @@
 // Global variables
 //-----------------------------------------------------------------------------
 #define TXFO		26
+#define FREQUENCY   100000000
 uint32_t *base = NULL;
 
 //-----------------------------------------------------------------------------
@@ -54,22 +55,32 @@ bool serialOpen()
 void readFromFifo()
 {
     uint32_t data = *(base+OFS_DATA);
-    printf("fifo data: %d\n", data&0x1FF);
+    printf("fifo data: %d\n", data & 0x1FF);
 }
 
 void writeToFifo(uint32_t data)
 {
-    *(base+OFS_DATA) = data & 0x1FF;
+    *(base + OFS_DATA) = data & 0x1FF;
 }
 
 void clearOverFlowBit()
 {
     int mask = 1 << TXFO;
-    *(base+OFS_STATUS) = mask;
+    *(base + OFS_STATUS) = mask;
 }
 
 uint32_t getStatus()
 {
-    uint32_t status = *(base+OFS_STATUS);
+    uint32_t status = *(base + OFS_STATUS);
     return status;
+}
+
+void setBaudRate(int baudRate)
+{
+    uint32_t divisorTimes512 = (FREQUENCY * 32) / baudRate;         // calculate divisor (r) in units of 1/512,
+                                                                    // where r = fcyc / 16 * baudRate
+    uint32_t integerPart = divisorTimes512 >> 9;                    // set integer value to floor(r)
+    uint8_t fractionalPart = ((divisorTimes512 + 1)) >> 1 & 255;    // set fractional value to round(fract(r)*255)
+    uint32_t divisor = (integerPart << 24) & fractionalPart;       // assemble the 32 bit divisor with 24 bit integer part, and 8 bit fractional part
+    *(base + OFS_BRD) = divisor;                                    // Write the divisor value to the BRD register
 }
