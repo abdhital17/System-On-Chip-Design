@@ -1,14 +1,14 @@
 module fifo16x9(
     input clk, 
     input reset, 
-    input reg [8:0] wr_data, 
+    input [8:0] wr_data, 
     input wr_request, 
     input rd_request, 
     input clear_overflow_request, 
-    output wire empty,
-    output wire full,
+    output empty,
+    output full,
     output reg overflow, 
-    output reg [8:0] rd_data,
+    output [8:0] rd_data,
     output reg [4:0] wr_index, 
     output reg [4:0] rd_index,
     output reg [4:0] watermark
@@ -17,10 +17,10 @@ module fifo16x9(
     // buffer that stores the fifo data
     reg [8:0] fifo[15:0];
     
-// assign the full and empty signals
+// assign the full and empty signals and rd_data
     assign full = ((wr_index[3:0] == rd_index[3:0]) && (wr_index[4] != rd_index[4]));
     assign empty = (wr_index[4:0] == rd_index[4:0]);
-    
+    assign rd_data = fifo[rd_index[3:0]];
 //    ila_0 ila_fifo (
 //	.clk(clk), // input wire clk
 //	.probe0(rd_request), // input wire [0:0]  probe0  
@@ -67,10 +67,9 @@ module fifo16x9(
         watermark[4:0] <= (wr_index[4:0] - rd_index[4:0]) & 5'b11111;
     end
     
-// constantly update rd_data in a combinational logic
-    always_comb
-    begin
-       rd_data = fifo[rd_index[3:0]];
-    end
+//// constantly update rd_data in a combinational logic
+//    always_comb
+//    begin
+//    end
 
 endmodule
