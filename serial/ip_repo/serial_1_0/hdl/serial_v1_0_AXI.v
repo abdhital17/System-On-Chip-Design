@@ -59,6 +59,13 @@
         input wire S_AXI_RREADY
     );
     
+    // STATUS register field macros
+    `define STATUS_TXFO    5
+    `define STATUS_RXFO    2
+    
+    // CONTROL register field macros
+    `define CONTROL_ENABLE  4
+    `define CONTROL_TEST    5
     
     // Internal fifo registers that drive the top level output signals
     reg [8:0] rd_data_local;
@@ -67,12 +74,20 @@
     reg [4:0] wr_index_local;
     reg [4:0] watermark_local;
 
+// Assign the top level output signals based on the local fifo outputs
+    assign overflow = overflow_local;
+    assign wr_index[4:0] = wr_index_local[4:0];
+    assign rd_index[4:0] = rd_index_local[4:0];
+    assign rd_data[8:0]  = rd_data_local[8:0];
+    assign watermark[4:0] = watermark_local[4:0];
+   
     // Internal registers
     reg [31:0] wr_data;
     wire clear_overflow_request;
     reg [31:0] status;
     reg [31:0] control;
     reg [31:0] brd;
+    wire brd_out;
     
     // Register map
     // ofs  fn
@@ -197,7 +212,7 @@
     integer byte_index;
     always_ff @ (posedge axi_clk)
     begin
-        write_en <= 0;
+        write_en <= 0;      // clear the write_en signal after one clock
         if (axi_resetn == 1'b0)
         begin
             wr_data[31:0] <= 32'b0;
@@ -237,8 +252,8 @@
             end
             else
             begin
-                status[26] <= 1'b0;     // clear the clear overflow request bit if set in the previous clock
-                                        // Helps set the request high for duration of a single-clock
+                status[`STATUS_TXFO] <= 1'b0;     // clear the clear overflow request bit if set in the previous clock
+                                        // Helps set the request high for duration of a single-clock                                    
             end
         end
     end    
@@ -317,7 +332,6 @@
         begin    
             if (rd)
             begin
-                // fifo_rd_en <= 0;
 		        // Address decoding for reading registers
 		        case (raddr[3:2])
                 DATA_REG:
@@ -328,9 +342,9 @@
 		        STATUS_REG:
 		            axi_rdata <= {full, empty, overflow, 24'b0, watermark[4:0]};
 		        CONTROL_REG:
-			        axi_rdata <= control;
+			        axi_rdata <= control[31:0];
 		        BRD_REG:
-		            axi_rdata <= brd;
+		            axi_rdata <= brd[31:0];
 		        endcase
             end
         end
@@ -373,7 +387,7 @@
    .wr_data(S_AXI_WDATA[8:0]),
    .wr_request(ok_to_write && write_en),
    .rd_request(ok_to_read && read_en),
-   .clear_overflow_request(status[26]),
+   .clear_overflow_request(status[`STATUS_TXFO]),
    .empty(empty), 
    .full(full),   
    .overflow(overflow_local),
@@ -382,11 +396,13 @@
    .rd_index(rd_index_local),
    .watermark(watermark_local));
 
-// Assign the top level output signals based on the local fifo outputs
-   assign overflow = overflow_local;
-   assign wr_index[4:0] = wr_index_local[4:0];
-   assign rd_index[4:0] = rd_index_local[4:0];
-   assign rd_data[8:0]  = rd_data_local[8:0];
-   assign watermark[4:0] = watermark_local[4:0];
    
+   // Instantiate the brd module
+    brd baudRateDivider(
+    .clk(axi_clk),
+    .enable(1),//(control[`CONTROL_ENABLE]), set to 1 for debug purposes
+    .ibrd(brd[31:8]),
+    .fbrd(brd[7:0]),
+    .out(brd_out)
+    );
 endmodule
