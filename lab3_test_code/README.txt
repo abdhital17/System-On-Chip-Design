@@ -8,3 +8,8 @@ INFO: Instead of steps 2 and 3, you can manually write and read values individua
 
     # read:     "sudo ./serial read"
     # write:    "sudo ./serial write <value>"
+    
+    To print out all the options that go with serial:
+    
+    "./serial -h" or "./serial --help"
+    

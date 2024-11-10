@@ -23,8 +23,11 @@
 //-----------------------------------------------------------------------------
 // Global variables
 //-----------------------------------------------------------------------------
-#define TXFO		26
-#define FREQUENCY   100000000
+#define FREQUENCY           100000000
+#define STATUS_TXFO         5
+#define CONTROL_ENABLE      4
+#define CONTROL_TEST        5
+
 uint32_t *base = NULL;
 
 //-----------------------------------------------------------------------------
@@ -65,7 +68,7 @@ void writeToFifo(uint32_t data)
 
 void clearOverFlowBit()
 {
-    int mask = 1 << TXFO;
+    int mask = 1 << STATUS_TXFO;
     *(base + OFS_STATUS) = mask;
 }
 
@@ -75,12 +78,36 @@ uint32_t getStatus()
     return status;
 }
 
-void setBaudRate(int baudRate)
+void setBaudRate(double baudRate)
 {
-    uint32_t divisorTimes512 = (FREQUENCY * 32) / baudRate;         // calculate divisor (r) in units of 1/512,
-                                                                    // where r = fcyc / 16 * baudRate
-    uint32_t integerPart = divisorTimes512 >> 9;                    // set integer value to floor(r)
-    uint8_t fractionalPart = ((divisorTimes512 + 1)) >> 1 & 255;    // set fractional value to round(fract(r)*255)
-    uint32_t divisor = (integerPart << 24) & fractionalPart;       // assemble the 32 bit divisor with 24 bit integer part, and 8 bit fractional part
+    // printf("in setBaudrate, baudrate: %f\n", baudRate);
+    uint32_t divisorTimes256 = (FREQUENCY * 8) / baudRate;         // calculate divisor (r) in units of 1/512,                                                                    // where r = fcyc / 32 * baudRate
+    printf("divisorTimes256: %u\n", divisorTimes256);
+    uint32_t integerPart = divisorTimes256 >> 8;                    // set integer value to floor(r)
+    printf("integerPart: %d\n", integerPart);
+    uint8_t fractionalPart = (divisorTimes256 & 0xFF);
+    fractionalPart = (fractionalPart + 1) >> 1;    // set fractional value to round(fract(r)*255)
+    printf("fractionalPart: %d\n", fractionalPart);
+    printf("integerPart again: %d\n", integerPart);
+    uint32_t divisor = (integerPart << 8) | (fractionalPart & 0xFF);       // assemble the 32 bit divisor with 24 bit integer part, and 8 bit fractional part
     *(base + OFS_BRD) = divisor;                                    // Write the divisor value to the BRD register
+    printf("divisor: 0x%x\n", divisor);
+}
+
+void enableTestOutput()
+{
+    int mask = 1 << CONTROL_TEST;
+    *(base + OFS_CONTROL) |= mask;
+}
+
+void disableTestOutput()
+{
+    int mask = 1 << CONTROL_TEST;
+    *(base + OFS_CONTROL) &= ~mask;
+}
+
+uint32_t readBrdReg()
+{
+    uint32_t brd = *(base + OFS_BRD);
+    return brd;
 }
