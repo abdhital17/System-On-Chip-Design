@@ -84,10 +84,10 @@ module system_top (
 
     // pin control
     genvar j;
-    for (j = 0; j < 22; j = j + 1)
+    for (j = 1; j < 22; j = j + 1)
         assign GPIO[j] = gpio_data_oe[j] ? gpio_data_out[j] : 1'bz;
     assign gpio_data_in = {8'b0, GPIO[23:0]};
-        
+    
     // Tie intr output to RGB0 green LED
     wire intr;
     assign RGB0 = {1'b0, intr, 1'b0};
@@ -100,6 +100,11 @@ module system_top (
     wire [4:0] rd_index;
     wire [8:0] rd_data;
     wire [4:0] watermark;
+    wire clk_out;
+    
+    // Tie clk_out signal from brd module to GPIO[0] on PMOD A
+    assign GPIO[0] = clk_out;
+    assign LED[1] = clk_out;
     
     // handle input metastability safely
     reg [1:0] mode, pre_mode;
@@ -111,17 +116,17 @@ module system_top (
     end
     
     // handle LED output modes
-    always_ff @ (posedge(CLK100))
-    begin
-        case(mode[1:0])
-            2'b00:              // set the LEDs to display rd_index and wr_index
-                led_out[9:0] <= {rd_index[4:0], wr_index[4:0]};
-            2'b01:              // set the LEDs to display full, empty, overflow and watermark
-                led_out[9:0] <= {full,empty,overflow,1'b0,1'b0,watermark[4:0]};
-            2'b10:
-                led_out[9:0] <= {1'b0, rd_data[8:0]};
-        endcase         
-    end
+//    always_ff @ (posedge(CLK100))
+//    begin
+//        case(mode[1:0])
+//            2'b00:              // set the LEDs to display rd_index and wr_index
+//                led_out[9:0] <= {rd_index[4:0], wr_index[4:0]};
+//            2'b01:              // set the LEDs to display full, empty, overflow and watermark
+//                led_out[9:0] <= {full,empty,overflow,1'b0,1'b0,watermark[4:0]};
+//            2'b10:
+//                led_out[9:0] <= {1'b0, rd_data[8:0]};
+//        endcase         
+//    end
 
     // assign the leds based on mode selected by SW[1:0]
     assign LED[9:0] = led_out[9:0];
@@ -159,6 +164,7 @@ module system_top (
         .rd_index(rd_index),
         .wr_index(wr_index),
         .rd_data(rd_data),
-        .watermark(watermark));
+        .watermark(watermark),
+        .clk_out(clk_out));
 
 endmodule

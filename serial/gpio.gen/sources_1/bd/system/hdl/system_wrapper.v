@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Tue Oct 29 22:56:42 2024
+//Date        : Wed Nov  6 11:16:00 2024
 //Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target system_wrapper.bd
 //Design      : system_wrapper
@@ -32,6 +32,7 @@ module system_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    clk_out,
     empty,
     full,
     gpio_data_in,
@@ -64,6 +65,7 @@ module system_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output clk_out;
   output empty;
   output full;
   input [31:0]gpio_data_in;
@@ -97,6 +99,7 @@ module system_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire clk_out;
   wire empty;
   wire full;
   wire [31:0]gpio_data_in;
@@ -131,6 +134,7 @@ module system_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .clk_out(clk_out),
         .empty(empty),
         .full(full),
         .gpio_data_in(gpio_data_in),

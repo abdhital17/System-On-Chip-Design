@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x2EB6EBE6D7EFD8B1",
+      "boundary_crc": "0xF4D6774826809B9C",
       "device": "xc7z007sclg400-1",
       "gen_directory": "../../../../gpio.gen/sources_1/bd/system",
       "name": "system",
@@ -253,6 +253,9 @@
         "direction": "O",
         "left": "8",
         "right": "0"
+      },
+      "clk_out": {
+        "direction": "O"
       }
     },
     "components": {
@@ -2559,9 +2562,9 @@
       },
       "serial_0": {
         "vlnv": "user.org:user:serial:1.0",
-        "ip_revision": "146",
-        "xci_name": "system_serial_0_0",
-        "xci_path": "ip/system_serial_0_0/system_serial_0_0.xci",
+        "ip_revision": "151",
+        "xci_name": "system_serial_0_1",
+        "xci_path": "ip/system_serial_0_1/system_serial_0_1.xci",
         "inst_hier_path": "serial_0"
       }
     },
@@ -2651,6 +2654,12 @@
         "ports": [
           "processing_system7_0/FCLK_RESET0_N",
           "proc_sys_reset_0/ext_reset_in"
+        ]
+      },
+      "serial_0_clk_out": {
+        "ports": [
+          "serial_0/clk_out",
+          "clk_out"
         ]
       },
       "serial_0_empty": {

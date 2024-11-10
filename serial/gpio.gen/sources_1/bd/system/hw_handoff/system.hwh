@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Oct 29 22:56:43 2024" VIVADOVERSION="2024.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Nov  6 11:16:01 2024" VIVADOVERSION="2024.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z007s" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -107,6 +107,11 @@
     <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="processing_system7_0_PS_SRSTB">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="PS_SRSTB"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="clk_out" SIGIS="undef" SIGNAME="serial_0_clk_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="serial_0" PORT="clk_out"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="empty" SIGIS="undef" SIGNAME="serial_0_empty">
@@ -450,8 +455,8 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ARESETN"/>
-            <CONNECTION INSTANCE="gpio_0" PORT="axi_aresetn"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ARESETN"/>
+            <CONNECTION INSTANCE="gpio_0" PORT="axi_aresetn"/>
             <CONNECTION INSTANCE="serial_0" PORT="axi_aresetn"/>
           </CONNECTIONS>
         </PORT>
@@ -1498,8 +1503,8 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
-            <CONNECTION INSTANCE="gpio_0" PORT="axi_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ACLK"/>
+            <CONNECTION INSTANCE="gpio_0" PORT="axi_aclk"/>
             <CONNECTION INSTANCE="serial_0" PORT="axi_aclk"/>
           </CONNECTIONS>
         </PORT>
@@ -2703,7 +2708,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="142" FULLNAME="/serial_0" HWVERSION="1.0" INSTANCE="serial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="serial" VLNV="user.org:user:serial:1.0">
+    <MODULE COREREVISION="151" FULLNAME="/serial_0" HWVERSION="1.0" INSTANCE="serial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="serial" VLNV="user.org:user:serial:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="AXI" NAME="AXI_reg" RANGE="4096" USAGE="register"/>
@@ -2711,7 +2716,7 @@
       <PARAMETERS>
         <PARAMETER NAME="C_AXI_ADDR_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_AXI_DATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="Component_Name" VALUE="system_serial_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_serial_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_AXI_BASEADDR" VALUE="0x43C20000"/>
         <PARAMETER NAME="C_AXI_HIGHADDR" VALUE="0x43C2FFFF"/>
@@ -2820,6 +2825,11 @@
         <PORT DIR="I" NAME="axi_wvalid" SIGIS="undef" SIGNAME="ps7_0_axi_periph_M01_AXI_wvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_AXI_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="clk_out" SIGIS="undef" SIGNAME="serial_0_clk_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="empty" SIGIS="undef" SIGNAME="serial_0_empty">

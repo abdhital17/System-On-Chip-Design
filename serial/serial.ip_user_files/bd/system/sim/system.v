@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Sun Oct 27 22:49:15 2024
+//Date        : Wed Nov  6 11:03:07 2024
 //Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target system.bd
 //Design      : system
@@ -607,7 +607,7 @@ module s00_couplers_imp_11SE3QO
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=7,numNonXlnxBlks=2,numHierBlks=4,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "system.hwdef" *) 
+(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=7,numNonXlnxBlks=2,numHierBlks=4,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=4,da_board_cnt=1,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "system.hwdef" *) 
 module system
    (DDR_addr,
     DDR_ba,
@@ -630,6 +630,7 @@ module system
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    clk_out,
     empty,
     full,
     gpio_data_in,
@@ -662,6 +663,7 @@ module system
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout FIXED_IO_ps_clk;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
+  output clk_out;
   output empty;
   output full;
   input [31:0]gpio_data_in;
@@ -778,6 +780,7 @@ module system
   wire ps7_0_axi_periph_M01_AXI_WREADY;
   wire [3:0]ps7_0_axi_periph_M01_AXI_WSTRB;
   wire ps7_0_axi_periph_M01_AXI_WVALID;
+  wire serial_0_clk_out;
   wire serial_0_empty;
   wire serial_0_full;
   wire serial_0_overflow;
@@ -787,6 +790,7 @@ module system
   wire [4:0]serial_0_wr_index;
   wire [2:0]xlconcat_1_dout;
 
+  assign clk_out = serial_0_clk_out;
   assign empty = serial_0_empty;
   assign full = serial_0_full;
   assign gpio_data_in_0_1 = gpio_data_in[31:0];
@@ -981,7 +985,7 @@ module system
         .S00_AXI_wready(processing_system7_0_M_AXI_GP0_WREADY),
         .S00_AXI_wstrb(processing_system7_0_M_AXI_GP0_WSTRB),
         .S00_AXI_wvalid(processing_system7_0_M_AXI_GP0_WVALID));
-  system_serial_0_0 serial_0
+  system_serial_0_1 serial_0
        (.axi_aclk(processing_system7_0_FCLK_CLK0),
         .axi_araddr(ps7_0_axi_periph_M01_AXI_ARADDR[3:0]),
         .axi_aresetn(proc_sys_reset_0_peripheral_aresetn),
@@ -1003,6 +1007,7 @@ module system
         .axi_wready(ps7_0_axi_periph_M01_AXI_WREADY),
         .axi_wstrb(ps7_0_axi_periph_M01_AXI_WSTRB),
         .axi_wvalid(ps7_0_axi_periph_M01_AXI_WVALID),
+        .clk_out(serial_0_clk_out),
         .empty(serial_0_empty),
         .full(serial_0_full),
         .overflow(serial_0_overflow),

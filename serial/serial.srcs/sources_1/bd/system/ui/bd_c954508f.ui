@@ -1,57 +1,59 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.565086",
-   "Default View_TopLeft":"-380,-457",
+   "Default View_ScaleFactor":"0.592117",
+   "Default View_TopLeft":"19,-399",
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"",
    "PinnedPorts":"",
    "guistr":"# # String gsaved with Nlview 7.7.1 2023-07-26 3bc4126617 VDI=43 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 5 -x 1720 -y -160 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 5 -x 1720 -y -140 -defaultsOSRD
-preplace port port-id_intr -pg 1 -lvl 5 -x 1720 -y -230 -defaultsOSRD
-preplace port port-id_empty -pg 1 -lvl 5 -x 1720 -y 170 -defaultsOSRD
-preplace port port-id_full -pg 1 -lvl 5 -x 1720 -y 190 -defaultsOSRD
-preplace port port-id_overflow -pg 1 -lvl 5 -x 1720 -y 210 -defaultsOSRD
-preplace portBus gpio_data_out -pg 1 -lvl 5 -x 1720 -y -310 -defaultsOSRD
-preplace portBus gpio_data_oe -pg 1 -lvl 5 -x 1720 -y -290 -defaultsOSRD
-preplace portBus gpio_data_in -pg 1 -lvl 5 -x 1720 -y -380 -defaultsOSRD -right
-preplace portBus rd_index -pg 1 -lvl 5 -x 1720 -y 250 -defaultsOSRD
-preplace portBus watermark -pg 1 -lvl 5 -x 1720 -y 270 -defaultsOSRD
-preplace portBus wr_index -pg 1 -lvl 5 -x 1720 -y 230 -defaultsOSRD
-preplace portBus rd_data -pg 1 -lvl 5 -x 1720 -y 290 -defaultsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 1720 -y -20 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1720 -y 10 -defaultsOSRD
+preplace port port-id_intr -pg 1 -lvl 6 -x 1720 -y -290 -defaultsOSRD
+preplace port port-id_empty -pg 1 -lvl 6 -x 1720 -y 170 -defaultsOSRD
+preplace port port-id_full -pg 1 -lvl 6 -x 1720 -y 190 -defaultsOSRD
+preplace port port-id_overflow -pg 1 -lvl 6 -x 1720 -y 210 -defaultsOSRD
+preplace port port-id_clk_out -pg 1 -lvl 6 -x 1720 -y 310 -defaultsOSRD
+preplace portBus gpio_data_out -pg 1 -lvl 6 -x 1720 -y -270 -defaultsOSRD
+preplace portBus gpio_data_oe -pg 1 -lvl 6 -x 1720 -y -250 -defaultsOSRD
+preplace portBus gpio_data_in -pg 1 -lvl 6 -x 1720 -y -380 -defaultsOSRD -right
+preplace portBus rd_index -pg 1 -lvl 6 -x 1720 -y 250 -defaultsOSRD
+preplace portBus watermark -pg 1 -lvl 6 -x 1720 -y 270 -defaultsOSRD
+preplace portBus wr_index -pg 1 -lvl 6 -x 1720 -y 230 -defaultsOSRD
+preplace portBus rd_data -pg 1 -lvl 6 -x 1720 -y 290 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 2 -x 310 -y 50 -defaultsOSRD
 preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -x 310 -y -210 -defaultsOSRD
 preplace inst ps7_0_axi_periph -pg 1 -lvl 3 -x 840 -y -210 -defaultsOSRD
-preplace inst gpio_0 -pg 1 -lvl 4 -x 1360 -y -250 -defaultsOSRD
+preplace inst gpio_0 -pg 1 -lvl 4 -x 1230 -y -250 -defaultsOSRD
 preplace inst xlconcat_1 -pg 1 -lvl 1 -x -270 -y -70 -defaultsOSRD
-preplace inst serial_0 -pg 1 -lvl 4 -x 1360 -y 230 -defaultsOSRD
-preplace netloc gpio_0_gpio_data_oe 1 4 1 1550 -290n
-preplace netloc gpio_0_gpio_data_out 1 4 1 1530 -310n
-preplace netloc gpio_0_intr 1 0 5 -370 -370 N -370 N -370 N -370 1540
-preplace netloc gpio_data_in_0_1 1 3 2 1190J -380 N
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 2 2 670 -360 1180
-preplace netloc processing_system7_0_FCLK_CLK0 1 1 3 100 -320 680J -350 1170
+preplace inst serial_0 -pg 1 -lvl 5 -x 1560 -y 240 -defaultsOSRD
+preplace netloc gpio_0_gpio_data_oe 1 4 2 N -250 N
+preplace netloc gpio_0_gpio_data_out 1 4 2 N -270 N
+preplace netloc gpio_0_intr 1 0 6 -370 -390 N -390 N -390 N -390 1430 -290 N
+preplace netloc gpio_data_in_0_1 1 3 3 1060J -380 N -380 N
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 2 3 660 -360 1040 -360 1420
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 4 100 -320 670J -350 1020 -350 1410
 preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 110 -310 510J
-preplace netloc serial_0_empty 1 4 1 N 170
-preplace netloc serial_0_full 1 4 1 N 190
-preplace netloc serial_0_overflow 1 4 1 NJ 210
-preplace netloc serial_0_rd_data 1 4 1 NJ 290
-preplace netloc serial_0_rd_index 1 4 1 NJ 250
-preplace netloc serial_0_watermark 1 4 1 NJ 270
-preplace netloc serial_0_wr_index 1 4 1 NJ 230
 preplace netloc xlconcat_1_dout 1 1 1 -170 -70n
-preplace netloc processing_system7_0_DDR 1 2 3 N -10 1190 -160 N
-preplace netloc processing_system7_0_FIXED_IO 1 2 3 N 10 N 10 1530
-preplace netloc processing_system7_0_M_AXI_GP0 1 2 1 690 -290n
-preplace netloc ps7_0_axi_periph_M00_AXI 1 3 1 990 -280n
-preplace netloc ps7_0_axi_periph_M01_AXI 1 3 1 990 -200n
-levelinfo -pg 1 -420 -270 310 840 1360 1720
-pagesize -pg 1 -db -bbox -sgen -600 -730 1930 350
+preplace netloc serial_0_empty 1 5 1 N 170
+preplace netloc serial_0_full 1 5 1 N 190
+preplace netloc serial_0_overflow 1 5 1 N 210
+preplace netloc serial_0_wr_index 1 5 1 N 230
+preplace netloc serial_0_rd_index 1 5 1 N 250
+preplace netloc serial_0_watermark 1 5 1 N 270
+preplace netloc serial_0_rd_data 1 5 1 N 290
+preplace netloc serial_0_clk_out 1 5 1 N 310
+preplace netloc processing_system7_0_DDR 1 2 4 690 -20 N -20 N -20 N
+preplace netloc processing_system7_0_FIXED_IO 1 2 4 N 10 N 10 N 10 N
+preplace netloc processing_system7_0_M_AXI_GP0 1 2 1 680 -290n
+preplace netloc ps7_0_axi_periph_M00_AXI 1 3 1 1030 -280n
+preplace netloc ps7_0_axi_periph_M01_AXI 1 3 2 1050J -340 1400
+levelinfo -pg 1 -420 -270 310 840 1230 1560 1720
+pagesize -pg 1 -db -bbox -sgen -600 -730 1930 370
 "
 }
 {
-   "da_axi4_cnt":"3",
+   "da_axi4_cnt":"4",
    "da_board_cnt":"1",
    "da_clkrst_cnt":"1",
    "da_ps7_cnt":"1"
