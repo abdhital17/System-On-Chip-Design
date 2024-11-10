@@ -38,6 +38,9 @@ void writeToFifo(uint32_t data);
 void readFromFifo();
 void clearOverFlowBit();
 uint32_t getStatus();
-void setBaudRate(int baudRate);
+void setBaudRate(double baudRate);
+void enableTestOutput();
+void disableTestOutput();
+uint32_t readBrdReg();
 
 #endif
