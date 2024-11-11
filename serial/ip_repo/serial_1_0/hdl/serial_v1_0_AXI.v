@@ -65,8 +65,10 @@
     `define STATUS_RXFO    2
     
     // CONTROL register field macros
-    `define CONTROL_ENABLE  4
-    `define CONTROL_TEST    5
+    `define CONTROL_ENABLE      4
+    `define CONTROL_TEST        5
+    `define CONTROL_SIZE        1:0
+    `define CONTROL_PARITY      3:2
     
     // Internal fifo registers that drive the top level output signals
     reg [8:0] rd_data_local;
@@ -88,6 +90,7 @@
     reg [31:0] control;
     reg [31:0] brd;
     wire brd_out;
+    reg brd_edge_detected;
     
     // Register map
     // ofs  fn
@@ -399,7 +402,7 @@
    // Instantiate the brd module
     brd baudRateDivider(
     .clk(axi_clk),
-    .enable(1),//(control[`CONTROL_ENABLE]), set to 1 for debug purposes
+    .enable(control[`CONTROL_ENABLE]),
     .ibrd(brd[31:8]),
     .fbrd(brd[7:0]),
     .out(brd_out)
@@ -407,4 +410,25 @@
     
     assign clk_out = brd_out & control[`CONTROL_TEST];
     
+    
+    // handle brd_out edge detection so that a brd_out signal high over multiple clocks is read in just one clock
+    edge_detector brd_detector(
+    .clk(axi_clk),
+    .rw_request_signal(brd_out),
+    .pulse(brd_edge_detected));
+
+    // Instantiate the transmitter module
+    transmitter transmitter_1(
+    .clk(axi_clk),
+    .reset(axi_resetn),
+    .brgen(brd_edge_detected),
+    .enable(control[`CONTROL_ENABLE]),
+    .empty(empty),
+    .size(control[`CONTROL_SIZE]),
+    .stop2(0),
+    .parity(control[`CONTROL_PARITY]),
+    .data(0),
+    .data_request(0),
+    .out(0)
+    );
 endmodule
