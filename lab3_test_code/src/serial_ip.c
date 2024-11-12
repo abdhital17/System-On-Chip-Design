@@ -21,12 +21,20 @@
 #include "serial_regs.h"       // registers
 
 //-----------------------------------------------------------------------------
-// Global variables
+// Global variables and macro definitions
 //-----------------------------------------------------------------------------
-#define FREQUENCY           100000000
-#define STATUS_TXFO         5
-#define CONTROL_ENABLE      4
-#define CONTROL_TEST        5
+#define FREQUENCY           100000000           // in Hz
+
+// STATUS register fields
+#define STATUS_TXFO         0x00000020
+#define STATUS_TXFF         0x00000008
+
+// Control register fields
+#define CONTROL_ENABLE      0x00000010
+#define CONTROL_TEST        0x00000020
+#define CONTROL_SIZE        0x00000003
+#define CONTROL_PARITY      0x0000000C
+#define CONTROL_STOP2       0x00008000
 
 uint32_t *base = NULL;
 
@@ -57,8 +65,10 @@ bool serialOpen()
 
 void readFromFifo()
 {
-    uint32_t data = *(base+OFS_DATA);
-    printf("fifo data: %d\n", data & 0x1FF);
+    // uint32_t data = *(base + OFS_DATA);
+    // printf("fifo data: %d\n", data & 0x1FF);
+    printf("read from fifo operation has been deprecated.\n");
+    printf("fifo is now read by the transmitter.");
 }
 
 void writeToFifo(uint32_t data)
@@ -68,8 +78,7 @@ void writeToFifo(uint32_t data)
 
 void clearOverFlowBit()
 {
-    int mask = 1 << STATUS_TXFO;
-    *(base + OFS_STATUS) = mask;
+    *(base + OFS_STATUS) &= ~STATUS_TXFO;
 }
 
 uint32_t getStatus()
@@ -96,18 +105,93 @@ void setBaudRate(double baudRate)
 
 void enableTestOutput()
 {
-    int mask = 1 << CONTROL_TEST;
-    *(base + OFS_CONTROL) |= mask;
+    *(base + OFS_CONTROL) |= CONTROL_TEST;
 }
 
 void disableTestOutput()
 {
-    int mask = 1 << CONTROL_TEST;
-    *(base + OFS_CONTROL) &= ~mask;
+    *(base + OFS_CONTROL) &= ~CONTROL_TEST;
 }
 
 uint32_t readBrdReg()
 {
     uint32_t brd = *(base + OFS_BRD);
     return brd;
+}
+
+void controlEnable()
+{
+    // set the enable bit in control register
+    *(base + OFS_CONTROL) |= CONTROL_ENABLE;
+}
+
+void controlDisable()
+{
+    // clear the enable bit in control register
+    *(base + OFS_CONTROL) &= ~CONTROL_ENABLE;
+}
+
+void writeSerial(uint16_t data)
+{
+    // read the status register to get TXFF bit
+    uint32_t status = getStatus();
+    // wait while TX fifo is full
+    while(status & STATUS_TXFF);
+    *(base + OFS_DATA) = data & 0x1FF;
+}
+
+void setDataLength(uint8_t dl)
+{
+    if (dl <= 3 && dl >= 0)
+    {
+        // clear the size field in Control register and set to dl
+        *(base + OFS_CONTROL) &= ~CONTROL_SIZE;
+        *(base + OFS_CONTROL) |= dl & 0x3;
+        printf("Data length set to: %d\n", dl);
+    }
+    else
+        printf("Enter a value between 0-3\n0 = 5-bit words, 1 = 6-bit words, 2 = 7-bit words, 3 = 8-bit words");
+}
+
+void setParityMode(enum parityMode mode)
+{
+    uint8_t parity;
+    // assign the value of parity to write to CONTROL register parity field
+    // 0x00 -> parity off
+    // 0x01 -> even parity
+    // 0x10 -> odd parity
+    // 0x11 -> support an extra bit to make 9-bit data
+
+    if (mode == off)
+        parity = 0x0;
+    else if (mode == even)
+        parity = 0x4;
+    else if (mode == odd)
+        parity = 0x8;
+    else
+        parity = 0xC;
+    
+    // clear the parity field in the CONTROL register
+    *(base + OFS_CONTROL) &= ~(CONTROL_PARITY);
+    // set the parity field based on user input
+    *(base + OFS_CONTROL) |= parity;
+    printf("Parity set to: 0x%x\n", parity);
+}
+
+void setStopBits(uint8_t bits)
+{
+    // if bits == 1, clear STOP2 bit in the control register
+    // if bits == 2, set STOP2 bit in the control register
+    if (bits == 1)
+        *(base + OFS_CONTROL) &= ~CONTROL_STOP2;
+    else if (bits == 2)
+        *(base + OFS_CONTROL) |= CONTROL_STOP2;
+    else
+        printf("Only 1 or 2 stop bits are supported.");
+}
+
+uint32_t readControlReg()
+{
+    uint32_t control = *(base + OFS_CONTROL);
+    return control;
 }

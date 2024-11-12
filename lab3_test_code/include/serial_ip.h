@@ -31,6 +31,13 @@
 // Subroutines
 //-----------------------------------------------------------------------------
 
+enum parityMode
+{
+    off,
+    even,
+    odd,
+    data
+};
 
 bool serialOpen(void);
 
@@ -42,5 +49,10 @@ void setBaudRate(double baudRate);
 void enableTestOutput();
 void disableTestOutput();
 uint32_t readBrdReg();
+void writeSerial(uint16_t x);
+void setDataLength(uint8_t dl);
+void setParityMode(enum parityMode);
+void setStopBits(uint8_t bits);
+uint32_t readControlReg();
 
 #endif
