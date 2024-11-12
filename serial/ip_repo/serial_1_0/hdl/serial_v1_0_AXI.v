@@ -69,6 +69,7 @@
     `define CONTROL_TEST        5
     `define CONTROL_SIZE        1:0
     `define CONTROL_PARITY      3:2
+    `define CONTROL_STOP2       15
     
     // Internal fifo registers that drive the top level output signals
     reg [8:0] rd_data_local;
@@ -76,7 +77,7 @@
     reg [4:0] rd_index_local;
     reg [4:0] wr_index_local;
     reg [4:0] watermark_local;
-
+    
 // Assign the top level output signals based on the local fifo outputs
     assign overflow = overflow_local;
     assign wr_index[4:0] = wr_index_local[4:0];
@@ -89,8 +90,7 @@
     reg [31:0] status;
     reg [31:0] control;
     reg [31:0] brd;
-    wire brd_out;
-    reg brd_edge_detected;
+    wire ok_to_read;
     
     // Register map
     // ofs  fn
@@ -170,7 +170,7 @@
         end 
     end
 
-    reg ok_to_read, ok_to_write;
+    reg ok_to_write;
 
     // Capture the write address (axi_awaddr) in the first clock (~axi_awready)
     // - after write address is valid (axi_awvalid)
@@ -311,10 +311,10 @@
     end       
 
     //instantiate a edge detector module that detects the rising edge of a read request
-    edge_detector read_request_detector(
-    .clk(axi_clk),
-    .rw_request_signal(axi_arvalid && axi_arready && ~axi_rvalid),
-    .pulse(ok_to_read));
+//    edge_detector read_request_detector(
+//    .clk(axi_clk),
+//    .rw_request_signal(axi_arvalid && axi_arready && ~axi_rvalid),
+//    .pulse(ok_to_read));
     
     reg read_en, write_en;
     // Update register read data
@@ -342,7 +342,7 @@
                     axi_rdata <= {23'b0, rd_data_local[8:0]};
                 end
 		        STATUS_REG:
-		            axi_rdata <= {full, empty, overflow, 24'b0, watermark[4:0]};
+		            axi_rdata <= {3'b0, full, empty, overflow, 10'b0, watermark[4:0], 11'b0};
 		        CONTROL_REG:
 			        axi_rdata <= control[31:0];
 		        BRD_REG:
@@ -388,7 +388,7 @@
    .reset(axi_resetn),
    .wr_data(S_AXI_WDATA[8:0]),
    .wr_request(ok_to_write && write_en),
-   .rd_request(ok_to_read && read_en),
+   .rd_request(ok_to_read),
    .clear_overflow_request(status[`STATUS_TXFO]),
    .empty(empty), 
    .full(full),   
@@ -399,6 +399,9 @@
    .watermark(watermark_local));
 
    
+   // brd output signals
+    wire brd_out;
+    reg brd_edge_detected;
    // Instantiate the brd module
     brd baudRateDivider(
     .clk(axi_clk),
@@ -408,15 +411,21 @@
     .out(brd_out)
     );
     
+    // send the brd_out to top-level module (pin on PMOD_A) when TEST bit is set in the CONTROL register
     assign clk_out = brd_out & control[`CONTROL_TEST];
     
-    
-    // handle brd_out edge detection so that a brd_out signal high over multiple clocks is read in just one clock
+    // handle brd_out edge detection so that a brd_out signal high over multiple clocks is read as high in only one clock
     edge_detector brd_detector(
     .clk(axi_clk),
     .rw_request_signal(brd_out),
     .pulse(brd_edge_detected));
 
+    
+    // transmitter output signals 
+    reg tx_out_reg;
+    wire tx_out;
+    assign tx_out = tx_out_reg;
+    
     // Instantiate the transmitter module
     transmitter transmitter_1(
     .clk(axi_clk),
@@ -425,10 +434,10 @@
     .enable(control[`CONTROL_ENABLE]),
     .empty(empty),
     .size(control[`CONTROL_SIZE]),
-    .stop2(0),
+    .stop2(control[`CONTROL_STOP2]),
     .parity(control[`CONTROL_PARITY]),
-    .data(0),
-    .data_request(0),
-    .out(0)
+    .data(rd_data_local[8:0]),
+    .data_request(ok_to_read),
+    .out(tx_out_reg)
     );
 endmodule
