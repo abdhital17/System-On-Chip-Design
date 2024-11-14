@@ -13,15 +13,18 @@ module transmitter(
 );
 
     reg [4:0] brgen_counter;
-    reg baud_en;
+    reg baud_en, baud_en_prev;
     reg out_data;
     reg rd_request;
     reg [8:0] latched_data;
-    
+    reg brgen_prev;
+    reg [3:0] ones;
+    reg parity_bit;
+
     // assign the output
     assign out = out_data;
     assign data_request = rd_request;
-     
+    
     // FSM for transmitter
     reg [3:0] state;
     parameter IDLE      = 4'd0;
@@ -46,33 +49,34 @@ module transmitter(
             brgen_counter <= 0;
             baud_en <= 0;
         end
-        else if (brgen)
+        else if (brgen && !brgen_prev)
         begin
-            brgen_counter <= (brgen_counter + 1) % 17;      // increment brgen_counter modulo 17, so that the max. value it takes is 16
+            brgen_counter <= (brgen_counter + 1);           // increment brgen_counter modulo 17, so that the max. value it takes is 16
             if (brgen_counter == 16)                        // if brgen_counter reaches 16, enable the fsm
             begin
-                  baud_en <= 1;
+                baud_en <= 1;
+                brgen_counter <= 0;
             end
             else                                            // when brgen_counter is not 16, disable the fsm
             begin
                 baud_en <= 0;
             end
         end
+        brgen_prev <= brgen;
     end
-    
     
     // the transmitter finite state machine which is triggered at the baud rate
     always_ff @ (posedge(clk))
     begin
-        rd_request <= 0;            // clear rd_request on each clock
         if (~reset)
         begin
             state <= IDLE;
             out_data <= 1;
+            rd_request <= 0;
         end
-        if (baud_en && enable)      // if enable is set in the control register and if rising edge of baud rate clock
+        else if (baud_en && !baud_en_prev)      // if enable is set in the control register and if rising edge of baud rate clock
         begin
-            case(state)
+            case (state)
                 IDLE:
                 begin
                     out_data <= 1; 
@@ -97,6 +101,7 @@ module transmitter(
                 D0:
                 begin                      // output D0-3 without any checks
                     out_data <= latched_data[0];
+                    rd_request <= 0;
                     state <= D1;
                 end
                 D1:
@@ -144,7 +149,22 @@ module transmitter(
                     else                                        // in all other cases, next state is D6
                     begin
                         state <= D6;
-                    end                        
+                    end
+                    // if (size == 2'b01)
+                    // begin
+                    //     if (parity == 2'b00)
+                    //     begin
+                    //         state <= STOP1;
+                    //     end
+                    //     else
+                    //     begin
+                    //         state <= P;
+                    //     end
+                    // end
+                    // else if (size == 2'b10 || size == 2'b11)
+                    // begin
+                    //     state <= D6;
+                    // end
                 end
                 D6:
                 begin
@@ -167,7 +187,7 @@ module transmitter(
                     out_data <= latched_data[7];
                     if (parity != 2'b00)                        // if parity is not disabled, next state is P(arity)
                     begin
-                        state <= P;    
+                        state <= P;
                     end
                     else                                        // if parity is disabled, next state is STOP1
                     begin
@@ -177,25 +197,26 @@ module transmitter(
                 P:
                 begin
                     integer n, ones;
-                    ones <= 0;
+                    ones = 0;
                     for (n = 0; n < size; n = n + 1)                // count the number of 1's in the data word
                     begin
-                        if (data[n])
-                            ones <= ones + 1;
-                    end                                       
-                    
+                        ones = ones + latched_data[n];
+                    end
+
+                    parity_bit <= (ones % 2);
+
                     if (parity == 2'b01)    // even parity
                     begin
-                         out_data <= (ones % 2 == 0) ? 1 : 0;       // for even parity, if number of ones is even, parity = 1 else parity = 0
+                        out_data <= (ones % 2 == 0) ? 0 : 1;       // for even parity, if number of ones is even, parity = 0 else parity = 1
                     end
                     else if (parity == 2'b10)   // odd parity
                     begin
-                        out_data <= (ones % 2 == 1) ? 1 : 0;        // for odd parity, if number of ones is odd, parity = 1 else parity = 0
+                        out_data <= (ones % 2 == 1) ? 0 : 1;        // for odd parity, if number of ones is odd, parity = 0 else parity = 1
                     end
                     else                                            // if parity = 2'b11, output data[8] bit as parity bit
                     begin
-                        out_data <= data[8];
-                    end                 
+                        out_data <= latched_data[8];
+                    end
                     state <= STOP1;
                 end           
                 STOP1:
@@ -208,7 +229,7 @@ module transmitter(
                     else if (stop2 == 0 && empty)                   // if stop2 is not enabled, and tx fifo is empty, go to IDLE
                     begin
                         state <= IDLE;
-                    end               
+                    end
                     else                                            // in all other cases where stop2 is enabled, regardless of tx fifo being empty or not, go to STOP2
                     begin
                         state <= STOP2;
@@ -227,8 +248,9 @@ module transmitter(
                     end
                 end
                 default:
-                    state <= IDLE;                                                                                                                                                                                     
+                    state <= IDLE;
             endcase               
         end
+        baud_en_prev <= baud_en;
     end
 endmodule

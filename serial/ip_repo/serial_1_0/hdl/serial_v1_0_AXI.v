@@ -23,6 +23,7 @@
         output wire [8:0] rd_data,
         output wire [4:0] watermark,
         output wire clk_out,
+        output wire tx_out,
         
         // AXI clock and reset        
         input wire S_AXI_ACLK,
@@ -211,6 +212,7 @@
     // write correct bytes in 32-bit word based on byte enables (axi_wstrb)
     // int_clear_request write is only active for one clock
     wire wr = wr_add_data_valid && axi_awready && axi_wready;
+    reg read_en, write_en;
     integer byte_index;
     always_ff @ (posedge axi_clk)
     begin
@@ -309,14 +311,7 @@
                 axi_arready <= 1'b0;
         end 
     end       
-
-    //instantiate a edge detector module that detects the rising edge of a read request
-//    edge_detector read_request_detector(
-//    .clk(axi_clk),
-//    .rw_request_signal(axi_arvalid && axi_arready && ~axi_rvalid),
-//    .pulse(ok_to_read));
     
-    reg read_en, write_en;
     // Update register read data
     // - after this module receives a valid address (axi_arvalid)
     // - after this module asserts ready for address handshake (axi_arready)
@@ -342,7 +337,7 @@
                     axi_rdata <= {23'b0, rd_data_local[8:0]};
                 end
 		        STATUS_REG:
-		            axi_rdata <= {3'b0, full, empty, overflow, 10'b0, watermark[4:0], 11'b0};
+		            axi_rdata <= {11'b0, watermark[4:0], 10'b0, overflow, empty, full, 3'b0};
 		        CONTROL_REG:
 			        axi_rdata <= control[31:0];
 		        BRD_REG:
@@ -388,7 +383,7 @@
    .reset(axi_resetn),
    .wr_data(S_AXI_WDATA[8:0]),
    .wr_request(ok_to_write && write_en),
-   .rd_request(ok_to_read),
+   .rd_request(ok_to_read_edge),
    .clear_overflow_request(status[`STATUS_TXFO]),
    .empty(empty), 
    .full(full),   
@@ -398,10 +393,17 @@
    .rd_index(rd_index_local),
    .watermark(watermark_local));
 
-   
+
+    reg ok_to_read_edge;
+   //instantiate a edge detector module that detects the rising edge of a read request
+    edge_detector read_request_detector(
+    .clk(axi_clk),
+    .rw_request_signal(ok_to_read),
+    .pulse(ok_to_read_edge));
+    
    // brd output signals
     wire brd_out;
-    reg brd_edge_detected;
+//    reg brd_edge_detected;
    // Instantiate the brd module
     brd baudRateDivider(
     .clk(axi_clk),
@@ -415,22 +417,20 @@
     assign clk_out = brd_out & control[`CONTROL_TEST];
     
     // handle brd_out edge detection so that a brd_out signal high over multiple clocks is read as high in only one clock
-    edge_detector brd_detector(
-    .clk(axi_clk),
-    .rw_request_signal(brd_out),
-    .pulse(brd_edge_detected));
+//    edge_detector brd_detector(
+//    .clk(axi_clk),
+//    .rw_request_signal(brd_out),
+//    .pulse(brd_edge_detected));
 
-    
     // transmitter output signals 
-    reg tx_out_reg;
-    wire tx_out;
-    assign tx_out = tx_out_reg;
+    // reg tx_out_reg;
+    //assign tx_out = tx_out_reg;
     
     // Instantiate the transmitter module
     transmitter transmitter_1(
     .clk(axi_clk),
     .reset(axi_resetn),
-    .brgen(brd_edge_detected),
+    .brgen(brd_out),
     .enable(control[`CONTROL_ENABLE]),
     .empty(empty),
     .size(control[`CONTROL_SIZE]),
@@ -438,6 +438,6 @@
     .parity(control[`CONTROL_PARITY]),
     .data(rd_data_local[8:0]),
     .data_request(ok_to_read),
-    .out(tx_out_reg)
+    .out(tx_out)
     );
 endmodule
