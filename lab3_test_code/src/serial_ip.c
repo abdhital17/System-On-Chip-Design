@@ -28,6 +28,10 @@
 // STATUS register fields
 #define STATUS_TXFO         0x00000020
 #define STATUS_TXFF         0x00000008
+#define STATUS_RXFF         0x00000001
+#define STATUS_RXFE         0x00000002
+#define STATUS_PE           0x00000080
+#define STATUS_FE           0x00000040
 
 // Control register fields
 #define CONTROL_ENABLE      0x00000010
@@ -63,12 +67,13 @@ bool serialOpen()
     return bOK;
 }
 
-void readFromFifo()
+void readSerial()
 {
-    // uint32_t data = *(base + OFS_DATA);
-    // printf("fifo data: %d\n", data & 0x1FF);
-    printf("read from fifo operation has been deprecated.\n");
-    printf("fifo is now read by the transmitter.");
+    // read the status register to get RXFE bit
+    // wait while RX fifo is empty
+    while(getStatus() & STATUS_RXFE);
+    uint32_t data = *(base + OFS_DATA);
+    printf("fifo data: %d\n", data & 0x1FF);
 }
 
 void writeToFifo(uint32_t data)
@@ -90,14 +95,10 @@ uint32_t getStatus()
 void setBaudRate(double baudRate)
 {
     // printf("in setBaudrate, baudrate: %f\n", baudRate);
-    uint32_t divisorTimes256 = (FREQUENCY * 8) / baudRate;         // calculate divisor (r) in units of 1/512,                                                                    // where r = fcyc / 32 * baudRate
-    printf("divisorTimes256: %u\n", divisorTimes256);
+    uint32_t divisorTimes256 = (FREQUENCY * 8) / baudRate;         // calculate divisor (r) in units of 1/256,
+                                                                    // where r = fcyc / 32 * baudRate
     uint32_t integerPart = divisorTimes256 >> 8;                    // set integer value to floor(r)
-    printf("integerPart: %d\n", integerPart);
     uint8_t fractionalPart = (divisorTimes256 & 0xFF);
-    fractionalPart = (fractionalPart + 1) >> 1;    // set fractional value to round(fract(r)*255)
-    printf("fractionalPart: %d\n", fractionalPart);
-    printf("integerPart again: %d\n", integerPart);
     uint32_t divisor = (integerPart << 8) | (fractionalPart & 0xFF);       // assemble the 32 bit divisor with 24 bit integer part, and 8 bit fractional part
     *(base + OFS_BRD) = divisor;                                    // Write the divisor value to the BRD register
     printf("divisor: 0x%x\n", divisor);
@@ -134,20 +135,19 @@ void controlDisable()
 void writeSerial(uint16_t data)
 {
     // read the status register to get TXFF bit
-    uint32_t status = getStatus();
     // wait while TX fifo is full
-    while(status & STATUS_TXFF);
+    while(getStatus() & STATUS_TXFF);
     *(base + OFS_DATA) = data & 0x1FF;
 }
 
 void setDataLength(uint8_t dl)
 {
-    if (dl <= 3 && dl >= 0)
+    if (dl <= 3)
     {
         // clear the size field in Control register and set to dl
         *(base + OFS_CONTROL) &= ~CONTROL_SIZE;
-        *(base + OFS_CONTROL) |= dl & 0x3;
-        printf("Data length set to: %d\n", dl);
+        *(base + OFS_CONTROL) |= dl;
+        printf("Data length set to: %d\n", (dl+5));
     }
     else
         printf("Enter a value between 0-3\n0 = 5-bit words, 1 = 6-bit words, 2 = 7-bit words, 3 = 8-bit words");
@@ -156,20 +156,30 @@ void setDataLength(uint8_t dl)
 void setParityMode(enum parityMode mode)
 {
     uint8_t parity;
+    printf("input parity: %d\n", mode);
     // assign the value of parity to write to CONTROL register parity field
     // 0x00 -> parity off
     // 0x01 -> even parity
     // 0x10 -> odd parity
     // 0x11 -> support an extra bit to make 9-bit data
-
-    if (mode == off)
-        parity = 0x0;
-    else if (mode == even)
-        parity = 0x4;
-    else if (mode == odd)
-        parity = 0x8;
-    else
-        parity = 0xC;
+    switch (mode)
+    {
+        case off:
+            parity = 0x0;
+            break;
+        case even:
+            parity = 0x4;
+            break;
+        case odd:
+            parity = 0x8;
+            break;
+        case nine:
+            parity = 0xC;
+            break;
+        default:
+            parity = 0x0;
+            break;
+    }
     
     // clear the parity field in the CONTROL register
     *(base + OFS_CONTROL) &= ~(CONTROL_PARITY);
@@ -194,4 +204,14 @@ uint32_t readControlReg()
 {
     uint32_t control = *(base + OFS_CONTROL);
     return control;
+}
+
+void clearFrameError()
+{
+    *(base + OFS_STATUS) |= STATUS_FE;
+}
+
+void clearParityError()
+{
+    *(base + OFS_STATUS) |= STATUS_PE;
 }

@@ -21,8 +21,8 @@
 
 //-----------------------------------------------------------------------------
 
-#ifndef GPIO_H_
-#define GPIO_H_
+#ifndef SERIAL_IP_H_
+#define SERIAL_IP_H_
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -36,23 +36,26 @@ enum parityMode
     off,
     even,
     odd,
-    data
+    nine
 };
 
 bool serialOpen(void);
 
-void writeToFifo(uint32_t data);
-void readFromFifo();
 void clearOverFlowBit();
 uint32_t getStatus();
 void setBaudRate(double baudRate);
 void enableTestOutput();
 void disableTestOutput();
+void controlEnable();
+void controlDisable();
 uint32_t readBrdReg();
 void writeSerial(uint16_t x);
+void readSerial();
 void setDataLength(uint8_t dl);
 void setParityMode(enum parityMode);
 void setStopBits(uint8_t bits);
 uint32_t readControlReg();
+void clearFrameError();
+void clearParityError();
 
 #endif
