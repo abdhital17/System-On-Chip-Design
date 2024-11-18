@@ -24,6 +24,7 @@
         output wire [4:0] watermark,
         output wire clk_out,
         output wire tx_out,
+        input wire rx_in,
         
         // AXI clock and reset        
         input wire S_AXI_ACLK,
@@ -64,6 +65,8 @@
     // STATUS register field macros
     `define STATUS_TXFO    5
     `define STATUS_RXFO    2
+    `define STATUS_FE      6
+    `define STATUS_PE      7
     
     // CONTROL register field macros
     `define CONTROL_ENABLE      4
@@ -73,25 +76,30 @@
     `define CONTROL_STOP2       15
     
     // Internal fifo registers that drive the top level output signals
-    reg [8:0] rd_data_local;
-    reg overflow_local;
-    reg [4:0] rd_index_local;
-    reg [4:0] wr_index_local;
-    reg [4:0] watermark_local;
-    
+    reg [8:0] rd_data_tx, rd_data_rx;
+    reg overflow_tx, overflow_rx;
+    reg [4:0] rd_index_tx, rd_index_rx;
+    reg [4:0] wr_index_tx, wr_index_rx;
+    reg [4:0] watermark_tx, watermark_rx;
+    wire tx_empty, rx_empty;
+    wire tx_full, rx_full;
+
+    reg [8:0] test_reg;
 // Assign the top level output signals based on the local fifo outputs
-    assign overflow = overflow_local;
-    assign wr_index[4:0] = wr_index_local[4:0];
-    assign rd_index[4:0] = rd_index_local[4:0];
-    assign rd_data[8:0]  = rd_data_local[8:0];
-    assign watermark[4:0] = watermark_local[4:0];
-   
+    assign overflow = overflow_rx;
+    assign wr_index[4:0] = wr_index_rx[4:0];
+    assign rd_index[4:0] = rd_index_rx[4:0];
+    assign rd_data[8:0]  = rd_data_rx[8:0];
+    // assign rd_data[8:0]  = rd_data_rx[8:0];
+    assign watermark[4:0] = watermark_rx[4:0];
+    assign full = rx_full;
+    assign empty = rx_empty;
+
     // Internal registers
     reg [31:0] wr_data;
     reg [31:0] status;
     reg [31:0] control;
     reg [31:0] brd;
-    wire ok_to_read;
     
     // Register map
     // ofs  fn
@@ -197,12 +205,6 @@
         else
             axi_wready <= (wr_add_data_valid && ~axi_wready && aw_en);
     end       
-    
-     //instantiate a edge detector module that detects the rising edge of a write request
-     edge_detector write_request_detector(
-     .clk(axi_clk),
-     .rw_request_signal(wr_add_data_valid && axi_awready && axi_wready),
-     .pulse(ok_to_write));
 
     // Write data to internal registers
     // - after address is valid (axi_awvalid)
@@ -257,7 +259,13 @@
             else
             begin
                 status[`STATUS_TXFO] <= 1'b0;     // clear the clear overflow request bit if set in the previous clock
-                                        // Helps set the request high for duration of a single-clock                                    
+                                                 // Helps set the request high for duration of a single-clock
+
+                status[`STATUS_FE] <= 1'b0;     // clear the Frame error bit if set in the previous clock
+                                                // Helps set the request high for duration of one single clock
+
+                status[`STATUS_PE] <= 1'b0;     // clear the Parity error bit if set in the previous clock
+                                                // Helps set the request high for duration of one single clock
             end
         end
     end    
@@ -312,6 +320,7 @@
         end 
     end       
     
+    reg fe_out, pe_out;
     // Update register read data
     // - after this module receives a valid address (axi_arvalid)
     // - after this module asserts ready for address handshake (axi_arready)
@@ -334,10 +343,10 @@
                 DATA_REG:
                 begin
                     read_en <= 1;        
-                    axi_rdata <= {23'b0, rd_data_local[8:0]};
+                    axi_rdata <= {23'b0, rd_data_rx[8:0]};
                 end
 		        STATUS_REG:
-		            axi_rdata <= {11'b0, watermark[4:0], 10'b0, overflow, empty, full, 3'b0};
+		            axi_rdata <= {11'b0, watermark_tx[4:0], 3'b0, watermark_rx[4:0], pe_out, fe_out, overflow_tx, tx_empty, tx_full, overflow_rx, rx_empty, rx_full};
 		        CONTROL_REG:
 			        axi_rdata <= control[31:0];
 		        BRD_REG:
@@ -376,34 +385,8 @@
 //      .rw_request_signal(status[29]),
 //      .pulse(clear_overflow_request));
 
-
-  // Instantiate the fifo
-   fifo16x9 fifo1(
-   .clk(axi_clk),
-   .reset(axi_resetn),
-   .wr_data(S_AXI_WDATA[8:0]),
-   .wr_request(ok_to_write && write_en),
-   .rd_request(ok_to_read_edge),
-   .clear_overflow_request(status[`STATUS_TXFO]),
-   .empty(empty), 
-   .full(full),   
-   .overflow(overflow_local),
-   .rd_data(rd_data_local),
-   .wr_index(wr_index_local),
-   .rd_index(rd_index_local),
-   .watermark(watermark_local));
-
-
-    reg ok_to_read_edge;
-   //instantiate a edge detector module that detects the rising edge of a read request
-    edge_detector read_request_detector(
-    .clk(axi_clk),
-    .rw_request_signal(ok_to_read),
-    .pulse(ok_to_read_edge));
-    
    // brd output signals
     wire brd_out;
-//    reg brd_edge_detected;
    // Instantiate the brd module
     brd baudRateDivider(
     .clk(axi_clk),
@@ -412,32 +395,137 @@
     .fbrd(brd[7:0]),
     .out(brd_out)
     );
-    
     // send the brd_out to top-level module (pin on PMOD_A) when TEST bit is set in the CONTROL register
     assign clk_out = brd_out & control[`CONTROL_TEST];
-    
-    // handle brd_out edge detection so that a brd_out signal high over multiple clocks is read as high in only one clock
-//    edge_detector brd_detector(
-//    .clk(axi_clk),
-//    .rw_request_signal(brd_out),
-//    .pulse(brd_edge_detected));
 
-    // transmitter output signals 
-    // reg tx_out_reg;
-    //assign tx_out = tx_out_reg;
-    
+    wire ok_to_read_tx;
+
     // Instantiate the transmitter module
     transmitter transmitter_1(
     .clk(axi_clk),
     .reset(axi_resetn),
     .brgen(brd_out),
     .enable(control[`CONTROL_ENABLE]),
-    .empty(empty),
+    .empty(tx_empty),
     .size(control[`CONTROL_SIZE]),
     .stop2(control[`CONTROL_STOP2]),
     .parity(control[`CONTROL_PARITY]),
-    .data(rd_data_local[8:0]),
-    .data_request(ok_to_read),
+    .data(rd_data_tx[8:0]),
+    .data_request(ok_to_read_tx),
     .out(tx_out)
     );
+
+    reg ok_to_read_tx_edge;
+   //instantiate a edge detector module that detects the rising edge of a tx read request
+    edge_detector read_request_detector_tx(
+    .clk(axi_clk),
+    .rw_request_signal(ok_to_read_tx),
+    .pulse(ok_to_read_tx_edge));
+
+    reg ok_to_write_tx;
+   //instantiate a edge detector module that detects the rising edge of a write request
+    edge_detector write_request_detector_tx(
+    .clk(axi_clk),
+    .rw_request_signal(wr_add_data_valid && axi_awready && axi_wready),
+    .pulse(ok_to_write_tx));
+
+  // Instantiate the fifo
+   fifo16x9 fifo_tx(
+   .clk(axi_clk),
+   .reset(axi_resetn),
+   .wr_data(wr_data[8:0]),
+   .wr_request(ok_to_write_tx && write_en),
+   .rd_request(ok_to_read_tx_edge),
+   .clear_overflow_request(status[`STATUS_TXFO]),
+   .empty(tx_empty),
+   .full(tx_full),
+   .overflow(overflow_tx),
+   .rd_data(rd_data_tx),
+   .wr_index(wr_index_tx),
+   .rd_index(rd_index_tx),
+   .watermark(watermark_tx));
+
+    // Instantiate the receiver module
+    reg frame_error, parity_error;
+    reg [8:0] rx_data;
+    wire ok_to_write_rx;
+    receiver receiver_1(
+    .clk(axi_clk),
+    .reset(axi_resetn),
+    .brgen(brd_out),
+    .enable(control[`CONTROL_ENABLE]),
+    .size(control[`CONTROL_SIZE]),
+    .stop2(control[`CONTROL_STOP2]),
+    .parity(control[`CONTROL_PARITY]),
+    .in(rx_in),
+    .fe(frame_error),
+    .pe(parity_error),
+    .data(rx_data[8:0]),
+    .data_request(ok_to_write_rx),
+    .test(test_reg[8:0])
+    );
+
+    reg ok_to_read_rx;
+    //instantiate a edge detector module that detects the rising edge of a rx read request
+    edge_detector read_request_detector_rx(
+    .clk(axi_clk),
+    .rw_request_signal(axi_arvalid && axi_arready && ~axi_rvalid),
+    .pulse(ok_to_read_rx));
+    reg ok_to_write_rx_edge;
+    //instantiate a edge detector module that detects the rising edge of a write request
+    edge_detector write_request_detector_rx(
+    .clk(axi_clk),
+    .rw_request_signal(ok_to_write_rx),
+    .pulse(ok_to_write_rx_edge));
+
+    fifo16x9 fifo_rx(
+    .clk(axi_clk),
+    .reset(axi_resetn),
+//    .wr_data(rx_data[8:0]),
+    .wr_data(wr_data[8:0]),
+//    .wr_request(ok_to_write_tx && write_en),
+    .wr_request(ok_to_write_rx_edge),
+    .rd_request(ok_to_read_rx && read_en),
+    .clear_overflow_request(status[`STATUS_RXFO]),
+    .empty(rx_empty),
+    .full(rx_full),
+    .overflow(overflow_rx),
+    .rd_data(rd_data_rx),
+    .wr_index(wr_index_rx),
+    .rd_index(rd_index_rx),
+    .watermark(watermark_rx));
+
+
+    // set the FE and PE bits in the status register at the rising edge of the respective signals received from the receiver module
+    // done this way so that when status register is written to clear these bits, they don't remain high due to the old output from receiver module
+    reg frame_error_prev, parity_error_prev;
+    always_ff @(posedge(axi_clk))
+    begin
+        // if rising edge of frame_error detected, set frame_error output to 1
+        if (frame_error && !frame_error_prev)
+        begin
+            fe_out <= 1;
+        end
+        // if FE bit is set in the status register, set the frame_error output to 0
+        else if (status[`STATUS_FE])
+        begin
+            fe_out <= 0;
+        end
+
+        // if rising edge of parity_error detected, set parity_error output to 1
+        if (parity_error && !parity_error_prev)
+        begin
+            pe_out <= 1;
+        end
+        // if PE bit is set in the status register, set the parity_error output to 0
+        else if (status[`STATUS_PE])
+        begin
+            pe_out <= 0;
+        end
+
+        // capture the current status of frame and parity errors for checking in the next clock
+        frame_error_prev <= frame_error;
+        parity_error_prev <= parity_error;
+    end
+
 endmodule
