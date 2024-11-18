@@ -1,6 +1,5 @@
-// Top level file for GPIO example for Xilinx XUP Blackboard rev D 
-// (gpio_system_top.sv)
-// Jason Losh
+// Top level file for serial and gpio ip for Xilinx XUP Blackboard rev D 
+// (system_top.sv)
 //
 // 32-bit GPIO port:
 //   GPIO port for IP module tied to GPIO [23:0]
@@ -84,9 +83,9 @@ module system_top (
 
     // pin control
     genvar j;
-    for (j = 1; j < 22; j = j + 1)
+    for (j = 2; j < 22; j = j + 1)
         assign GPIO[j] = gpio_data_oe[j] ? gpio_data_out[j] : 1'bz;
-    assign gpio_data_in = {8'b0, GPIO[23:0]};
+    assign gpio_data_in[31:3] = {8'b0, GPIO[23:3]};
     
     // Tie intr output to RGB0 green LED
     wire intr;
@@ -101,10 +100,15 @@ module system_top (
     wire [8:0] rd_data;
     wire [4:0] watermark;
     wire clk_out;
-    
+    wire tx;
+    wire rx;
+ 
     // Tie clk_out signal from brd module to GPIO[0] on PMOD A
+    // Tie tx signal from the transmitter module in serial ip to GPIO[1] on PMODA
     assign GPIO[0] = clk_out;
-    assign LED[1] = clk_out;
+    assign GPIO[1] = tx;
+    assign rx = GPIO[2];
+//    assign LED[1] = clk_out;
     
     // handle input metastability safely
     reg [1:0] mode, pre_mode;
@@ -116,17 +120,18 @@ module system_top (
     end
     
     // handle LED output modes
-//    always_ff @ (posedge(CLK100))
-//    begin
-//        case(mode[1:0])
-//            2'b00:              // set the LEDs to display rd_index and wr_index
-//                led_out[9:0] <= {rd_index[4:0], wr_index[4:0]};
-//            2'b01:              // set the LEDs to display full, empty, overflow and watermark
-//                led_out[9:0] <= {full,empty,overflow,1'b0,1'b0,watermark[4:0]};
-//            2'b10:
-//                led_out[9:0] <= {1'b0, rd_data[8:0]};
-//        endcase         
-//    end
+    always_ff @ (posedge(CLK100))
+    begin
+        case(mode[1:0])
+            2'b00:              // set the LEDs to display rd_index and wr_index
+                led_out[9:0] <= {rd_index[4:0], wr_index[4:0]};
+            2'b01:              // set the LEDs to display full, empty, overflow and watermark
+                led_out[9:0] <= {full,empty,overflow,1'b0,1'b0,watermark[4:0]};
+            2'b10:
+                led_out[9:0] <= {1'b0, rd_data[8:0]};
+        endcase         
+    end
+
 
     // assign the leds based on mode selected by SW[1:0]
     assign LED[9:0] = led_out[9:0];
@@ -165,6 +170,9 @@ module system_top (
         .wr_index(wr_index),
         .rd_data(rd_data),
         .watermark(watermark),
-        .clk_out(clk_out));
+        .clk_out(clk_out),
+        .tx_out(tx),
+        .rx_in(rx)
+        );
 
 endmodule
