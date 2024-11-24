@@ -84,13 +84,13 @@
     wire tx_empty, rx_empty;
     wire tx_full, rx_full;
 
-    reg [8:0] test_reg;
+    wire [8:0] test_reg;
 // Assign the top level output signals based on the local fifo outputs
     assign overflow = overflow_rx;
     assign wr_index[4:0] = wr_index_rx[4:0];
     assign rd_index[4:0] = rd_index_rx[4:0];
-    assign rd_data[8:0]  = rd_data_rx[8:0];
-    // assign rd_data[8:0]  = rd_data_rx[8:0];
+    assign rd_data[8:0]  = test_reg[8:0];
+//    assign rd_data[8:0]  = rd_data_rx[8:0];
     assign watermark[4:0] = watermark_rx[4:0];
     assign full = rx_full;
     assign empty = rx_empty;
@@ -446,7 +446,7 @@
    .watermark(watermark_tx));
 
     // Instantiate the receiver module
-    reg frame_error, parity_error;
+    wire frame_error, parity_error;
     reg [8:0] rx_data;
     wire ok_to_write_rx;
     receiver receiver_1(
@@ -461,8 +461,7 @@
     .fe(frame_error),
     .pe(parity_error),
     .data(rx_data[8:0]),
-    .data_request(ok_to_write_rx),
-    .test(test_reg[8:0])
+    .data_request(ok_to_write_rx)
     );
 
     reg ok_to_read_rx;
@@ -482,7 +481,7 @@
     .clk(axi_clk),
     .reset(axi_resetn),
 //    .wr_data(rx_data[8:0]),
-    .wr_data(wr_data[8:0]),
+    .wr_data(rx_data[8:0]),
 //    .wr_request(ok_to_write_tx && write_en),
     .wr_request(ok_to_write_rx_edge),
     .rd_request(ok_to_read_rx && read_en),
@@ -495,7 +494,9 @@
     .rd_index(rd_index_rx),
     .watermark(watermark_rx));
 
-
+    
+    assign test_reg[1] = pe_out;
+    assign test_reg[0] = fe_out;
     // set the FE and PE bits in the status register at the rising edge of the respective signals received from the receiver module
     // done this way so that when status register is written to clear these bits, they don't remain high due to the old output from receiver module
     reg frame_error_prev, parity_error_prev;
@@ -511,7 +512,12 @@
         begin
             fe_out <= 0;
         end
+        // capture the current status of frame error for checking in the next clock
+        frame_error_prev <= frame_error;
+    end
 
+    always_ff @(posedge(axi_clk))
+    begin
         // if rising edge of parity_error detected, set parity_error output to 1
         if (parity_error && !parity_error_prev)
         begin
@@ -523,8 +529,7 @@
             pe_out <= 0;
         end
 
-        // capture the current status of frame and parity errors for checking in the next clock
-        frame_error_prev <= frame_error;
+        // capture the current status of parity error for checking in the next clock
         parity_error_prev <= parity_error;
     end
 

@@ -7,24 +7,29 @@ module receiver(
     input stop2,
     input [1:0] parity,
     input in,
-    output reg fe,
-    output reg pe,
+    output fe,
+    output pe,
     output [8:0] data,
-    output data_request,
-    output reg [8:0] test
+    output data_request
 );
 
     reg brgen_prev;
-    reg [4:0] brgen_counter;
+    reg [3:0] brgen_counter;
     reg wr_request;
     reg [8:0] latched_data;
     reg bit_in, bit_a, bit_b, bit_c;
     reg in_prev;
     reg [4:0] ones;
+    reg parity_bit, parity_error, frame_error;
     
     assign data[8:0] = latched_data[8:0];
     assign data_request = wr_request;
-
+    assign fe = frame_error;
+    assign pe = parity_error;
+    
+//    reg test_reg;
+//    assign test[1] = test_reg;
+    
     // FSM for receiver
     reg [3:0] state;
     parameter IDLE      = 4'd0;
@@ -41,170 +46,222 @@ module receiver(
     parameter STOP1     = 4'd11;
     parameter STOP2     = 4'd12;
 
+    always_comb 
+    begin
+        if (brgen && !brgen_prev)
+        begin
+            if (brgen_counter == 7)         // sample bit 7 from the 7/16th iteration of baudrate
+            begin
+                bit_a = in;
+            end
+            else if (brgen_counter == 8)   // sample bit 8 from the 8/16th iteration of the baudrate
+            begin
+                bit_b = in;
+            end
+            else if (brgen_counter == 9)    // sample bit 9 from the 9/16th iteration of the baudrate
+            begin
+                bit_c = in;
+            end
+            else if (brgen_counter == 15)
+            begin
+                bit_in = (bit_a & bit_b) | (bit_b & bit_c) | (bit_c & bit_a);
+            end
+        end
+    end
+    
     always_ff @ (posedge(clk))
     begin
         if (~reset)
         begin
             wr_request <= 0;
             state <= IDLE;
+            parity_error <= 0;
+            frame_error <= 0;
+            in_prev <= 1;
         end
         else if (brgen && !brgen_prev)
         begin
+            in_prev <= in;      //next change
+            if (state != IDLE)
+            begin
+                brgen_counter <= brgen_counter + 1;
+            end
+
             case (state)
                 IDLE:
                 begin
                     // set fe and pe high only once for each byte received
-                    fe <= 0;
-                    pe <= 0;
+                    frame_error <= 0;
+                    parity_error <= 0;
                     // clear wr_request when on idle
                     wr_request <= 0;
+                    ones <= 0;
+                    brgen_counter <= 0;
 
                     // check for falling edge of input signal to trigger the state machine
                     if (in_prev && !in)
                     begin
                         state <= START;
                     end
-                    else            // if no falling edge detected, stay on idle
+                end            
+                START:
+                begin
+                    if (brgen_counter == 15)
                     begin
-                        state <= IDLE;
-                    end
-                    in_prev <= in;
-                end
-            endcase
-            
-            if (state != IDLE)
-            begin
-                brgen_counter <= brgen_counter + 1;
-            end
-            
-            if (brgen_counter == 7)         // sample bit 7 from the 7/16th iteration of baudrate
-            begin
-                bit_a <= in;
-            end
-            else if (brgen_counter == 8)   // sample bit 8 from the 8/16th iteration of the baudrate
-            begin
-                bit_b <= in;
-            end
-            else if (brgen_counter == 9)    // sample bit 9 from the 9/16th iteration of the baudrate
-            begin
-                bit_c <= in;
-            end
-            else if (brgen_counter == 15)
-            begin
-                brgen_counter <= 0;
-                // set bit_in to the majority of sampled bits
-                bit_in <= (bit_a & bit_b) | (bit_b & bit_c) | (bit_c & bit_a);
-                
-                case (state)
-                    START:
-                    begin
-                        // test[0] <= ~test[0];
-                        if (bit_in == 1'b0)
+                        if (bit_in == 0)
                         begin
                             state <= D0;
                         end
                         else
                         begin
-                            state <= IDLE;
+                            state <= IDLE;                 
                         end
                     end
-                    D0:
+                end
+                D0:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         latched_data[0] <= bit_in;
+                        ones <= ones + bit_in;
                         state <= D1;
                     end
-                    D1:
+                end
+                D1:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         latched_data[1] <= bit_in;
+                        ones <= ones + bit_in;
                         state <= D2;
                     end
-                    D2:
+                end
+                D2:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         latched_data[2] <= bit_in;
+                        ones <= ones + bit_in;
                         state <= D3;
                     end
-                    D3:
+                end
+                D3:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         latched_data[3] <= bit_in;
+                        ones <= ones + bit_in;
                         state <= D4;
                     end
-                    D4:
+                end
+                D4:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         latched_data[4] <= bit_in;
+                        ones <= ones + bit_in;
                         if (size == 2'b00)
                         begin
                             state <= (parity == 2'b00) ? STOP1 : P;
+                            latched_data[8:5] <= 4'b0;
                         end
                         else
                         begin
                             state <= D5;
                         end
                     end
-                    D5:
+                end
+                D5:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         latched_data[5] <= bit_in;
+                        ones <= ones + bit_in;
                         if (size == 2'b01)
                         begin
                             state <= (parity == 2'b00) ? STOP1 : P;
+                            latched_data[8:6] <= 3'b0;
                         end
                         else
                         begin
                             state <= D6;
                         end
                     end
-                    D6:
+                end
+                D6:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         latched_data[6] <= bit_in;
+                        ones <= ones + bit_in;
                         if (size == 2'b10)
                         begin
                             state <= (parity == 2'b00) ? STOP1 : P;
+                            latched_data[8:7] <= 2'b0;
                         end
                         else
                         begin
                             state <= D7;
                         end
                     end
-                    D7:
+                end
+                D7:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         latched_data[7] <= bit_in;
+                        ones <= ones + bit_in;
                         state <= (parity == 2'b00) ? STOP1 : P;
                     end
-                    P:
+                end
+                P:
+                begin
+                    if (brgen_counter == 15)
                     begin
-                        test[8:0] <= latched_data[8:0];
-                        ones <= latched_data[0] + latched_data[1] + latched_data[2] + latched_data[3] + latched_data[4] + latched_data[5] + latched_data[6] + latched_data[7];
-                        ones <= ones % 2;
-
+//                        test_reg <= bit_in;
                         if (parity == 2'b01)                // if parity is set to even
                         begin
-                            pe <= ones == bit_in ? 0 : 1;
+                            parity_error <= ((ones % 2) != bit_in);
+                            latched_data[8] <= 1'b0;
                         end
                         else if (parity == 2'b10)           // if parity is set to odd
                         begin
-                            pe <= ones != bit_in ? 0 : 1;
+                            parity_error <= ((ones % 2) == bit_in);
+                            latched_data[8] <= 1'b0;
                         end
-
+                        else
+                        begin
+                            latched_data[8] <= bit_in;
+                        end
                         state <= STOP1;
                     end
-                    STOP1:
+                end
+                STOP1:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         if (bit_in != 1)
                         begin
-                            fe <= 1;
+                            frame_error <= 1;
                         end
                         wr_request <= 1;
                         state <= (stop2 == 2'b00) ? IDLE : STOP2;
                     end
-                    STOP2:
+                end
+                STOP2:
+                begin
+                    if (brgen_counter == 15)
                     begin
                         if (bit_in != 1)
                         begin
-                            fe <= 1;
+                            frame_error <= 1;
                         end
                         state <= IDLE;
                     end
-                endcase
-            end
+                end
+                default:
+                    state <= IDLE;
+            endcase
         end
         brgen_prev <= brgen;
     end

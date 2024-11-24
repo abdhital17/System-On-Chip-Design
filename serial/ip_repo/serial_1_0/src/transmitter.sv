@@ -20,11 +20,12 @@ module transmitter(
     reg brgen_prev;
     reg [3:0] ones;
     reg parity_bit;
-
+    
+    reg test_reg;
     // assign the output
     assign out = out_data;
     assign data_request = rd_request;
-    
+//    assign test[0] = parity_bit;
     // FSM for transmitter
     reg [3:0] state;
     parameter IDLE      = 4'd0;
@@ -52,7 +53,7 @@ module transmitter(
         else if (brgen && !brgen_prev)
         begin
             brgen_counter <= (brgen_counter + 1);           // increment brgen_counter modulo 17, so that the max. value it takes is 16
-            if (brgen_counter == 16)                        // if brgen_counter reaches 16, enable the fsm
+            if (brgen_counter == 15)                        // if brgen_counter reaches 16, enable the fsm
             begin
                 baud_en <= 1;
                 brgen_counter <= 0;
@@ -79,6 +80,7 @@ module transmitter(
             case (state)
                 IDLE:
                 begin
+                    ones <= 0;
                     out_data <= 1; 
                     if (!empty)             // If tx fifo not empty, start the state machine
                     begin
@@ -94,7 +96,6 @@ module transmitter(
                     // latch the current data and set rd_request to get data for next transmit
                     latched_data[8:0] <= data[8:0];
                     rd_request <= 1;
-                    
                     out_data <= 0;          // output set to low to signal START bit
                     state <= D0;            
                 end
@@ -102,26 +103,31 @@ module transmitter(
                 begin                      // output D0-3 without any checks
                     out_data <= latched_data[0];
                     rd_request <= 0;
+                    ones <= ones + latched_data[0];
                     state <= D1;
                 end
                 D1:
                 begin
                     out_data <= latched_data[1];
+                    ones <= ones + latched_data[1];
                     state <= D2;
                 end
                 D2:
                 begin
                     out_data <= latched_data[2];
+                    ones <= ones + latched_data[2];
                     state <= D3;
                 end
                 D3:
                 begin
                     out_data <= latched_data[3];
+                    ones <= ones + latched_data[3];
                     state <= D4;
                 end
                 D4:
                 begin
                     out_data <= latched_data[4];
+                    ones <= ones + latched_data[4];
                     if (size == 2'b00 && parity != 2'b00)       // if data size is set as 5, and parity is not disabled, next state is P(arity)
                     begin
                         state <= P;
@@ -138,6 +144,7 @@ module transmitter(
                 D5:
                 begin
                     out_data <= latched_data[5];
+                    ones <= ones + latched_data[5];
                     if (size == 2'b01 && parity != 2'b00)       // if data size is set as 6, and parity is not disabled, next state is P(arity)
                     begin
                         state <= P;
@@ -169,6 +176,7 @@ module transmitter(
                 D6:
                 begin
                     out_data <= latched_data[6];
+                    ones <= ones + latched_data[6];
                     if (size == 2'b10 && parity != 2'b00)       // if data size is set as 7, and parity is not disabled, next state is P(arity)
                     begin
                         state <= P;
@@ -185,6 +193,7 @@ module transmitter(
                 D7:
                 begin
                     out_data <= latched_data[7];
+                    ones <= ones + latched_data[7];
                     if (parity != 2'b00)                        // if parity is not disabled, next state is P(arity)
                     begin
                         state <= P;
@@ -196,22 +205,17 @@ module transmitter(
                 end
                 P:
                 begin
-                    integer n, ones;
-                    ones = 0;
-                    for (n = 0; n < size; n = n + 1)                // count the number of 1's in the data word
-                    begin
-                        ones = ones + latched_data[n];
-                    end
-
-                    parity_bit <= (ones % 2);
-
+//                    parity_bit <= (ones % 2);
+                    
                     if (parity == 2'b01)    // even parity
                     begin
                         out_data <= (ones % 2 == 0) ? 0 : 1;       // for even parity, if number of ones is even, parity = 0 else parity = 1
+//                        out_data <= parity_bit;
                     end
                     else if (parity == 2'b10)   // odd parity
                     begin
                         out_data <= (ones % 2 == 1) ? 0 : 1;        // for odd parity, if number of ones is odd, parity = 0 else parity = 1
+//                        out_data <= ~parity_bit;
                     end
                     else                                            // if parity = 2'b11, output data[8] bit as parity bit
                     begin
