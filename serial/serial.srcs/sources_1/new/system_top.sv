@@ -102,12 +102,13 @@ module system_top (
     wire clk_out;
     wire tx;
     wire rx;
- 
+    
+    reg rx_reg, pre_rx_reg;
     // Tie clk_out signal from brd module to GPIO[0] on PMOD A
     // Tie tx signal from the transmitter module in serial ip to GPIO[1] on PMODA
     assign GPIO[0] = clk_out;
     assign GPIO[1] = tx;
-    assign rx = GPIO[2];
+    assign rx = rx_reg;;
 //    assign LED[1] = clk_out;
     
     // handle input metastability safely
@@ -117,6 +118,9 @@ module system_top (
     begin
         pre_mode[1:0] <= SW[1:0];
         mode[1:0] <= pre_mode[1:0];
+        
+        pre_rx_reg <= GPIO[2];
+        rx_reg <= pre_rx_reg;
     end
     
     // handle LED output modes
@@ -128,7 +132,7 @@ module system_top (
             2'b01:              // set the LEDs to display full, empty, overflow and watermark
                 led_out[9:0] <= {full,empty,overflow,1'b0,1'b0,watermark[4:0]};
             2'b10:
-                led_out[9:0] <= {1'b0, rd_data[8:0]};
+                led_out[9:0] <= {rd_data[8:0]};
         endcase         
     end
 
