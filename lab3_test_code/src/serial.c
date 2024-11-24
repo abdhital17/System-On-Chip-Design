@@ -28,7 +28,7 @@
 
 int main(int argc, char* argv[])
 {
-    uint32_t data;;
+    uint16_t data;;
     if (argc == 3)
     {
         serialOpen();

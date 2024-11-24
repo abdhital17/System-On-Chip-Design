@@ -71,9 +71,22 @@ void readSerial()
 {
     // read the status register to get RXFE bit
     // wait while RX fifo is empty
-    while(getStatus() & STATUS_RXFE);
-    uint32_t data = *(base + OFS_DATA);
-    printf("fifo data: %d\n", data & 0x1FF);
+    while(1)
+ 	{
+        while((getStatus() & STATUS_RXFE));
+        uint32_t data = *(base + OFS_DATA);
+        char c = (char) data & 0xFF;
+        //printf("%c:%d:0x%x\n",c,c,c);
+        if (c == 13)
+            putchar('\n');
+        else if (c == 8)
+            putchar('\b');
+        else
+            putchar(c);
+
+        fflush(stdout);
+ 	}
+
 }
 
 void writeToFifo(uint32_t data)

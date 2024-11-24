@@ -49,7 +49,7 @@ void disableTestOutput();
 void controlEnable();
 void controlDisable();
 uint32_t readBrdReg();
-void writeSerial(uint16_t x);
+void writeSerial(uint16_t data);
 void readSerial();
 void setDataLength(uint8_t dl);
 void setParityMode(enum parityMode);
