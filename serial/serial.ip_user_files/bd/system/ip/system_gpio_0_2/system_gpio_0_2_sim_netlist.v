@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-// Date        : Tue Oct 29 23:47:38 2024
+// Date        : Tue Oct 29 23:47:37 2024
 // Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/moonknight/SoC/serial/gpio.gen/sources_1/bd/system/ip/system_gpio_0_2/system_gpio_0_2_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top system_gpio_0_2 -prefix
+//               system_gpio_0_2_ system_gpio_0_2_sim_netlist.v
 // Design      : system_gpio_0_2
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,114 +13,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "system_gpio_0_2,gpio,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "gpio,Vivado 2024.1" *) 
-(* NotValidForBitStream *)
-module system_gpio_0_2
-   (gpio_data_in,
-    gpio_data_out,
-    gpio_data_oe,
-    intr,
-    axi_aclk,
-    axi_aresetn,
-    axi_awaddr,
-    axi_awprot,
-    axi_awvalid,
-    axi_awready,
-    axi_wdata,
-    axi_wstrb,
-    axi_wvalid,
-    axi_wready,
-    axi_bresp,
-    axi_bvalid,
-    axi_bready,
-    axi_araddr,
-    axi_arprot,
-    axi_arvalid,
-    axi_arready,
-    axi_rdata,
-    axi_rresp,
-    axi_rvalid,
-    axi_rready);
-  input [31:0]gpio_data_in;
-  output [31:0]gpio_data_out;
-  output [31:0]gpio_data_oe;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 intr INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME intr, SENSITIVITY LEVEL_HIGH, PortWidth 1" *) output intr;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 AXI_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_CLK, ASSOCIATED_BUSIF AXI, ASSOCIATED_RESET axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *) input axi_aclk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 AXI_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input axi_aresetn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWADDR" *) input [4:0]axi_awaddr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWPROT" *) input [2:0]axi_awprot;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWVALID" *) input axi_awvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWREADY" *) output axi_awready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WDATA" *) input [31:0]axi_wdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WSTRB" *) input [3:0]axi_wstrb;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WVALID" *) input axi_wvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WREADY" *) output axi_wready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BRESP" *) output [1:0]axi_bresp;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BVALID" *) output axi_bvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BREADY" *) input axi_bready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARADDR" *) input [4:0]axi_araddr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARPROT" *) input [2:0]axi_arprot;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARVALID" *) input axi_arvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARREADY" *) output axi_arready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RDATA" *) output [31:0]axi_rdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RRESP" *) output [1:0]axi_rresp;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RVALID" *) output axi_rvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 8, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 5, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN system_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input axi_rready;
-
-  wire \<const0> ;
-  wire axi_aclk;
-  wire [4:0]axi_araddr;
-  wire axi_aresetn;
-  wire axi_arready;
-  wire axi_arvalid;
-  wire [4:0]axi_awaddr;
-  wire axi_awready;
-  wire axi_awvalid;
-  wire axi_bready;
-  wire axi_bvalid;
-  wire [31:0]axi_rdata;
-  wire axi_rready;
-  wire axi_rvalid;
-  wire [31:0]axi_wdata;
-  wire axi_wready;
-  wire [3:0]axi_wstrb;
-  wire axi_wvalid;
-  wire [31:0]gpio_data_in;
-  wire [31:0]gpio_data_oe;
-  wire [31:0]gpio_data_out;
-  wire intr;
-
-  assign axi_bresp[1] = \<const0> ;
-  assign axi_bresp[0] = \<const0> ;
-  assign axi_rresp[1] = \<const0> ;
-  assign axi_rresp[0] = \<const0> ;
-  GND GND
-       (.G(\<const0> ));
-  system_gpio_0_2_gpio inst
-       (.S_AXI_ARREADY(axi_arready),
-        .S_AXI_AWREADY(axi_awready),
-        .S_AXI_WREADY(axi_wready),
-        .axi_aclk(axi_aclk),
-        .axi_araddr(axi_araddr[4:2]),
-        .axi_aresetn(axi_aresetn),
-        .axi_arvalid(axi_arvalid),
-        .axi_awaddr(axi_awaddr[4:2]),
-        .axi_awvalid(axi_awvalid),
-        .axi_bready(axi_bready),
-        .axi_bvalid(axi_bvalid),
-        .axi_rdata(axi_rdata),
-        .axi_rready(axi_rready),
-        .axi_rvalid(axi_rvalid),
-        .axi_wdata(axi_wdata),
-        .axi_wstrb(axi_wstrb),
-        .axi_wvalid(axi_wvalid),
-        .gpio_data_in(gpio_data_in),
-        .gpio_data_oe(gpio_data_oe),
-        .gpio_data_out(gpio_data_out),
-        .intr(intr));
-endmodule
-
-(* ORIG_REF_NAME = "gpio" *) 
 module system_gpio_0_2_gpio
    (S_AXI_AWREADY,
     S_AXI_WREADY,
@@ -245,7 +137,6 @@ module system_gpio_0_2_gpio
         .intr(intr));
 endmodule
 
-(* ORIG_REF_NAME = "gpio_v1_0_AXI" *) 
 module system_gpio_0_2_gpio_v1_0_AXI
    (axi_awready_reg_0,
     axi_wready_reg_0,
@@ -5506,6 +5397,113 @@ module system_gpio_0_2_gpio_v1_0_AXI
         .D(pre_read_port_data[9]),
         .Q(p_0_in102_in),
         .R(1'b0));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "system_gpio_0_2,gpio,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "gpio,Vivado 2024.1" *) 
+(* NotValidForBitStream *)
+module system_gpio_0_2
+   (gpio_data_in,
+    gpio_data_out,
+    gpio_data_oe,
+    intr,
+    axi_aclk,
+    axi_aresetn,
+    axi_awaddr,
+    axi_awprot,
+    axi_awvalid,
+    axi_awready,
+    axi_wdata,
+    axi_wstrb,
+    axi_wvalid,
+    axi_wready,
+    axi_bresp,
+    axi_bvalid,
+    axi_bready,
+    axi_araddr,
+    axi_arprot,
+    axi_arvalid,
+    axi_arready,
+    axi_rdata,
+    axi_rresp,
+    axi_rvalid,
+    axi_rready);
+  input [31:0]gpio_data_in;
+  output [31:0]gpio_data_out;
+  output [31:0]gpio_data_oe;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 intr INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME intr, SENSITIVITY LEVEL_HIGH, PortWidth 1" *) output intr;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 AXI_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_CLK, ASSOCIATED_BUSIF AXI, ASSOCIATED_RESET axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *) input axi_aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 AXI_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input axi_aresetn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWADDR" *) input [4:0]axi_awaddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWPROT" *) input [2:0]axi_awprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWVALID" *) input axi_awvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWREADY" *) output axi_awready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WDATA" *) input [31:0]axi_wdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WSTRB" *) input [3:0]axi_wstrb;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WVALID" *) input axi_wvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WREADY" *) output axi_wready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BRESP" *) output [1:0]axi_bresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BVALID" *) output axi_bvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BREADY" *) input axi_bready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARADDR" *) input [4:0]axi_araddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARPROT" *) input [2:0]axi_arprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARVALID" *) input axi_arvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARREADY" *) output axi_arready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RDATA" *) output [31:0]axi_rdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RRESP" *) output [1:0]axi_rresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RVALID" *) output axi_rvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 8, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 5, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN system_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input axi_rready;
+
+  wire \<const0> ;
+  wire axi_aclk;
+  wire [4:0]axi_araddr;
+  wire axi_aresetn;
+  wire axi_arready;
+  wire axi_arvalid;
+  wire [4:0]axi_awaddr;
+  wire axi_awready;
+  wire axi_awvalid;
+  wire axi_bready;
+  wire axi_bvalid;
+  wire [31:0]axi_rdata;
+  wire axi_rready;
+  wire axi_rvalid;
+  wire [31:0]axi_wdata;
+  wire axi_wready;
+  wire [3:0]axi_wstrb;
+  wire axi_wvalid;
+  wire [31:0]gpio_data_in;
+  wire [31:0]gpio_data_oe;
+  wire [31:0]gpio_data_out;
+  wire intr;
+
+  assign axi_bresp[1] = \<const0> ;
+  assign axi_bresp[0] = \<const0> ;
+  assign axi_rresp[1] = \<const0> ;
+  assign axi_rresp[0] = \<const0> ;
+  GND GND
+       (.G(\<const0> ));
+  system_gpio_0_2_gpio inst
+       (.S_AXI_ARREADY(axi_arready),
+        .S_AXI_AWREADY(axi_awready),
+        .S_AXI_WREADY(axi_wready),
+        .axi_aclk(axi_aclk),
+        .axi_araddr(axi_araddr[4:2]),
+        .axi_aresetn(axi_aresetn),
+        .axi_arvalid(axi_arvalid),
+        .axi_awaddr(axi_awaddr[4:2]),
+        .axi_awvalid(axi_awvalid),
+        .axi_bready(axi_bready),
+        .axi_bvalid(axi_bvalid),
+        .axi_rdata(axi_rdata),
+        .axi_rready(axi_rready),
+        .axi_rvalid(axi_rvalid),
+        .axi_wdata(axi_wdata),
+        .axi_wstrb(axi_wstrb),
+        .axi_wvalid(axi_wvalid),
+        .gpio_data_in(gpio_data_in),
+        .gpio_data_oe(gpio_data_oe),
+        .gpio_data_out(gpio_data_out),
+        .intr(intr));
 endmodule
 `ifndef GLBL
 `define GLBL

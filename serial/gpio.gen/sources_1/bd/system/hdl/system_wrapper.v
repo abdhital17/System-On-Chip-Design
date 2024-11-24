@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Wed Nov  6 11:16:00 2024
+//Date        : Fri Nov 22 19:04:47 2024
 //Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target system_wrapper.bd
 //Design      : system_wrapper
@@ -42,6 +42,8 @@ module system_wrapper
     overflow,
     rd_data,
     rd_index,
+    rx_in,
+    tx_out,
     watermark,
     wr_index);
   inout [14:0]DDR_addr;
@@ -75,6 +77,8 @@ module system_wrapper
   output overflow;
   output [8:0]rd_data;
   output [4:0]rd_index;
+  input rx_in;
+  output tx_out;
   output [4:0]watermark;
   output [4:0]wr_index;
 
@@ -109,6 +113,8 @@ module system_wrapper
   wire overflow;
   wire [8:0]rd_data;
   wire [4:0]rd_index;
+  wire rx_in;
+  wire tx_out;
   wire [4:0]watermark;
   wire [4:0]wr_index;
 
@@ -144,6 +150,8 @@ module system_wrapper
         .overflow(overflow),
         .rd_data(rd_data),
         .rd_index(rd_index),
+        .rx_in(rx_in),
+        .tx_out(tx_out),
         .watermark(watermark),
         .wr_index(wr_index));
 endmodule

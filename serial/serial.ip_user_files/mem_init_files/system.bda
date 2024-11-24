@@ -208,8 +208,8 @@
             },
             "V4": {
                 "VT": "AC",
-                "BA": "0x43C10000",
-                "HA": "0x43C1FFFF",
+                "BA": "0x43C20000",
+                "HA": "0x43C2FFFF",
                 "BP": "C_AXI_BASEADDR",
                 "HP": "C_AXI_HIGHADDR",
                 "MA": "Data",

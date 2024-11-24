@@ -7,7 +7,7 @@
 <Project Product="Vivado" Version="7" Minor="67" Path="/home/moonknight/SoC/serial/serial.tmp/serial_v1_0_project/serial_v1_0_project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="65b67f9f780e469e85d28c5311ec00f2"/>
+    <Option Name="Id" Val="37c327ce6d014494a578d5dc24cc3965"/>
     <Option Name="Part" Val="xc7z007sclg400-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -95,6 +95,7 @@
       <Filter Type="Srcs"/>
       <File Path="$PPRDIR/../../ip_repo/serial_1_0/src/brd.sv">
         <FileInfo>
+          <Attr Name="Library" Val=""/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -116,8 +117,24 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/../../ip_repo/serial_1_0/src/receiver.sv">
+        <FileInfo>
+          <Attr Name="Library" Val=""/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PPRDIR/../../ip_repo/serial_1_0/hdl/serial_v1_0_AXI.v">
         <FileInfo SFType="SVerilog">
+          <Attr Name="Library" Val=""/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../ip_repo/serial_1_0/src/transmitter.sv">
+        <FileInfo>
           <Attr Name="Library" Val=""/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>

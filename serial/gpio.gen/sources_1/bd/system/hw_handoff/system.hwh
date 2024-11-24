@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Nov  6 11:16:01 2024" VIVADOVERSION="2024.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Nov 22 19:04:48 2024" VIVADOVERSION="2024.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z007s" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -157,6 +157,16 @@
     <PORT DIR="O" LEFT="4" NAME="rd_index" RIGHT="0" SIGIS="undef" SIGNAME="serial_0_rd_index">
       <CONNECTIONS>
         <CONNECTION INSTANCE="serial_0" PORT="rd_index"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="rx_in" SIGIS="undef" SIGNAME="External_Ports_rx_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="serial_0" PORT="rx_in"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="tx_out" SIGIS="undef" SIGNAME="serial_0_tx_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="serial_0" PORT="tx_out"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="4" NAME="watermark" RIGHT="0" SIGIS="undef" SIGNAME="serial_0_watermark">
@@ -366,7 +376,7 @@
           <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_processing_system7_1_0_FCLK_CLK0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
@@ -530,7 +540,7 @@
         <PARAMETER NAME="C_USE_S_AXI_HP2" VALUE="0"/>
         <PARAMETER NAME="C_USE_S_AXI_HP3" VALUE="0"/>
         <PARAMETER NAME="USE_TRACE_DATA_EDGE_DETECTOR" VALUE="0"/>
-        <PARAMETER NAME="Component_Name" VALUE="system_processing_system7_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_processing_system7_1_0"/>
         <PARAMETER NAME="PCW_ACT_APU_PERIPHERAL_FREQMHZ" VALUE="666.666687"/>
         <PARAMETER NAME="PCW_ACT_CAN0_PERIPHERAL_FREQMHZ" VALUE="23.8095"/>
         <PARAMETER NAME="PCW_ACT_CAN1_PERIPHERAL_FREQMHZ" VALUE="23.8095"/>
@@ -744,14 +754,14 @@
         <PARAMETER NAME="PCW_FPGA_FCLK1_ENABLE" VALUE="1"/>
         <PARAMETER NAME="PCW_FPGA_FCLK2_ENABLE" VALUE="0"/>
         <PARAMETER NAME="PCW_FPGA_FCLK3_ENABLE" VALUE="0"/>
-        <PARAMETER NAME="PCW_FTM_CTI_IN0" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_FTM_CTI_IN1" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_FTM_CTI_IN2" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_FTM_CTI_IN3" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_FTM_CTI_OUT0" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_FTM_CTI_OUT1" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_FTM_CTI_OUT2" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_FTM_CTI_OUT3" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_FTM_CTI_IN0" VALUE="DISABLED"/>
+        <PARAMETER NAME="PCW_FTM_CTI_IN1" VALUE="DISABLED"/>
+        <PARAMETER NAME="PCW_FTM_CTI_IN2" VALUE="DISABLED"/>
+        <PARAMETER NAME="PCW_FTM_CTI_IN3" VALUE="DISABLED"/>
+        <PARAMETER NAME="PCW_FTM_CTI_OUT0" VALUE="DISABLED"/>
+        <PARAMETER NAME="PCW_FTM_CTI_OUT1" VALUE="DISABLED"/>
+        <PARAMETER NAME="PCW_FTM_CTI_OUT2" VALUE="DISABLED"/>
+        <PARAMETER NAME="PCW_FTM_CTI_OUT3" VALUE="DISABLED"/>
         <PARAMETER NAME="PCW_GP0_EN_MODIFIABLE_TXN" VALUE="1"/>
         <PARAMETER NAME="PCW_GP0_NUM_READ_THREADS" VALUE="4"/>
         <PARAMETER NAME="PCW_GP0_NUM_WRITE_THREADS" VALUE="4"/>
@@ -1498,13 +1508,13 @@
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="FCLK_CLK0" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="slowest_sync_clk"/>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ACLK"/>
-            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
+            <CONNECTION INSTANCE="gpio_0" PORT="axi_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
+            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="slowest_sync_clk"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ACLK"/>
-            <CONNECTION INSTANCE="gpio_0" PORT="axi_aclk"/>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ACLK"/>
             <CONNECTION INSTANCE="serial_0" PORT="axi_aclk"/>
           </CONNECTIONS>
         </PORT>
@@ -1795,7 +1805,7 @@
           <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_processing_system7_1_0_FCLK_CLK0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
@@ -2708,7 +2718,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="151" FULLNAME="/serial_0" HWVERSION="1.0" INSTANCE="serial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="serial" VLNV="user.org:user:serial:1.0">
+    <MODULE COREREVISION="260" FULLNAME="/serial_0" HWVERSION="1.0" INSTANCE="serial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="serial" VLNV="user.org:user:serial:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="AXI" NAME="AXI_reg" RANGE="4096" USAGE="register"/>
@@ -2716,7 +2726,7 @@
       <PARAMETERS>
         <PARAMETER NAME="C_AXI_ADDR_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_AXI_DATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="Component_Name" VALUE="system_serial_0_1"/>
+        <PARAMETER NAME="Component_Name" VALUE="system_serial_0_2"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_AXI_BASEADDR" VALUE="0x43C20000"/>
         <PARAMETER NAME="C_AXI_HIGHADDR" VALUE="0x43C2FFFF"/>
@@ -2857,6 +2867,16 @@
             <CONNECTION INSTANCE="External_Ports" PORT="rd_index"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="rx_in" SIGIS="undef" SIGNAME="External_Ports_rx_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rx_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="tx_out" SIGIS="undef" SIGNAME="serial_0_tx_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="tx_out"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="4" NAME="watermark" RIGHT="0" SIGIS="undef" SIGNAME="serial_0_watermark">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="watermark"/>
@@ -2874,7 +2894,7 @@
           <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="system_processing_system7_1_0_FCLK_CLK0"/>
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>

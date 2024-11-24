@@ -1656,7 +1656,7 @@
       },
       "serial_0": {
         "vlnv": "user.org:user:serial:1.0",
-        "ip_revision": "216",
+        "ip_revision": "260",
         "xci_name": "system_serial_0_2",
         "xci_path": "ip/system_serial_0_2/system_serial_0_2.xci",
         "inst_hier_path": "serial_0"
