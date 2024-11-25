@@ -20,26 +20,6 @@
 #include "serial_ip.h"       // serial
 #include "serial_regs.h"       // registers
 
-//-----------------------------------------------------------------------------
-// Global variables and macro definitions
-//-----------------------------------------------------------------------------
-#define FREQUENCY           100000000           // in Hz
-
-// STATUS register fields
-#define STATUS_TXFO         0x00000020
-#define STATUS_TXFF         0x00000008
-#define STATUS_RXFF         0x00000001
-#define STATUS_RXFE         0x00000002
-#define STATUS_PE           0x00000080
-#define STATUS_FE           0x00000040
-
-// Control register fields
-#define CONTROL_ENABLE      0x00000010
-#define CONTROL_TEST        0x00000020
-#define CONTROL_SIZE        0x00000003
-#define CONTROL_PARITY      0x0000000C
-#define CONTROL_STOP2       0x00008000
-
 uint32_t *base = NULL;
 
 //-----------------------------------------------------------------------------

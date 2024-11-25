@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "unistd.h": "c",
+        "functional": "c",
+        "address_map.h": "c",
+        "serial_regs.h": "c"
+    }
+}
