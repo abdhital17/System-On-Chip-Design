@@ -24,6 +24,7 @@
         output wire [8:0] rd_data,
         output wire clk_out,
         output wire tx_out,
+		output wire intr,
 		input wire rx_in,
 		// User ports ends
 		// Do not modify the ports beyond this line
@@ -86,7 +87,8 @@
         .watermark(watermark),
         .clk_out(clk_out),
         .tx_out(tx_out),
-        .rx_in(rx_in)
+        .rx_in(rx_in),
+		.intr(intr)
 	);
 
 	// Add user logic here

@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Fri Nov 22 19:04:47 2024
+//Date        : Tue Nov 26 22:01:35 2024
 //Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target system_wrapper.bd
 //Design      : system_wrapper
@@ -39,6 +39,7 @@ module system_wrapper
     gpio_data_oe,
     gpio_data_out,
     intr,
+    intr_serial,
     overflow,
     rd_data,
     rd_index,
@@ -74,6 +75,7 @@ module system_wrapper
   output [31:0]gpio_data_oe;
   output [31:0]gpio_data_out;
   output intr;
+  output intr_serial;
   output overflow;
   output [8:0]rd_data;
   output [4:0]rd_index;
@@ -110,6 +112,7 @@ module system_wrapper
   wire [31:0]gpio_data_oe;
   wire [31:0]gpio_data_out;
   wire intr;
+  wire intr_serial;
   wire overflow;
   wire [8:0]rd_data;
   wire [4:0]rd_index;
@@ -147,6 +150,7 @@ module system_wrapper
         .gpio_data_oe(gpio_data_oe),
         .gpio_data_out(gpio_data_out),
         .intr(intr),
+        .intr_serial(intr_serial),
         .overflow(overflow),
         .rd_data(rd_data),
         .rd_index(rd_index),

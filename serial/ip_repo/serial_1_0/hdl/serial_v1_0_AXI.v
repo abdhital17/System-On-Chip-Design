@@ -25,6 +25,7 @@
         output wire clk_out,
         output wire tx_out,
         input wire rx_in,
+        output wire intr,
         
         // AXI clock and reset        
         input wire S_AXI_ACLK,
@@ -74,13 +75,16 @@
     `define CONTROL_SIZE        1:0
     `define CONTROL_PARITY      3:2
     `define CONTROL_STOP2       15
-    
+    `define CONTROL_RX_INT      6
+    `define CONTROL_TX_INT      7
+
     // Internal fifo registers that drive the top level output signals
     reg [8:0] rd_data_tx, rd_data_rx;
     reg overflow_tx, overflow_rx;
     reg [4:0] rd_index_tx, rd_index_rx;
     reg [4:0] wr_index_tx, wr_index_rx;
     reg [4:0] watermark_tx, watermark_rx;
+    reg intr_reg;
     wire tx_empty, rx_empty;
     wire tx_full, rx_full;
 
@@ -94,6 +98,9 @@
     assign watermark[4:0] = watermark_rx[4:0];
     assign full = rx_full;
     assign empty = rx_empty;
+
+    // assign interrupt output
+    assign intr = intr_reg;
 
     // Internal registers
     reg [31:0] wr_data;
@@ -260,7 +267,7 @@
             begin
                 status[`STATUS_TXFO] <= 1'b0;     // clear the clear overflow request bit if set in the previous clock
                                                  // Helps set the request high for duration of a single-clock
-
+                status[`STATUS_RXFO] <= 1'b0;
                 status[`STATUS_FE] <= 1'b0;     // clear the Frame error bit if set in the previous clock
                                                 // Helps set the request high for duration of one single clock
 
@@ -480,9 +487,7 @@
     fifo16x9 fifo_rx(
     .clk(axi_clk),
     .reset(axi_resetn),
-//    .wr_data(rx_data[8:0]),
     .wr_data(rx_data[8:0]),
-//    .wr_request(ok_to_write_tx && write_en),
     .wr_request(ok_to_write_rx_edge),
     .rd_request(ok_to_read_rx && read_en),
     .clear_overflow_request(status[`STATUS_RXFO]),
@@ -502,8 +507,13 @@
     reg frame_error_prev, parity_error_prev;
     always_ff @(posedge(axi_clk))
     begin
+        if (~axi_resetn)
+        begin
+            fe_out <= 0;
+            frame_error_prev <= 0;
+        end
         // if rising edge of frame_error detected, set frame_error output to 1
-        if (frame_error && !frame_error_prev)
+        else if (frame_error && !frame_error_prev)
         begin
             fe_out <= 1;
         end
@@ -518,8 +528,13 @@
 
     always_ff @(posedge(axi_clk))
     begin
+        if (~axi_resetn)
+        begin
+            pe_out <= 0;
+            parity_error_prev <= 0;
+        end
         // if rising edge of parity_error detected, set parity_error output to 1
-        if (parity_error && !parity_error_prev)
+        else if (parity_error && !parity_error_prev)
         begin
             pe_out <= 1;
         end
@@ -533,4 +548,17 @@
         parity_error_prev <= parity_error;
     end
 
-endmodule
+    // interrupt generation
+    always_ff @ ((posedge axi_clk))
+    begin
+        if (~axi_resetn)
+        begin
+            intr_reg <= 0;
+        end
+        else
+        begin
+            intr_reg <= (control[`CONTROL_RX_INT] & ~rx_empty) | (control[`CONTROL_TX_INT] & tx_empty);
+        end
+    end
+    
+endmodule 

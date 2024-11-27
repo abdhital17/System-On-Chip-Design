@@ -39,11 +39,11 @@ module fifo16x9(
             watermark <= 5'b00000;
             overflow  <= 1'b0;
         end
-        else if (clear_overflow_request)            // if clear_overflow_request is received, set overflow to low
+        if (clear_overflow_request)            // if clear_overflow_request is received, set overflow to low
         begin
             overflow <= 1'b0;
         end
-        else if (wr_request)
+        if (wr_request)
         begin
             if (!full)                  // if write request received and fifo is not full
             begin                       // write to the fifo and update the write index

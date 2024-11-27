@@ -92,16 +92,12 @@ module system_top (
     assign RGB0 = {1'b0, intr, 1'b0};
     
     // Serial output registers
-    wire full;
-    wire empty;
-    wire overflow;
+    wire full, empty, overflow, clk_out, tx, rx, intr_serial;
     wire [4:0] wr_index;
     wire [4:0] rd_index;
     wire [8:0] rd_data;
     wire [4:0] watermark;
-    wire clk_out;
-    wire tx;
-    wire rx;
+
     
     reg rx_reg, pre_rx_reg;
     // Tie clk_out signal from brd module to GPIO[0] on PMOD A
@@ -176,7 +172,8 @@ module system_top (
         .watermark(watermark),
         .clk_out(clk_out),
         .tx_out(tx),
-        .rx_in(rx)
+        .rx_in(rx),
+        .intr_serial(intr_serial)
         );
 
 endmodule

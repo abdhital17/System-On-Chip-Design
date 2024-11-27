@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x51B41D118CEAF45C",
+      "boundary_crc": "0xB44F1723E8366AD5",
       "device": "xc7z007sclg400-1",
       "gen_directory": "../../../../gpio.gen/sources_1/bd/system",
       "name": "system",
@@ -221,7 +221,7 @@
           },
           "SENSITIVITY": {
             "value": "LEVEL_HIGH",
-            "value_src": "const_prop"
+            "value_src": "default"
           }
         }
       },
@@ -262,6 +262,27 @@
       },
       "rx_in": {
         "direction": "I"
+      },
+      "intr_serial": {
+        "direction": "O",
+        "parameters": {
+          "PortType": {
+            "value": "intr",
+            "value_src": "ip_prop"
+          },
+          "PortType.PROP_SRC": {
+            "value": "false",
+            "value_src": "ip_prop"
+          },
+          "PortWidth": {
+            "value": "1",
+            "value_src": "default_prop"
+          },
+          "SENSITIVITY": {
+            "value": "LEVEL_HIGH",
+            "value_src": "const_prop"
+          }
+        }
       }
     },
     "components": {
@@ -1656,7 +1677,7 @@
       },
       "serial_0": {
         "vlnv": "user.org:user:serial:1.0",
-        "ip_revision": "260",
+        "ip_revision": "262",
         "xci_name": "system_serial_0_2",
         "xci_path": "ip/system_serial_0_2/system_serial_0_2.xci",
         "inst_hier_path": "serial_0"
@@ -1705,13 +1726,6 @@
         "ports": [
           "gpio_0/gpio_data_out",
           "gpio_data_out"
-        ]
-      },
-      "gpio_0_intr": {
-        "ports": [
-          "gpio_0/intr",
-          "intr",
-          "xlconcat_1/In2"
         ]
       },
       "gpio_data_in_0_1": {
@@ -1772,6 +1786,13 @@
         "ports": [
           "serial_0/full",
           "full"
+        ]
+      },
+      "serial_0_intr": {
+        "ports": [
+          "serial_0/intr",
+          "intr_serial",
+          "xlconcat_1/In2"
         ]
       },
       "serial_0_overflow": {
