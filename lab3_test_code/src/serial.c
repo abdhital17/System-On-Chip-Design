@@ -121,13 +121,30 @@ int main(int argc, char* argv[])
         else if (strcmp(argv[1], "clear") == 0)
         {
             if (strcmp(argv[2], "fe") == 0)
+            {
+                printf("argv[2]: %s, length: %d\n", argv[2], strlen(argv[2]));
                 clearFrameError();
+            }
             else if (strcmp(argv[2], "pe") == 0)
+            {
+                printf("argv[2]: %s, length: %d\n", argv[2], strlen(argv[2]));
                 clearParityError();
+            }
             else
             {
                 printf("\"clear %s\" not supported.\n", argv[2]);
                 return -1;
+            }
+        }
+        else if (strcmp(argv[1], "interrupt") == 0)
+        {
+            if (strcmp(argv[2], "on") == 0)
+                enableRxInterrupt();
+            else if (strcmp(argv[2], "off") == 0)
+                disableRxInterrupt();
+            else
+            {
+                printf("\"interrupt %s\" not supported.\n", argv[2]);
             }
         }
         else
@@ -173,6 +190,8 @@ int main(int argc, char* argv[])
             printf("  serial stop <one/two>\n");
             printf("  serial clear fe\n");
             printf("  serial clear pe\n");
+            printf("  serial interrupt on\n");
+            printf("  serial interrupt off\n");
         }
         else
             printf("  command not understood\n");

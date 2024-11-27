@@ -1,4 +1,4 @@
-// Serial Driver (serial_driver.c)
+// Serial Driver with ISR Default Handler (serial_driver.c)
 
 //-----------------------------------------------------------------------------
 // Hardware Target
@@ -15,13 +15,23 @@
 //   GPIO[1] on PMODA used as TX pin
 //   GPIO[2] on PMODA used as RX pin
 
+//  IRQ interface:
+//     IRQ_F2P[1] is used as the interrupt interface to the PS
 // Load kernel module with insmod serial_driver.ko [param=___]
 
 //-----------------------------------------------------------------------------
 
 #include <linux/kernel.h>     // kstrtouint
 #include <linux/module.h>     // MODULE_ macros
+#include <linux/interrupt.h>
 #include <linux/init.h>       // __init
+#include <linux/irq.h>
+#include <linux/platform_device.h>
+#include <linux/of.h>
+#include <linux/of_device.h>
+#include <linux/of_irq.h>
+#include <linux/slab.h>
+#include <linux/types.h>
 #include <linux/kobject.h>    // kobject, kobject_atribute,
                               // kobject_create_and_add, kobject_put
 #include <asm/io.h>           // iowrite, ioread, ioremap_nocache (platform specific)
@@ -41,6 +51,11 @@ MODULE_DESCRIPTION("SERIAL IP Driver");
 //-----------------------------------------------------------------------------
 
 static unsigned int *base = NULL;
+static unsigned int rx_buffer[1024];
+static unsigned int rd_index = 0;
+static unsigned int wr_index = 0;
+// static bool full = ((wr_index + 1) % 1024 == rd_index);
+// static bool empty = (wr_index == rd_index);
 
 #define FREQUENCY           100000000           // in Hz
 
@@ -295,15 +310,15 @@ MODULE_PARM_DESC(rx_data, " Received data");
 
 static ssize_t rxDataShow(struct kobject *kobj, struct kobj_attribute *attr, char *buffer)
 {
-    if (getStatus() & STATUS_RXFE)
+    if (wr_index != rd_index)
     {
-        printk(KERN_ERR "Serial UART driver: rx fifo empty\n");
-        return sprintf(buffer, "-1\n");
+        int result = sprintf(buffer, "%c\n", (rx_buffer[rd_index] & 0xFF));
+        rd_index = (rd_index + 1) % 1024;
+        return result;
     }
     else
     {
-        rx_data = readSerial();
-        return sprintf(buffer, "%u\n", rx_data);
+        return sprintf(buffer, "-1\n");
     }
 }
 
@@ -321,6 +336,76 @@ static struct attribute_group group0 =
 };
 
 
+//-----------------------------------------------------------------------------
+// ISR
+//-----------------------------------------------------------------------------
+
+static irqreturn_t isr(int irq, void *dev_id)
+{
+    uint16_t value;
+    printk(KERN_INFO "serial isr: IRQ_F2P[1] occurred\n");
+
+    value = readSerial();
+    if (((wr_index + 1) % 1024 != rd_index))
+    {
+        if (value != -1)
+        {
+            rx_buffer[wr_index] = value & 0x1FF;
+            wr_index = (wr_index + 1) % 1024;
+            printk(KERN_INFO "serial isr: buffer updated with new data\n");
+        }
+    }
+
+    return IRQ_HANDLED;
+}
+
+//-----------------------------------------------------------------------------
+// Pro
+//-----------------------------------------------------------------------------
+
+static int probe(struct platform_device* dev)
+{
+    int result = 0;
+    unsigned int irq;
+    printk(KERN_INFO "serial isr: probe\n");
+
+    irq = irq_of_parse_and_map(dev->dev.of_node, 0);
+    printk(KERN_INFO "serial isr: found irq = %d in device tree\n", irq);
+
+    result = request_irq(irq, isr, IRQF_SHARED, "serial ip", &dev->dev);
+    if (result != 0)
+        printk(KERN_INFO "serial isr: request_irq returned %d\n", result);
+    else
+        printk(KERN_INFO "serial isr: request_irq was successful\n");
+
+    return result;
+}
+
+static int remove(struct platform_device* dev)
+{
+    printk(KERN_INFO "serial isr: remove\n");
+
+    free_irq(of_irq_get(dev->dev.of_node, 0), &dev->dev);
+
+    return 0;
+}
+
+static struct of_device_id driver_of_match[] = {
+    { .compatible = "xlnx,soc-axi4lite-reserved-jl", },
+//    { .compatible = "xlnx,v-tc-6.2\0xlnx,v-tc-6.1", },
+    {}
+};
+MODULE_DEVICE_TABLE(of, driver_of_match);
+
+static struct platform_driver driver = {
+    .probe = probe,
+    .remove = remove,
+    .driver = {
+        .name = "serial isr",
+        .owner = THIS_MODULE,
+        .of_match_table = driver_of_match,
+    },
+};
 
 static struct kobject *kobj;
 
@@ -347,12 +432,21 @@ static int __init initialize_module(void)
     if (result !=0)
         return result;
 
-    // Physical to virtual memory map to access gpio registers
+    // Register platform driver
+    if (platform_driver_register(&driver))
+    {
+        printk(KERN_WARNING "serial isr: failed to register platform driver\n");
+        return -1;
+    }
+    printk(KERN_INFO "serial isr: registered platform driver\n");
+
+    // Physical to virtual memory map to access serial registers
     base = (unsigned int*)ioremap(AXI4_LITE_BASE + SERIAL_BASE_OFFSET,
                                           SPAN_IN_BYTES);
     if (base == NULL)
         return -ENODEV;
 
+    printk(KERN_INFO "Serial UART driver: iomap returned 0x%p\n", base);
     printk(KERN_INFO "Serial UART driver: initialized\n");
 
     return 0;
@@ -362,6 +456,8 @@ static void __exit exit_module(void)
 {
     kobject_put(kobj);
     printk(KERN_INFO "Serial UART driver: exit\n");
+    platform_driver_unregister(&driver);
+    printk(KERN_INFO "serial isr: exit\n");
 }
 
 module_init(initialize_module);

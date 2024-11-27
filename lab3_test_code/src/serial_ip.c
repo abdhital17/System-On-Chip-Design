@@ -56,15 +56,15 @@ void readSerial()
         while((getStatus() & STATUS_RXFE));
         uint32_t data = *(base + OFS_DATA);
         char c = (char) data & 0xFF;
-        //printf("%c:%d:0x%x\n",c,c,c);
-        if (c == 13)
-            putchar('\n');
-        else if (c == 8)
-            putchar('\b');
-        else
-            putchar(c);
+        printf("%c:%d:0x%x\n",c,c,c);
+        // if (c == 13)
+        //     putchar('\n');
+        // else if (c == 8)
+        //     putchar('\b');
+        // else
+        //     putchar(c);
 
-        fflush(stdout);
+        // fflush(stdout);
  	}
 
 }
@@ -76,7 +76,7 @@ void writeToFifo(uint32_t data)
 
 void clearOverFlowBit()
 {
-    *(base + OFS_STATUS) &= ~STATUS_TXFO;
+    *(base + OFS_STATUS) = (STATUS_TXFO | STATUS_RXFO);
 }
 
 uint32_t getStatus()
@@ -201,10 +201,32 @@ uint32_t readControlReg()
 
 void clearFrameError()
 {
-    *(base + OFS_STATUS) |= STATUS_FE;
+    printf("frame error clear called\n");
+    *(base + OFS_STATUS) = STATUS_FE;
 }
 
 void clearParityError()
 {
-    *(base + OFS_STATUS) |= STATUS_PE;
+    printf("parity error clear called\n");
+    *(base + OFS_STATUS) = STATUS_PE;
+}
+
+void enableRxInterrupt()
+{
+    *(base + OFS_CONTROL) |= CONTROL_RX_INTR;
+}
+
+void disableRxInterrupt()
+{
+    *(base + OFS_CONTROL) &= ~CONTROL_RX_INTR;
+}
+
+void enableTxInterrupt()
+{
+    *(base + OFS_CONTROL) |= CONTROL_TX_INTR;
+}
+
+void disableTxInterrupt()
+{
+    *(base + OFS_CONTROL) &= ~CONTROL_TX_INTR;
 }

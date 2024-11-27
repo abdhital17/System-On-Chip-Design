@@ -34,9 +34,11 @@
 
 // STATUS register fields
 #define STATUS_TXFO         0x00000020
+#define STATUS_TXFE         0x00000010
 #define STATUS_TXFF         0x00000008
 #define STATUS_RXFF         0x00000001
 #define STATUS_RXFE         0x00000002
+#define STATUS_RXFO         0x00000004
 #define STATUS_PE           0x00000080
 #define STATUS_FE           0x00000040
 
@@ -46,6 +48,8 @@
 #define CONTROL_SIZE        0x00000003
 #define CONTROL_PARITY      0x0000000C
 #define CONTROL_STOP2       0x00008000
+#define CONTROL_RX_INTR     0x00000040
+#define CONTROL_TX_INTR     0x00000080
 
 enum parityMode
 {
@@ -78,5 +82,9 @@ void setStopBits(uint8_t bits);
 uint32_t readControlReg();
 void clearFrameError();
 void clearParityError();
+void enableRxInterrupt();
+void enableTxInterrupt();
+void disableRxInterrupt();
+void disableTxInterrupt();
 
 #endif
