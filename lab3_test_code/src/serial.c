@@ -122,12 +122,10 @@ int main(int argc, char* argv[])
         {
             if (strcmp(argv[2], "fe") == 0)
             {
-                printf("argv[2]: %s, length: %d\n", argv[2], strlen(argv[2]));
                 clearFrameError();
             }
             else if (strcmp(argv[2], "pe") == 0)
             {
-                printf("argv[2]: %s, length: %d\n", argv[2], strlen(argv[2]));
                 clearParityError();
             }
             else

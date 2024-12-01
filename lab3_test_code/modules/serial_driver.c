@@ -310,10 +310,28 @@ MODULE_PARM_DESC(rx_data, " Received data");
 
 static ssize_t rxDataShow(struct kobject *kobj, struct kobj_attribute *attr, char *buffer)
 {
-    if (wr_index != rd_index)
+    if (wr_index != rd_index)       // if the local buffer is not empty
     {
-        int result = sprintf(buffer, "%c\n", (rx_buffer[rd_index] & 0xFF));
-        rd_index = (rd_index + 1) % 1024;
+        uint16_t size = wr_index - rd_index;
+        char* out_str;
+        int i, result;
+
+        out_str = kmalloc((size + 1) * sizeof(char), GFP_KERNEL);
+        for (i = 0; i < size; i++)
+        {
+            if (rx_buffer[rd_index] == 13)
+		        out_str[i] = '\n';
+       	    else if (rx_buffer[rd_index] == 8)
+	            out_str[i] = '\b';
+	        else
+            	out_str[i] = (rx_buffer[rd_index] & 0xFF);
+
+            rd_index = (rd_index + 1) % 1024;
+        }
+        out_str[size] = 0; // null-terminate the output string
+
+	    result = sprintf(buffer, "%s\n", out_str);
+        kfree(out_str);
         return result;
     }
     else

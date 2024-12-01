@@ -201,13 +201,13 @@ uint32_t readControlReg()
 
 void clearFrameError()
 {
-    printf("frame error clear called\n");
+    printf("clearing frame error\n");
     *(base + OFS_STATUS) = STATUS_FE;
 }
 
 void clearParityError()
 {
-    printf("parity error clear called\n");
+    printf("clearing parity error\n");
     *(base + OFS_STATUS) = STATUS_PE;
 }
 
