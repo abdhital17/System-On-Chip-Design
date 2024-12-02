@@ -32,6 +32,10 @@
 #include <linux/of_irq.h>
 #include <linux/slab.h>
 #include <linux/types.h>
+#include <linux/tty.h>
+#include <linux/tty_flip.h>
+#include <linux/uaccess.h>
+#include <linux/tty_driver.h>   // tty_driver struct
 #include <linux/kobject.h>    // kobject, kobject_atribute,
                               // kobject_create_and_add, kobject_put
 #include <asm/io.h>           // iowrite, ioread, ioremap_nocache (platform specific)
@@ -82,9 +86,72 @@ enum parityMode
     nine
 };
 
+static struct tty_struct *tty_struct_local;
+static struct tty_port tty_port_local;
 //-----------------------------------------------------------------------------
 // Subroutines
 //-----------------------------------------------------------------------------
+int tty_open(struct tty_struct *tty, struct file *file)
+{
+    tty_struct_local = tty;
+    printk(KERN_INFO"original struct: %p original port: %p\ncopied struct: %p copied port: %p\n", tty, tty->port, tty_struct_local, tty_struct_local->port);
+    printk(KERN_INFO "soc serial tty: tty opened\n");
+    return 0;
+}
+void tty_close(struct tty_struct *tty, struct file *file)
+{
+    printk(KERN_INFO "soc serial tty: tty closed\n");
+}
+int tty_write(struct tty_struct *tty, const unsigned char *buffer, int count)
+{
+    return 0;
+}
+void tty_read(struct tty_port *tty, uint8_t data)
+{
+    // if (tty->flip.count >= TTY_FLIPBUF_SIZE)
+    //     tty_flip_buffer_push(tty);
+
+    tty_insert_flip_char(tty, data, TTY_NORMAL);
+    tty_flip_buffer_push(tty);
+}
+
+static struct tty_operations operations_local = {
+    .open = tty_open,
+    .close = tty_close,
+    .write = tty_write,
+};
+
+static struct tty_driver *tty_driver_local;
+
+int tty_init(void)
+{
+    int retVal;
+
+    tty_driver_local = tty_alloc_driver(1, TTY_DRIVER_REAL_RAW);
+    printk(KERN_INFO "tty_driver_local: %p\n", tty_driver_local);
+    if (!tty_driver_local)
+    {
+        printk(KERN_ERR "Failed to allocate tty driver in memory.\n");
+        return -1;
+    }
+
+    tty_driver_local->major = 0;
+    tty_driver_local->owner = THIS_MODULE;
+    tty_driver_local->driver_name = "serial_tty";
+    tty_driver_local->name = "ttySOC";
+    tty_driver_local->minor_start = 0;
+    tty_driver_local->type = TTY_DRIVER_TYPE_SERIAL;
+    tty_driver_local->subtype = SERIAL_TYPE_NORMAL;
+    tty_driver_local->ops = &operations_local;
+    tty_driver_local->init_termios = tty_std_termios;
+    tty_driver_local->init_termios.c_cflag = B115200 | CS8 | CREAD | CSTOPB | PARENB | CLOCAL | HUPCL;
+    tty_port_init(&tty_port_local);
+    tty_driver_local->ports[0] = &tty_port_local;
+
+    retVal = tty_register_driver(tty_driver_local);
+    printk(KERN_INFO "tty_init retval: %d\n", retVal);
+    return retVal;
+}
 
 unsigned int getStatus(void)
 {
@@ -364,13 +431,14 @@ static irqreturn_t isr(int irq, void *dev_id)
     printk(KERN_INFO "serial isr: IRQ_F2P[1] occurred\n");
 
     value = readSerial();
+    tty_read(&tty_port_local, value & 0xFF);
     if (((wr_index + 1) % 1024 != rd_index))
     {
         if (value != -1)
         {
             rx_buffer[wr_index] = value & 0x1FF;
             wr_index = (wr_index + 1) % 1024;
-            printk(KERN_INFO "serial isr: buffer updated with new data\n");
+            // printk(KERN_INFO "serial isr: buffer updated with new data\n");
         }
     }
 
@@ -437,6 +505,14 @@ static int __init initialize_module(void)
 
     printk(KERN_INFO "Serial UART driver: starting\n");
 
+    // Register tty driver
+    if (tty_init())
+    {
+        printk(KERN_WARNING "serial driver: failed to register tty driver.\n");
+        return -1;
+    }
+    printk(KERN_INFO "Serial SoC tty: registered tty driver\n");
+
     // Create serial directory under /sys/kernel
     kobj = kobject_create_and_add("serial", NULL); //kernel_kobj);
     if (!kobj)
@@ -476,6 +552,8 @@ static void __exit exit_module(void)
     printk(KERN_INFO "Serial UART driver: exit\n");
     platform_driver_unregister(&driver);
     printk(KERN_INFO "serial isr: exit\n");
+    tty_unregister_driver(tty_driver_local);
+    printk(KERN_INFO "Serial SoC tty: exit\n");
 }
 
 module_init(initialize_module);
