@@ -88,45 +88,46 @@ enum parityMode
 
 static struct tty_struct *tty_struct_local;
 static struct tty_port tty_port_local;
+
+int tty_write_test(struct tty_struct *tty, const unsigned char *buffer, int count);
+unsigned int tty_write_room(struct tty_struct *tty);
 //-----------------------------------------------------------------------------
 // Subroutines
 //-----------------------------------------------------------------------------
-int tty_open(struct tty_struct *tty, struct file *file)
+int tty_open_test(struct tty_struct *tty, struct file *file)
 {
+    // store the pointer to tty_struct
     tty_struct_local = tty;
-    printk(KERN_INFO"original struct: %p original port: %p\ncopied struct: %p copied port: %p\n", tty, tty->port, tty_struct_local, tty_struct_local->port);
     printk(KERN_INFO "soc serial tty: tty opened\n");
     return 0;
 }
-void tty_close(struct tty_struct *tty, struct file *file)
+void tty_close_test(struct tty_struct *tty, struct file *file)
 {
     printk(KERN_INFO "soc serial tty: tty closed\n");
-}
-int tty_write(struct tty_struct *tty, const unsigned char *buffer, int count)
-{
-    return 0;
 }
 void tty_read(struct tty_port *tty, uint8_t data)
 {
     // if (tty->flip.count >= TTY_FLIPBUF_SIZE)
     //     tty_flip_buffer_push(tty);
+    if (data != 13)
+        tty_insert_flip_char(tty, data, TTY_NORMAL);
+    else
+        tty_insert_flip_char(tty, '\n', TTY_NORMAL);
 
-    tty_insert_flip_char(tty, data, TTY_NORMAL);
     tty_flip_buffer_push(tty);
 }
 
 static struct tty_operations operations_local = {
-    .open = tty_open,
-    .close = tty_close,
-    .write = tty_write,
+    .open = tty_open_test,
+    .close = tty_close_test,
+    .write = tty_write_test,
+    .write_room = tty_write_room,
 };
 
 static struct tty_driver *tty_driver_local;
 
 int tty_init(void)
 {
-    int retVal;
-
     tty_driver_local = tty_alloc_driver(1, TTY_DRIVER_REAL_RAW);
     printk(KERN_INFO "tty_driver_local: %p\n", tty_driver_local);
     if (!tty_driver_local)
@@ -148,9 +149,8 @@ int tty_init(void)
     tty_port_init(&tty_port_local);
     tty_driver_local->ports[0] = &tty_port_local;
 
-    retVal = tty_register_driver(tty_driver_local);
-    printk(KERN_INFO "tty_init retval: %d\n", retVal);
-    return retVal;
+    return tty_register_driver(tty_driver_local);
+    // printk(KERN_INFO "tty_init retval: %d\n", retVal);
 }
 
 unsigned int getStatus(void)
@@ -185,6 +185,22 @@ void writeSerial(uint16_t data)
 {
     while(getStatus() & STATUS_TXFF);
     iowrite32(data & 0x1FF, base + OFS_DATA);
+}
+
+unsigned int tty_write_room(struct tty_struct *tty)
+{
+    return 1;
+}
+
+int tty_write_test(struct tty_struct *tty, const unsigned char *buffer, int count)
+{
+    int i;
+    for (i = 0; i < count; i++)
+    {
+        writeSerial(buffer[i]);
+        tty_read(tty->port, buffer[i]);
+    }
+    return count;
 }
 
 unsigned int readSerial(void)
@@ -428,7 +444,7 @@ static struct attribute_group group0 =
 static irqreturn_t isr(int irq, void *dev_id)
 {
     uint16_t value;
-    printk(KERN_INFO "serial isr: IRQ_F2P[1] occurred\n");
+    // printk(KERN_INFO "serial isr: IRQ_F2P[1] occurred\n");
 
     value = readSerial();
     tty_read(&tty_port_local, value & 0xFF);
@@ -552,6 +568,7 @@ static void __exit exit_module(void)
     printk(KERN_INFO "Serial UART driver: exit\n");
     platform_driver_unregister(&driver);
     printk(KERN_INFO "serial isr: exit\n");
+    tty_port_destroy(&tty_port_local);
     tty_unregister_driver(tty_driver_local);
     printk(KERN_INFO "Serial SoC tty: exit\n");
 }
