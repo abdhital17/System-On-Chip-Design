@@ -2,7 +2,7 @@
 //Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-//Date        : Fri Nov 22 19:04:46 2024
+//Date        : Tue Nov 26 22:01:34 2024
 //Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
 //Command     : generate_target system.bd
 //Design      : system
@@ -637,6 +637,7 @@ module system
     gpio_data_oe,
     gpio_data_out,
     intr,
+    intr_serial,
     overflow,
     rd_data,
     rd_index,
@@ -672,6 +673,7 @@ module system
   output [31:0]gpio_data_oe;
   output [31:0]gpio_data_out;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.INTR INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.INTR, PortWidth 1, SENSITIVITY LEVEL_HIGH" *) output intr;
+  output intr_serial;
   output overflow;
   output [8:0]rd_data;
   output [4:0]rd_index;
@@ -682,7 +684,6 @@ module system
 
   wire [31:0]gpio_0_gpio_data_oe;
   wire [31:0]gpio_0_gpio_data_out;
-  wire gpio_0_intr;
   wire [31:0]gpio_data_in_0_1;
   wire [0:0]proc_sys_reset_0_peripheral_aresetn;
   wire processing_system7_0_FCLK_CLK0;
@@ -788,6 +789,7 @@ module system
   wire serial_0_clk_out;
   wire serial_0_empty;
   wire serial_0_full;
+  wire serial_0_intr;
   wire serial_0_overflow;
   wire [8:0]serial_0_rd_data;
   wire [4:0]serial_0_rd_index;
@@ -802,7 +804,7 @@ module system
   assign gpio_data_in_0_1 = gpio_data_in[31:0];
   assign gpio_data_oe[31:0] = gpio_0_gpio_data_oe;
   assign gpio_data_out[31:0] = gpio_0_gpio_data_out;
-  assign intr = gpio_0_intr;
+  assign intr_serial = serial_0_intr;
   assign overflow = serial_0_overflow;
   assign rd_data[8:0] = serial_0_rd_data;
   assign rd_index[4:0] = serial_0_rd_index;
@@ -834,8 +836,7 @@ module system
         .axi_wvalid(ps7_0_axi_periph_M00_AXI_WVALID),
         .gpio_data_in(gpio_data_in_0_1),
         .gpio_data_oe(gpio_0_gpio_data_oe),
-        .gpio_data_out(gpio_0_gpio_data_out),
-        .intr(gpio_0_intr));
+        .gpio_data_out(gpio_0_gpio_data_out));
   system_proc_sys_reset_0_0 proc_sys_reset_0
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),
@@ -1018,6 +1019,7 @@ module system
         .clk_out(serial_0_clk_out),
         .empty(serial_0_empty),
         .full(serial_0_full),
+        .intr(serial_0_intr),
         .overflow(serial_0_overflow),
         .rd_data(serial_0_rd_data),
         .rd_index(serial_0_rd_index),
@@ -1028,7 +1030,7 @@ module system
   system_xlconcat_1_0 xlconcat_1
        (.In0(1'b0),
         .In1(1'b0),
-        .In2(gpio_0_intr),
+        .In2(serial_0_intr),
         .dout(xlconcat_1_dout));
 endmodule
 

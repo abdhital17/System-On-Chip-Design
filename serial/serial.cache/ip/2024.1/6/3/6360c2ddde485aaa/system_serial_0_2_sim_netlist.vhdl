@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
--- Date        : Tue Nov 26 19:49:34 2024
+-- Date        : Tue Nov 26 19:26:59 2024
 -- Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/moonknight/SoC/serial/gpio.gen/sources_1/bd/system/ip/system_serial_0_2/system_serial_0_2_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+--               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ system_serial_0_2_sim_netlist.vhdl
 -- Design      : system_serial_0_2
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_brd is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_brd is
   port (
     brd_out : out STD_LOGIC;
     baud_pulse_reg_0 : out STD_LOGIC;
@@ -28,11 +28,9 @@ entity system_serial_0_2_brd is
     \latched_data[5]_i_3\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \int_counter0_carry__1_0\ : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_brd : entity is "brd";
-end system_serial_0_2_brd;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_brd;
 
-architecture STRUCTURE of system_serial_0_2_brd is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_brd is
   signal baud_pulse_i_1_n_0 : STD_LOGIC;
   signal \^brd_out\ : STD_LOGIC;
   signal \int_counter0_carry__0_i_1_n_0\ : STD_LOGIC;
@@ -813,7 +811,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_edge_detector is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector is
   port (
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
     ok_to_read_rx : out STD_LOGIC;
@@ -822,11 +820,9 @@ entity system_serial_0_2_edge_detector is
     axi_arvalid : in STD_LOGIC;
     pulse_reg_1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_edge_detector : entity is "edge_detector";
-end system_serial_0_2_edge_detector;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector;
 
-architecture STRUCTURE of system_serial_0_2_edge_detector is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector is
   signal \^e\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal previous_state : STD_LOGIC;
   signal \pulse_i_1__0_n_0\ : STD_LOGIC;
@@ -877,7 +873,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_edge_detector_1 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_1 is
   port (
     previous_state : out STD_LOGIC;
     ok_to_read_tx_edge : out STD_LOGIC;
@@ -886,10 +882,10 @@ entity system_serial_0_2_edge_detector_1 is
     pulse_reg_0 : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_edge_detector_1 : entity is "edge_detector";
-end system_serial_0_2_edge_detector_1;
+  attribute ORIG_REF_NAME of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_1 : entity is "edge_detector";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_1;
 
-architecture STRUCTURE of system_serial_0_2_edge_detector_1 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_1 is
 begin
 previous_state_reg: unisim.vcomponents.FDRE
      port map (
@@ -912,7 +908,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_edge_detector_2 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_2 is
   port (
     previous_state : out STD_LOGIC;
     ok_to_write_rx_edge : out STD_LOGIC;
@@ -928,10 +924,10 @@ entity system_serial_0_2_edge_detector_2 is
     ok_to_read_rx : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_edge_detector_2 : entity is "edge_detector";
-end system_serial_0_2_edge_detector_2;
+  attribute ORIG_REF_NAME of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_2 : entity is "edge_detector";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_2;
 
-architecture STRUCTURE of system_serial_0_2_edge_detector_2 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_2 is
   signal \^ok_to_write_rx_edge\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \rd_index[4]_i_4__0\ : label is "soft_lutpair26";
@@ -988,7 +984,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_edge_detector_3 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_3 is
   port (
     wr : out STD_LOGIC;
     ok_to_write_tx : out STD_LOGIC;
@@ -1007,10 +1003,10 @@ entity system_serial_0_2_edge_detector_3 is
     ok_to_read_tx_edge : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_edge_detector_3 : entity is "edge_detector";
-end system_serial_0_2_edge_detector_3;
+  attribute ORIG_REF_NAME of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_3 : entity is "edge_detector";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_3;
 
-architecture STRUCTURE of system_serial_0_2_edge_detector_3 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_3 is
   signal \^ok_to_write_tx\ : STD_LOGIC;
   signal previous_state : STD_LOGIC;
   signal pulse_i_1_n_0 : STD_LOGIC;
@@ -1107,7 +1103,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_fifo16x9 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9 is
   port (
     axi_aclk_0 : out STD_LOGIC_VECTOR ( 2 downto 0 );
     \rd_index_reg[3]_0\ : out STD_LOGIC;
@@ -1140,11 +1136,9 @@ entity system_serial_0_2_fifo16x9 is
     overflow_reg_0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     \wr_index_reg[4]_1\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_fifo16x9 : entity is "fifo16x9";
-end system_serial_0_2_fifo16x9;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9;
 
-architecture STRUCTURE of system_serial_0_2_fifo16x9 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9 is
   signal empty_INST_0_i_1_n_0 : STD_LOGIC;
   signal \^overflow\ : STD_LOGIC;
   signal overflow_i_1_n_0 : STD_LOGIC;
@@ -1835,7 +1829,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_fifo16x9_0 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9_0 is
   port (
     D : out STD_LOGIC_VECTOR ( 8 downto 0 );
     \brd_reg[20]\ : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -1843,7 +1837,7 @@ entity system_serial_0_2_fifo16x9_0 is
     tx_empty : out STD_LOGIC;
     \rd_index_reg[2]_0\ : out STD_LOGIC;
     \control_reg[15]\ : out STD_LOGIC;
-    \control_reg[7]\ : out STD_LOGIC;
+    intr : out STD_LOGIC;
     \wr_index_reg[3]_0\ : out STD_LOGIC;
     axi_aclk : in STD_LOGIC;
     \p_1_in__0\ : in STD_LOGIC;
@@ -1860,15 +1854,15 @@ entity system_serial_0_2_fifo16x9_0 is
     \FSM_sequential_state_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     ok_to_read_tx_edge : in STD_LOGIC;
     \rd_index_reg[4]_0\ : in STD_LOGIC;
-    intr_reg_reg : in STD_LOGIC;
+    intr_0 : in STD_LOGIC;
     overflow_reg_0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     \wr_index_reg[4]_0\ : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_fifo16x9_0 : entity is "fifo16x9";
-end system_serial_0_2_fifo16x9_0;
+  attribute ORIG_REF_NAME of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9_0 : entity is "fifo16x9";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9_0;
 
-architecture STRUCTURE of system_serial_0_2_fifo16x9_0 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9_0 is
   signal \FSM_sequential_state[0]_i_7_n_0\ : STD_LOGIC;
   signal \overflow__0\ : STD_LOGIC;
   signal \overflow_i_1__0_n_0\ : STD_LOGIC;
@@ -1935,7 +1929,7 @@ architecture STRUCTURE of system_serial_0_2_fifo16x9_0 is
   attribute ram_offset of fifo_reg_0_15_6_8 : label is 0;
   attribute ram_slice_begin of fifo_reg_0_15_6_8 : label is 6;
   attribute ram_slice_end of fifo_reg_0_15_6_8 : label is 8;
-  attribute SOFT_HLUTNM of intr_reg_i_2 : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of intr_INST_0_i_1 : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \watermark[0]_i_1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \watermark[1]_i_1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \watermark[4]_i_1\ : label is "soft_lutpair6";
@@ -2155,18 +2149,18 @@ fifo_reg_0_15_6_8: unisim.vcomponents.RAM32M
       WCLK => axi_aclk,
       WE => \p_1_in__0\
     );
-intr_reg_i_1: unisim.vcomponents.LUT4
+intr_INST_0: unisim.vcomponents.LUT4
     generic map(
       INIT => X"8F88"
     )
         port map (
       I0 => \^tx_empty\,
       I1 => \axi_rdata_reg[20]_0\(4),
-      I2 => intr_reg_reg,
+      I2 => intr_0,
       I3 => \axi_rdata_reg[20]_0\(3),
-      O => \control_reg[7]\
+      O => intr
     );
-intr_reg_i_2: unisim.vcomponents.LUT5
+intr_INST_0_i_1: unisim.vcomponents.LUT5
     generic map(
       INIT => X"90090000"
     )
@@ -2178,7 +2172,7 @@ intr_reg_i_2: unisim.vcomponents.LUT5
       I4 => \^rd_index_reg[2]_0\,
       O => \^tx_empty\
     );
-intr_reg_i_3: unisim.vcomponents.LUT6
+intr_INST_0_i_2: unisim.vcomponents.LUT6
     generic map(
       INIT => X"9009000000009009"
     )
@@ -2566,16 +2560,16 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_receiver is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_receiver is
   port (
     frame_error : out STD_LOGIC;
     parity_error : out STD_LOGIC;
     ok_to_write_rx : out STD_LOGIC;
     Q : out STD_LOGIC_VECTOR ( 0 to 0 );
     state : out STD_LOGIC;
+    \status_reg[6]\ : out STD_LOGIC;
+    \status_reg[7]\ : out STD_LOGIC;
     wr_request_reg_0 : out STD_LOGIC;
-    frame_error_prev_reg : out STD_LOGIC;
-    parity_error_prev_reg : out STD_LOGIC;
     data : out STD_LOGIC_VECTOR ( 8 downto 0 );
     rx_in : in STD_LOGIC;
     SR : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2587,18 +2581,16 @@ entity system_serial_0_2_receiver is
     axi_aresetn : in STD_LOGIC;
     \latched_data_reg[8]_0\ : in STD_LOGIC;
     \latched_data_reg[5]_0\ : in STD_LOGIC;
-    previous_state : in STD_LOGIC;
-    frame_error_prev : in STD_LOGIC;
     pe_out_reg : in STD_LOGIC_VECTOR ( 1 downto 0 );
     pe_out_reg_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    frame_error_prev : in STD_LOGIC;
     parity_error_prev : in STD_LOGIC;
+    previous_state : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_receiver : entity is "receiver";
-end system_serial_0_2_receiver;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_receiver;
 
-architecture STRUCTURE of system_serial_0_2_receiver is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_receiver is
   signal \FSM_sequential_state[0]_i_2__0_n_0\ : STD_LOGIC;
   signal \FSM_sequential_state[0]_i_3__0_n_0\ : STD_LOGIC;
   signal \FSM_sequential_state[1]_i_2_n_0\ : STD_LOGIC;
@@ -3112,11 +3104,11 @@ fe_out_i_1: unisim.vcomponents.LUT4
       INIT => X"4F44"
     )
         port map (
-      I0 => frame_error_prev,
-      I1 => \^frame_error\,
-      I2 => pe_out_reg(0),
-      I3 => pe_out_reg_0(0),
-      O => frame_error_prev_reg
+      I0 => pe_out_reg(0),
+      I1 => pe_out_reg_0(0),
+      I2 => frame_error_prev,
+      I3 => \^frame_error\,
+      O => \status_reg[6]\
     );
 frame_error_i_1: unisim.vcomponents.LUT6
     generic map(
@@ -3709,16 +3701,16 @@ parity_error_reg: unisim.vcomponents.FDRE
       Q => \^parity_error\,
       R => SR(0)
     );
-pe_out_i_2: unisim.vcomponents.LUT4
+pe_out_i_1: unisim.vcomponents.LUT4
     generic map(
       INIT => X"4F44"
     )
         port map (
-      I0 => parity_error_prev,
-      I1 => \^parity_error\,
-      I2 => pe_out_reg(1),
-      I3 => pe_out_reg_0(1),
-      O => parity_error_prev_reg
+      I0 => pe_out_reg(1),
+      I1 => pe_out_reg_0(1),
+      I2 => parity_error_prev,
+      I3 => \^parity_error\,
+      O => \status_reg[7]\
     );
 \pulse_i_1__2\: unisim.vcomponents.LUT2
     generic map(
@@ -3766,7 +3758,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_transmitter is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_transmitter is
   port (
     brgen_prev : out STD_LOGIC;
     SR : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -3789,11 +3781,9 @@ entity system_serial_0_2_transmitter is
     previous_state : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 8 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_transmitter : entity is "transmitter";
-end system_serial_0_2_transmitter;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_transmitter;
 
-architecture STRUCTURE of system_serial_0_2_transmitter is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_transmitter is
   signal \FSM_sequential_state[0]_i_2_n_0\ : STD_LOGIC;
   signal \FSM_sequential_state[0]_i_4_n_0\ : STD_LOGIC;
   signal \FSM_sequential_state[0]_i_6_n_0\ : STD_LOGIC;
@@ -3830,11 +3820,11 @@ architecture STRUCTURE of system_serial_0_2_transmitter is
   signal \ones[0]_i_5_n_0\ : STD_LOGIC;
   signal out_data10 : STD_LOGIC;
   signal out_data1_out : STD_LOGIC;
-  signal out_data_i_1_n_0 : STD_LOGIC;
   signal out_data_i_2_n_0 : STD_LOGIC;
   signal out_data_i_3_n_0 : STD_LOGIC;
-  signal out_data_i_5_n_0 : STD_LOGIC;
+  signal out_data_i_4_n_0 : STD_LOGIC;
   signal out_data_i_6_n_0 : STD_LOGIC;
+  signal out_data_i_7_n_0 : STD_LOGIC;
   signal p_0_in : STD_LOGIC;
   signal rd_request_i_1_n_0 : STD_LOGIC;
   signal state0 : STD_LOGIC;
@@ -4293,7 +4283,7 @@ brgen_prev_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \ones[0]_i_4_n_0\,
       I1 => \latched_data_reg_n_0_[7]\,
-      I2 => out_data_i_6_n_0,
+      I2 => out_data_i_7_n_0,
       I3 => \ones[0]_i_5_n_0\,
       I4 => state_0(3),
       I5 => out_data10,
@@ -4343,19 +4333,27 @@ brgen_prev_reg: unisim.vcomponents.FDRE
       Q => out_data10,
       R => '0'
     );
-out_data_i_1: unisim.vcomponents.LUT5
+out_data_i_1: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => axi_aresetn,
+      O => \^sr\(0)
+    );
+out_data_i_2: unisim.vcomponents.LUT5
     generic map(
       INIT => X"B8FFB800"
     )
         port map (
-      I0 => out_data_i_2_n_0,
+      I0 => out_data_i_3_n_0,
       I1 => state_0(3),
-      I2 => out_data_i_3_n_0,
+      I2 => out_data_i_4_n_0,
       I3 => out_data1_out,
       I4 => \^tx_out\,
-      O => out_data_i_1_n_0
+      O => out_data_i_2_n_0
     );
-out_data_i_2: unisim.vcomponents.LUT6
+out_data_i_3: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFF0B08"
     )
@@ -4365,10 +4363,10 @@ out_data_i_2: unisim.vcomponents.LUT6
       I2 => \^q\(0),
       I3 => \latched_data_reg_n_0_[6]\,
       I4 => state_0(2),
-      I5 => out_data_i_5_n_0,
-      O => out_data_i_2_n_0
+      I5 => out_data_i_6_n_0,
+      O => out_data_i_3_n_0
     );
-out_data_i_3: unisim.vcomponents.LUT6
+out_data_i_4: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFB9310000B931"
     )
@@ -4378,10 +4376,10 @@ out_data_i_3: unisim.vcomponents.LUT6
       I2 => \latched_data_reg_n_0_[0]\,
       I3 => p_0_in,
       I4 => state_0(2),
-      I5 => out_data_i_6_n_0,
-      O => out_data_i_3_n_0
+      I5 => out_data_i_7_n_0,
+      O => out_data_i_4_n_0
     );
-out_data_i_4: unisim.vcomponents.LUT6
+out_data_i_5: unisim.vcomponents.LUT6
     generic map(
       INIT => X"0004444444444444"
     )
@@ -4394,7 +4392,7 @@ out_data_i_4: unisim.vcomponents.LUT6
       I5 => state_0(3),
       O => out_data1_out
     );
-out_data_i_5: unisim.vcomponents.LUT6
+out_data_i_6: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFB2FFD400000000"
     )
@@ -4405,9 +4403,9 @@ out_data_i_5: unisim.vcomponents.LUT6
       I3 => state_0(0),
       I4 => out_data10,
       I5 => \^q\(0),
-      O => out_data_i_5_n_0
+      O => out_data_i_6_n_0
     );
-out_data_i_6: unisim.vcomponents.LUT6
+out_data_i_7: unisim.vcomponents.LUT6
     generic map(
       INIT => X"CAFFCAF0CA0FCA00"
     )
@@ -4418,23 +4416,15 @@ out_data_i_6: unisim.vcomponents.LUT6
       I3 => state_0(0),
       I4 => \latched_data_reg_n_0_[2]\,
       I5 => \latched_data_reg_n_0_[4]\,
-      O => out_data_i_6_n_0
+      O => out_data_i_7_n_0
     );
 out_data_reg: unisim.vcomponents.FDSE
      port map (
       C => axi_aclk,
       CE => '1',
-      D => out_data_i_1_n_0,
+      D => out_data_i_2_n_0,
       Q => \^tx_out\,
       S => \^sr\(0)
-    );
-pe_out_i_1: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => axi_aresetn,
-      O => \^sr\(0)
     );
 \pulse_i_1__1\: unisim.vcomponents.LUT2
     generic map(
@@ -4471,7 +4461,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_serial_v1_0_AXI is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial_v1_0_AXI is
   port (
     \rd_index_reg[4]\ : out STD_LOGIC;
     wr_index : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -4479,13 +4469,13 @@ entity system_serial_0_2_serial_v1_0_AXI is
     watermark : out STD_LOGIC_VECTOR ( 4 downto 0 );
     S_AXI_WREADY : out STD_LOGIC;
     S_AXI_AWREADY : out STD_LOGIC;
-    intr : out STD_LOGIC;
     S_AXI_ARREADY : out STD_LOGIC;
     axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     rd_index_reg_rep : out STD_LOGIC_VECTOR ( 3 downto 0 );
     \rd_index_reg[3]\ : out STD_LOGIC;
     overflow : out STD_LOGIC;
     pe_out_reg_0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    intr : out STD_LOGIC;
     axi_rvalid_reg_0 : out STD_LOGIC;
     \rd_index_reg[4]_0\ : out STD_LOGIC;
     clk_out : out STD_LOGIC;
@@ -4504,11 +4494,9 @@ entity system_serial_0_2_serial_v1_0_AXI is
     axi_bready : in STD_LOGIC;
     axi_rready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_serial_v1_0_AXI : entity is "serial_v1_0_AXI";
-end system_serial_0_2_serial_v1_0_AXI;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial_v1_0_AXI;
 
-architecture STRUCTURE of system_serial_0_2_serial_v1_0_AXI is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial_v1_0_AXI is
   signal \^s_axi_arready\ : STD_LOGIC;
   signal \^s_axi_awready\ : STD_LOGIC;
   signal \^s_axi_wready\ : STD_LOGIC;
@@ -4604,7 +4592,6 @@ architecture STRUCTURE of system_serial_0_2_serial_v1_0_AXI is
   signal fifo_tx_n_16 : STD_LOGIC;
   signal fifo_tx_n_19 : STD_LOGIC;
   signal fifo_tx_n_20 : STD_LOGIC;
-  signal fifo_tx_n_21 : STD_LOGIC;
   signal fifo_tx_n_22 : STD_LOGIC;
   signal fifo_tx_n_9 : STD_LOGIC;
   signal frame_error : STD_LOGIC;
@@ -4618,9 +4605,8 @@ architecture STRUCTURE of system_serial_0_2_serial_v1_0_AXI is
   signal ok_to_write_rx_edge : STD_LOGIC;
   signal ok_to_write_tx : STD_LOGIC;
   signal p_0_in11_in : STD_LOGIC;
-  signal p_0_in2_in : STD_LOGIC;
+  signal p_0_in7_in : STD_LOGIC;
   signal p_0_in_0 : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal p_1_in : STD_LOGIC;
   signal \p_1_in__0\ : STD_LOGIC;
   signal \p_1_in__1\ : STD_LOGIC;
   signal parity_error : STD_LOGIC;
@@ -4643,10 +4629,10 @@ architecture STRUCTURE of system_serial_0_2_serial_v1_0_AXI is
   signal state : STD_LOGIC;
   signal state_0 : STD_LOGIC_VECTOR ( 1 to 1 );
   signal \state__0\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal status : STD_LOGIC_VECTOR ( 5 downto 2 );
   signal \status[7]_i_1_n_0\ : STD_LOGIC;
   signal \status[7]_i_2_n_0\ : STD_LOGIC;
-  signal \status_reg_n_0_[2]\ : STD_LOGIC;
-  signal \status_reg_n_0_[5]\ : STD_LOGIC;
+  signal \status_reg_n_0_[6]\ : STD_LOGIC;
   signal \status_reg_n_0_[7]\ : STD_LOGIC;
   signal transmitter_1_n_1 : STD_LOGIC;
   signal transmitter_1_n_5 : STD_LOGIC;
@@ -5213,7 +5199,7 @@ axi_wready_reg: unisim.vcomponents.FDRE
       Q => \^s_axi_wready\,
       R => transmitter_1_n_1
     );
-baudRateDivider: entity work.system_serial_0_2_brd
+baudRateDivider: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_brd
      port map (
       Q(1) => p_0_in11_in,
       Q(0) => \control_reg_n_0_[4]\,
@@ -5808,7 +5794,7 @@ baudRateDivider: entity work.system_serial_0_2_brd
       C => axi_aclk,
       CE => \control[7]_i_1_n_0\,
       D => axi_wdata(7),
-      Q => p_0_in2_in,
+      Q => p_0_in7_in,
       R => transmitter_1_n_1
     );
 \control_reg[8]\: unisim.vcomponents.FDRE
@@ -5831,11 +5817,11 @@ fe_out_reg: unisim.vcomponents.FDRE
      port map (
       C => axi_aclk,
       CE => '1',
-      D => receiver_1_n_6,
+      D => receiver_1_n_5,
       Q => \^pe_out_reg_0\(0),
-      R => transmitter_1_n_1
+      R => '0'
     );
-fifo_rx: entity work.system_serial_0_2_fifo16x9
+fifo_rx: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9
      port map (
       D(9) => fifo_rx_n_13,
       D(8) => fifo_rx_n_14,
@@ -5861,7 +5847,7 @@ fifo_rx: entity work.system_serial_0_2_fifo16x9
       \axi_rdata_reg[12]\(7) => \control_reg_n_0_[10]\,
       \axi_rdata_reg[12]\(6) => \control_reg_n_0_[9]\,
       \axi_rdata_reg[12]\(5) => \control_reg_n_0_[8]\,
-      \axi_rdata_reg[12]\(4) => p_0_in2_in,
+      \axi_rdata_reg[12]\(4) => p_0_in7_in,
       \axi_rdata_reg[12]\(3) => \control_reg_n_0_[6]\,
       \axi_rdata_reg[12]\(2) => \control_reg_n_0_[2]\,
       \axi_rdata_reg[12]\(1) => \control_reg_n_0_[1]\,
@@ -5871,7 +5857,7 @@ fifo_rx: entity work.system_serial_0_2_fifo16x9
       ok_to_read_rx => ok_to_read_rx,
       ok_to_write_rx_edge => ok_to_write_rx_edge,
       overflow => overflow,
-      overflow_reg_0(0) => \status_reg_n_0_[2]\,
+      overflow_reg_0(0) => status(2),
       p_0_in_0(1 downto 0) => p_0_in_0(1 downto 0),
       \p_1_in__1\ => \p_1_in__1\,
       \rd_index_reg[0]_0\ => rd_index_reg_rep(0),
@@ -5891,7 +5877,7 @@ fifo_rx: entity work.system_serial_0_2_fifo16x9
       \wr_index_reg[4]_0\ => \wr_index_reg[4]\,
       \wr_index_reg[4]_1\ => write_request_detector_rx_n_2
     );
-fifo_tx: entity work.system_serial_0_2_fifo16x9_0
+fifo_tx: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9_0
      port map (
       D(8 downto 0) => rd_data(8 downto 0),
       DIB(0) => \wr_data_reg_n_0_[8]\,
@@ -5916,7 +5902,7 @@ fifo_tx: entity work.system_serial_0_2_fifo16x9_0
       \axi_rdata_reg[20]_0\(7) => \control_reg_n_0_[17]\,
       \axi_rdata_reg[20]_0\(6) => \control_reg_n_0_[16]\,
       \axi_rdata_reg[20]_0\(5) => in6,
-      \axi_rdata_reg[20]_0\(4) => p_0_in2_in,
+      \axi_rdata_reg[20]_0\(4) => p_0_in7_in,
       \axi_rdata_reg[20]_0\(3) => \control_reg_n_0_[6]\,
       \axi_rdata_reg[20]_0\(2) => p_0_in11_in,
       \axi_rdata_reg[20]_0\(1) => \control_reg_n_0_[4]\,
@@ -5931,11 +5917,11 @@ fifo_tx: entity work.system_serial_0_2_fifo16x9_0
       \brd_reg[20]\(1) => fifo_tx_n_15,
       \brd_reg[20]\(0) => fifo_tx_n_16,
       \control_reg[15]\ => fifo_tx_n_20,
-      \control_reg[7]\ => fifo_tx_n_21,
-      intr_reg_reg => \^rd_index_reg[3]\,
+      intr => intr,
+      intr_0 => \^rd_index_reg[3]\,
       ok_to_read_tx_edge => ok_to_read_tx_edge,
       ok_to_write_tx => ok_to_write_tx,
-      overflow_reg_0(0) => \status_reg_n_0_[5]\,
+      overflow_reg_0(0) => status(5),
       p_0_in_0(1 downto 0) => p_0_in_0(1 downto 0),
       \p_1_in__0\ => \p_1_in__0\,
       \rd_index_reg[2]_0\ => fifo_tx_n_19,
@@ -5955,14 +5941,6 @@ frame_error_prev_reg: unisim.vcomponents.FDRE
       Q => frame_error_prev,
       R => '0'
     );
-intr_reg_reg: unisim.vcomponents.FDRE
-     port map (
-      C => axi_aclk,
-      CE => '1',
-      D => fifo_tx_n_21,
-      Q => intr,
-      R => transmitter_1_n_1
-    );
 parity_error_prev_reg: unisim.vcomponents.FDRE
      port map (
       C => axi_aclk,
@@ -5975,9 +5953,9 @@ pe_out_reg: unisim.vcomponents.FDRE
      port map (
       C => axi_aclk,
       CE => '1',
-      D => receiver_1_n_7,
+      D => receiver_1_n_6,
       Q => \^pe_out_reg_0\(1),
-      R => transmitter_1_n_1
+      R => '0'
     );
 \raddr[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -6038,7 +6016,7 @@ read_en_reg: unisim.vcomponents.FDRE
       Q => read_en,
       R => '0'
     );
-read_request_detector_rx: entity work.system_serial_0_2_edge_detector
+read_request_detector_rx: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector
      port map (
       E(0) => rd,
       axi_aclk => axi_aclk,
@@ -6047,7 +6025,7 @@ read_request_detector_rx: entity work.system_serial_0_2_edge_detector
       pulse_reg_0 => \^axi_rvalid_reg_0\,
       pulse_reg_1 => \^s_axi_arready\
     );
-read_request_detector_tx: entity work.system_serial_0_2_edge_detector_1
+read_request_detector_tx: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_1
      port map (
       axi_aclk => axi_aclk,
       ok_to_read_tx => ok_to_read_tx,
@@ -6055,7 +6033,7 @@ read_request_detector_tx: entity work.system_serial_0_2_edge_detector_1
       previous_state => previous_state,
       pulse_reg_0 => transmitter_1_n_7
     );
-receiver_1: entity work.system_serial_0_2_receiver
+receiver_1: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_receiver
      port map (
       E(0) => transmitter_1_n_5,
       \FSM_sequential_state_reg[3]_0\(4) => in6,
@@ -6073,20 +6051,20 @@ receiver_1: entity work.system_serial_0_2_receiver
       data(8 downto 0) => data(8 downto 0),
       frame_error => frame_error,
       frame_error_prev => frame_error_prev,
-      frame_error_prev_reg => receiver_1_n_6,
       \latched_data_reg[5]_0\ => baudRateDivider_n_1,
       \latched_data_reg[8]_0\ => transmitter_1_n_6,
       ok_to_write_rx => ok_to_write_rx,
       parity_error => parity_error,
       parity_error_prev => parity_error_prev,
-      parity_error_prev_reg => receiver_1_n_7,
       pe_out_reg(1) => \status_reg_n_0_[7]\,
-      pe_out_reg(0) => p_1_in,
+      pe_out_reg(0) => \status_reg_n_0_[6]\,
       pe_out_reg_0(1 downto 0) => \^pe_out_reg_0\(1 downto 0),
       previous_state => previous_state_1,
       rx_in => rx_in,
       state => state,
-      wr_request_reg_0 => receiver_1_n_5
+      \status_reg[6]\ => receiver_1_n_5,
+      \status_reg[7]\ => receiver_1_n_6,
+      wr_request_reg_0 => receiver_1_n_7
     );
 \status[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -6115,7 +6093,7 @@ receiver_1: entity work.system_serial_0_2_receiver
       C => axi_aclk,
       CE => \status[7]_i_2_n_0\,
       D => axi_wdata(2),
-      Q => \status_reg_n_0_[2]\,
+      Q => status(2),
       R => \status[7]_i_1_n_0\
     );
 \status_reg[5]\: unisim.vcomponents.FDRE
@@ -6123,7 +6101,7 @@ receiver_1: entity work.system_serial_0_2_receiver
       C => axi_aclk,
       CE => \status[7]_i_2_n_0\,
       D => axi_wdata(5),
-      Q => \status_reg_n_0_[5]\,
+      Q => status(5),
       R => \status[7]_i_1_n_0\
     );
 \status_reg[6]\: unisim.vcomponents.FDRE
@@ -6131,7 +6109,7 @@ receiver_1: entity work.system_serial_0_2_receiver
       C => axi_aclk,
       CE => \status[7]_i_2_n_0\,
       D => axi_wdata(6),
-      Q => p_1_in,
+      Q => \status_reg_n_0_[6]\,
       R => \status[7]_i_1_n_0\
     );
 \status_reg[7]\: unisim.vcomponents.FDRE
@@ -6142,7 +6120,7 @@ receiver_1: entity work.system_serial_0_2_receiver
       Q => \status_reg_n_0_[7]\,
       R => \status[7]_i_1_n_0\
     );
-transmitter_1: entity work.system_serial_0_2_transmitter
+transmitter_1: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_transmitter
      port map (
       D(8 downto 0) => rd_data(8 downto 0),
       E(0) => brgen_counter0,
@@ -6284,7 +6262,7 @@ write_en_reg: unisim.vcomponents.FDRE
       Q => write_en,
       R => '0'
     );
-write_request_detector_rx: entity work.system_serial_0_2_edge_detector_2
+write_request_detector_rx: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_2
      port map (
       axi_aclk => axi_aclk,
       axi_aresetn => axi_aresetn,
@@ -6295,11 +6273,11 @@ write_request_detector_rx: entity work.system_serial_0_2_edge_detector_2
       previous_state => previous_state_1,
       pulse_reg_0 => write_request_detector_rx_n_2,
       pulse_reg_1 => write_request_detector_rx_n_4,
-      pulse_reg_2 => receiver_1_n_5,
+      pulse_reg_2 => receiver_1_n_7,
       read_en => read_en,
       \wr_index_reg[4]\ => \^rd_index_reg[4]\
     );
-write_request_detector_tx: entity work.system_serial_0_2_edge_detector_3
+write_request_detector_tx: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_3
      port map (
       axi_aclk => axi_aclk,
       axi_aresetn => axi_aresetn,
@@ -6322,7 +6300,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2_serial is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial is
   port (
     \rd_index_reg[4]\ : out STD_LOGIC;
     \wr_index_reg[0]\ : out STD_LOGIC;
@@ -6333,7 +6311,6 @@ entity system_serial_0_2_serial is
     watermark : out STD_LOGIC_VECTOR ( 4 downto 0 );
     S_AXI_WREADY : out STD_LOGIC;
     S_AXI_AWREADY : out STD_LOGIC;
-    intr : out STD_LOGIC;
     S_AXI_ARREADY : out STD_LOGIC;
     axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     \rd_index_reg[3]\ : out STD_LOGIC;
@@ -6343,6 +6320,7 @@ entity system_serial_0_2_serial is
     \rd_index_reg[3]_0\ : out STD_LOGIC;
     overflow : out STD_LOGIC;
     pe_out_reg : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    intr : out STD_LOGIC;
     axi_rvalid_reg : out STD_LOGIC;
     \rd_index_reg[4]_0\ : out STD_LOGIC;
     clk_out : out STD_LOGIC;
@@ -6361,13 +6339,11 @@ entity system_serial_0_2_serial is
     axi_bready : in STD_LOGIC;
     axi_rready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_serial_0_2_serial : entity is "serial";
-end system_serial_0_2_serial;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial;
 
-architecture STRUCTURE of system_serial_0_2_serial is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial is
 begin
-serial_v1_0_AXI_inst: entity work.system_serial_0_2_serial_v1_0_AXI
+serial_v1_0_AXI_inst: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial_v1_0_AXI
      port map (
       S_AXI_ARREADY => S_AXI_ARREADY,
       S_AXI_AWREADY => S_AXI_AWREADY,
@@ -6411,7 +6387,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity system_serial_0_2 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   port (
     empty : out STD_LOGIC;
     full : out STD_LOGIC;
@@ -6447,16 +6423,16 @@ entity system_serial_0_2 is
     axi_rready : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of system_serial_0_2 : entity is true;
+  attribute NotValidForBitStream of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of system_serial_0_2 : entity is "system_serial_0_2,serial,{}";
+  attribute CHECK_LICENSE_TYPE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "system_serial_0_2,serial,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
-  attribute DowngradeIPIdentifiedWarnings of system_serial_0_2 : entity is "yes";
+  attribute DowngradeIPIdentifiedWarnings of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "yes";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of system_serial_0_2 : entity is "serial,Vivado 2024.1";
-end system_serial_0_2;
+  attribute X_CORE_INFO of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "serial,Vivado 2024.1";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix;
 
-architecture STRUCTURE of system_serial_0_2 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   signal \<const0>\ : STD_LOGIC;
   signal \^rd_data\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute X_INTERFACE_INFO : string;
@@ -6502,7 +6478,7 @@ GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
     );
-inst: entity work.system_serial_0_2_serial
+inst: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial
      port map (
       S_AXI_ARREADY => axi_arready,
       S_AXI_AWREADY => axi_awready,

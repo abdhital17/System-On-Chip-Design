@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-// Date        : Tue Nov 26 19:49:34 2024
+// Date        : Tue Nov 26 19:49:33 2024
 // Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-// Command     : write_verilog -force -mode synth_stub
-//               /home/moonknight/SoC/serial/gpio.gen/sources_1/bd/system/ip/system_serial_0_2/system_serial_0_2_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+//               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ system_serial_0_2_stub.v
 // Design      : system_serial_0_2
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z007sclg400-1
@@ -15,7 +15,7 @@
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "serial,Vivado 2024.1" *)
-module system_serial_0_2(empty, full, overflow, wr_index, rd_index, 
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix(empty, full, overflow, wr_index, rd_index, 
   watermark, rd_data, clk_out, tx_out, intr, rx_in, axi_aclk, axi_aresetn, axi_awaddr, axi_awprot, 
   axi_awvalid, axi_awready, axi_wdata, axi_wstrb, axi_wvalid, axi_wready, axi_bresp, axi_bvalid, 
   axi_bready, axi_araddr, axi_arprot, axi_arvalid, axi_arready, axi_rdata, axi_rresp, axi_rvalid, 

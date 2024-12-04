@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Nov 22 19:04:48 2024" VIVADOVERSION="2024.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Nov 26 22:01:35 2024" VIVADOVERSION="2024.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z007s" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -139,9 +139,10 @@
         <CONNECTION INSTANCE="gpio_0" PORT="gpio_data_out"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="intr" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="gpio_0_intr">
+    <PORT DIR="O" NAME="intr" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT"/>
+    <PORT DIR="O" NAME="intr_serial" SIGIS="undef" SIGNAME="serial_0_intr">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="gpio_0" PORT="intr"/>
+        <CONNECTION INSTANCE="serial_0" PORT="intr"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="overflow" SIGIS="undef" SIGNAME="serial_0_overflow">
@@ -363,12 +364,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="gpio_data_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="intr" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="gpio_0_intr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="intr"/>
-            <CONNECTION INSTANCE="xlconcat_1" PORT="In2"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="intr" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="ps7_0_axi_periph_M00_AXI" DATAWIDTH="32" NAME="AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -2718,7 +2714,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="260" FULLNAME="/serial_0" HWVERSION="1.0" INSTANCE="serial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="serial" VLNV="user.org:user:serial:1.0">
+    <MODULE COREREVISION="262" FULLNAME="/serial_0" HWVERSION="1.0" INSTANCE="serial_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="serial" VLNV="user.org:user:serial:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="AXI" NAME="AXI_reg" RANGE="4096" USAGE="register"/>
@@ -2850,6 +2846,12 @@
         <PORT DIR="O" NAME="full" SIGIS="undef" SIGNAME="serial_0_full">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="full"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="intr" SIGIS="undef" SIGNAME="serial_0_intr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="intr_serial"/>
+            <CONNECTION INSTANCE="xlconcat_1" PORT="In2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="overflow" SIGIS="undef" SIGNAME="serial_0_overflow">
@@ -3086,9 +3088,9 @@
       <PORTS>
         <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="gpio_0_intr">
+        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="serial_0_intr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="gpio_0" PORT="intr"/>
+            <CONNECTION INSTANCE="serial_0" PORT="intr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="2" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_1_dout">

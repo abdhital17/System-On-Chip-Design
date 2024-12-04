@@ -2,10 +2,10 @@
 // Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-// Date        : Tue Nov 26 19:49:34 2024
+// Date        : Tue Nov 26 19:26:59 2024
 // Host        : inspiron-7472 running 64-bit Ubuntu 22.04.5 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/moonknight/SoC/serial/gpio.gen/sources_1/bd/system/ip/system_serial_0_2/system_serial_0_2_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+//               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ system_serial_0_2_sim_netlist.v
 // Design      : system_serial_0_2
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,159 +13,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "system_serial_0_2,serial,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "serial,Vivado 2024.1" *) 
-(* NotValidForBitStream *)
-module system_serial_0_2
-   (empty,
-    full,
-    overflow,
-    wr_index,
-    rd_index,
-    watermark,
-    rd_data,
-    clk_out,
-    tx_out,
-    intr,
-    rx_in,
-    axi_aclk,
-    axi_aresetn,
-    axi_awaddr,
-    axi_awprot,
-    axi_awvalid,
-    axi_awready,
-    axi_wdata,
-    axi_wstrb,
-    axi_wvalid,
-    axi_wready,
-    axi_bresp,
-    axi_bvalid,
-    axi_bready,
-    axi_araddr,
-    axi_arprot,
-    axi_arvalid,
-    axi_arready,
-    axi_rdata,
-    axi_rresp,
-    axi_rvalid,
-    axi_rready);
-  output empty;
-  output full;
-  output overflow;
-  output [4:0]wr_index;
-  output [4:0]rd_index;
-  output [4:0]watermark;
-  output [8:0]rd_data;
-  output clk_out;
-  output tx_out;
-  output intr;
-  input rx_in;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 AXI_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_CLK, ASSOCIATED_BUSIF AXI, ASSOCIATED_RESET axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_processing_system7_1_0_FCLK_CLK0, INSERT_VIP 0" *) input axi_aclk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 AXI_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input axi_aresetn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWADDR" *) input [3:0]axi_awaddr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWPROT" *) input [2:0]axi_awprot;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWVALID" *) input axi_awvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWREADY" *) output axi_awready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WDATA" *) input [31:0]axi_wdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WSTRB" *) input [3:0]axi_wstrb;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WVALID" *) input axi_wvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WREADY" *) output axi_wready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BRESP" *) output [1:0]axi_bresp;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BVALID" *) output axi_bvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BREADY" *) input axi_bready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARADDR" *) input [3:0]axi_araddr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARPROT" *) input [2:0]axi_arprot;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARVALID" *) input axi_arvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARREADY" *) output axi_arready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RDATA" *) output [31:0]axi_rdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RRESP" *) output [1:0]axi_rresp;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RVALID" *) output axi_rvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 4, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 4, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN system_processing_system7_1_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input axi_rready;
-
-  wire \<const0> ;
-  wire axi_aclk;
-  wire [3:0]axi_araddr;
-  wire axi_aresetn;
-  wire axi_arready;
-  wire axi_arvalid;
-  wire [3:0]axi_awaddr;
-  wire axi_awready;
-  wire axi_awvalid;
-  wire axi_bready;
-  wire axi_bvalid;
-  wire [31:0]axi_rdata;
-  wire axi_rready;
-  wire axi_rvalid;
-  wire [31:0]axi_wdata;
-  wire axi_wready;
-  wire [3:0]axi_wstrb;
-  wire axi_wvalid;
-  wire clk_out;
-  wire empty;
-  wire full;
-  wire intr;
-  wire overflow;
-  wire [1:0]\^rd_data ;
-  wire [4:0]rd_index;
-  wire rx_in;
-  wire tx_out;
-  wire [4:0]watermark;
-  wire [4:0]wr_index;
-
-  assign axi_bresp[1] = \<const0> ;
-  assign axi_bresp[0] = \<const0> ;
-  assign axi_rresp[1] = \<const0> ;
-  assign axi_rresp[0] = \<const0> ;
-  assign rd_data[8] = \<const0> ;
-  assign rd_data[7] = \<const0> ;
-  assign rd_data[6] = \<const0> ;
-  assign rd_data[5] = \<const0> ;
-  assign rd_data[4] = \<const0> ;
-  assign rd_data[3] = \<const0> ;
-  assign rd_data[2] = \<const0> ;
-  assign rd_data[1:0] = \^rd_data [1:0];
-  GND GND
-       (.G(\<const0> ));
-  system_serial_0_2_serial inst
-       (.S_AXI_ARREADY(axi_arready),
-        .S_AXI_AWREADY(axi_awready),
-        .S_AXI_WREADY(axi_wready),
-        .axi_aclk(axi_aclk),
-        .axi_araddr(axi_araddr[3:2]),
-        .axi_aresetn(axi_aresetn),
-        .axi_arvalid(axi_arvalid),
-        .axi_awaddr(axi_awaddr[3:2]),
-        .axi_awvalid(axi_awvalid),
-        .axi_bready(axi_bready),
-        .axi_bvalid(axi_bvalid),
-        .axi_rdata(axi_rdata),
-        .axi_rready(axi_rready),
-        .axi_rvalid_reg(axi_rvalid),
-        .axi_wdata(axi_wdata),
-        .axi_wstrb(axi_wstrb),
-        .axi_wvalid(axi_wvalid),
-        .clk_out(clk_out),
-        .intr(intr),
-        .overflow(overflow),
-        .pe_out_reg(\^rd_data ),
-        .\rd_index_reg[0] (rd_index[0]),
-        .\rd_index_reg[1] (rd_index[1]),
-        .\rd_index_reg[2] (rd_index[2]),
-        .\rd_index_reg[3] (rd_index[3]),
-        .\rd_index_reg[3]_0 (empty),
-        .\rd_index_reg[4] (full),
-        .\rd_index_reg[4]_0 (rd_index[4]),
-        .rx_in(rx_in),
-        .tx_out(tx_out),
-        .watermark(watermark),
-        .\wr_index_reg[0] (wr_index[0]),
-        .\wr_index_reg[1] (wr_index[1]),
-        .\wr_index_reg[2] (wr_index[2]),
-        .\wr_index_reg[3] (wr_index[3]),
-        .\wr_index_reg[4] (wr_index[4]));
-endmodule
-
-(* ORIG_REF_NAME = "brd" *) 
-module system_serial_0_2_brd
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_brd
    (brd_out,
     baud_pulse_reg_0,
     brgen_counter0,
@@ -747,8 +595,7 @@ module system_serial_0_2_brd
         .O(baud_pulse_reg_0));
 endmodule
 
-(* ORIG_REF_NAME = "edge_detector" *) 
-module system_serial_0_2_edge_detector
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector
    (E,
     ok_to_read_rx,
     axi_aclk,
@@ -803,7 +650,7 @@ module system_serial_0_2_edge_detector
 endmodule
 
 (* ORIG_REF_NAME = "edge_detector" *) 
-module system_serial_0_2_edge_detector_1
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_1
    (previous_state,
     ok_to_read_tx_edge,
     ok_to_read_tx,
@@ -836,7 +683,7 @@ module system_serial_0_2_edge_detector_1
 endmodule
 
 (* ORIG_REF_NAME = "edge_detector" *) 
-module system_serial_0_2_edge_detector_2
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_2
    (previous_state,
     ok_to_write_rx_edge,
     pulse_reg_0,
@@ -912,7 +759,7 @@ module system_serial_0_2_edge_detector_2
 endmodule
 
 (* ORIG_REF_NAME = "edge_detector" *) 
-module system_serial_0_2_edge_detector_3
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_3
    (wr,
     ok_to_write_tx,
     pulse_reg_0,
@@ -1025,8 +872,7 @@ module system_serial_0_2_edge_detector_3
         .O(wr_request0__0));
 endmodule
 
-(* ORIG_REF_NAME = "fifo16x9" *) 
-module system_serial_0_2_fifo16x9
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9
    (axi_aclk_0,
     \rd_index_reg[3]_0 ,
     \rd_index_reg[2]_0 ,
@@ -1598,14 +1444,14 @@ module system_serial_0_2_fifo16x9
 endmodule
 
 (* ORIG_REF_NAME = "fifo16x9" *) 
-module system_serial_0_2_fifo16x9_0
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9_0
    (D,
     \brd_reg[20] ,
     tx_full,
     tx_empty,
     \rd_index_reg[2]_0 ,
     \control_reg[15] ,
-    \control_reg[7] ,
+    intr,
     \wr_index_reg[3]_0 ,
     axi_aclk,
     p_1_in__0,
@@ -1622,7 +1468,7 @@ module system_serial_0_2_fifo16x9_0
     \FSM_sequential_state_reg[0] ,
     ok_to_read_tx_edge,
     \rd_index_reg[4]_0 ,
-    intr_reg_reg,
+    intr_0,
     overflow_reg_0,
     \wr_index_reg[4]_0 );
   output [8:0]D;
@@ -1631,7 +1477,7 @@ module system_serial_0_2_fifo16x9_0
   output tx_empty;
   output \rd_index_reg[2]_0 ;
   output \control_reg[15] ;
-  output \control_reg[7] ;
+  output intr;
   output \wr_index_reg[3]_0 ;
   input axi_aclk;
   input p_1_in__0;
@@ -1648,7 +1494,7 @@ module system_serial_0_2_fifo16x9_0
   input [0:0]\FSM_sequential_state_reg[0] ;
   input ok_to_read_tx_edge;
   input \rd_index_reg[4]_0 ;
-  input intr_reg_reg;
+  input intr_0;
   input [0:0]overflow_reg_0;
   input \wr_index_reg[4]_0 ;
 
@@ -1664,8 +1510,8 @@ module system_serial_0_2_fifo16x9_0
   wire [2:0]\axi_rdata_reg[5] ;
   wire [7:0]\brd_reg[20] ;
   wire \control_reg[15] ;
-  wire \control_reg[7] ;
-  wire intr_reg_reg;
+  wire intr;
+  wire intr_0;
   wire ok_to_read_tx_edge;
   wire ok_to_write_tx;
   wire overflow__0;
@@ -1872,16 +1718,16 @@ module system_serial_0_2_fifo16x9_0
         .WE(p_1_in__0));
   LUT4 #(
     .INIT(16'h8F88)) 
-    intr_reg_i_1
+    intr_INST_0
        (.I0(tx_empty),
         .I1(\axi_rdata_reg[20]_0 [4]),
-        .I2(intr_reg_reg),
+        .I2(intr_0),
         .I3(\axi_rdata_reg[20]_0 [3]),
-        .O(\control_reg[7] ));
+        .O(intr));
   (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'h90090000)) 
-    intr_reg_i_2
+    intr_INST_0_i_1
        (.I0(p_0_in),
         .I1(\wr_index_reg_n_0_[4] ),
         .I2(\rd_index_reg_n_0_[3] ),
@@ -1890,7 +1736,7 @@ module system_serial_0_2_fifo16x9_0
         .O(tx_empty));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
-    intr_reg_i_3
+    intr_INST_0_i_2
        (.I0(\rd_index_reg_n_0_[2] ),
         .I1(\wr_index_reg_n_0_[2] ),
         .I2(\rd_index_reg_n_0_[1] ),
@@ -2181,16 +2027,15 @@ module system_serial_0_2_fifo16x9_0
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "receiver" *) 
-module system_serial_0_2_receiver
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_receiver
    (frame_error,
     parity_error,
     ok_to_write_rx,
     Q,
     state,
+    \status_reg[6] ,
+    \status_reg[7] ,
     wr_request_reg_0,
-    frame_error_prev_reg,
-    parity_error_prev_reg,
     data,
     rx_in,
     SR,
@@ -2202,20 +2047,20 @@ module system_serial_0_2_receiver
     axi_aresetn,
     \latched_data_reg[8]_0 ,
     \latched_data_reg[5]_0 ,
-    previous_state,
-    frame_error_prev,
     pe_out_reg,
     pe_out_reg_0,
+    frame_error_prev,
     parity_error_prev,
+    previous_state,
     E);
   output frame_error;
   output parity_error;
   output ok_to_write_rx;
   output [0:0]Q;
   output state;
+  output \status_reg[6] ;
+  output \status_reg[7] ;
   output wr_request_reg_0;
-  output frame_error_prev_reg;
-  output parity_error_prev_reg;
   output [8:0]data;
   input rx_in;
   input [0:0]SR;
@@ -2227,11 +2072,11 @@ module system_serial_0_2_receiver
   input axi_aresetn;
   input \latched_data_reg[8]_0 ;
   input \latched_data_reg[5]_0 ;
-  input previous_state;
-  input frame_error_prev;
   input [1:0]pe_out_reg;
   input [1:0]pe_out_reg_0;
+  input frame_error_prev;
   input parity_error_prev;
+  input previous_state;
   input [0:0]E;
 
   wire [0:0]E;
@@ -2274,7 +2119,6 @@ module system_serial_0_2_receiver
   wire frame_error_i_1_n_0;
   wire frame_error_i_3_n_0;
   wire frame_error_prev;
-  wire frame_error_prev_reg;
   wire in_prev;
   wire [7:7]latched_data0_in;
   wire \latched_data[0]_i_1_n_0 ;
@@ -2320,7 +2164,6 @@ module system_serial_0_2_receiver
   wire parity_error_i_4_n_0;
   wire parity_error_i_5_n_0;
   wire parity_error_prev;
-  wire parity_error_prev_reg;
   wire [1:0]pe_out_reg;
   wire [1:0]pe_out_reg_0;
   wire previous_state;
@@ -2328,6 +2171,8 @@ module system_serial_0_2_receiver
   wire state;
   wire [2:0]state__0;
   wire [3:0]state__1;
+  wire \status_reg[6] ;
+  wire \status_reg[7] ;
   wire wr_request_i_1_n_0;
   wire wr_request_i_2_n_0;
   wire wr_request_reg_0;
@@ -2643,11 +2488,11 @@ module system_serial_0_2_receiver
   LUT4 #(
     .INIT(16'h4F44)) 
     fe_out_i_1
-       (.I0(frame_error_prev),
-        .I1(frame_error),
-        .I2(pe_out_reg[0]),
-        .I3(pe_out_reg_0[0]),
-        .O(frame_error_prev_reg));
+       (.I0(pe_out_reg[0]),
+        .I1(pe_out_reg_0[0]),
+        .I2(frame_error_prev),
+        .I3(frame_error),
+        .O(\status_reg[6] ));
   LUT6 #(
     .INIT(64'h001CFFFF001C0000)) 
     frame_error_i_1
@@ -3109,12 +2954,12 @@ module system_serial_0_2_receiver
         .R(SR));
   LUT4 #(
     .INIT(16'h4F44)) 
-    pe_out_i_2
-       (.I0(parity_error_prev),
-        .I1(parity_error),
-        .I2(pe_out_reg[1]),
-        .I3(pe_out_reg_0[1]),
-        .O(parity_error_prev_reg));
+    pe_out_i_1
+       (.I0(pe_out_reg[1]),
+        .I1(pe_out_reg_0[1]),
+        .I2(parity_error_prev),
+        .I3(parity_error),
+        .O(\status_reg[7] ));
   LUT2 #(
     .INIT(4'h2)) 
     pulse_i_1__2
@@ -3149,8 +2994,7 @@ module system_serial_0_2_receiver
         .R(SR));
 endmodule
 
-(* ORIG_REF_NAME = "serial" *) 
-module system_serial_0_2_serial
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial
    (\rd_index_reg[4] ,
     \wr_index_reg[0] ,
     \wr_index_reg[4] ,
@@ -3160,7 +3004,6 @@ module system_serial_0_2_serial
     watermark,
     S_AXI_WREADY,
     S_AXI_AWREADY,
-    intr,
     S_AXI_ARREADY,
     axi_rdata,
     \rd_index_reg[3] ,
@@ -3170,6 +3013,7 @@ module system_serial_0_2_serial
     \rd_index_reg[3]_0 ,
     overflow,
     pe_out_reg,
+    intr,
     axi_rvalid_reg,
     \rd_index_reg[4]_0 ,
     clk_out,
@@ -3196,7 +3040,6 @@ module system_serial_0_2_serial
   output [4:0]watermark;
   output S_AXI_WREADY;
   output S_AXI_AWREADY;
-  output intr;
   output S_AXI_ARREADY;
   output [31:0]axi_rdata;
   output \rd_index_reg[3] ;
@@ -3206,6 +3049,7 @@ module system_serial_0_2_serial
   output \rd_index_reg[3]_0 ;
   output overflow;
   output [1:0]pe_out_reg;
+  output intr;
   output axi_rvalid_reg;
   output \rd_index_reg[4]_0 ;
   output clk_out;
@@ -3261,7 +3105,7 @@ module system_serial_0_2_serial
   wire \wr_index_reg[3] ;
   wire \wr_index_reg[4] ;
 
-  system_serial_0_2_serial_v1_0_AXI serial_v1_0_AXI_inst
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial_v1_0_AXI serial_v1_0_AXI_inst
        (.S_AXI_ARREADY(S_AXI_ARREADY),
         .S_AXI_AWREADY(S_AXI_AWREADY),
         .S_AXI_WREADY(S_AXI_WREADY),
@@ -3294,21 +3138,20 @@ module system_serial_0_2_serial
         .\wr_index_reg[4] (\wr_index_reg[4] ));
 endmodule
 
-(* ORIG_REF_NAME = "serial_v1_0_AXI" *) 
-module system_serial_0_2_serial_v1_0_AXI
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial_v1_0_AXI
    (\rd_index_reg[4] ,
     wr_index,
     \wr_index_reg[4] ,
     watermark,
     S_AXI_WREADY,
     S_AXI_AWREADY,
-    intr,
     S_AXI_ARREADY,
     axi_rdata,
     rd_index_reg_rep,
     \rd_index_reg[3] ,
     overflow,
     pe_out_reg_0,
+    intr,
     axi_rvalid_reg_0,
     \rd_index_reg[4]_0 ,
     clk_out,
@@ -3332,13 +3175,13 @@ module system_serial_0_2_serial_v1_0_AXI
   output [4:0]watermark;
   output S_AXI_WREADY;
   output S_AXI_AWREADY;
-  output intr;
   output S_AXI_ARREADY;
   output [31:0]axi_rdata;
   output [3:0]rd_index_reg_rep;
   output \rd_index_reg[3] ;
   output overflow;
   output [1:0]pe_out_reg_0;
+  output intr;
   output axi_rvalid_reg_0;
   output \rd_index_reg[4]_0 ;
   output clk_out;
@@ -3465,7 +3308,6 @@ module system_serial_0_2_serial_v1_0_AXI
   wire fifo_tx_n_16;
   wire fifo_tx_n_19;
   wire fifo_tx_n_20;
-  wire fifo_tx_n_21;
   wire fifo_tx_n_22;
   wire fifo_tx_n_9;
   wire frame_error;
@@ -3481,9 +3323,8 @@ module system_serial_0_2_serial_v1_0_AXI
   wire ok_to_write_tx;
   wire overflow;
   wire p_0_in11_in;
-  wire p_0_in2_in;
+  wire p_0_in7_in;
   wire [1:0]p_0_in_0;
-  wire p_1_in;
   wire p_1_in__0;
   wire p_1_in__1;
   wire parity_error;
@@ -3509,10 +3350,10 @@ module system_serial_0_2_serial_v1_0_AXI
   wire state;
   wire [1:1]state_0;
   wire [3:3]state__0;
+  wire [5:2]status;
   wire \status[7]_i_1_n_0 ;
   wire \status[7]_i_2_n_0 ;
-  wire \status_reg_n_0_[2] ;
-  wire \status_reg_n_0_[5] ;
+  wire \status_reg_n_0_[6] ;
   wire \status_reg_n_0_[7] ;
   wire transmitter_1_n_1;
   wire transmitter_1_n_5;
@@ -3937,7 +3778,7 @@ module system_serial_0_2_serial_v1_0_AXI
         .D(axi_wready0),
         .Q(S_AXI_WREADY),
         .R(transmitter_1_n_1));
-  system_serial_0_2_brd baudRateDivider
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_brd baudRateDivider
        (.Q({p_0_in11_in,\control_reg_n_0_[4] }),
         .axi_aclk(axi_aclk),
         .axi_aresetn(axi_aresetn),
@@ -4382,7 +4223,7 @@ module system_serial_0_2_serial_v1_0_AXI
        (.C(axi_aclk),
         .CE(\control[7]_i_1_n_0 ),
         .D(axi_wdata[7]),
-        .Q(p_0_in2_in),
+        .Q(p_0_in7_in),
         .R(transmitter_1_n_1));
   FDRE \control_reg[8] 
        (.C(axi_aclk),
@@ -4399,22 +4240,22 @@ module system_serial_0_2_serial_v1_0_AXI
   FDRE fe_out_reg
        (.C(axi_aclk),
         .CE(1'b1),
-        .D(receiver_1_n_6),
+        .D(receiver_1_n_5),
         .Q(pe_out_reg_0[0]),
-        .R(transmitter_1_n_1));
-  system_serial_0_2_fifo16x9 fifo_rx
+        .R(1'b0));
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9 fifo_rx
        (.D({fifo_rx_n_13,fifo_rx_n_14,fifo_rx_n_15,fifo_rx_n_16,fifo_rx_n_17,fifo_rx_n_18,fifo_rx_n_19,fifo_rx_n_20,fifo_rx_n_21,fifo_rx_n_22}),
         .Q({ibrd[4:0],\brd_reg_n_0_[7] ,\brd_reg_n_0_[6] ,\brd_reg_n_0_[2] ,\brd_reg_n_0_[1] ,\brd_reg_n_0_[0] }),
         .axi_aclk(axi_aclk),
         .axi_aclk_0(rd_data__0),
         .axi_aresetn(axi_aresetn),
-        .\axi_rdata_reg[12] ({\control_reg_n_0_[12] ,\control_reg_n_0_[11] ,\control_reg_n_0_[10] ,\control_reg_n_0_[9] ,\control_reg_n_0_[8] ,p_0_in2_in,\control_reg_n_0_[6] ,\control_reg_n_0_[2] ,\control_reg_n_0_[1] ,\control_reg_n_0_[0] }),
+        .\axi_rdata_reg[12] ({\control_reg_n_0_[12] ,\control_reg_n_0_[11] ,\control_reg_n_0_[10] ,\control_reg_n_0_[9] ,\control_reg_n_0_[8] ,p_0_in7_in,\control_reg_n_0_[6] ,\control_reg_n_0_[2] ,\control_reg_n_0_[1] ,\control_reg_n_0_[0] }),
         .\axi_rdata_reg[7] (pe_out_reg_0),
         .data(data),
         .ok_to_read_rx(ok_to_read_rx),
         .ok_to_write_rx_edge(ok_to_write_rx_edge),
         .overflow(overflow),
-        .overflow_reg_0(\status_reg_n_0_[2] ),
+        .overflow_reg_0(status[2]),
         .p_0_in_0(p_0_in_0),
         .p_1_in__1(p_1_in__1),
         .\rd_index_reg[0]_0 (rd_index_reg_rep[0]),
@@ -4433,7 +4274,7 @@ module system_serial_0_2_serial_v1_0_AXI
         .\wr_index_reg[3]_0 (wr_index[3]),
         .\wr_index_reg[4]_0 (\wr_index_reg[4] ),
         .\wr_index_reg[4]_1 (write_request_detector_rx_n_2));
-  system_serial_0_2_fifo16x9_0 fifo_tx
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_fifo16x9_0 fifo_tx
        (.D(rd_data),
         .DIB(\wr_data_reg_n_0_[8] ),
         .\FSM_sequential_state_reg[0] (state_0),
@@ -4441,15 +4282,15 @@ module system_serial_0_2_serial_v1_0_AXI
         .axi_aclk(axi_aclk),
         .axi_aresetn(axi_aresetn),
         .\axi_rdata_reg[20] ({ibrd[12:8],\brd_reg_n_0_[5] ,\brd_reg_n_0_[4] ,\brd_reg_n_0_[3] }),
-        .\axi_rdata_reg[20]_0 ({\control_reg_n_0_[20] ,\control_reg_n_0_[19] ,\control_reg_n_0_[18] ,\control_reg_n_0_[17] ,\control_reg_n_0_[16] ,in6,p_0_in2_in,\control_reg_n_0_[6] ,p_0_in11_in,\control_reg_n_0_[4] ,\control_reg_n_0_[3] }),
+        .\axi_rdata_reg[20]_0 ({\control_reg_n_0_[20] ,\control_reg_n_0_[19] ,\control_reg_n_0_[18] ,\control_reg_n_0_[17] ,\control_reg_n_0_[16] ,in6,p_0_in7_in,\control_reg_n_0_[6] ,p_0_in11_in,\control_reg_n_0_[4] ,\control_reg_n_0_[3] }),
         .\axi_rdata_reg[5] (rd_data__0),
         .\brd_reg[20] ({fifo_tx_n_9,fifo_tx_n_10,fifo_tx_n_11,fifo_tx_n_12,fifo_tx_n_13,fifo_tx_n_14,fifo_tx_n_15,fifo_tx_n_16}),
         .\control_reg[15] (fifo_tx_n_20),
-        .\control_reg[7] (fifo_tx_n_21),
-        .intr_reg_reg(\rd_index_reg[3] ),
+        .intr(intr),
+        .intr_0(\rd_index_reg[3] ),
         .ok_to_read_tx_edge(ok_to_read_tx_edge),
         .ok_to_write_tx(ok_to_write_tx),
-        .overflow_reg_0(\status_reg_n_0_[5] ),
+        .overflow_reg_0(status[5]),
         .p_0_in_0(p_0_in_0),
         .p_1_in__0(p_1_in__0),
         .\rd_index_reg[2]_0 (fifo_tx_n_19),
@@ -4466,12 +4307,6 @@ module system_serial_0_2_serial_v1_0_AXI
         .D(frame_error),
         .Q(frame_error_prev),
         .R(1'b0));
-  FDRE intr_reg_reg
-       (.C(axi_aclk),
-        .CE(1'b1),
-        .D(fifo_tx_n_21),
-        .Q(intr),
-        .R(transmitter_1_n_1));
   FDRE parity_error_prev_reg
        (.C(axi_aclk),
         .CE(1'b1),
@@ -4481,9 +4316,9 @@ module system_serial_0_2_serial_v1_0_AXI
   FDRE pe_out_reg
        (.C(axi_aclk),
         .CE(1'b1),
-        .D(receiver_1_n_7),
+        .D(receiver_1_n_6),
         .Q(pe_out_reg_0[1]),
-        .R(transmitter_1_n_1));
+        .R(1'b0));
   LUT4 #(
     .INIT(16'hFB08)) 
     \raddr[2]_i_1 
@@ -4529,20 +4364,20 @@ module system_serial_0_2_serial_v1_0_AXI
         .D(read_en_i_1_n_0),
         .Q(read_en),
         .R(1'b0));
-  system_serial_0_2_edge_detector read_request_detector_rx
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector read_request_detector_rx
        (.E(rd),
         .axi_aclk(axi_aclk),
         .axi_arvalid(axi_arvalid),
         .ok_to_read_rx(ok_to_read_rx),
         .pulse_reg_0(axi_rvalid_reg_0),
         .pulse_reg_1(S_AXI_ARREADY));
-  system_serial_0_2_edge_detector_1 read_request_detector_tx
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_1 read_request_detector_tx
        (.axi_aclk(axi_aclk),
         .ok_to_read_tx(ok_to_read_tx),
         .ok_to_read_tx_edge(ok_to_read_tx_edge),
         .previous_state(previous_state),
         .pulse_reg_0(transmitter_1_n_7));
-  system_serial_0_2_receiver receiver_1
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_receiver receiver_1
        (.E(transmitter_1_n_5),
         .\FSM_sequential_state_reg[3]_0 ({in6,\control_reg_n_0_[3] ,\control_reg_n_0_[2] ,\control_reg_n_0_[1] ,\control_reg_n_0_[0] }),
         .Q(state__0),
@@ -4555,19 +4390,19 @@ module system_serial_0_2_serial_v1_0_AXI
         .data(data),
         .frame_error(frame_error),
         .frame_error_prev(frame_error_prev),
-        .frame_error_prev_reg(receiver_1_n_6),
         .\latched_data_reg[5]_0 (baudRateDivider_n_1),
         .\latched_data_reg[8]_0 (transmitter_1_n_6),
         .ok_to_write_rx(ok_to_write_rx),
         .parity_error(parity_error),
         .parity_error_prev(parity_error_prev),
-        .parity_error_prev_reg(receiver_1_n_7),
-        .pe_out_reg({\status_reg_n_0_[7] ,p_1_in}),
+        .pe_out_reg({\status_reg_n_0_[7] ,\status_reg_n_0_[6] }),
         .pe_out_reg_0(pe_out_reg_0),
         .previous_state(previous_state_1),
         .rx_in(rx_in),
         .state(state),
-        .wr_request_reg_0(receiver_1_n_5));
+        .\status_reg[6] (receiver_1_n_5),
+        .\status_reg[7] (receiver_1_n_6),
+        .wr_request_reg_0(receiver_1_n_7));
   LUT5 #(
     .INIT(32'h7FFFFFFF)) 
     \status[7]_i_1 
@@ -4588,19 +4423,19 @@ module system_serial_0_2_serial_v1_0_AXI
        (.C(axi_aclk),
         .CE(\status[7]_i_2_n_0 ),
         .D(axi_wdata[2]),
-        .Q(\status_reg_n_0_[2] ),
+        .Q(status[2]),
         .R(\status[7]_i_1_n_0 ));
   FDRE \status_reg[5] 
        (.C(axi_aclk),
         .CE(\status[7]_i_2_n_0 ),
         .D(axi_wdata[5]),
-        .Q(\status_reg_n_0_[5] ),
+        .Q(status[5]),
         .R(\status[7]_i_1_n_0 ));
   FDRE \status_reg[6] 
        (.C(axi_aclk),
         .CE(\status[7]_i_2_n_0 ),
         .D(axi_wdata[6]),
-        .Q(p_1_in),
+        .Q(\status_reg_n_0_[6] ),
         .R(\status[7]_i_1_n_0 ));
   FDRE \status_reg[7] 
        (.C(axi_aclk),
@@ -4608,7 +4443,7 @@ module system_serial_0_2_serial_v1_0_AXI
         .D(axi_wdata[7]),
         .Q(\status_reg_n_0_[7] ),
         .R(\status[7]_i_1_n_0 ));
-  system_serial_0_2_transmitter transmitter_1
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_transmitter transmitter_1
        (.D(rd_data),
         .E(brgen_counter0),
         .\FSM_sequential_state_reg[0]_0 (fifo_tx_n_20),
@@ -4715,7 +4550,7 @@ module system_serial_0_2_serial_v1_0_AXI
         .D(write_en_i_1_n_0),
         .Q(write_en),
         .R(1'b0));
-  system_serial_0_2_edge_detector_2 write_request_detector_rx
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_2 write_request_detector_rx
        (.axi_aclk(axi_aclk),
         .axi_aresetn(axi_aresetn),
         .ok_to_read_rx(ok_to_read_rx),
@@ -4725,10 +4560,10 @@ module system_serial_0_2_serial_v1_0_AXI
         .previous_state(previous_state_1),
         .pulse_reg_0(write_request_detector_rx_n_2),
         .pulse_reg_1(write_request_detector_rx_n_4),
-        .pulse_reg_2(receiver_1_n_5),
+        .pulse_reg_2(receiver_1_n_7),
         .read_en(read_en),
         .\wr_index_reg[4] (\rd_index_reg[4] ));
-  system_serial_0_2_edge_detector_3 write_request_detector_tx
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_edge_detector_3 write_request_detector_tx
        (.axi_aclk(axi_aclk),
         .axi_aresetn(axi_aresetn),
         .axi_awvalid(axi_awvalid),
@@ -4746,8 +4581,158 @@ module system_serial_0_2_serial_v1_0_AXI
         .write_en_reg(write_request_detector_tx_n_4));
 endmodule
 
-(* ORIG_REF_NAME = "transmitter" *) 
-module system_serial_0_2_transmitter
+(* CHECK_LICENSE_TYPE = "system_serial_0_2,serial,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "serial,Vivado 2024.1" *) 
+(* NotValidForBitStream *)
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix
+   (empty,
+    full,
+    overflow,
+    wr_index,
+    rd_index,
+    watermark,
+    rd_data,
+    clk_out,
+    tx_out,
+    intr,
+    rx_in,
+    axi_aclk,
+    axi_aresetn,
+    axi_awaddr,
+    axi_awprot,
+    axi_awvalid,
+    axi_awready,
+    axi_wdata,
+    axi_wstrb,
+    axi_wvalid,
+    axi_wready,
+    axi_bresp,
+    axi_bvalid,
+    axi_bready,
+    axi_araddr,
+    axi_arprot,
+    axi_arvalid,
+    axi_arready,
+    axi_rdata,
+    axi_rresp,
+    axi_rvalid,
+    axi_rready);
+  output empty;
+  output full;
+  output overflow;
+  output [4:0]wr_index;
+  output [4:0]rd_index;
+  output [4:0]watermark;
+  output [8:0]rd_data;
+  output clk_out;
+  output tx_out;
+  output intr;
+  input rx_in;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 AXI_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_CLK, ASSOCIATED_BUSIF AXI, ASSOCIATED_RESET axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_processing_system7_1_0_FCLK_CLK0, INSERT_VIP 0" *) input axi_aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 AXI_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input axi_aresetn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWADDR" *) input [3:0]axi_awaddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWPROT" *) input [2:0]axi_awprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWVALID" *) input axi_awvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI AWREADY" *) output axi_awready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WDATA" *) input [31:0]axi_wdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WSTRB" *) input [3:0]axi_wstrb;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WVALID" *) input axi_wvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI WREADY" *) output axi_wready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BRESP" *) output [1:0]axi_bresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BVALID" *) output axi_bvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI BREADY" *) input axi_bready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARADDR" *) input [3:0]axi_araddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARPROT" *) input [2:0]axi_arprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARVALID" *) input axi_arvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI ARREADY" *) output axi_arready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RDATA" *) output [31:0]axi_rdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RRESP" *) output [1:0]axi_rresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RVALID" *) output axi_rvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 4, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 4, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN system_processing_system7_1_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input axi_rready;
+
+  wire \<const0> ;
+  wire axi_aclk;
+  wire [3:0]axi_araddr;
+  wire axi_aresetn;
+  wire axi_arready;
+  wire axi_arvalid;
+  wire [3:0]axi_awaddr;
+  wire axi_awready;
+  wire axi_awvalid;
+  wire axi_bready;
+  wire axi_bvalid;
+  wire [31:0]axi_rdata;
+  wire axi_rready;
+  wire axi_rvalid;
+  wire [31:0]axi_wdata;
+  wire axi_wready;
+  wire [3:0]axi_wstrb;
+  wire axi_wvalid;
+  wire clk_out;
+  wire empty;
+  wire full;
+  wire intr;
+  wire overflow;
+  wire [1:0]\^rd_data ;
+  wire [4:0]rd_index;
+  wire rx_in;
+  wire tx_out;
+  wire [4:0]watermark;
+  wire [4:0]wr_index;
+
+  assign axi_bresp[1] = \<const0> ;
+  assign axi_bresp[0] = \<const0> ;
+  assign axi_rresp[1] = \<const0> ;
+  assign axi_rresp[0] = \<const0> ;
+  assign rd_data[8] = \<const0> ;
+  assign rd_data[7] = \<const0> ;
+  assign rd_data[6] = \<const0> ;
+  assign rd_data[5] = \<const0> ;
+  assign rd_data[4] = \<const0> ;
+  assign rd_data[3] = \<const0> ;
+  assign rd_data[2] = \<const0> ;
+  assign rd_data[1:0] = \^rd_data [1:0];
+  GND GND
+       (.G(\<const0> ));
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_serial inst
+       (.S_AXI_ARREADY(axi_arready),
+        .S_AXI_AWREADY(axi_awready),
+        .S_AXI_WREADY(axi_wready),
+        .axi_aclk(axi_aclk),
+        .axi_araddr(axi_araddr[3:2]),
+        .axi_aresetn(axi_aresetn),
+        .axi_arvalid(axi_arvalid),
+        .axi_awaddr(axi_awaddr[3:2]),
+        .axi_awvalid(axi_awvalid),
+        .axi_bready(axi_bready),
+        .axi_bvalid(axi_bvalid),
+        .axi_rdata(axi_rdata),
+        .axi_rready(axi_rready),
+        .axi_rvalid_reg(axi_rvalid),
+        .axi_wdata(axi_wdata),
+        .axi_wstrb(axi_wstrb),
+        .axi_wvalid(axi_wvalid),
+        .clk_out(clk_out),
+        .intr(intr),
+        .overflow(overflow),
+        .pe_out_reg(\^rd_data ),
+        .\rd_index_reg[0] (rd_index[0]),
+        .\rd_index_reg[1] (rd_index[1]),
+        .\rd_index_reg[2] (rd_index[2]),
+        .\rd_index_reg[3] (rd_index[3]),
+        .\rd_index_reg[3]_0 (empty),
+        .\rd_index_reg[4] (full),
+        .\rd_index_reg[4]_0 (rd_index[4]),
+        .rx_in(rx_in),
+        .tx_out(tx_out),
+        .watermark(watermark),
+        .\wr_index_reg[0] (wr_index[0]),
+        .\wr_index_reg[1] (wr_index[1]),
+        .\wr_index_reg[2] (wr_index[2]),
+        .\wr_index_reg[3] (wr_index[3]),
+        .\wr_index_reg[4] (wr_index[4]));
+endmodule
+
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_transmitter
    (brgen_prev,
     SR,
     ok_to_read_tx,
@@ -4836,11 +4821,11 @@ module system_serial_0_2_transmitter
   wire \ones[0]_i_5_n_0 ;
   wire out_data10;
   wire out_data1_out;
-  wire out_data_i_1_n_0;
   wire out_data_i_2_n_0;
   wire out_data_i_3_n_0;
-  wire out_data_i_5_n_0;
+  wire out_data_i_4_n_0;
   wire out_data_i_6_n_0;
+  wire out_data_i_7_n_0;
   wire p_0_in;
   wire previous_state;
   wire rd_request_i_1_n_0;
@@ -5185,7 +5170,7 @@ module system_serial_0_2_transmitter
     \ones[0]_i_2 
        (.I0(\ones[0]_i_4_n_0 ),
         .I1(\latched_data_reg_n_0_[7] ),
-        .I2(out_data_i_6_n_0),
+        .I2(out_data_i_7_n_0),
         .I3(\ones[0]_i_5_n_0 ),
         .I4(state_0[3]),
         .I5(out_data10),
@@ -5224,38 +5209,43 @@ module system_serial_0_2_transmitter
         .D(\ones[0]_i_1_n_0 ),
         .Q(out_data10),
         .R(1'b0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    out_data_i_1
+       (.I0(axi_aresetn),
+        .O(SR));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    out_data_i_1
-       (.I0(out_data_i_2_n_0),
+    out_data_i_2
+       (.I0(out_data_i_3_n_0),
         .I1(state_0[3]),
-        .I2(out_data_i_3_n_0),
+        .I2(out_data_i_4_n_0),
         .I3(out_data1_out),
         .I4(tx_out),
-        .O(out_data_i_1_n_0));
+        .O(out_data_i_2_n_0));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFF0B08)) 
-    out_data_i_2
+    out_data_i_3
        (.I0(\latched_data_reg_n_0_[7] ),
         .I1(state_0[0]),
         .I2(Q),
         .I3(\latched_data_reg_n_0_[6] ),
         .I4(state_0[2]),
-        .I5(out_data_i_5_n_0),
-        .O(out_data_i_2_n_0));
+        .I5(out_data_i_6_n_0),
+        .O(out_data_i_3_n_0));
   LUT6 #(
     .INIT(64'hFFFFB9310000B931)) 
-    out_data_i_3
+    out_data_i_4
        (.I0(Q),
         .I1(state_0[0]),
         .I2(\latched_data_reg_n_0_[0] ),
         .I3(p_0_in),
         .I4(state_0[2]),
-        .I5(out_data_i_6_n_0),
-        .O(out_data_i_3_n_0));
+        .I5(out_data_i_7_n_0),
+        .O(out_data_i_4_n_0));
   LUT6 #(
     .INIT(64'h0004444444444444)) 
-    out_data_i_4
+    out_data_i_5
        (.I0(baud_en_prev),
         .I1(baud_en__0),
         .I2(state_0[0]),
@@ -5265,35 +5255,30 @@ module system_serial_0_2_transmitter
         .O(out_data1_out));
   LUT6 #(
     .INIT(64'hFFB2FFD400000000)) 
-    out_data_i_5
+    out_data_i_6
        (.I0(\FSM_sequential_state_reg[3]_0 [2]),
         .I1(\FSM_sequential_state_reg[3]_0 [3]),
         .I2(data1),
         .I3(state_0[0]),
         .I4(out_data10),
         .I5(Q),
-        .O(out_data_i_5_n_0));
+        .O(out_data_i_6_n_0));
   LUT6 #(
     .INIT(64'hCAFFCAF0CA0FCA00)) 
-    out_data_i_6
+    out_data_i_7
        (.I0(\latched_data_reg_n_0_[3] ),
         .I1(\latched_data_reg_n_0_[5] ),
         .I2(Q),
         .I3(state_0[0]),
         .I4(\latched_data_reg_n_0_[2] ),
         .I5(\latched_data_reg_n_0_[4] ),
-        .O(out_data_i_6_n_0));
+        .O(out_data_i_7_n_0));
   FDSE out_data_reg
        (.C(axi_aclk),
         .CE(1'b1),
-        .D(out_data_i_1_n_0),
+        .D(out_data_i_2_n_0),
         .Q(tx_out),
         .S(SR));
-  LUT1 #(
-    .INIT(2'h1)) 
-    pe_out_i_1
-       (.I0(axi_aresetn),
-        .O(SR));
   LUT2 #(
     .INIT(4'h2)) 
     pulse_i_1__1

@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:serial:1.0
-// IP Revision: 260
+// IP Revision: 262
 
 `timescale 1ns/1ps
 
@@ -63,6 +63,7 @@ module system_serial_0_2 (
   rd_data,
   clk_out,
   tx_out,
+  intr,
   rx_in,
   axi_aclk,
   axi_aresetn,
@@ -96,6 +97,7 @@ output wire [4 : 0] watermark;
 output wire [8 : 0] rd_data;
 output wire clk_out;
 output wire tx_out;
+output wire intr;
 input wire rx_in;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXI_CLK, ASSOCIATED_BUSIF AXI, ASSOCIATED_RESET axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN system_processing_system7_1_0_FCLK_CLK0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 AXI_CLK CLK" *)
@@ -157,6 +159,7 @@ input wire axi_rready;
     .rd_data(rd_data),
     .clk_out(clk_out),
     .tx_out(tx_out),
+    .intr(intr),
     .rx_in(rx_in),
     .axi_aclk(axi_aclk),
     .axi_aresetn(axi_aresetn),
