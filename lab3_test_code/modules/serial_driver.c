@@ -16,7 +16,7 @@
 //   GPIO[2] on PMODA used as RX pin
 
 //  IRQ interface:
-//     IRQ_F2P[1] is used as the interrupt interface to the PS
+//     IRQ_F2P[2] is used as the interrupt interface to the PS
 // Load kernel module with insmod serial_driver.ko [param=___]
 
 //-----------------------------------------------------------------------------

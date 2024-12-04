@@ -1,4 +1,5 @@
 obj-m += serial_driver.o
+obj-m += serial_tty.o
 
 DIR=/lib/modules/$(shell uname -r)/build
 
