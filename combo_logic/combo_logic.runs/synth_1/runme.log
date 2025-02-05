@@ -1,0 +1,347 @@
+
+*** Running vivado
+    with args -log combo_logic.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source combo_logic.tcl
+
+
+****** Vivado v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Mon Jan 27 15:25:36 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source combo_logic.tcl -notrace
+Command: synth_design -top combo_logic -part xc7z007sclg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Device 21-403] Loading part xc7z007sclg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 490254
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1908.574 ; gain = 425.832 ; free physical = 313 ; free virtual = 9357
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'combo_logic' [/home/moonknight/Documents/risc/combo_logic.sv:14]
+INFO: [Synth 8-6157] synthesizing module 'add4_with_fa_ha' [/home/moonknight/Documents/risc/combo_logic.sv:119]
+INFO: [Synth 8-6157] synthesizing module 'ha' [/home/moonknight/Documents/risc/combo_logic.sv:131]
+INFO: [Synth 8-6155] done synthesizing module 'ha' (0#1) [/home/moonknight/Documents/risc/combo_logic.sv:131]
+INFO: [Synth 8-6157] synthesizing module 'fa' [/home/moonknight/Documents/risc/combo_logic.sv:144]
+INFO: [Synth 8-6155] done synthesizing module 'fa' (0#1) [/home/moonknight/Documents/risc/combo_logic.sv:144]
+INFO: [Synth 8-6155] done synthesizing module 'add4_with_fa_ha' (0#1) [/home/moonknight/Documents/risc/combo_logic.sv:119]
+INFO: [Synth 8-6157] synthesizing module 'count_ones_in_4_bits' [/home/moonknight/Documents/risc/combo_logic.sv:112]
+INFO: [Synth 8-6155] done synthesizing module 'count_ones_in_4_bits' (0#1) [/home/moonknight/Documents/risc/combo_logic.sv:112]
+INFO: [Synth 8-6155] done synthesizing module 'combo_logic' (0#1) [/home/moonknight/Documents/risc/combo_logic.sv:14]
+WARNING: [Synth 8-3917] design combo_logic has port RGB0[2] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB0[1] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB0[0] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB1[2] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB1[1] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB1[0] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SS_ANODE[3] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SS_ANODE[2] driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port SS_ANODE[1] driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port SS_ANODE[0] driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port SERVO[3] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SERVO[2] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SERVO[1] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SERVO[0] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port PDM_SPEAKER driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port PDM_MIC_CLK driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port ESP32_UART1_TXD driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port IMU_SCLK driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port IMU_SDI driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port IMU_CS_AG driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port IMU_CS_M driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port IMU_DEN_AG driven by constant 0
+WARNING: [Synth 8-7129] Port GPIO[23] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[22] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[21] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[20] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[19] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[18] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[17] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[16] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[15] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[14] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[13] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[12] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[11] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[10] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[9] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[8] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[7] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[6] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[5] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[4] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[3] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[2] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[1] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[0] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK100 in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[3] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[2] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[1] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[0] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PDM_MIC_DATA in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ESP32_UART1_RXD in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_AG in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_M in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_DRDY_M in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT1_AG in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT_M in module combo_logic is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1980.512 ; gain = 497.770 ; free physical = 381 ; free virtual = 9268
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1998.324 ; gain = 515.582 ; free physical = 378 ; free virtual = 9264
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1998.324 ; gain = 515.582 ; free physical = 378 ; free virtual = 9264
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1998.324 ; gain = 0.000 ; free physical = 378 ; free virtual = 9264
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/moonknight/Documents/risc/blackboard.xdc]
+Finished Parsing XDC File [/home/moonknight/Documents/risc/blackboard.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/moonknight/Documents/risc/blackboard.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/combo_logic_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/combo_logic_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2098.074 ; gain = 0.000 ; free physical = 340 ; free virtual = 9242
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2098.074 ; gain = 0.000 ; free physical = 340 ; free virtual = 9242
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2098.074 ; gain = 615.332 ; free physical = 467 ; free virtual = 9370
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2106.078 ; gain = 623.336 ; free physical = 467 ; free virtual = 9370
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2106.078 ; gain = 623.336 ; free physical = 459 ; free virtual = 9362
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2106.078 ; gain = 623.336 ; free physical = 388 ; free virtual = 9292
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    5 Bit       Adders := 1     
+	   4 Input    3 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 7     
++---Muxes : 
+	   4 Input   10 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 66 (col length:40)
+BRAMs: 100 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design combo_logic has port RGB0[2] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB0[1] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB0[0] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB1[2] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB1[1] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port RGB1[0] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SS_ANODE[3] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SS_ANODE[2] driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port SS_ANODE[1] driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port SS_ANODE[0] driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port SS_CATHODE[7] driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port SS_CATHODE[1] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SERVO[3] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SERVO[2] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SERVO[1] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port SERVO[0] driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port PDM_SPEAKER driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port PDM_MIC_CLK driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port ESP32_UART1_TXD driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port IMU_SCLK driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port IMU_SDI driven by constant 0
+WARNING: [Synth 8-3917] design combo_logic has port IMU_CS_AG driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port IMU_CS_M driven by constant 1
+WARNING: [Synth 8-3917] design combo_logic has port IMU_DEN_AG driven by constant 0
+WARNING: [Synth 8-7129] Port GPIO[23] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[22] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[21] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[20] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[19] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[18] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[17] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[16] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[15] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[14] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[13] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[12] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[11] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[10] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[9] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[8] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[7] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[6] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[5] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[4] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[3] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[2] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[1] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[0] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port CLK100 in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[3] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[2] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[1] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[0] in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PDM_MIC_DATA in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ESP32_UART1_RXD in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_AG in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_M in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_DRDY_M in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT1_AG in module combo_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT_M in module combo_logic is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2106.078 ; gain = 623.336 ; free physical = 358 ; free virtual = 9187
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2179.078 ; gain = 696.336 ; free physical = 308 ; free virtual = 9063
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2179.078 ; gain = 696.336 ; free physical = 308 ; free virtual = 9063
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2189.094 ; gain = 706.352 ; free physical = 299 ; free virtual = 9054
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2358.906 ; gain = 876.164 ; free physical = 716 ; free virtual = 9249
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2358.906 ; gain = 876.164 ; free physical = 714 ; free virtual = 9247
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2358.906 ; gain = 876.164 ; free physical = 720 ; free virtual = 9254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2358.906 ; gain = 876.164 ; free physical = 717 ; free virtual = 9250
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2358.906 ; gain = 876.164 ; free physical = 719 ; free virtual = 9252
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2358.906 ; gain = 876.164 ; free physical = 717 ; free virtual = 9250
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |LUT1  |     1|
+|2     |LUT2  |     4|
+|3     |LUT4  |     3|
+|4     |LUT5  |     5|
+|5     |LUT6  |    14|
+|6     |MUXF7 |     3|
+|7     |IBUF  |    12|
+|8     |OBUF  |    40|
++------+------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2358.906 ; gain = 876.164 ; free physical = 719 ; free virtual = 9252
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 61 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2358.906 ; gain = 776.414 ; free physical = 711 ; free virtual = 9244
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 2358.914 ; gain = 876.164 ; free physical = 711 ; free virtual = 9244
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2358.914 ; gain = 0.000 ; free physical = 782 ; free virtual = 9301
+INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2414.934 ; gain = 0.000 ; free physical = 746 ; free virtual = 9266
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: f8388bb4
+INFO: [Common 17-83] Releasing license: Synthesis
+25 Infos, 119 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:28 . Memory (MB): peak = 2414.934 ; gain = 941.098 ; free physical = 738 ; free virtual = 9258
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1715.088; main = 1575.316; forked = 269.637
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3169.816; main = 2414.938; forked = 915.719
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2438.945 ; gain = 0.000 ; free physical = 738 ; free virtual = 9258
+INFO: [Common 17-1381] The checkpoint '/home/moonknight/Documents/SoC/combo_logic/combo_logic.runs/synth_1/combo_logic.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file combo_logic_utilization_synth.rpt -pb combo_logic_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Jan 27 15:26:08 2025...
