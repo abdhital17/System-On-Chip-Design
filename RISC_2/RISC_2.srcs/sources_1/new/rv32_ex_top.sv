@@ -13,6 +13,14 @@ module rv32_ex_top(
     output reg [31:0] alu_out
 );
 
-
+    ALU alu_1(
+    .clk(clk),
+    .reset(reset),
+    .pc_in(pc_in),
+    .iw_in(iw_in),
+    .rs1_data_in(rs1_data_in),
+    .rs2_data_in(rs2_data_in),
+    .alu_out(alu_out) 
+    );
 
 endmodule
