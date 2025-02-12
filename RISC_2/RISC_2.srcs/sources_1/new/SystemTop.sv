@@ -55,116 +55,321 @@ module SystemTop(
     end
     
     // handle test-mode input metastability safely
-    reg [4:0] mode, pre_mode;
+    reg [5:0] mode, pre_mode;
+    reg [1:0] bits, pre_bits;
     always_ff @ (posedge(clk))
     begin
-        pre_mode[4:0] <= SW[4:0];
-        mode[4:0] <= pre_mode[4:0];
+        pre_mode[5:0] <= SW[5:0];
+        mode[5:0] <= pre_mode[5:0];
+        pre_bits[1:0] <= SW[7:6];
+        bits[1:0] <= pre_bits[1:0];
     end
 
 
     reg [31:0] pc_in, iw_in, rs1_data_in, rs2_data_in, alu_out;
     reg [6:0] opcode, funct7;
     reg [2:0] funct3;
-
+    reg [11:0] immediate;
+    reg [19:0] immediate_2;
     // handle LED output modes
     always_ff @ (posedge(clk))
     begin
         case(mode[4:0])
-            5'd0:
+            6'd0:       // ADD two positive numbers
             begin              
                 opcode <= 7'b0110011;
                 funct3 <= 3'b000;
                 funct7 <= 7'b0000000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 10;
-                rs2_data_in <= -5;
+                rs2_data_in <= 5;
             end         
-            5'd1:
+            6'd1:
+            begin
+                opcode <= 7'b0110011;
+                funct3 <= 3'b000;
+                funct7 <= 7'b0000000;
+                iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 10;
+                rs2_data_in <= -5;
+            end
+            6'd2:
+            begin
+                opcode <= 7'b0110011;
+                funct3 <= 3'b000;
+                funct7 <= 7'b0000000;
+                iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= -33;
+                rs2_data_in <= -21; 
+            end
+            6'd3:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b000;
                 funct7 <= 7'b0100000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 20;
-                rs2_data_in <= -5;
+                rs2_data_in <= 18;     
             end
-            5'd2:
+            6'd4:
+            begin
+                opcode <= 7'b0110011;
+                funct3 <= 3'b000;
+                funct7 <= 7'b0100000;
+                iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= -11;
+                rs2_data_in <= -21;     
+            end
+            6'd5:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b001;
                 funct7 <= 7'b0000000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= 6'b111111;
-                rs2_data_in <= 4;  
+                rs1_data_in <= 16;
+                rs2_data_in <= 3;     
             end
-            5'd3:
+            6'd6:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b010;
                 funct7 <= 7'b0000000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= -33;
-                rs2_data_in <= -21;     
+                rs1_data_in <= 20;
+                rs2_data_in <= 25;     
             end
-            5'd4:
+            6'd7:
+            begin
+                opcode <= 7'b0110011;
+                funct3 <= 3'b010;
+                funct7 <= 7'b0000000;
+                iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= -20;
+                rs2_data_in <= -25;     
+            end
+            6'd8:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b011;
                 funct7 <= 7'b0000000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= -10;
-                rs2_data_in <= -21;     
+                rs1_data_in <= 20;
+                rs2_data_in <= 25;     
             end
-            5'd5:
+            6'd9:
+            begin
+                opcode <= 7'b0110011;
+                funct3 <= 3'b011;
+                funct7 <= 7'b0000000;
+                iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= -20;
+                rs2_data_in <= -25;      
+            end
+            6'd10:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b100;
                 funct7 <= 7'b0000000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= 255;
-                rs2_data_in <= 1;     
+                rs1_data_in <= 8'b11110000;
+                rs2_data_in <= 8'b00001111;      
             end
-            5'd6:
+            6'd11:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b101;
                 funct7 <= 7'b0000000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= 8'hF0;
-                rs2_data_in <= 2;     
+                rs1_data_in <= 8'b11110000;
+                rs2_data_in <= 4;      
             end
-            5'd7:
+            6'd12:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b101;
                 funct7 <= 7'b0100000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= 255;
-                rs2_data_in <= 7;     
+                rs1_data_in <= 8'b11110000;
+                rs2_data_in <= 4;      
             end
-            5'd8:
+            6'd13:
+            begin
+                opcode <= 7'b0110011;
+                funct3 <= 3'b101;
+                funct7 <= 7'b0100000;
+                iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 8'b11110000;
+                rs2_data_in <= 4;      
+            end
+            6'd14:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b110;
                 funct7 <= 7'b0000000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= 123;
-                rs2_data_in <= 55;     
+                rs1_data_in <= 8'b11110000;
+                rs2_data_in <= 8'b00001111;      
             end
-            5'd9:
+            6'd15:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b111;
                 funct7 <= 7'b0000000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= 55;
-                rs2_data_in <= 123;     
-            end
-            default:
+                rs1_data_in <= 9'b111110000;
+                rs2_data_in <= 9'b100001111;      
+            end 
+            6'd16:
             begin
-                
+                opcode <= 7'b1100111;
+                funct3 <= 3'b000;
+                immediate <= 8;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h12345678;
+                pc_in <= 32'h00000030
             end
+            6'd17:
+            begin
+                opcode <= 7'b0000011;
+                funct3 <= 3'b000;
+                immediate <= 8;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h56781234;
+                pc_in <= 32'h00000030
+            end
+            6'd18:
+            begin
+                opcode <= 7'b0000011;
+                funct3 <= 3'b001;
+                immediate <= -4;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h56781234;
+                pc_in <= 32'h00000030
+            end
+            6'd19:
+            begin
+                opcode <= 7'b0000011;
+                funct3 <= 3'b010;
+                immediate <= 12;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h56781234;
+                pc_in <= 32'h00000030
+            end
+            6'd20:
+            begin
+                opcode <= 7'b0000011;
+                funct3 <= 3'b100;
+                immediate <= -12;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h56781234;
+                pc_in <= 32'h00000030
+            end
+            6'd21:
+            begin
+                opcode <= 7'b0000011;
+                funct3 <= 3'b101;
+                immediate <= 20;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h56781234;
+                pc_in <= 32'h00000030
+            end
+            6'd22:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b000;
+                immediate <= 1000;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 5000;
+            end
+            6'd23:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b000;
+                immediate <= -2000;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 1000;
+            end
+            6'd24:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b010;
+                immediate <= 2000;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 1000;
+            end         
+            6'd25:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b010;
+                immediate <= -10;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= -5;
+            end           
+            6'd26:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b011;
+                immediate <= 10;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 8;
+            end
+            6'd27:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b011;
+                immediate <= -19;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 20;
+            end         
+            6'd28:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b100;
+                immediate <= 5;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h0000000F;
+            end      
+            6'd29:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b100;
+                immediate <= -5;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h0000000F;
+            end      
+            6'd30:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b110;
+                immediate <= 8'hF0;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h0000000F;
+            end
+            6'd31:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b110;
+                immediate <= -4;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h0000000E;
+            end
+            6'd32:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b111;
+                immediate <= 5;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h0000000F;
+            end
+            6'd33:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b111;
+                immediate <= -15;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h0000000F;
+            end
+
         endcase         
     end
 
@@ -179,6 +384,27 @@ module SystemTop(
     .alu_out(alu_out) 
     );
    
-   assign LED[9:0] = alu_out[9:0];
+    reg [9:0] leds;
+    always_ff @ (posedge(clk))
+    begin
+        case (bits)
+            2'b00: begin leds[9:0] <= alu_out[9:0]; end
+            2'b01: begin leds[9:0] <= alu_out[19:10]; end
+            2'b10: begin leds[9:0] <= alu_out[29:20]; end
+            2'b11: begin leds[9:0] <= alu_out[31:30]; end
+
+        endcase
+    end
+    assign LED[9:0] = leds[9:0];
+    
+    ila_0 ila_alu (
+	.clk(clk), // input wire clk
+
+	.probe0(pc_in), // input wire [31:0]  probe0  
+	.probe1(iw_in), // input wire [31:0]  probe1 
+	.probe2(rs1_data_in), // input wire [31:0]  probe2 
+	.probe3(rs2_data_in), // input wire [31:0]  probe3 
+	.probe4(alu_out) // input wire [31:0]  probe4
+);
 
 endmodule
