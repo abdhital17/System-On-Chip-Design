@@ -1,0 +1,100 @@
+Case 0:  Add two positive numbers
+ADD 10  5
+
+Case 1:  Add one positive with one negative values
+ADD 10   -05
+
+Case 2:  Add two negative values
+ADD -33  -21
+
+Case 3:  Subtract two positive numbers
+SUB 20  18
+
+Case 4:  Subtract two negative numbers
+SUB -11  -21
+
+Case 5:  Shift left
+SLL 16 << 3
+
+Case 6:  SLT
+SLT 20      25
+
+Case 7:  SLT negative numbers
+SLT -20     -25
+
+Case 8:  SLTU positive numbers
+SLTU    20  25
+
+Case 9: SLTU negative numbers
+SLTU    -20     -25
+
+Case 10:  XOR
+XOR     0xF0    0x0F
+
+Case 11: SRL
+SRL 0xF0    4
+
+// to fix
+Case 12: SRA        positive number
+SRA 0xF0    4
+
+Case 13: SRA        negative number
+SRA 0xF0    4
+// to fix
+
+Case 14: OR
+OR  0xF0    0x0F
+
+Case 15:    AND
+AND 0x1F0   0x10F
+
+Case 16:    JALR
+JALR    x2, 8(x1)
+
+Case 17:    LB
+
+Case 18:    LH          negative imm
+
+Case 19:    LW
+
+Case 20:    LBU         negative imm
+
+Case 21:    LHU
+
+Case 22:    ADDI        positive imm
+ADDI    5000    1000
+
+Case 23:    ADDI        negative imm
+ADDI    5000    -2000
+
+Case 24:    SLTI        positive imm
+SLTI    1000    2000
+
+Case 25:    SLTI        negative imm and register value
+SLTI    -5    -10
+
+Case 26:    SLTIU       positive imm
+SLTIU   8   10
+
+Case 27:    SLTIU       negative imm and register value
+SLTIU   20     -19
+
+Case 28:    XORI        positive imm
+XORI    0xF     5
+
+Case 29:    XORI        negative imm
+XORI    0xE     -4
+
+Case 30:    ORI     positive imm
+ORI     0xF     0xF0
+
+Case 31:    ORI`    negative imm
+ORI     OxE     -4
+
+Case 32:    ANDI    positive imm    
+ANDI    0xF     5
+
+Case 33:    ANDI    negative imm
+ANDI    OxF     -15
+
+Case 34:
