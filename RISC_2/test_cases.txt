@@ -31,16 +31,17 @@ SLTU    -20     -25
 Case 10:  XOR
 XOR     0xF0    0x0F
 
-Case 11: SRL
+Case 11: SRL            positive number
 SRL 0xF0    4
 
-// to fix
+Case 45: SRL            negative number
+SRL 0xFFFFFFFF      4
+
 Case 12: SRA        positive number
-SRA 0xF0    4
+SRA 0x0FFFFFFF    4
 
 Case 13: SRA        negative number
-SRA 0xF0    4
-// to fix
+SRA 0xFFFFFFFF    4
 
 Case 14: OR
 OR  0xF0    0x0F
@@ -50,6 +51,11 @@ AND 0x1F0   0x10F
 
 Case 16:    JALR
 JALR    x2, 8(x1)
+
+Case 44:    JALR        with negative offset
+rs1_ data -> 0x12345678
+immediate -> -8
+
 
 Case 17:    LB
 
@@ -65,7 +71,7 @@ Case 22:    ADDI        positive imm
 ADDI    5000    1000
 
 Case 23:    ADDI        negative imm
-ADDI    5000    -2000
+ADDI    1000    -2000
 
 Case 24:    SLTI        positive imm
 SLTI    1000    2000
@@ -83,7 +89,7 @@ Case 28:    XORI        positive imm
 XORI    0xF     5
 
 Case 29:    XORI        negative imm
-XORI    0xE     -4
+XORI    0xF     -5
 
 Case 30:    ORI     positive imm
 ORI     0xF     0xF0
@@ -97,4 +103,32 @@ ANDI    0xF     5
 Case 33:    ANDI    negative imm
 ANDI    OxF     -15
 
-Case 34:
+Case 34:    SLLI   
+SLLI    0xFFFFFFFF     4
+
+Case 35:    SRLI            
+SRLI    0xFFFFFFFF      4
+
+Case 36:    SRAI        negative number
+SRAI    0xFFFFFFFF      4
+
+Case 37:    SRAI        positive number
+SRAI    0x0FFFFFFF      4
+
+Case 38:    SB          positive offset
+
+Case 39:    SH          negative offset
+
+Case 40:    SW          positive offset
+
+Case 41:    LUI         
+immediate -> 0xABCDABCD
+
+Case 42:    AUIPC
+pc  -> 0x0BC
+immediate -> 0xABCDABCD
+
+Case 43:    JAL
+pc -> 0x10000000
+immediate[20:1] = 0xABCDE
+

@@ -72,7 +72,7 @@ module ALU(
                     end
                     3'b101:                 
                     begin
-                        if (!funct7[5])      // SRA
+                        if (funct7[5])      // SRA
                         begin
                             rd_data = $signed(rs1_data_in) >>> rs2_data_in[4:0];
                         end
@@ -161,7 +161,7 @@ module ALU(
                     end
                     3'b101:                 
                     begin
-                        if(!funct7[4])       // SRAI
+                        if(funct7[5])       // SRAI
                         begin
                             rd_data = $signed(rs1_data_in) >>> shamt;
                         end

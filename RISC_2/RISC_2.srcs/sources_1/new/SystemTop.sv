@@ -70,11 +70,11 @@ module SystemTop(
     reg [6:0] opcode, funct7;
     reg [2:0] funct3;
     reg [11:0] immediate;
-    reg [19:0] immediate_2;
+    reg [31:0] immediate_2;
     // handle LED output modes
     always_ff @ (posedge(clk))
     begin
-        case(mode[4:0])
+        case(mode[5:0])
             6'd0:       // ADD two positive numbers
             begin              
                 opcode <= 7'b0110011;
@@ -183,13 +183,22 @@ module SystemTop(
                 rs1_data_in <= 8'b11110000;
                 rs2_data_in <= 4;      
             end
+            6'd45:
+            begin
+                opcode <= 7'b0110011;
+                funct3 <= 3'b101;
+                funct7 <= 7'b0000000;
+                iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'hFFFFFFFF;
+                rs2_data_in <= 4;      
+            end
             6'd12:
             begin
                 opcode <= 7'b0110011;
                 funct3 <= 3'b101;
                 funct7 <= 7'b0100000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= 8'b11110000;
+                rs1_data_in <= 32'h0FFFFFFF;
                 rs2_data_in <= 4;      
             end
             6'd13:
@@ -198,7 +207,7 @@ module SystemTop(
                 funct3 <= 3'b101;
                 funct7 <= 7'b0100000;
                 iw_in <= {funct7, 10'b0, funct3, 5'b0, opcode};
-                rs1_data_in <= 8'b11110000;
+                rs1_data_in <= 32'hFFFFFFFF;
                 rs2_data_in <= 4;      
             end
             6'd14:
@@ -226,7 +235,7 @@ module SystemTop(
                 immediate <= 8;
                 iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 32'h12345678;
-                pc_in <= 32'h00000030
+                pc_in <= 32'h00000030;
             end
             6'd17:
             begin
@@ -235,7 +244,7 @@ module SystemTop(
                 immediate <= 8;
                 iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 32'h56781234;
-                pc_in <= 32'h00000030
+                pc_in <= 32'h00000030;
             end
             6'd18:
             begin
@@ -244,7 +253,7 @@ module SystemTop(
                 immediate <= -4;
                 iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 32'h56781234;
-                pc_in <= 32'h00000030
+                pc_in <= 32'h00000030;
             end
             6'd19:
             begin
@@ -253,7 +262,7 @@ module SystemTop(
                 immediate <= 12;
                 iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 32'h56781234;
-                pc_in <= 32'h00000030
+                pc_in <= 32'h00000030;
             end
             6'd20:
             begin
@@ -262,7 +271,7 @@ module SystemTop(
                 immediate <= -12;
                 iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 32'h56781234;
-                pc_in <= 32'h00000030
+                pc_in <= 32'h00000030;
             end
             6'd21:
             begin
@@ -271,7 +280,7 @@ module SystemTop(
                 immediate <= 20;
                 iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 32'h56781234;
-                pc_in <= 32'h00000030
+                pc_in <= 32'h00000030;
             end
             6'd22:
             begin
@@ -369,7 +378,95 @@ module SystemTop(
                 iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
                 rs1_data_in <= 32'h0000000F;
             end
-
+            6'd34:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b001;
+                immediate <= 4;
+                iw_in <= {7'b0, immediate[4:0], 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'hFFFFFFFF;
+            end
+            6'd35:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b101;
+                funct7 <= 7'b0000000;
+                immediate <= 4;
+                iw_in <= {funct7, immediate[4:0], 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'hFFFFFFFF;
+            end
+            6'd36:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b101;
+                funct7 <= 7'b0100000;
+                immediate <= 4;
+                iw_in <= {funct7, immediate[4:0], 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'hFFFFFFFF;
+            end
+            6'd37:
+            begin
+                opcode <= 7'b0010011;
+                funct3 <= 3'b101;
+                funct7 <= 7'b0100000;
+                immediate <= 4;
+                iw_in <= {funct7, immediate[4:0], 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h0FFFFFFF;
+            end
+            6'd38:
+            begin
+                opcode <= 7'b0100011;
+                funct3 <= 3'b000;
+                immediate <= 4;
+                iw_in <= {immediate[11:5], 5'b0, 5'b0, funct3, immediate[4:0], opcode};
+                rs1_data_in <= 32'h0FFFFFFC;
+            end
+            6'd39:
+            begin
+                opcode <= 7'b0100011;
+                funct3 <= 3'b001;
+                immediate <= -8;
+                iw_in <= {immediate[11:5], 5'b0, 5'b0, funct3, immediate[4:0], opcode};
+                rs1_data_in <= 32'h0FFFFFFC;
+            end
+            6'd40:
+            begin
+                opcode <= 7'b0100011;
+                funct3 <= 3'b010;
+                immediate <= 12;
+                iw_in <= {immediate[11:5], 5'b0, 5'b0, funct3, immediate[4:0], opcode};
+                rs1_data_in <= 32'h0FFFFFFC;
+            end
+            6'd41:
+            begin
+                opcode <= 7'b0110111;
+                immediate_2 <= 32'hABCDABCD;
+                iw_in <= {immediate_2[31:12], 5'b0, opcode};
+                pc_in <= 12'h0BC;
+            end
+            6'd42:
+            begin
+                opcode <= 7'b0010111;
+                immediate_2 <= 32'hABCDABCD;
+                iw_in <= {immediate_2[31:12], 5'b0, opcode};
+                pc_in <= 12'h0BC;
+            end
+            6'd43:
+            begin
+                opcode <= 7'b1101111;
+                immediate_2[20:1] <= 20'hABCDE;
+                iw_in <= {immediate_2[20], immediate_2[10:1], immediate_2[11], immediate_2[19:12], 5'b0, opcode};
+                pc_in <= 32'h10000000;
+            end
+            6'd44:
+            begin
+                opcode <= 7'b1100111;
+                funct3 <= 3'b000;
+                immediate <= -10;
+                iw_in <= {immediate, 5'b0, funct3, 5'b0, opcode};
+                rs1_data_in <= 32'h12345678;
+                pc_in <= 32'h00000030;
+            end
         endcase         
     end
 
@@ -404,7 +501,9 @@ module SystemTop(
 	.probe1(iw_in), // input wire [31:0]  probe1 
 	.probe2(rs1_data_in), // input wire [31:0]  probe2 
 	.probe3(rs2_data_in), // input wire [31:0]  probe3 
-	.probe4(alu_out) // input wire [31:0]  probe4
+	.probe4(alu_out), // input wire [31:0]  probe4
+	.probe5(immediate), // input wire [0:0]  probe5 
+	.probe6(immediate_2) // input wire [0:0]  probe6
 );
 
 endmodule
