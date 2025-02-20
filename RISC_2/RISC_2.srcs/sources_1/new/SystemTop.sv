@@ -501,9 +501,9 @@ module SystemTop(
 	.probe1(iw_in), // input wire [31:0]  probe1 
 	.probe2(rs1_data_in), // input wire [31:0]  probe2 
 	.probe3(rs2_data_in), // input wire [31:0]  probe3 
-	.probe4(alu_out), // input wire [31:0]  probe4
-	.probe5(immediate), // input wire [0:0]  probe5 
-	.probe6(immediate_2) // input wire [0:0]  probe6
+	.probe4(immediate), // input wire [31:0]  probe4
+	.probe5(immediate_2), // input wire [0:0]  probe5 
+	.probe6(alu_out) // input wire [0:0]  probe6
 );
 
 endmodule
