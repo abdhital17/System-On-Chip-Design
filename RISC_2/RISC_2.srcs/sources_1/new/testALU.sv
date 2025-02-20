@@ -1,5 +1,6 @@
 module testALU(
     input clk,
+    input [5:0] mode,
     output reg [31:0] alu_out
     );
     
