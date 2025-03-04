@@ -1,0 +1,458 @@
+
+*** Running vivado
+    with args -log SystemTop.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source SystemTop.tcl
+
+
+****** Vivado v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Wed Feb 19 22:47:03 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source SystemTop.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/utils_1/imports/synth_1/rv32_ex_top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/utils_1/imports/synth_1/rv32_ex_top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top SystemTop -part xc7z007sclg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007s'
+INFO: [Device 21-403] Loading part xc7z007sclg400-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 56909
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1936.879 ; gain = 421.766 ; free physical = 2842 ; free virtual = 10882
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-10180] variable 'immediate_2' must explicitly be declared as automatic or static [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:187]
+WARNING: [Synth 8-10180] variable 'immediate_3' must explicitly be declared as automatic or static [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:223]
+INFO: [Synth 8-6157] synthesizing module 'SystemTop' [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'rv32i_regs' [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32i_regs.sv:1]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32i_regs.sv:38]
+INFO: [Synth 8-6157] synthesizing module 'ila_0' [/home/moonknight/Documents/risc/RISC_2/RISC_2.runs/synth_1/.Xil/Vivado-56880-moonknight-HP-Laptop-15/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ila_0' (0#1) [/home/moonknight/Documents/risc/RISC_2/RISC_2.runs/synth_1/.Xil/Vivado-56880-moonknight-HP-Laptop-15/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'rv32i_regs' (0#1) [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32i_regs.sv:1]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:521]
+INFO: [Synth 8-6157] synthesizing module 'rv32_ex_top' [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_ex_top.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'ALU' [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:1]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:106]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:189]
+INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'rv32_ex_top' (0#1) [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_ex_top.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'SystemTop' (0#1) [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:1]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'test_rv32i_regs'. This will prevent further optimization [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:505]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'register_file_test'. This will prevent further optimization [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32i_regs.sv:38]
+WARNING: [Synth 8-3936] Found unconnected internal register 'funct7_reg' and it is trimmed from '7' to '6' bits. [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:33]
+WARNING: [Synth 8-87] always_comb on 'alu_out_reg' did not result in combinational logic [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:93]
+WARNING: [Synth 8-6014] Unused sequential element pre_bits_reg was removed.  [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:64]
+WARNING: [Synth 8-6014] Unused sequential element bits_reg was removed.  [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:65]
+WARNING: [Synth 8-3848] Net LED in module/entity SystemTop does not have driver. [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:3]
+WARNING: [Synth 8-3848] Net SS_ANODE in module/entity SystemTop does not have driver. [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:6]
+WARNING: [Synth 8-3848] Net SS_CATHODE in module/entity SystemTop does not have driver. [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv:7]
+WARNING: [Synth 8-3917] design SystemTop has port RGB0[2] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB0[1] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB0[0] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB1[2] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB1[1] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB1[0] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port SERVO[3] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port SERVO[2] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port SERVO[1] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port SERVO[0] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port PDM_SPEAKER driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port PDM_MIC_CLK driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port ESP32_UART1_TXD driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port IMU_SCLK driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port IMU_SDI driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port IMU_CS_AG driven by constant 1
+WARNING: [Synth 8-3917] design SystemTop has port IMU_CS_M driven by constant 1
+WARNING: [Synth 8-3917] design SystemTop has port IMU_DEN_AG driven by constant 0
+WARNING: [Synth 8-7129] Port clk in module ALU is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module ALU is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[9] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[8] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[7] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[6] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[5] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[4] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[3] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[2] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[1] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[0] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_ANODE[3] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_ANODE[2] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_ANODE[1] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_ANODE[0] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[7] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[6] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[5] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[4] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[3] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[2] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[1] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[0] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[23] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[22] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[21] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[20] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[19] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[18] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[17] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[16] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[15] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[14] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[13] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[12] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[11] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[10] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[9] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[8] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[7] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[6] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[5] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[4] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[3] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[2] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[1] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[0] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[11] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[10] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[9] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[8] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[7] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SW[6] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[3] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[2] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PB[1] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port PDM_MIC_DATA in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ESP32_UART1_RXD in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_AG in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_SDO_M in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_DRDY_M in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT1_AG in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IMU_INT_M in module SystemTop is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2019.848 ; gain = 504.734 ; free physical = 2740 ; free virtual = 10781
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2031.723 ; gain = 516.609 ; free physical = 2740 ; free virtual = 10781
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2031.723 ; gain = 516.609 ; free physical = 2740 ; free virtual = 10781
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2031.723 ; gain = 0.000 ; free physical = 2740 ; free virtual = 10781
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'test_rv32i_regs/register_file_test'
+Finished Parsing XDC File [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'test_rv32i_regs/register_file_test'
+Parsing XDC File [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc]
+Finished Parsing XDC File [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/SystemTop_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/SystemTop_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2170.504 ; gain = 0.000 ; free physical = 2752 ; free virtual = 10797
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2170.504 ; gain = 0.000 ; free physical = 2752 ; free virtual = 10797
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2170.504 ; gain = 655.391 ; free physical = 2797 ; free virtual = 10841
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z007sclg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2178.508 ; gain = 663.395 ; free physical = 2797 ; free virtual = 10841
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for test_rv32i_regs/register_file_test. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2178.508 ; gain = 663.395 ; free physical = 2797 ; free virtual = 10841
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-327] inferring latch for variable 'alu_out_reg' [/home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv:93]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2178.508 ; gain = 663.395 ; free physical = 2801 ; free virtual = 10846
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 4     
+	   2 Input    6 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 33    
+	                6 Bit    Registers := 3     
+	                5 Bit    Registers := 3     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 67    
+	   2 Input    6 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 66    
+	   6 Input    1 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 66 (col length:40)
+BRAMs: 100 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design SystemTop has port RGB0[2] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB0[1] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB0[0] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB1[2] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB1[1] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port RGB1[0] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port SERVO[3] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port SERVO[2] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port SERVO[1] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port SERVO[0] driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port PDM_SPEAKER driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port PDM_MIC_CLK driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port ESP32_UART1_TXD driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port IMU_SCLK driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port IMU_SDI driven by constant 0
+WARNING: [Synth 8-3917] design SystemTop has port IMU_CS_AG driven by constant 1
+WARNING: [Synth 8-3917] design SystemTop has port IMU_CS_M driven by constant 1
+WARNING: [Synth 8-3917] design SystemTop has port IMU_DEN_AG driven by constant 0
+WARNING: [Synth 8-7129] Port clk in module ALU is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module ALU is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[9] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[8] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[7] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[6] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[5] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[4] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[3] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[2] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[1] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[0] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_ANODE[3] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_ANODE[2] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_ANODE[1] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_ANODE[0] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[7] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[6] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[5] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[4] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[3] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[2] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[1] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SS_CATHODE[0] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[23] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[22] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[21] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[20] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[19] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[18] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[17] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[16] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[15] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[14] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[13] in module SystemTop is either unconnected or has no load
+WARNING: [Synth 8-7129] Port GPIO[12] in module SystemTop is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[31]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[30]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[29]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[28]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[27]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[26]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[25]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[24]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[23]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[22]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[21]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[20]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[19]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[18]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[17]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[16]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[15]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[14]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[13]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[12]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[11]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[10]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[9]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[8]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[7]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[6]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[5]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[4]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[3]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[2]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[1]) is unused and will be removed from module SystemTop.
+WARNING: [Synth 8-3332] Sequential element (execute/alu_1/alu_out_reg[0]) is unused and will be removed from module SystemTop.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2178.508 ; gain = 663.395 ; free physical = 2818 ; free virtual = 10871
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|SystemTop   | rs1_reg    | 64x1          | LUT            | 
+|SystemTop   | rs1_reg    | 64x5          | LUT            | 
+|SystemTop   | rs2_reg    | 64x5          | LUT            | 
+|SystemTop   | rs1_reg    | 64x1          | LUT            | 
+|SystemTop   | rs1_reg    | 64x5          | LUT            | 
+|SystemTop   | rs2_reg    | 64x5          | LUT            | 
++------------+------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2214.508 ; gain = 699.395 ; free physical = 2789 ; free virtual = 10841
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2235.539 ; gain = 720.426 ; free physical = 2765 ; free virtual = 10817
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 2246.562 ; gain = 731.449 ; free physical = 2757 ; free virtual = 10809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2394.375 ; gain = 879.262 ; free physical = 2623 ; free virtual = 10687
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2394.375 ; gain = 879.262 ; free physical = 2623 ; free virtual = 10687
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2394.375 ; gain = 879.262 ; free physical = 2625 ; free virtual = 10688
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2394.375 ; gain = 879.262 ; free physical = 2625 ; free virtual = 10688
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2394.375 ; gain = 879.262 ; free physical = 2624 ; free virtual = 10688
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2394.375 ; gain = 879.262 ; free physical = 2624 ; free virtual = 10689
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |ila_0         |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |ila   |     1|
+|2     |BUFG  |     1|
+|3     |LUT2  |   107|
+|4     |LUT3  |    70|
+|5     |LUT4  |     8|
+|6     |LUT5  |    37|
+|7     |LUT6  |   731|
+|8     |MUXF7 |   256|
+|9     |FDRE  |  1069|
+|10    |IBUF  |     8|
+|11    |OBUF  |    18|
+|12    |OBUFT |    22|
++------+------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2394.375 ; gain = 879.262 ; free physical = 2624 ; free virtual = 10689
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 116 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2394.375 ; gain = 740.480 ; free physical = 2624 ; free virtual = 10689
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2394.383 ; gain = 879.262 ; free physical = 2624 ; free virtual = 10689
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2394.383 ; gain = 0.000 ; free physical = 2789 ; free virtual = 10855
+INFO: [Netlist 29-17] Analyzing 256 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'SystemTop' is not ideal for floorplanning, since the cellview 'rv32i_regs' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2450.402 ; gain = 0.000 ; free physical = 2779 ; free virtual = 10848
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 1f96e0b5
+INFO: [Common 17-83] Releasing license: Synthesis
+36 Infos, 182 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:22 . Memory (MB): peak = 2450.402 ; gain = 1006.855 ; free physical = 2779 ; free virtual = 10848
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1587.568; main = 1587.568; forked = 262.568
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3094.230; main = 2450.406; forked = 915.719
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2474.414 ; gain = 0.000 ; free physical = 2779 ; free virtual = 10848
+INFO: [Common 17-1381] The checkpoint '/home/moonknight/Documents/risc/RISC_2/RISC_2.runs/synth_1/SystemTop.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file SystemTop_utilization_synth.rpt -pb SystemTop_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 19 22:47:29 2025...
