@@ -1,7 +1,7 @@
 module testRegFile(
     input clk,
     input reset,
-    input [5:0] mode,
+    input [5:0] mode
 );
 
     reg [31:0] rs1_data, rs2_data;
