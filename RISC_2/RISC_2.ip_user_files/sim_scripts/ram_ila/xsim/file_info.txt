@@ -1,0 +1,2 @@
+ram_ila.v,verilog,xil_defaultlib,../../../../RISC_2.gen/sources_1/ip/ram_ila/sim/ram_ila.v,incdir="../../../../RISC_2.gen/sources_1/ip/ram_ila/hdl/verilog"
+glbl.v,Verilog,xil_defaultlib,glbl.v

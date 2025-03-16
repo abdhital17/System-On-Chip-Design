@@ -11,285 +11,66 @@
    <zoom_setting>
       <ZoomStartTime time="0"></ZoomStartTime>
       <ZoomEndTime time="1,025"></ZoomEndTime>
-      <Cursor1Time time="0"></Cursor1Time>
+      <Cursor1Time time="15"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="288"></NameColumnWidth>
-      <ValueColumnWidth column_width="486"></ValueColumnWidth>
+      <NameColumnWidth column_width="315"></NameColumnWidth>
+      <ValueColumnWidth column_width="87"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="39" />
+   <WVObjectSize size="7" />
    <wave_markers>
    </wave_markers>
-   <wvobject type="logic" fp_name="test_rv32i_regs/wb_enable">
-      <obj_property name="ElementShortName">test_rv32i_regs/wb_enable</obj_property>
-      <obj_property name="ObjectShortName">wb_enable</obj_property>
+   <wvobject type="array" fp_name="memInst1/alu_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">memInst1/alu_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_out[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/wb_reg">
-      <obj_property name="ElementShortName">test_rv32i_regs/wb_reg[4:0]</obj_property>
-      <obj_property name="ObjectShortName">wb_reg[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="array" fp_name="memInst1/byte_en">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">memInst1/byte_en[3:0]</obj_property>
+      <obj_property name="ObjectShortName">byte_en[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/wb_data">
-      <obj_property name="ElementShortName">test_rv32i_regs/wb_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">wb_data[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="array" fp_name="memInst1/rs2">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">memInst1/rs2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs2[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/rs1_reg">
-      <obj_property name="ElementShortName">test_rv32i_regs/rs1_reg[4:0]</obj_property>
-      <obj_property name="ObjectShortName">rs1_reg[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="array" fp_name="memInst1/shiftedRead">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">memInst1/shiftedRead[31:0]</obj_property>
+      <obj_property name="ObjectShortName">shiftedRead[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/rs2_reg">
-      <obj_property name="ElementShortName">test_rv32i_regs/rs2_reg[4:0]</obj_property>
-      <obj_property name="ObjectShortName">rs2_reg[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="logic" fp_name="memInst1/signedStatus">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">memInst1/signedStatus</obj_property>
+      <obj_property name="ObjectShortName">signedStatus</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/rs1_data">
-      <obj_property name="ElementShortName">test_rv32i_regs/rs1_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rs1_data[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="logic" fp_name="memInst1/w_en">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">memInst1/w_en</obj_property>
+      <obj_property name="ObjectShortName">w_en</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/rs2_data">
-      <obj_property name="ElementShortName">test_rv32i_regs/rs2_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rs2_data[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[0]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[0]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[0]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[1]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[1]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[1]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[2]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[2]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[2]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[3]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[3]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[3]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[4]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[4]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[4]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[5]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[5]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[5]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[6]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[6]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[6]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[7]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[7]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[7]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[8]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[8]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[8]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[9]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[9]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[9]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[10]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[10]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[10]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[11]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[11]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[11]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[12]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[12]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[12]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[13]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[13]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[13]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[14]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[14]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[14]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[15]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[15]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[15]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[16]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[16]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[16]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[17]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[17]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[17]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[18]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[18]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[18]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[19]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[19]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[19]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[20]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[20]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[20]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[21]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[21]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[21]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[22]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[22]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[22]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[23]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[23]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[23]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[24]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[24]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[24]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[25]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[25]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[25]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[26]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[26]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[26]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[27]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[27]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[27]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[28]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[28]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[28]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[29]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[29]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[29]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[30]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[30]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[30]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="test_rv32i_regs/register_file[31]__0">
-      <obj_property name="ElementShortName">test_rv32i_regs/register_file[31]__0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">register_file[31]__0[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="array" fp_name="memInst1/width">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">memInst1/width[1:0]</obj_property>
+      <obj_property name="ObjectShortName">width[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
