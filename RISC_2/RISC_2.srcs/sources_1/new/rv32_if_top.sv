@@ -1,0 +1,35 @@
+module rv32_if_top
+(
+    // system clock and synchronous reset
+    input clk,
+    input reset,
+    // memory interface
+    output [31:2] memif_addr,
+    input [31:0] memif_data,
+    // to id
+    output reg [31:0] pc_out,
+    output [31:0] iw_out // note this was registered in the memory already
+);
+
+    parameter PC_RESET = 32'b0;
+    reg [31:0] PC;
+    
+    // fetch the instruction at current pc_out before it increments
+    assign memif_addr[31:2] = PC[31:2];
+    
+    // output the current if_data from memory as the instruction word 
+    assign iw_out = memif_data;
+    
+    always_ff @ (posedge(clk))
+    begin
+        if (reset)              // reset program counter back to PC_RESET (0x00000000)
+        begin
+            PC <= PC_RESET;
+        end
+        else
+        begin                   // increment the program counter by 4 on every clock edge
+            PC <= PC + 4;
+            pc_out <= PC;
+        end
+    end
+endmodule

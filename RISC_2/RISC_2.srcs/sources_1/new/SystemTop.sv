@@ -81,148 +81,28 @@ module SystemTop(
 //    assign d_we_w = d_we;
 //    assign be_w = be;
     
-//    always_ff @ (posedge(clk))
-//    begin
-//        if (reset)
-//        begin
-//            d_we <= 0;
-//            i_addr <= 0;
-//            d_addr <= 0;
-//            d_wdata <= 0;
-//            be <= 0;
-//        end
-//        case (mode[5:0])
-//            5'd0:   // test write on each byte sequentially
-//            begin
-//                d_addr <= 4;
-//                d_wdata <= 32'hABCDEF12;
-//                be <= 4'b1111;
-//                d_we <= 1;
-//            end
-//            5'd1:
-//            begin
-//                d_addr <= 8;
-//                d_wdata <= 8'h56;
-//                be <= 4'b0001;
-//                d_we <= 1;
-//            end
-//            5'd2:
-//            begin
-//                d_addr <= 8;
-//                d_wdata <= 16'h7800;
-//                be <= 4'b0010;
-//                d_we <= 1;
-//            end
-//            5'd3:
-//            begin
-//                d_addr <= 8;
-//                d_wdata <= 24'h900000;
-//                be <= 4'b0100;
-//                d_we <= 1;
-//            end
-//            5'd4:
-//            begin
-//                d_addr <= 8;
-//                d_wdata <= 32'h55000000;
-//                be <= 4'b1000;
-//                d_we <= 1;
-//            end
-//            5'd5:
-//            begin
-//                d_addr <= 12;
-//                d_wdata <= 16'h1111;
-//                be <= 4'b0011;
-//                d_we <= 1;
-//            end
-//             5'd6:
-//            begin
-//                d_addr <= 12;
-//                d_wdata <= 32'h22220000;
-//                be <= 4'b1100;
-//                d_we <= 1;
-//            end            
-//            5'd7:       // test  read
-//            begin
-//                d_addr <= 4;
-//                d_we <= 0;
-//                be <= 0;
-//            end
-//            5'd8:
-//            begin
-//                d_addr <= 8;
-//                d_we <= 0;
-//                be <= 0;
-//            end  
-//            5'd9:
-//            begin
-//                d_addr <= 12;
-//                d_we <= 0;
-//                be <= 0;
-//            end             
-//            5'd10:           // test instruction read
-//            begin
-//                i_addr <= 4;
-//                d_we <= 0;
-//                be <= 0;
-//            end       
-//            5'd11:
-//            begin
-//                i_addr <= 5;
-//                d_we <= 0;
-//                be <= 0;
-//            end   
-//            5'd12:
-//            begin
-//                i_addr <= 6;
-//                d_we <= 0;
-//                be <= 0;
-//            end   
-//            5'd13:
-//            begin
-//                i_addr <= 7;
-//                d_we <= 0;
-//                be <= 0;
-//            end                
-//        endcase
-//    end
-    
-//    dual_port_ram ram1(
-//    // Clock
-//    .clk(clk),
-//    // Instruction port (RO)
-//    .i_addr(i_addr_w[31:2]),
-//    .i_rdata(i_rdata),
-//    // Data port (RW)
-//    .d_addr(d_addr_w[31:2]),
-//    .d_rdata(d_rdata),
-//    .d_we(d_we_w),
-//    .d_be(be_w),
-//    .d_wdata(d_wdata_w)
-//    );
+
 
     memInst memInst1(
     .clk(clk),
     .reset(reset)    
     );
     
-//    ram_ila ram_ila_1 (
-//	.clk(clk), // input wire clk
-//	.probe0(i_addr_w), // input wire [31:0]  probe0  
-//	.probe1(i_rdata), // input wire [31:0]  probe1 
-//	.probe2(d_addr_w), // input wire [31:0]  probe2 
-//	.probe3(d_rdata), // input wire [31:0]  probe3 
-//	.probe4(d_we_w), // input wire [0:0]  probe4 
-//	.probe5(be_w), // input wire [3:0]  probe5 
-//	.probe6(d_wdata_w) // input wire [31:0]  probe6
-//);
-
-    // instantiate register file test module
-    testRegFile registerFileTest(
+    
+    // instantiate rv32_if_top
+    rv32_if_top instruction_fetch(
+    // system clock and synchronous reset
     .clk(clk),
     .reset(reset),
-    .mode(mode)
+    // memory interface
+    .memif_addr(),
+    .memif_data(),
+    // to id
+    .pc_out(),
+    .iw_out()
     );
     
+    // instantiate rv32_id_top
     // instantiate rv32_ex_top
     rv32_ex_top execute(
     // system clock and synchronous reset
@@ -237,5 +117,9 @@ module SystemTop(
     
     // to mem
     .alu_out()
-);
+    );
+    
+    // instantiate rv32_mem_top
+    // instantiate rv32_wb_top
+
 endmodule
