@@ -5,17 +5,11 @@ module ALU(
     input [31:0] iw_in,
     input [31:0] rs1_data_in,
     input [31:0] rs2_data_in,
-    output reg [31:0] alu_out
+    output [31:0] alu_out_unlatched
 );
-    
-    // Handle the reset signal
-//    always_ff @ (posedge(clk))
-//    begin
-//        if(reset)
-//        begin
-//            alu_out <= 0;
-//        end
-//    end
+
+    reg [31:0] alu_out;
+    assign alu_out_unlatched = alu_out;
     
     // declare registers to break down the instruction word into
     reg [6:0] opcode;

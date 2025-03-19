@@ -15,7 +15,13 @@ module dual_port_ram
 
     parameter ADDR_WIDTH = 15;
     reg [31:0] ram [2 ** (ADDR_WIDTH - 1) : 0];
-
+    
+    // Initialize memory with hex file
+    initial 
+    begin
+        $readmemh("memory.hex", ram);           
+    end
+    
     // instruction read @ i_addr
     always_ff @ (posedge(clk))
     begin

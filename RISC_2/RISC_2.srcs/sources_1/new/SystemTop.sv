@@ -83,43 +83,151 @@ module SystemTop(
     
 
 
-    memInst memInst1(
-    .clk(clk),
-    .reset(reset)    
-    );
-    
+//    memInst memInst1(
+//    .clk(clk),
+//    .reset(reset)    
+//    );
     
     // instantiate rv32_if_top
+    wire [31:0] memif_addr, if_pc_out, if_iw_out;
+    reg [31:0] memif_data;
     rv32_if_top instruction_fetch(
     // system clock and synchronous reset
     .clk(clk),
     .reset(reset),
     // memory interface
-    .memif_addr(),
-    .memif_data(),
+    .memif_addr(memif_addr),
+    .memif_data(memif_data),
     // to id
-    .pc_out(),
-    .iw_out()
+    .pc_out(if_pc_out),
+    .iw_out(if_iw_out)
+    );
+
+    // instantiate the dual port ram
+    dual_port_ram ram1(
+    // Clock
+    .clk(clk),
+    // Instruction port (RO)  --- From/To IF
+    .i_addr(memif_addr[31:2]),
+    .i_rdata(memif_data),
+    // Data port (RW)
+    .d_addr(),
+    .d_rdata(),
+    .d_we(),
+    .d_be(),
+    .d_wdata()
+    );
+
+    // instantiate rv32_id_top
+    reg [31:0] id_pc_out, id_iw_out;
+    wire [4:0] id_rs1_reg, id_rs2_reg;
+    wire [31:0] id_rs1_rdata, id_rs2_rdata;
+    reg [31:0] id_rs1_data_out, id_rs2_data_out;
+    reg [4:0] id_wb_reg_out;
+    reg id_wb_enable_out;
+    rv32_id_top instruction_decode(
+    // system clock and synchronous reset
+    .clk(clk),
+    .reset(reset),
+    // from if
+    .pc_in(if_pc_out),
+    .iw_in(if_iw_out),
+    // register interface
+    .regif_rs1_reg(id_rs1_reg),
+    .regif_rs2_reg(id_rs2_reg),
+    .regif_rs1_data(id_rs1_rdata),
+    .regif_rs2_data(id_rs2_rdata),
+    // to ex
+    .pc_out(id_pc_out),
+    .iw_out(id_iw_out),
+    .wb_reg_out(id_wb_reg_out),
+    .wb_enable_out(id_wb_enable_out),
+    .regif_rs1_data_out(id_rs1_data_out),
+    .regif_rs2_data_out(id_rs2_data_out)
     );
     
-    // instantiate rv32_id_top
     // instantiate rv32_ex_top
+    reg [31:0] ex_pc_out, ex_iw_out, ex_alu_out;
+    reg [4:0] ex_wb_reg_out;
+    reg ex_wb_enable_out;
     rv32_ex_top execute(
     // system clock and synchronous reset
     .clk(clk),
     .reset(reset),
-    
-    //from id
-    .pc_in(),
-    .iw_in(),
-    .rs1_data_in(),
-    .rs2_data_in(),
-    
+    // from id
+    .pc_in(id_pc_out),
+    .iw_in(id_iw_out),
+    .rs1_data_in(id_rs1_data_out),
+    .rs2_data_in(id_rs2_data_out),
+    .wb_reg_in(id_wb_reg_out),
+    .wb_enable_in(id_wb_enable_out),
     // to mem
-    .alu_out()
+    .pc_out(ex_pc_out),
+    .iw_out(ex_iw_out),
+    .alu_out(ex_alu_out),
+    .wb_reg_out(ex_wb_reg_out),
+    .wb_enable_out(ex_wb_enable_out)
     );
     
+    
     // instantiate rv32_mem_top
-    // instantiate rv32_wb_top
+    reg [31:0] mem_pc_out, mem_iw_out, mem_alu_out;
+    reg [4:0] mem_wb_reg_out;
+    reg mem_wb_enable_out;
+    rv32_mem_top memory_access(
+    // system clock and synchronous reset
+    .clk(clk),
+    .reset(reset),
+    // from ex
+    .pc_in(ex_pc_out),
+    .iw_in(ex_iw_out),
+    .wb_reg_in(ex_wb_reg_out),
+    .wb_enable_in(ex_wb_enable_out),
+    .alu_in(ex_alu_out),
+    // to wb
+    .pc_out(mem_pc_out),
+    .iw_out(mem_iw_out),
+    .alu_out(mem_alu_out),
+    .wb_reg_out(mem_wb_reg_out),
+    .wb_enable_out(mem_wb_enable_out)
+    );
 
+    // instantiate rv32_wb_top
+    wire wb_enable;
+    wire [4:0] regif_wb_reg;
+    wire [31:0] regif_wb_data;
+    rv32_wb_top writeback(
+    // system clock and synchronous reset
+    .clk(clk),
+    .reset(reset),
+    // from mem
+    .pc_in(mem_pc_out),
+    .iw_in(mem_iw_out),
+    .alu_in(mem_alu_out),
+    .wb_reg_in(mem_wb_reg_in),
+    .wb_enable_in(mem_wb_enable_in),
+    // register interface
+    .regif_wb_enable(wb_enable),
+    .regif_wb_reg(regif_wb_reg),
+    .regif_wb_data(regif_wb_data)
+    );
+    
+    
+    //instantiate rv32i_regs module
+    rv32i_regs register_file(
+    // system clock and synchronous reset
+    .clk(clk),
+    .reset(reset),
+    // inputs from id for register read
+    .rs1_reg(id_rs1_reg),
+    .rs2_reg(id_rs2_reg),
+    // inputs from wb for register writes
+    .wb_enable(wb_enable),
+    .wb_reg(regif_wb_reg),
+    .wb_data(regif_wb_data),
+    // outputs to id for register read
+    .rs1_data(id_rs1_rdata),
+    .rs2_data(id_rs2_rdata)
+    );
+    
 endmodule

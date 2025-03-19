@@ -1,6 +1,6 @@
 module byteEnableGen
 (
-    input  [31:0] pc_in,
+    input  [31:0] address,
     input  [1:0] width,
     output [3:0] byte_en
 );
@@ -13,7 +13,7 @@ module byteEnableGen
         case (width)
             2'b00:              // byte
             begin
-                case(pc_in[1:0])
+                case(address[1:0])
                     2'b00:
                     begin
                         byte_en_reg <= 4'b0001;
@@ -39,7 +39,7 @@ module byteEnableGen
             
             2'b01:              // half-word
             begin
-                case(pc_in[1:0])
+                case(address[1:0])
                     2'b00:
                     begin
                         byte_en_reg <= 4'b0011;
@@ -61,7 +61,7 @@ module byteEnableGen
             
             2'b10:              // word
             begin
-                if (pc_in[1:0] == 2'b00)
+                if (address[1:0] == 2'b00)
                 begin
                     byte_en_reg <= 4'b1111;
                 end

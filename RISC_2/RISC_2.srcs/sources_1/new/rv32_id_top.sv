@@ -16,8 +16,8 @@ module rv32_id_top
     output reg [31:0] iw_out,
     output reg [4:0] wb_reg_out,
     output reg wb_enable_out,
-    output reg regif_rs1_data_out,
-    output reg regif_rs2_data_out
+    output reg [31:0] regif_rs1_data_out,
+    output reg [31:0] regif_rs2_data_out
 );
     
     // decode the instruction word to assign the rs1 and rs2 registers
@@ -26,7 +26,7 @@ module rv32_id_top
     
     always_ff @ (posedge(clk))
     begin
-        if(reset)
+        if(reset)           // if reset asserted, clear all the outputs
         begin
             pc_out <= 0;
             iw_out <= 0;

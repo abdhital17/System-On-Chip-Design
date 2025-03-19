@@ -14,5 +14,10 @@ module rv32_wb_top
     output [4:0] regif_wb_reg,
     output [31:0] regif_wb_data
 );
+    
+    assign regif_wb_enable = wb_enable_in;
+    assign regif_wb_reg = wb_reg_in;
+    assign regif_wb_data = alu_in;
 
+// TODO: if wb_enable_in, write regif_wb_data to register file
 endmodule

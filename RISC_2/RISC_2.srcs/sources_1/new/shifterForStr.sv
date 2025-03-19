@@ -1,7 +1,7 @@
 module shifterForStr
 (
     input [31:0] address,
-    input [31:0] dataFromReg,
+    input [31:0] dataFromRs2,
     output [31:0] d_wdata
 );
     
@@ -10,7 +10,7 @@ module shifterForStr
     
     always_comb
     begin
-        d_wdata_reg <= (dataFromReg << (8 * address[1:0]));
+        d_wdata_reg <= (dataFromRs2 << (8 * address[1:0]));
     end 
     
 endmodule

@@ -7,12 +7,14 @@ module rv32_if_top
     output [31:2] memif_addr,
     input [31:0] memif_data,
     // to id
-    output reg [31:0] pc_out,
+    output [31:0] pc_out,
     output [31:0] iw_out // note this was registered in the memory already
 );
 
     parameter PC_RESET = 32'b0;
     reg [31:0] PC;
+    
+    assign pc_out = PC;
     
     // fetch the instruction at current pc_out before it increments
     assign memif_addr[31:2] = PC[31:2];
@@ -29,7 +31,6 @@ module rv32_if_top
         else
         begin                   // increment the program counter by 4 on every clock edge
             PC <= PC + 4;
-            pc_out <= PC;
         end
     end
 endmodule
