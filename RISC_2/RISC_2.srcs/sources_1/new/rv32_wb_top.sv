@@ -12,12 +12,27 @@ module rv32_wb_top
     // register interface
     output regif_wb_enable,
     output [4:0] regif_wb_reg,
-    output [31:0] regif_wb_data
+    output [31:0] regif_wb_data,
+    output ebreak
 );
     
     assign regif_wb_enable = wb_enable_in;
     assign regif_wb_reg = wb_reg_in;
     assign regif_wb_data = alu_in;
-
+    
+    reg halt_condition;
+    assign ebreak = halt_condition; 
+    always_ff @ (posedge(clk))
+    begin
+        if (reset)
+        begin
+            halt_condition <= 0;
+        end
+        else if (!halt_condition)            // overwrite halt condition only if it is not already set
+        begin
+            halt_condition <= ((iw_in[6:0] == 7'b1110011) && iw_in[20]) ? 1:0;;
+        end
+    end
+    
 // TODO: if wb_enable_in, write regif_wb_data to register file
 endmodule

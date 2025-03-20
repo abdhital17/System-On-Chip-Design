@@ -45,8 +45,8 @@ module rv32_id_top
         iw_out <= iw_in;
     
         // decode the instruction word to drive wb_enable and wb_reg outputs
-        // for FENCE, ECALL, EBREAK, SB, SH, SW and B operations, disable register writeback since not needed
-        if (iw_in[6:0] == 7'b0001111 || iw_in[6:0] == 7'b1110011 || iw_in[6:0] == 7'b0100011 || iw_in[6:0] == 7'b1100011)
+        // for instructions other than R, I, U and J type, disable register writeback since not needed
+        if (!(iw_in[6:0] == 7'b0110011 || iw_in[6:0] == 7'b1100111 || iw_in[6:0] == 7'b0000011 || iw_in[6:0] == 7'b0010011 || iw_in[6:0] == 7'b0110111 || iw_in[6:0] == 7'b0010111 || iw_in[6:0] == 7'b1101111))
         begin
             wb_enable_out <= 0;
             wb_reg_out <= 0;

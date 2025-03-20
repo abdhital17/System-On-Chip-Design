@@ -43,7 +43,8 @@ module SystemTop(
     assign IMU_CS_AG = 1'b1;
     assign IMU_CS_M = 1'b1;
     assign IMU_DEN_AG = 1'b0;
-
+    
+    wire ebreak;
     wire clk = CLK100;
 
     // Handle input metastability safely for reset signal coming from PB[0]
@@ -89,12 +90,14 @@ module SystemTop(
 //    );
     
     // instantiate rv32_if_top
-    wire [31:0] memif_addr, if_pc_out, if_iw_out;
+    wire [31:0] if_pc_out, if_iw_out;
+    wire [31:2] memif_addr;
     reg [31:0] memif_data;
     rv32_if_top instruction_fetch(
     // system clock and synchronous reset
     .clk(clk),
     .reset(reset),
+    .ebreak(ebreak),
     // memory interface
     .memif_addr(memif_addr),
     .memif_data(memif_data),
@@ -108,7 +111,7 @@ module SystemTop(
     // Clock
     .clk(clk),
     // Instruction port (RO)  --- From/To IF
-    .i_addr(memif_addr[31:2]),
+    .i_addr(memif_addr),
     .i_rdata(memif_data),
     // Data port (RW)
     .d_addr(),
@@ -204,12 +207,13 @@ module SystemTop(
     .pc_in(mem_pc_out),
     .iw_in(mem_iw_out),
     .alu_in(mem_alu_out),
-    .wb_reg_in(mem_wb_reg_in),
-    .wb_enable_in(mem_wb_enable_in),
+    .wb_reg_in(mem_wb_reg_out),
+    .wb_enable_in(mem_wb_enable_out),
     // register interface
     .regif_wb_enable(wb_enable),
     .regif_wb_reg(regif_wb_reg),
-    .regif_wb_data(regif_wb_data)
+    .regif_wb_data(regif_wb_data),
+    .ebreak(ebreak)
     );
     
     
@@ -228,6 +232,29 @@ module SystemTop(
     // outputs to id for register read
     .rs1_data(id_rs1_rdata),
     .rs2_data(id_rs2_rdata)
+    );
+    
+    ila_1 pipeline_ila (
+	.clk(clk), // input wire clk
+
+
+	.probe0(if_pc_out), // input wire [31:0]  probe0  
+	.probe1(id_pc_out), // input wire [31:0]  probe1 
+	.probe2(ex_pc_out), // input wire [31:0]  probe2 
+	.probe3(mem_pc_out), // input wire [31:0]  probe3 
+	.probe4(if_iw_out), // input wire [31:0]  probe4 
+	.probe5(id_iw_out), // input wire [31:0]  probe5 
+	.probe6(ex_iw_out), // input wire [31:0]  probe6 
+	.probe7(mem_iw_out), // input wire [31:0]  probe7
+	.probe8(id_wb_reg_out), // input wire [4:0]  probe8 
+	.probe9(ex_wb_reg_out), // input wire [4:0]  probe9 
+	.probe10(mem_wb_reg_out), // input wire [4:0]  probe10 
+	.probe11(id_wb_enable_out), // input wire [0:0]  probe11 
+	.probe12(ex_wb_enable_out), // input wire [0:0]  probe12 
+	.probe13(mem_wb_enable_out), // input wire [0:0]  probe13 
+	.probe14(ex_alu_out), // input wire [31:0]  probe14 
+	.probe15(mem_alu_out), // input wire [31:0]  probe15
+	.probe16(ebreak) // input wire [0:0]  probe16
     );
     
 endmodule

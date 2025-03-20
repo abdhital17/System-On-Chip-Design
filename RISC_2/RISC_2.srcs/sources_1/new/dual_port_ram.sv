@@ -13,7 +13,7 @@ module dual_port_ram
     input [31:0] d_wdata
 );
 
-    parameter ADDR_WIDTH = 15;
+    parameter ADDR_WIDTH = 14;
     reg [31:0] ram [2 ** (ADDR_WIDTH - 1) : 0];
     
     // Initialize memory with hex file

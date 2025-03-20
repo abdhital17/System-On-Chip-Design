@@ -3,6 +3,7 @@ module rv32_if_top
     // system clock and synchronous reset
     input clk,
     input reset,
+    input ebreak,
     // memory interface
     output [31:2] memif_addr,
     input [31:0] memif_data,
@@ -28,9 +29,13 @@ module rv32_if_top
         begin
             PC <= PC_RESET;
         end
+        else if (ebreak)
+        begin
+            PC <= PC;
+        end
         else
         begin                   // increment the program counter by 4 on every clock edge
-            PC <= PC + 4;
+            PC <= PC + 32'd4;
         end
     end
 endmodule
