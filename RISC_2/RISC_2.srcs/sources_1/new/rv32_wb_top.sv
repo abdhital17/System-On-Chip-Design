@@ -16,10 +16,12 @@ module rv32_wb_top
     output ebreak
 );
     
+    // output signals that go to the register interface
     assign regif_wb_enable = wb_enable_in;
     assign regif_wb_reg = wb_reg_in;
     assign regif_wb_data = alu_in;
     
+    // synchronously detect a reset or halt condition
     reg halt_condition;
     assign ebreak = halt_condition; 
     always_ff @ (posedge(clk))

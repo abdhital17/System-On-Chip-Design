@@ -1,5 +1,5 @@
 namespace eval ::optrace {
-  variable script "/home/moonknight/Documents/risc/RISC_2/RISC_2.runs/impl_1/SystemTop.tcl"
+  variable script "/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/impl_1/SystemTop.tcl"
   variable category "vivado_impl"
 }
 
@@ -104,6 +104,8 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param tcl.collectionResultDisplayLimit 0
+  set_param xicom.use_bs_reader 1
   set_param chipscope.maxJobs 2
   set_param runs.launchOptions { -jobs 4  }
 OPTRACE "create in-memory project" START { }
@@ -112,17 +114,18 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir /home/moonknight/Documents/risc/RISC_2/RISC_2.cache/wt [current_project]
-  set_property parent.project_path /home/moonknight/Documents/risc/RISC_2/RISC_2.xpr [current_project]
-  set_property ip_output_repo /home/moonknight/Documents/risc/RISC_2/RISC_2.cache/ip [current_project]
+  set_property webtalk.parent_dir /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.cache/wt [current_project]
+  set_property parent.project_path /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.xpr [current_project]
+  set_property ip_output_repo /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet /home/moonknight/Documents/risc/RISC_2/RISC_2.runs/synth_1/SystemTop.dcp
-  read_ip -quiet /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/ip/ram_ila/ram_ila.xci
+  add_files -quiet /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/synth_1/SystemTop.dcp
+  read_ip -quiet /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/ip/ila_0_2/ila_0.xci
+  read_ip -quiet /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/ip/ila_1/ila_1.xci
 OPTRACE "read constraints: implementation" START { }
-  read_xdc /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc
+  read_xdc /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

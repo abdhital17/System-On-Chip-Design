@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/moonknight/Documents/risc/RISC_2/RISC_2.runs/synth_1/SystemTop.tcl"
+  variable script "/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/synth_1/SystemTop.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,6 +56,8 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param tcl.collectionResultDisplayLimit 0
+set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z007sclg400-1
@@ -64,30 +66,37 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir /home/moonknight/Documents/risc/RISC_2/RISC_2.cache/wt [current_project]
-set_property parent.project_path /home/moonknight/Documents/risc/RISC_2/RISC_2.xpr [current_project]
+set_property webtalk.parent_dir /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.cache/wt [current_project]
+set_property parent.project_path /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo /home/moonknight/Documents/risc/RISC_2/RISC_2.cache/ip [current_project]
+set_property ip_output_repo /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
-  /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/dual_port_ram.sv
-  /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/memInst.sv
-  /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_ex_top.sv
-  /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32i_regs.sv
-  /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/shiftAndSignExtend.sv
-  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/testRegFile.sv
-  /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_ex_top.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_id_top.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_if_top.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_mem_top.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_wb_top.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32i_regs.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv
 }
-read_ip -quiet /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/sources_1/ip/ram_ila/ram_ila.xci
-set_property used_in_synthesis false [get_files -all /home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ram_ila/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ram_ila/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ram_ila/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all /home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ram_ila/ram_ila_ooc.xdc]
+read_ip -quiet /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/ip/ila_0_2/ila_0.xci
+set_property used_in_synthesis false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_0_ooc.xdc]
+
+read_ip -quiet /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/ip/ila_1/ila_1.xci
+set_property used_in_synthesis false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_1_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -98,12 +107,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc
-set_property used_in_implementation false [get_files /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc]
+read_xdc /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc
+set_property used_in_implementation false [get_files /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/constrs_1/new/blackboard.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental /home/moonknight/Documents/risc/RISC_2/RISC_2.srcs/utils_1/imports/synth_1/rv32_ex_top.dcp
+read_checkpoint -auto_incremental -incremental /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/utils_1/imports/synth_1/rv32_ex_top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
