@@ -14,8 +14,17 @@ module rv32_mem_top
     output reg [31:0] iw_out,
     output reg [31:0] alu_out,
     output reg [4:0] wb_reg_out,
-    output reg wb_enable_out
+    output reg wb_enable_out,
+    // df outputs to ID
+    output df_mem_enable_out,
+    output [4:0] df_mem_reg_out,
+    output [31:0] df_mem_data_out
 );
+
+    // assign df outputs before registering
+    assign df_mem_enable_out = wb_enable_in;
+    assign df_mem_reg_out = wb_reg_in;
+    assign df_mem_data_out = alu_in;
 
     always_ff @ (posedge(clk))
     begin

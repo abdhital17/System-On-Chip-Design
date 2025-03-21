@@ -14,9 +14,18 @@ module rv32_ex_top(
     output reg [31:0] iw_out,
     output reg [31:0] alu_out,
     output reg [4:0] wb_reg_out,
-    output reg wb_enable_out
+    output reg wb_enable_out,
+    // df outputs to ID
+    output df_ex_enable_out,
+    output [4:0] df_ex_reg_out,
+    output [31:0] df_ex_data_out
 );
-   
+    
+    // assign df outputs before registering
+    assign df_ex_enable_out = wb_enable_in;
+    assign df_ex_reg_out = wb_reg_in;
+    assign df_ex_data_out = alu_out_unlatched;
+
     always_ff @ (posedge(clk))
     begin
         if(reset)   // if reset asserted, clear all the outputs

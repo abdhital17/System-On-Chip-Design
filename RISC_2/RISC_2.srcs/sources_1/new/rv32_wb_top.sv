@@ -13,9 +13,18 @@ module rv32_wb_top
     output regif_wb_enable,
     output [4:0] regif_wb_reg,
     output [31:0] regif_wb_data,
-    output ebreak
+    output ebreak,
+    // df outputs to ID
+    output df_wb_enable_out,
+    output [4:0] df_wb_reg_out,
+    output [31:0] df_wb_data_out
 );
     
+    // assign df outputs
+    assign df_wb_enable_out = wb_enable_in;
+    assign df_wb_reg_out = wb_reg_in;
+    assign df_wb_data_out = alu_in;
+
     // output signals that go to the register interface
     assign regif_wb_enable = wb_enable_in;
     assign regif_wb_reg = wb_reg_in;

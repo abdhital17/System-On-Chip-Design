@@ -3,6 +3,18 @@ module rv32_id_top
     // system clock and synchronous reset
     input clk,
     input reset,
+    // data hazard: df input from ex
+    input df_ex_enable,
+    input [4:0] df_ex_reg,
+    input [31:0] df_ex_data,
+    // data hazard: df input from mem
+    input df_mem_enable,
+    input [4:0] df_mem_reg,
+    input [31:0] df_mem_data,
+    // data hazard: df input from wb
+    input df_wb_enable,
+    input [4:0] df_wb_reg,
+    input [31:0] df_wb_data,
     // from if
     input [31:0] pc_in,
     input [31:0] iw_in,
@@ -36,9 +48,47 @@ module rv32_id_top
             regif_rs2_data_out <= 0;
         end
         
-        // register rs1_data and rs2_data for use in EX stage of the pipeline    
+        // register rs1_data and rs2_data for use in EX stage of the pipeline when there's no hazard
         regif_rs1_data_out <= regif_rs1_data;
         regif_rs2_data_out <= regif_rs2_data;
+        
+        // overwrite the register data outputs based on where the data forwarding is needed to prevent hazard
+        // check if writeback is enabled in WB          --> Lowest priority when all true
+        if (df_wb_enable)                   
+        begin
+            if (df_wb_reg == regif_rs1_reg)
+            begin
+                regif_rs1_data_out <= df_wb_data;
+            end
+            else if (df_wb_reg == regif_rs2_reg)
+            begin
+                regif_rs2_data_out <= df_wb_data;
+            end
+        end
+        // check if writeback is enabled in MEM
+        if (df_mem_enable)
+        begin
+            if (df_mem_reg == regif_rs1_reg)
+            begin
+                regif_rs1_data_out <= df_mem_data;
+            end
+            else if (df_mem_reg == regif_rs2_reg)
+            begin
+                regif_rs2_data_out <= df_mem_data;
+            end
+        end
+        // check if writeback is enabled in EX          --> Highest priority when all true
+        if (df_ex_enable)
+        begin
+            if (df_ex_reg == regif_rs1_reg)
+            begin
+                regif_rs1_data_out <= df_ex_data;
+            end
+            else if (df_ex_reg == regif_rs2_reg)
+            begin
+                regif_rs2_data_out <= df_ex_data;
+            end
+        end
     
         // register pc_in and iw_in to drive pc_out and iw_out
         pc_out <= pc_in;

@@ -121,6 +121,12 @@ module SystemTop(
     .d_wdata()
     );
 
+    // declare the data forwarding (df) signals used to prevent data hazards
+    // RAW (Read After Write) hazard, when a register read instruction follows a write instruction
+    wire [31:0] df_ex_data_out, df_mem_data_out, df_wb_data_out;
+    wire df_ex_enable_out, df_mem_enable_out, df_wb_enable_out;
+    wire [4:0] df_ex_reg_out, df_mem_reg_out, df_wb_reg_out;
+
     // instantiate rv32_id_top
     reg [31:0] id_pc_out, id_iw_out;
     wire [4:0] id_rs1_reg, id_rs2_reg;
@@ -128,11 +134,24 @@ module SystemTop(
     reg [31:0] id_rs1_data_out, id_rs2_data_out;
     reg [4:0] id_wb_reg_out;
     reg id_wb_enable_out;
+
     rv32_id_top instruction_decode(
     // system clock and synchronous reset
     .clk(clk),
     .reset(reset),
-    // from if
+    // data hazard: df input from ex
+    .df_ex_enable(df_ex_enable_out),
+    .df_ex_reg(df_ex_reg_out),
+    .df_ex_data(df_ex_data_out),
+    // data hazard: df input from mem
+    .df_mem_enable(df_mem_enable_out),
+    .df_mem_reg(df_mem_reg_out),
+    .df_mem_data(df_mem_data_out),
+    // data hazard: df input from wb
+    .df_wb_enable(df_wb_enable_out),
+    .df_wb_reg(df_wb_reg_out),
+    .df_wb_data(df_wb_data_out),
+    // pipeline input from if
     .pc_in(if_pc_out),
     .iw_in(if_iw_out),
     // register interface
@@ -140,7 +159,7 @@ module SystemTop(
     .regif_rs2_reg(id_rs2_reg),
     .regif_rs1_data(id_rs1_rdata),
     .regif_rs2_data(id_rs2_rdata),
-    // to ex
+    // pipeline output to ex
     .pc_out(id_pc_out),
     .iw_out(id_iw_out),
     .wb_reg_out(id_wb_reg_out),
@@ -169,7 +188,11 @@ module SystemTop(
     .iw_out(ex_iw_out),
     .alu_out(ex_alu_out),
     .wb_reg_out(ex_wb_reg_out),
-    .wb_enable_out(ex_wb_enable_out)
+    .wb_enable_out(ex_wb_enable_out),
+    // df outputs to ID
+    .df_ex_enable_out(df_ex_enable_out),
+    .df_ex_reg_out(df_ex_reg_out),
+    .df_ex_data_out(df_ex_data_out)
     );
     
     
@@ -192,7 +215,11 @@ module SystemTop(
     .iw_out(mem_iw_out),
     .alu_out(mem_alu_out),
     .wb_reg_out(mem_wb_reg_out),
-    .wb_enable_out(mem_wb_enable_out)
+    .wb_enable_out(mem_wb_enable_out),
+    // df outputs to ID
+    .df_mem_enable_out(df_mem_enable_out),
+    .df_mem_reg_out(df_mem_reg_out),
+    .df_mem_data_out(df_mem_data_out)
     );
 
     // instantiate rv32_wb_top
@@ -213,7 +240,11 @@ module SystemTop(
     .regif_wb_enable(wb_enable),
     .regif_wb_reg(regif_wb_reg),
     .regif_wb_data(regif_wb_data),
-    .ebreak(ebreak)
+    .ebreak(ebreak),
+    // df outputs to ID
+    .df_wb_enable_out(df_wb_enable_out),
+    .df_wb_reg_out(df_wb_reg_out),
+    .df_wb_data_out(df_wb_data_out)
     );
     
     
@@ -237,24 +268,28 @@ module SystemTop(
     ila_1 pipeline_ila (
 	.clk(clk), // input wire clk
 
-
 	.probe0(if_pc_out), // input wire [31:0]  probe0  
 	.probe1(id_pc_out), // input wire [31:0]  probe1 
 	.probe2(ex_pc_out), // input wire [31:0]  probe2 
 	.probe3(mem_pc_out), // input wire [31:0]  probe3 
+
 	.probe4(if_iw_out), // input wire [31:0]  probe4 
 	.probe5(id_iw_out), // input wire [31:0]  probe5 
 	.probe6(ex_iw_out), // input wire [31:0]  probe6 
 	.probe7(mem_iw_out), // input wire [31:0]  probe7
-	.probe8(id_wb_reg_out), // input wire [4:0]  probe8 
+	
+    .probe8(id_wb_reg_out), // input wire [4:0]  probe8 
 	.probe9(ex_wb_reg_out), // input wire [4:0]  probe9 
 	.probe10(mem_wb_reg_out), // input wire [4:0]  probe10 
-	.probe11(id_wb_enable_out), // input wire [0:0]  probe11 
+	
+    .probe11(id_wb_enable_out), // input wire [0:0]  probe11 
 	.probe12(ex_wb_enable_out), // input wire [0:0]  probe12 
 	.probe13(mem_wb_enable_out), // input wire [0:0]  probe13 
-	.probe14(ex_alu_out), // input wire [31:0]  probe14 
+	
+    .probe14(ex_alu_out), // input wire [31:0]  probe14 
 	.probe15(mem_alu_out), // input wire [31:0]  probe15
-	.probe16(ebreak) // input wire [0:0]  probe16
+	
+    .probe16(ebreak) // input wire [0:0]  probe16
     );
     
 endmodule
