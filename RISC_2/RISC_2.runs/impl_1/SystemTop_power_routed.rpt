@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date             : Wed Mar 19 22:51:11 2025
+| Date             : Thu Mar 20 23:02:23 2025
 | Host             : moonknight-HP-Laptop-15 running 64-bit Ubuntu 22.04.5 LTS
 | Command          : report_power -file SystemTop_power_routed.rpt -pb SystemTop_power_summary_routed.pb -rpx SystemTop_power_routed.rpx
 | Design           : SystemTop
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.224        |
+| Total On-Chip Power (W)  | 0.223        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.130        |
@@ -53,8 +53,8 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.052 |        4 |       --- |             --- |
-| Slice Logic              |     0.012 |    36226 |       --- |             --- |
-|   LUT as Logic           |     0.010 |     8481 |     14400 |           58.90 |
+| Slice Logic              |     0.012 |    36370 |       --- |             --- |
+|   LUT as Logic           |     0.010 |     8608 |     14400 |           59.78 |
 |   LUT as Shift Register  |     0.001 |     2582 |      6000 |           43.03 |
 |   Register               |    <0.001 |    17188 |     28800 |           59.68 |
 |   CARRY4                 |    <0.001 |      625 |      4400 |           14.20 |
@@ -62,11 +62,11 @@ Table of Contents
 |   F7/F8 Muxes            |    <0.001 |      788 |     17600 |            4.48 |
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   Others                 |     0.000 |     2120 |       --- |             --- |
-| Signals                  |     0.022 |    24290 |       --- |             --- |
-| Block RAM                |     0.044 |       50 |        50 |          100.00 |
+| Signals                  |     0.023 |    24384 |       --- |             --- |
+| Block RAM                |     0.043 |       49 |        50 |           98.00 |
 | I/O                      |    <0.001 |       42 |       100 |           42.00 |
 | Static Power             |     0.094 |          |           |                 |
-| Total                    |     0.224 |          |           |                 |
+| Total                    |     0.223 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.132 |       0.127 |      0.005 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.131 |       0.127 |      0.005 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.006 |       0.000 |      0.006 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -160,9 +160,9 @@ Table of Contents
 |   execute                |     0.007 |
 |     alu_1                |     0.006 |
 |   instruction_decode     |     0.003 |
-|   pipeline_ila           |     0.045 |
-|     inst                 |     0.045 |
-|       ila_core_inst      |     0.045 |
+|   pipeline_ila           |     0.044 |
+|     inst                 |     0.044 |
+|       ila_core_inst      |     0.044 |
 |   ram1                   |     0.019 |
 |   register_file          |     0.053 |
 |     register_file_test   |     0.049 |

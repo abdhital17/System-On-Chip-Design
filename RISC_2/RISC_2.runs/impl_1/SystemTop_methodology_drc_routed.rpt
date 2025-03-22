@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Wed Mar 19 22:51:06 2025
+| Date         : Thu Mar 20 23:02:17 2025
 | Host         : moonknight-HP-Laptop-15 running 64-bit Ubuntu 22.04.5 LTS
 | Command      : report_methodology -file SystemTop_methodology_drc_routed.rpt -pb SystemTop_methodology_drc_routed.pb -rpx SystemTop_methodology_drc_routed.rpx
 | Design       : SystemTop
@@ -23,13 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max checks: <unlimited>
-             Checks found: 62
+             Checks found: 60
 +-----------+----------+---------------------------------------------+--------+
 | Rule      | Severity | Description                                 | Checks |
 +-----------+----------+---------------------------------------------+--------+
 | LUTAR-1   | Warning  | LUT drives async reset alert                | 4      |
-| SYNTH-6   | Warning  | Timing of a RAM block might be sub-optimal  | 8      |
-| SYNTH-15  | Warning  | Byte wide write enable not inferred         | 8      |
+| SYNTH-6   | Warning  | Timing of a RAM block might be sub-optimal  | 7      |
+| SYNTH-15  | Warning  | Byte wide write enable not inferred         | 7      |
 | TIMING-18 | Warning  | Missing input or output delay               | 4      |
 | TIMING-20 | Warning  | Non-clocked latch                           | 32     |
 | ULMTCS-1  | Warning  | Control Sets use limits recommend reduction | 1      |
@@ -79,72 +79,62 @@ Related violations: <none>
 
 SYNTH-6#3 Warning
 Timing of a RAM block might be sub-optimal  
-The timing for the instance ram1/ram_reg_0_2, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
+The timing for the instance ram1/ram_reg_1_0, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
 Related violations: <none>
 
 SYNTH-6#4 Warning
 Timing of a RAM block might be sub-optimal  
-The timing for the instance ram1/ram_reg_0_3, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
+The timing for the instance ram1/ram_reg_1_1, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
 Related violations: <none>
 
 SYNTH-6#5 Warning
 Timing of a RAM block might be sub-optimal  
-The timing for the instance ram1/ram_reg_1_0, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
+The timing for the instance ram1/ram_reg_2_0, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
 Related violations: <none>
 
 SYNTH-6#6 Warning
 Timing of a RAM block might be sub-optimal  
-The timing for the instance ram1/ram_reg_1_3, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
+The timing for the instance ram1/ram_reg_2_1, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
 Related violations: <none>
 
 SYNTH-6#7 Warning
 Timing of a RAM block might be sub-optimal  
-The timing for the instance ram1/ram_reg_2_2, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
-Related violations: <none>
-
-SYNTH-6#8 Warning
-Timing of a RAM block might be sub-optimal  
-The timing for the instance ram1/ram_reg_2_3, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
+The timing for the instance ram1/ram_reg_3_0, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
 Related violations: <none>
 
 SYNTH-15#1 Warning
 Byte wide write enable not inferred  
-Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_0_0 because address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
+Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_0_0 because address width (13) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
 Related violations: <none>
 
 SYNTH-15#2 Warning
 Byte wide write enable not inferred  
-Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_0_1 because address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
+Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_0_1 because address width (13) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
 Related violations: <none>
 
 SYNTH-15#3 Warning
 Byte wide write enable not inferred  
-Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_0_2 because address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
+Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_1_0 because address width (13) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
 Related violations: <none>
 
 SYNTH-15#4 Warning
 Byte wide write enable not inferred  
-Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_0_3 because address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
+Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_1_1 because address width (13) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
 Related violations: <none>
 
 SYNTH-15#5 Warning
 Byte wide write enable not inferred  
-Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_1_0 because address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
+Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_2_0 because address width (13) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
 Related violations: <none>
 
 SYNTH-15#6 Warning
 Byte wide write enable not inferred  
-Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_1_3 because address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
+Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_2_1 because address width (13) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
 Related violations: <none>
 
 SYNTH-15#7 Warning
 Byte wide write enable not inferred  
-Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_2_2 because address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
-Related violations: <none>
-
-SYNTH-15#8 Warning
-Byte wide write enable not inferred  
-Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_2_3 because address width (14) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
+Byte wide write enable (BWWE) is not inferred for Block RAM ram1/ram_reg_3_0 because address width (13) is more than optimal threshold of 12. Implementing using BWWE will require more logic and timing would be suboptimal. Please use attribute ram_decomp = power if BWWE is desired..
 Related violations: <none>
 
 TIMING-18#1 Warning
