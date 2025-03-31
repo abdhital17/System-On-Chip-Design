@@ -4,6 +4,9 @@ module rv32_if_top
     input clk,
     input reset,
     input ebreak,
+    // from id
+    input jump_enable_in,
+    input [31:0] jump_addr_in,
     // memory interface
     output [31:2] memif_addr,
     input [31:0] memif_data,
@@ -32,6 +35,10 @@ module rv32_if_top
         else if (ebreak)
         begin
             PC <= PC;
+        end
+        else if (jump_enable_in)
+        begin
+            PC <= jump_addr_in;
         end
         else
         begin                   // increment the program counter by 4 on every clock edge
