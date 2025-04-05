@@ -90,14 +90,20 @@ module SystemTop(
 //    );
     
     // instantiate rv32_if_top
-    wire [31:0] if_pc_out, if_iw_out;
+    wire [31:0] if_iw_out, id_jump_addr_out;
+//    wire [31:0] if_pc_out, if_iw_out, id_jump_addr_out;
     wire [31:2] memif_addr;
     reg [31:0] memif_data;
+    wire id_jump_enable_out;
+    reg [31:0] if_pc_out;
     rv32_if_top instruction_fetch(
     // system clock and synchronous reset
     .clk(clk),
     .reset(reset),
     .ebreak(ebreak),
+    // from id
+    .jump_enable_in(id_jump_enable_out),
+    .jump_addr_in(id_jump_addr_out),
     // memory interface
     .memif_addr(memif_addr),
     .memif_data(memif_data),
@@ -134,7 +140,10 @@ module SystemTop(
     reg [31:0] id_rs1_data_out, id_rs2_data_out;
     reg [4:0] id_wb_reg_out;
     reg id_wb_enable_out;
-
+    
+    
+    // debug
+    wire [31:0] rs1_df_data, rs2_df_data;
     rv32_id_top instruction_decode(
     // system clock and synchronous reset
     .clk(clk),
@@ -154,6 +163,9 @@ module SystemTop(
     // pipeline input from if
     .pc_in(if_pc_out),
     .iw_in(if_iw_out),
+    // to if
+    .jump_enable_out(id_jump_enable_out),
+    .jump_addr_out(id_jump_addr_out),
     // register interface
     .regif_rs1_reg(id_rs1_reg),
     .regif_rs2_reg(id_rs2_reg),
@@ -165,7 +177,10 @@ module SystemTop(
     .wb_reg_out(id_wb_reg_out),
     .wb_enable_out(id_wb_enable_out),
     .regif_rs1_data_out(id_rs1_data_out),
-    .regif_rs2_data_out(id_rs2_data_out)
+    .regif_rs2_data_out(id_rs2_data_out),
+    // debug
+    .rs1_df_data(rs1_df_data),
+    .rs2_df_data(rs2_df_data)
     );
     
     // instantiate rv32_ex_top
@@ -247,6 +262,8 @@ module SystemTop(
     .df_wb_data_out(df_wb_data_out)
     );
     
+    //debug outs
+    wire [31:0] x1, x2, x3, x4;
     
     //instantiate rv32i_regs module
     rv32i_regs register_file(
@@ -262,7 +279,11 @@ module SystemTop(
     .wb_data(regif_wb_data),
     // outputs to id for register read
     .rs1_data(id_rs1_rdata),
-    .rs2_data(id_rs2_rdata)
+    .rs2_data(id_rs2_rdata),
+    .x1(x1),
+    .x2(x2),
+    .x3(x3),
+    .x4(x4)
     );
     
     ila_1 pipeline_ila (
@@ -278,18 +299,42 @@ module SystemTop(
 	.probe6(ex_iw_out), // input wire [31:0]  probe6 
 	.probe7(mem_iw_out), // input wire [31:0]  probe7
 	
-    .probe8(id_wb_reg_out), // input wire [4:0]  probe8 
-	.probe9(ex_wb_reg_out), // input wire [4:0]  probe9 
-	.probe10(mem_wb_reg_out), // input wire [4:0]  probe10 
+    .probe8(df_ex_reg_out), // input wire [4:0]  probe8 
+	.probe9(df_mem_reg_out), // input wire [4:0]  probe9 
+	.probe10(df_wb_reg_out), // input wire [4:0]  probe10 
+//   .probe8(id_wb_reg_out), // input wire [4:0]  probe8 
+//	.probe9(ex_wb_reg_out), // input wire [4:0]  probe9 
+//	.probe10(mem_wb_reg_out), // input wire [4:0]  probe10 
 	
-    .probe11(id_wb_enable_out), // input wire [0:0]  probe11 
-	.probe12(ex_wb_enable_out), // input wire [0:0]  probe12 
-	.probe13(mem_wb_enable_out), // input wire [0:0]  probe13 
+    .probe11(df_ex_enable_out), // input wire [0:0]  probe11 
+	.probe12(df_mem_enable_out), // input wire [0:0]  probe12 
+	.probe13(df_wb_enable_out), // input wire [0:0]  probe13 
+//   .probe11(id_wb_enable_out), // input wire [0:0]  probe11 
+//	.probe12(ex_wb_enable_out), // input wire [0:0]  probe12 
+//	.probe13(mem_wb_enable_out), // input wire [0:0]  probe13 
 	
     .probe14(ex_alu_out), // input wire [31:0]  probe14 
 	.probe15(mem_alu_out), // input wire [31:0]  probe15
 	
-    .probe16(ebreak) // input wire [0:0]  probe16
+    .probe16(ebreak), // input wire [0:0]  probe16
+    
+    .probe17(id_jump_enable_out), // input wire [0:0]  probe17
+    .probe18(id_jump_addr_out), // input wire [31:0]  probe18
+    
+    .probe19(df_ex_data_out), // input wire [31:0]  probe19 
+	.probe20(df_mem_data_out), // input wire [31:0]  probe20 
+	.probe21(df_wb_data_out), // input wire [31:0]  probe21
+    
+    .probe22(id_rs1_rdata), // input wire [31:0]  probe22
+    .probe23(id_rs2_rdata), // input wire [31:0]  probe23
+        //debug outputs
+    .probe24(x1),
+    .probe25(x2),
+    .probe26(x3),
+    .probe27(x4),
+    .probe28(reset), // input wire [0:0]  probe28
+    .probe29(rs1_df_data), // input wire [31:0]  probe29 
+	.probe30(rs2_df_data) // input wire [31:0]  probe30
     );
     
 endmodule

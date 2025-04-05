@@ -36,14 +36,17 @@ module rv32_ex_top(
             wb_enable_out <= 0;
             alu_out <= 0;
         end
-        // latch pc_in and iw_in to drive pc_out and iw_out for later stages of the pipeline
-        pc_out <= pc_in;
-        iw_out <= iw_in;
-        // latch wb_reg_in and wb_enable_in to forward to latter stages of pipeline
-        wb_reg_out <= wb_reg_in;
-        wb_enable_out <= wb_enable_in;
-        // latch alu_out_unlatched from ALU to forward to next stages of pipeline
-        alu_out <= alu_out_unlatched;        
+        else
+        begin
+            // latch pc_in and iw_in to drive pc_out and iw_out for later stages of the pipeline
+            pc_out <= pc_in;
+            iw_out <= iw_in;
+            // latch wb_reg_in and wb_enable_in to forward to latter stages of pipeline
+            wb_reg_out <= wb_reg_in;
+            wb_enable_out <= wb_enable_in;
+            // latch alu_out_unlatched from ALU to forward to next stages of pipeline
+            alu_out <= alu_out_unlatched;        
+        end
     end
 
     // instantiate the ALU module

@@ -82,7 +82,11 @@ module ALU(
                     3'b111:                 // AND
                     begin
                         rd_data = rs1_data_in & rs2_data_in;
-                    end    
+                    end
+                    default:
+                    begin
+                        rd_data = 0;
+                    end
                  endcase
                  alu_out[31:0] = rd_data[31:0];          
             end
@@ -90,8 +94,8 @@ module ALU(
             7'b1100111:                     // JALR
             begin
                 // rd_data = pc_in + 4;
-                sign_extended_imm[31:0] = {{20{immediate[11]}}, immediate[11:0]};
-                alu_out = (rs1_data_in + $signed(sign_extended_imm)) & ~1;
+//                sign_extended_imm[31:0] = {{20{immediate[11]}}, immediate[11:0]};
+                alu_out = pc_in + 4;
             end
             
             7'b0000011:                     // LB, LH, LW, LBU, LHU -- Load data from memory to register (rd)
@@ -118,6 +122,10 @@ module ALU(
                     begin
                         alu_out = rs1_data_in + $signed(sign_extended_imm);
                     end
+                    default:
+                    begin
+                        alu_out = 0;
+                    end
                 endcase
             end
             
@@ -127,7 +135,7 @@ module ALU(
                 case (funct3)
                     3'b000:                 // ADDI
                     begin
-                        rd_data = rs1_data_in + $signed(sign_extended_imm);
+                        rd_data = $signed(rs1_data_in) + $signed(sign_extended_imm);
                     end
                     3'b010:                 // SLTI
                     begin
@@ -164,6 +172,10 @@ module ALU(
                             rd_data = rs1_data_in >> shamt;
                         end
                     end
+                    default:
+                    begin
+                        rd_data = 0;
+                    end
                 endcase
                 alu_out[31:0] = rd_data[31:0];          
             end
@@ -179,7 +191,7 @@ module ALU(
             7'b0100011:         // SB, SH, SW -- Store data from a register (rs2) to memory
             begin
                 reg [11:0] immediate_2 = {iw_in[31:25], iw_in[11:7]};
-                sign_extended_imm[31:0] = {{20{immediate[11]}}, immediate_2[11:0]};
+                sign_extended_imm[31:0] = {{20{immediate_2[11]}}, immediate_2[11:0]};
                 case (funct3)
                     3'b000:                 // SB
                     begin
@@ -192,6 +204,10 @@ module ALU(
                     3'b010:                 // SW
                     begin
                         alu_out = rs1_data_in + $signed(sign_extended_imm);
+                    end
+                    default:
+                    begin
+                        alu_out = 0;
                     end
                 endcase
             end
@@ -214,11 +230,11 @@ module ALU(
             
             7'b1101111:                     // JAL
             begin
-                reg[19:0] immediate_3 = {iw_in[31], iw_in[19:12], iw_in[20], iw_in[30:21]};
-                sign_extended_imm[31:0] = {{12{immediate[11]}}, immediate_3[19:0]};
-                // rd_data = pc_in + 4;
+                //reg[19:0] immediate_3 = {iw_in[31], iw_in[19:12], iw_in[20], iw_in[30:21]};
+                //sign_extended_imm[31:0] = {{12{immediate[11]}}, immediate_3[19:0]};
+                alu_out = pc_in + 4;
                 //todo pc = pc + 2*signex(i[20:1])
-                alu_out = pc_in + 2 * sign_extended_imm;
+                //alu_out = pc_in + 2 * sign_extended_imm;
             end
 
             default:

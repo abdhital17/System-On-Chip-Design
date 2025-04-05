@@ -11,14 +11,12 @@ module rv32_if_top
     output [31:2] memif_addr,
     input [31:0] memif_data,
     // to id
-    output [31:0] pc_out,
+    output reg [31:0] pc_out,
     output [31:0] iw_out // note this was registered in the memory already
 );
 
     parameter PC_RESET = 32'b0;
     reg [31:0] PC;
-    
-    assign pc_out = PC;
     
     // fetch the instruction at current pc_out before it increments
     assign memif_addr[31:2] = PC[31:2];
@@ -28,6 +26,7 @@ module rv32_if_top
     
     always_ff @ (posedge(clk))
     begin
+        pc_out <= PC;
         if (reset)              // reset program counter back to PC_RESET (0x00000000)
         begin
             PC <= PC_RESET;
@@ -36,7 +35,7 @@ module rv32_if_top
         begin
             PC <= PC;
         end
-        else if (jump_enable_in)
+        else if (jump_enable_in)        // if the previous instruction was a branch/jump instruction, move program counter to the jump address
         begin
             PC <= jump_addr_in;
         end
@@ -45,4 +44,5 @@ module rv32_if_top
             PC <= PC + 32'd4;
         end
     end
+
 endmodule

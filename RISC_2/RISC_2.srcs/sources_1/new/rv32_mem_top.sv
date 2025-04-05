@@ -36,13 +36,15 @@ module rv32_mem_top
             wb_enable_out <= 0;
             alu_out <= 0;
         end
-        
-        // register pc_in and iw_in to drive pc_out and iw_out
-        pc_out <= pc_in;
-        iw_out <= iw_in;
-        wb_reg_out <= wb_reg_in;
-        wb_enable_out <= wb_enable_in;
-        alu_out <= alu_in;
+        else
+        begin
+            // register pc_in and iw_in to drive pc_out and iw_out
+            pc_out <= pc_in;
+            iw_out <= iw_in;
+            wb_reg_out <= wb_reg_in;
+            wb_enable_out <= wb_enable_in;
+            alu_out <= alu_in;
+        end
     end
     
     //todo: if iw_in == Store or Load, read/write from/to mem. else, we = 0, be = 4'b0000
