@@ -21,7 +21,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/moonknight/Documents/risc/RISC_2/RISC_2.runs/ila_1_synth_1'
+HD_PWD='/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/ila_1_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

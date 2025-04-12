@@ -3,84 +3,123 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="/home/moonknight/Documents/risc/RISC_2/RISC_2.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+      <db_ref path="/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
          <top_modules>
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="516"></ZoomStartTime>
-      <ZoomEndTime time="526"></ZoomEndTime>
-      <Cursor1Time time="522"></Cursor1Time>
+      <ZoomStartTime time="505"></ZoomStartTime>
+      <ZoomEndTime time="506"></ZoomEndTime>
+      <Cursor1Time time="515"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="202"></NameColumnWidth>
-      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+      <NameColumnWidth column_width="251"></NameColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="32" />
    <wave_markers>
    </wave_markers>
-   <wvobject type="array" fp_name="if_iw_out">
+   <wvobject type="array" fp_name="rs1_df_data">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">if_iw_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">if_iw_out[31:0]</obj_property>
+      <obj_property name="ElementShortName">rs1_df_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_df_data[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="id_iw_out">
+   <wvobject type="array" fp_name="rs2_df_data">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">id_iw_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">id_iw_out[31:0]</obj_property>
+      <obj_property name="ElementShortName">rs2_df_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs2_df_data[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ex_iw_out">
+   <wvobject type="array" fp_name="df_ex_data_out">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ex_iw_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_iw_out[31:0]</obj_property>
+      <obj_property name="ElementShortName">df_ex_data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">df_ex_data_out[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="mem_iw_out">
+   <wvobject type="logic" fp_name="df_ex_enable_out">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">mem_iw_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">mem_iw_out[31:0]</obj_property>
+      <obj_property name="ElementShortName">df_ex_enable_out</obj_property>
+      <obj_property name="ObjectShortName">df_ex_enable_out</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="df_ex_reg_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">df_ex_reg_out[4:0]</obj_property>
+      <obj_property name="ObjectShortName">df_ex_reg_out[4:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="if_pc_out">
+   <wvobject type="array" fp_name="df_mem_data_out">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">if_pc_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">if_pc_out[31:0]</obj_property>
+      <obj_property name="ElementShortName">df_mem_data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">df_mem_data_out[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="id_pc_out">
+   <wvobject type="logic" fp_name="df_mem_enable_out">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">id_pc_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">id_pc_out[31:0]</obj_property>
+      <obj_property name="ElementShortName">df_mem_enable_out</obj_property>
+      <obj_property name="ObjectShortName">df_mem_enable_out</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="df_mem_reg_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">df_mem_reg_out[4:0]</obj_property>
+      <obj_property name="ObjectShortName">df_mem_reg_out[4:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ex_pc_out">
+   <wvobject type="array" fp_name="df_wb_data_out">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ex_pc_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_pc_out[31:0]</obj_property>
+      <obj_property name="ElementShortName">df_wb_data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">df_wb_data_out[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="mem_pc_out">
+   <wvobject type="logic" fp_name="df_wb_enable_out">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">mem_pc_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">mem_pc_out[31:0]</obj_property>
+      <obj_property name="ElementShortName">df_wb_enable_out</obj_property>
+      <obj_property name="ObjectShortName">df_wb_enable_out</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="df_wb_reg_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">df_wb_reg_out[4:0]</obj_property>
+      <obj_property name="ObjectShortName">df_wb_reg_out[4:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
@@ -100,55 +139,186 @@
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="if_iw_out">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">if_iw_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">if_iw_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">if_id_iw[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="id_iw_out">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">id_iw_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_iw_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">id_ex_iw[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="ex_iw_out">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">ex_iw_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_iw_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">ex_mem_iw[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="mem_iw_out">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">mem_iw_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_iw_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mem_wb_iw[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="id_jump_addr_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">id_jump_addr_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_jump_addr_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="id_jump_enable_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">id_jump_enable_out</obj_property>
+      <obj_property name="ObjectShortName">id_jump_enable_out</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="if_pc_out">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">if_pc_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">if_pc_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">if_id_pc[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="id_pc_out">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">id_pc_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_pc_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">id_ex_pc[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="ex_pc_out">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">ex_pc_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_pc_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">ex_mem_pc[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="mem_pc_out">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">mem_pc_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_pc_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">mem_wb_pc[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="ebreak">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">ebreak</obj_property>
       <obj_property name="ObjectShortName">ebreak</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="id_wb_enable_out">
+   <wvobject type="array" fp_name="id_rs1_rdata">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">id_wb_enable_out</obj_property>
-      <obj_property name="ObjectShortName">id_wb_enable_out</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="ex_wb_enable_out">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ex_wb_enable_out</obj_property>
-      <obj_property name="ObjectShortName">ex_wb_enable_out</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="mem_wb_enable_out">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">mem_wb_enable_out</obj_property>
-      <obj_property name="ObjectShortName">mem_wb_enable_out</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="id_wb_reg_out">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">id_wb_reg_out[4:0]</obj_property>
-      <obj_property name="ObjectShortName">id_wb_reg_out[4:0]</obj_property>
+      <obj_property name="ElementShortName">id_rs1_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_rs1_rdata[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="ex_wb_reg_out">
+   <wvobject type="array" fp_name="id_rs2_rdata">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">ex_wb_reg_out[4:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_wb_reg_out[4:0]</obj_property>
+      <obj_property name="ElementShortName">id_rs2_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_rs2_rdata[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="mem_wb_reg_out">
+   <wvobject fp_name="divider68" type="divider">
+      <obj_property name="label">registers</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="x1">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">mem_wb_reg_out[4:0]</obj_property>
-      <obj_property name="ObjectShortName">mem_wb_reg_out[4:0]</obj_property>
+      <obj_property name="ElementShortName">x1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">x1[31:0]</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="x2">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">x2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">x2[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="x3">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">x3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">x3[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="x4">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">x4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">x4[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="reset">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

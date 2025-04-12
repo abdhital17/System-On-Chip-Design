@@ -7,7 +7,7 @@
   **** SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
   **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
   **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-  **** Start of session at: Wed Mar 19 21:34:48 2025
+  **** Start of session at: Sat Apr  5 15:01:43 2025
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -20,112 +20,112 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z007
 INFO: [Device 21-403] Loading part xc7z007sclg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 517980
+INFO: [Synth 8-7075] Helper process launched with PID 1556875
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1938.293 ; gain = 417.828 ; free physical = 1604 ; free virtual = 9499
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1937.910 ; gain = 419.797 ; free physical = 1367 ; free virtual = 8349
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:30]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:32]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:69]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:71]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:109]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:111]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:150]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:152]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:192]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:194]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:235]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:237]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:279]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:281]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:324]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:326]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:370]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:372]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:417]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:419]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:465]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:467]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:514]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:516]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:564]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:566]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:615]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:617]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:30]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:32]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:69]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:71]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:109]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:111]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:150]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:152]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:192]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:194]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:235]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:237]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:279]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:281]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:324]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:326]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:370]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:372]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:417]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:419]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:465]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:467]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:514]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:516]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:564]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:566]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:615]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:617]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:30]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:32]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:65]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:67]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:100]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:102]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:135]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:137]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:170]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:172]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:205]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:207]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:240]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:242]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:275]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:277]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:310]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:312]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:345]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:347]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:380]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:382]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:415]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:417]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:450]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:452]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:485]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:487]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:30]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:32]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:65]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:67]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:100]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:102]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:135]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:137]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:170]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:172]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:205]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:207]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:240]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:242]
-INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:275]
-INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:277]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:30]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:32]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:69]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:71]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:109]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:111]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:150]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:152]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:192]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:194]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:235]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:237]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:279]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:281]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:324]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:326]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:370]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:372]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:417]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:419]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:465]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:467]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:514]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:516]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:564]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:566]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:615]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_ext.vh:617]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:30]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:32]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:69]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:71]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:109]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:111]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:150]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:152]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:192]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:194]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:235]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:237]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:279]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:281]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:324]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:326]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:370]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:372]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:417]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:419]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:465]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:467]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:514]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:516]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:564]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:566]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:615]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core.vh:617]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:30]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:32]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:65]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:67]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:100]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:102]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:135]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:137]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:170]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:172]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:205]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:207]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:240]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:242]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:275]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:277]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:310]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:312]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:345]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:347]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:380]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:382]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:415]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:417]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:450]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:452]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:485]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:487]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:30]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:32]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:65]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:67]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:100]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:102]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:135]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:137]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:170]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:172]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:205]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:207]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:240]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:242]
+INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:275]
+INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/hdl/verilog/xsdbm_v3_0_3_bs_core_vec.vh:277]
 INFO: [Common 17-14] Message 'Synth 8-11241' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-6157] synthesizing module 'ila_1' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:48]
+INFO: [Synth 8-6157] synthesizing module 'ila_1' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:48]
 INFO: [Synth 8-6157] synthesizing module 'CFGLUT5' [/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:3129]
 INFO: [Synth 8-6155] done synthesizing module 'CFGLUT5' (0#1) [/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:3129]
 INFO: [Synth 8-6157] synthesizing module 'CARRY4' [/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:3092]
@@ -138,169 +138,169 @@ INFO: [Synth 8-6157] synthesizing module 'SRLC16E' [/tools/Xilinx/Vivado/2024.2/
 INFO: [Synth 8-6155] done synthesizing module 'SRLC16E' (0#1) [/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:149134]
 INFO: [Synth 8-6157] synthesizing module 'FDRE' [/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:43188]
 INFO: [Synth 8-6155] done synthesizing module 'FDRE' (0#1) [/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:43188]
-WARNING: [Synth 8-7071] port 'clk_nobuf' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3241]
-WARNING: [Synth 8-7071] port 'clkdiv_out' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3241]
-WARNING: [Synth 8-7071] port 'trig_in' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3241]
-WARNING: [Synth 8-7071] port 'trig_in_ack' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3241]
-WARNING: [Synth 8-7071] port 'trig_out' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3241]
-WARNING: [Synth 8-7071] port 'trig_out_ack' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3241]
-WARNING: [Synth 8-7023] instance 'inst' of module 'ila_v6_2_16_ila' has 1033 connections declared, but only 1027 given [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3241]
-INFO: [Synth 8-6155] done synthesizing module 'ila_1' (0#1) [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:48]
-WARNING: [Synth 8-3848] Net sl_iport0 in module/entity ila_1 does not have driver. [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:130]
-WARNING: [Synth 8-7129] Port CLKB in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[339] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[338] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[337] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[336] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[335] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[334] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[333] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[332] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[331] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[330] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[329] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[328] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[327] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[326] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[325] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[324] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[323] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[322] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[321] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[320] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[319] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[318] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[317] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[316] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[315] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[314] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[313] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[312] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[311] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[310] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[309] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[308] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[307] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[306] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[305] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[304] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[303] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[302] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[301] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[300] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[299] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[298] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[297] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[296] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[295] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[294] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[293] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[292] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[291] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[290] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[289] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[288] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[287] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[286] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[285] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[284] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[283] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[282] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[281] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[280] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[279] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[278] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[277] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[276] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[275] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[274] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[273] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[272] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[271] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[270] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[269] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[268] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[267] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[266] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[265] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[264] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[263] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[262] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[261] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[260] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[259] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[258] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[257] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[256] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[255] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[254] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[253] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[252] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[251] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[250] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[249] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[248] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[247] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[246] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[245] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[244] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[243] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[242] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[241] in module blk_mem_gen_v8_4_9_blk_mem_output_block is either unconnected or has no load
+WARNING: [Synth 8-7071] port 'clk_nobuf' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3269]
+WARNING: [Synth 8-7071] port 'clkdiv_out' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3269]
+WARNING: [Synth 8-7071] port 'trig_in' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3269]
+WARNING: [Synth 8-7071] port 'trig_in_ack' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3269]
+WARNING: [Synth 8-7071] port 'trig_out' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3269]
+WARNING: [Synth 8-7071] port 'trig_out_ack' of module 'ila_v6_2_16_ila' is unconnected for instance 'inst' [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3269]
+WARNING: [Synth 8-7023] instance 'inst' of module 'ila_v6_2_16_ila' has 1033 connections declared, but only 1027 given [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:3269]
+INFO: [Synth 8-6155] done synthesizing module 'ila_1' (0#1) [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:48]
+WARNING: [Synth 8-3848] Net sl_iport0 in module/entity ila_1 does not have driver. [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/synth/ila_1.v:158]
+WARNING: [Synth 8-7129] Port CLKB in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[213] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[212] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[211] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[210] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[209] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[208] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[207] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[206] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[205] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[204] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[203] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[202] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[201] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[200] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[199] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[198] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[197] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[196] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[195] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[194] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[193] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[192] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[191] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[190] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[189] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[188] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[187] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[186] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[185] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[184] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[183] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[182] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[181] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[180] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[179] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[178] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[177] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[176] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[175] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[174] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[173] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[172] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[171] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[170] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[169] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[168] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[167] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[166] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[165] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[164] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[163] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[162] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[161] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[160] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[159] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[158] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[157] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[156] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[155] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[154] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[153] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[152] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[151] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[150] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[149] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[148] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[147] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[146] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[145] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[144] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[143] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[142] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[141] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[140] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[139] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[138] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[137] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[136] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[135] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[134] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[133] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[132] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[131] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[130] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[129] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[128] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[127] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[126] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[125] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[124] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[123] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[122] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[121] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[120] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[119] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[118] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[117] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[116] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[115] in module blk_mem_gen_v8_4_9_blk_mem_output_block__parameterized0 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2376.738 ; gain = 856.273 ; free physical = 1087 ; free virtual = 8971
+Finished RTL Elaboration : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2470.863 ; gain = 952.750 ; free physical = 968 ; free virtual = 7959
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2376.738 ; gain = 856.273 ; free physical = 1087 ; free virtual = 8971
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2470.863 ; gain = 952.750 ; free physical = 971 ; free virtual = 7962
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2376.738 ; gain = 856.273 ; free physical = 1087 ; free virtual = 8971
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2470.863 ; gain = 952.750 ; free physical = 971 ; free virtual = 7962
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.15 . Memory (MB): peak = 2376.738 ; gain = 0.000 ; free physical = 1104 ; free virtual = 8997
-INFO: [Netlist 29-17] Analyzing 1475 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.23 ; elapsed = 00:00:00.23 . Memory (MB): peak = 2470.863 ; gain = 0.000 ; free physical = 982 ; free virtual = 7974
+INFO: [Netlist 29-17] Analyzing 2537 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_1_ooc.xdc] for cell 'inst'
-Finished Parsing XDC File [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_1_ooc.xdc] for cell 'inst'
-Parsing XDC File [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc] for cell 'inst'
-Finished Parsing XDC File [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc] for cell 'inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/moonknight/Documents/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/ila_1_propImpl.xdc].
+Parsing XDC File [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_1_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_1_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc] for cell 'inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/ila_1_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/ila_1_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/ila_1_synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/ila_1_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2440.770 ; gain = 0.000 ; free physical = 1081 ; free virtual = 8939
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2534.895 ; gain = 0.000 ; free physical = 964 ; free virtual = 7959
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 1130 instances were transformed.
-  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 1060 instances
-  CFGLUT5 => SRLC32E: 70 instances
+  A total of 1954 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 1856 instances
+  CFGLUT5 => SRLC32E: 98 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.11 . Memory (MB): peak = 2440.770 ; gain = 0.000 ; free physical = 1081 ; free virtual = 8939
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.2 ; elapsed = 00:00:00.16 . Memory (MB): peak = 2534.895 ; gain = 0.000 ; free physical = 995 ; free virtual = 7992
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2440.770 ; gain = 920.305 ; free physical = 1171 ; free virtual = 9014
+Finished Constraint Validation : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2534.895 ; gain = 1016.781 ; free physical = 975 ; free virtual = 7970
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z007sclg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2448.773 ; gain = 928.309 ; free physical = 1171 ; free virtual = 9014
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2542.898 ; gain = 1024.785 ; free physical = 975 ; free virtual = 7970
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/ila_1_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2448.773 ; gain = 928.309 ; free physical = 1170 ; free virtual = 9013
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2542.898 ; gain = 1024.785 ; free physical = 974 ; free virtual = 7970
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized0'
@@ -374,7 +374,35 @@ INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in modul
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized68'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized69'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized70'
-INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'ltlib_v1_0_2_generic_memrd'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized71'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized72'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized73'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized74'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized75'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized76'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized77'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized78'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized79'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized80'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized81'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized82'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized83'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized84'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized85'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized86'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized87'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized88'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized89'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized90'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized91'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized92'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized93'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized94'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized95'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized96'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized97'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized98'
+INFO: [Common 17-14] Message 'Synth 8-802' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -1099,6 +1127,287 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
 *
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized71'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized72'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized73'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized74'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized75'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized76'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized77'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized78'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized79'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized80'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized81'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized82'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized83'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized84'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized85'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized86'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized87'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized88'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized89'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized90'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized91'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized92'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized93'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized94'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized95'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized96'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized97'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_4_reg_p2s__parameterized98'
+INFO: [Common 17-14] Message 'Synth 8-3898' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
               RESET_ADDR |                          0000001 |                          0000001
             REQUEST_READ |                          0000010 |                          0000010
            WAIT_READ_ACK |                          0000100 |                          0000100
@@ -1107,9 +1416,8 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
          INCREMENT_BLOCK |                          0100000 |                          0100000
        INCREMENT_ADDRESS |                          1000000 |                          1000000
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'ltlib_v1_0_2_generic_memrd'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2448.773 ; gain = 928.309 ; free physical = 1238 ; free virtual = 9083
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2542.898 ; gain = 1024.785 ; free physical = 969 ; free virtual = 7971
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -1131,25 +1439,30 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:50 ; elapsed = 00:00:52 . Memory (MB): peak = 2448.773 ; gain = 928.309 ; free physical = 1490 ; free virtual = 9330
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 2542.898 ; gain = 1024.785 ; free physical = 983 ; free virtual = 7930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-3321] set_false_path : Empty to list for constraint at line 14 of /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc. [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc:14]
+WARNING: [Synth 8-3321] set_false_path : Empty to list for constraint at line 15 of /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc. [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc:15]
+WARNING: [Synth 8-3321] set_false_path : Empty to list for constraint at line 86 of /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc. [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc:86]
+WARNING: [Synth 8-3321] set_false_path : Empty to list for constraint at line 88 of /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc. [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc:88]
+WARNING: [Synth 8-3321] set_false_path : Empty to list for constraint at line 89 of /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc. [/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila.xdc:89]
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:56 ; elapsed = 00:00:58 . Memory (MB): peak = 2448.773 ; gain = 928.309 ; free physical = 1111 ; free virtual = 8949
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:06 ; elapsed = 00:01:09 . Memory (MB): peak = 2542.898 ; gain = 1024.785 ; free physical = 997 ; free virtual = 7945
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 2448.773 ; gain = 928.309 ; free physical = 1145 ; free virtual = 8982
+Finished Timing Optimization : Time (s): cpu = 00:01:11 ; elapsed = 00:01:13 . Memory (MB): peak = 2542.898 ; gain = 1024.785 ; free physical = 975 ; free virtual = 7951
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:59 ; elapsed = 00:01:02 . Memory (MB): peak = 2448.773 ; gain = 928.309 ; free physical = 1240 ; free virtual = 9078
+Finished Technology Mapping : Time (s): cpu = 00:01:15 ; elapsed = 00:01:18 . Memory (MB): peak = 2542.898 ; gain = 1024.785 ; free physical = 1005 ; free virtual = 7966
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1207,37 +1520,37 @@ INFO: [Synth 8-3295] tying undriven pin inst:sl_iport0[0] to constant 0
 INFO: [Synth 8-3295] tying undriven pin inst:trig_in to constant 0
 INFO: [Synth 8-3295] tying undriven pin inst:trig_out_ack to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:02 ; elapsed = 00:01:05 . Memory (MB): peak = 2489.586 ; gain = 969.121 ; free physical = 1262 ; free virtual = 9100
+Finished IO Insertion : Time (s): cpu = 00:01:18 ; elapsed = 00:01:20 . Memory (MB): peak = 2545.867 ; gain = 1027.754 ; free physical = 1012 ; free virtual = 7961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:02 ; elapsed = 00:01:05 . Memory (MB): peak = 2489.586 ; gain = 969.121 ; free physical = 1262 ; free virtual = 9100
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:18 ; elapsed = 00:01:20 . Memory (MB): peak = 2545.867 ; gain = 1027.754 ; free physical = 1012 ; free virtual = 7961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:02 ; elapsed = 00:01:05 . Memory (MB): peak = 2489.586 ; gain = 969.121 ; free physical = 1273 ; free virtual = 9111
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:19 ; elapsed = 00:01:21 . Memory (MB): peak = 2545.867 ; gain = 1027.754 ; free physical = 1042 ; free virtual = 7988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:02 ; elapsed = 00:01:05 . Memory (MB): peak = 2489.586 ; gain = 969.121 ; free physical = 1273 ; free virtual = 9111
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:19 ; elapsed = 00:01:21 . Memory (MB): peak = 2545.867 ; gain = 1027.754 ; free physical = 1042 ; free virtual = 7988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2489.586 ; gain = 969.121 ; free physical = 1274 ; free virtual = 9112
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:19 ; elapsed = 00:01:21 . Memory (MB): peak = 2545.867 ; gain = 1027.754 ; free physical = 1042 ; free virtual = 7988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2489.586 ; gain = 969.121 ; free physical = 1274 ; free virtual = 9112
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:19 ; elapsed = 00:01:21 . Memory (MB): peak = 2545.867 ; gain = 1027.754 ; free physical = 1042 ; free virtual = 7988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1253,56 +1566,56 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |CARRY4   |   351|
-|2     |CFGLUT5  |  1130|
-|3     |LUT1     |   102|
-|4     |LUT2     |   460|
-|5     |LUT3     |   353|
-|6     |LUT4     |   763|
-|7     |LUT5     |   346|
-|8     |LUT6     |  2129|
-|9     |MUXF7    |   188|
+|1     |CARRY4   |   578|
+|2     |CFGLUT5  |  1954|
+|3     |LUT1     |   133|
+|4     |LUT2     |   888|
+|5     |LUT3     |   450|
+|6     |LUT4     |  1012|
+|7     |LUT5     |   436|
+|8     |LUT6     |  2897|
+|9     |MUXF7    |   313|
 |10    |MUXF8    |    50|
 |11    |RAM64M   |    32|
 |12    |RAMB18E1 |     1|
-|13    |RAMB36E1 |     9|
-|14    |SRL16E   |   347|
+|13    |RAMB36E1 |    20|
+|14    |SRL16E   |   733|
 |15    |SRLC16E  |     2|
 |16    |SRLC32E  |    17|
-|17    |FDRE     |  7700|
-|18    |FDSE     |    10|
+|17    |FDRE     | 12199|
+|18    |FDSE     |    14|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2489.586 ; gain = 969.121 ; free physical = 1274 ; free virtual = 9112
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:19 ; elapsed = 00:01:21 . Memory (MB): peak = 2545.867 ; gain = 1027.754 ; free physical = 1042 ; free virtual = 7988
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 4627 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 2489.586 ; gain = 905.090 ; free physical = 1274 ; free virtual = 9112
-Synthesis Optimization Complete : Time (s): cpu = 00:01:03 ; elapsed = 00:01:05 . Memory (MB): peak = 2489.594 ; gain = 969.121 ; free physical = 1274 ; free virtual = 9112
+Synthesis finished with 0 errors, 0 critical warnings and 1002 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:11 ; elapsed = 00:01:14 . Memory (MB): peak = 2545.867 ; gain = 963.723 ; free physical = 1042 ; free virtual = 7987
+Synthesis Optimization Complete : Time (s): cpu = 00:01:19 ; elapsed = 00:01:22 . Memory (MB): peak = 2545.875 ; gain = 1027.754 ; free physical = 1042 ; free virtual = 7987
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2489.594 ; gain = 0.000 ; free physical = 1452 ; free virtual = 9290
-INFO: [Netlist 29-17] Analyzing 1761 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.15 . Memory (MB): peak = 2545.875 ; gain = 0.000 ; free physical = 1187 ; free virtual = 8164
+INFO: [Netlist 29-17] Analyzing 2948 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2545.613 ; gain = 0.000 ; free physical = 1476 ; free virtual = 9313
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2601.895 ; gain = 0.000 ; free physical = 1209 ; free virtual = 8170
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 1162 instances were transformed.
-  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 1060 instances
-  CFGLUT5 => SRLC32E: 70 instances
+  A total of 1986 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 1856 instances
+  CFGLUT5 => SRLC32E: 98 instances
   RAM64M => RAM64M (RAMD64E(x4)): 32 instances
 
-Synth Design complete | Checksum: 8dcc35e0
+Synth Design complete | Checksum: 25c92758
 INFO: [Common 17-83] Releasing license: Synthesis
-321 Infos, 109 Warnings, 0 Critical Warnings and 0 Errors encountered.
+377 Infos, 114 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:11 ; elapsed = 00:01:11 . Memory (MB): peak = 2545.613 ; gain = 1071.777 ; free physical = 1476 ; free virtual = 9313
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1884.314; main = 1705.749; forked = 261.708
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3364.496; main = 2545.617; forked = 915.719
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2569.625 ; gain = 0.000 ; free physical = 1476 ; free virtual = 9315
+synth_design: Time (s): cpu = 00:01:30 ; elapsed = 00:01:30 . Memory (MB): peak = 2601.895 ; gain = 1158.348 ; free physical = 1209 ; free virtual = 8167
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1981.274; main = 1770.949; forked = 261.868
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3458.621; main = 2601.898; forked = 915.719
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2625.906 ; gain = 0.000 ; free physical = 1205 ; free virtual = 8166
 INFO: [Common 17-1381] The checkpoint '/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/ila_1_synth_1/ila_1.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP ila_1, cache-ID = a50b6b3786314d2d
-INFO: [Coretcl 2-1174] Renamed 657 cell refs.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2569.625 ; gain = 0.000 ; free physical = 1487 ; free virtual = 9346
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP ila_1, cache-ID = 6423a93821ff49cf
+INFO: [Coretcl 2-1174] Renamed 994 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2625.906 ; gain = 0.000 ; free physical = 1116 ; free virtual = 8109
 INFO: [Common 17-1381] The checkpoint '/home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.runs/ila_1_synth_1/ila_1.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file ila_1_utilization_synth.rpt -pb ila_1_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Mar 19 21:36:07 2025...
+INFO: [Common 17-206] Exiting Vivado at Sat Apr  5 15:03:22 2025...
