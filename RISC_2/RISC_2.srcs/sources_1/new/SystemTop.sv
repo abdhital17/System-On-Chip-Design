@@ -92,8 +92,8 @@ module SystemTop(
     // instantiate rv32_if_top
     wire [31:0] if_iw_out, id_jump_addr_out;
 //    wire [31:0] if_pc_out, if_iw_out, id_jump_addr_out;
-    wire [31:2] memif_addr;
-    reg [31:0] memif_data;
+    wire [31:2] inst_memif_addr;
+    reg [31:0] inst_memif_data;
     wire id_jump_enable_out;
     reg [31:0] if_pc_out;
     rv32_if_top instruction_fetch(
@@ -105,27 +105,13 @@ module SystemTop(
     .jump_enable_in(id_jump_enable_out),
     .jump_addr_in(id_jump_addr_out),
     // memory interface
-    .memif_addr(memif_addr),
-    .memif_data(memif_data),
+    .memif_addr(inst_memif_addr),
+    .memif_data(inst_memif_data),
     // to id
     .pc_out(if_pc_out),
     .iw_out(if_iw_out)
     );
 
-    // instantiate the dual port ram
-    dual_port_ram ram1(
-    // Clock
-    .clk(clk),
-    // Instruction port (RO)  --- From/To IF
-    .i_addr(memif_addr),
-    .i_rdata(memif_data),
-    // Data port (RW)
-    .d_addr(),
-    .d_rdata(),
-    .d_we(),
-    .d_be(),
-    .d_wdata()
-    );
 
     // declare the data forwarding (df) signals used to prevent data hazards
     // RAW (Read After Write) hazard, when a register read instruction follows a write instruction
@@ -142,8 +128,6 @@ module SystemTop(
     reg id_wb_enable_out;
     
     
-    // debug
-    wire [31:0] rs1_df_data, rs2_df_data;
     rv32_id_top instruction_decode(
     // system clock and synchronous reset
     .clk(clk),
@@ -177,14 +161,11 @@ module SystemTop(
     .wb_reg_out(id_wb_reg_out),
     .wb_enable_out(id_wb_enable_out),
     .regif_rs1_data_out(id_rs1_data_out),
-    .regif_rs2_data_out(id_rs2_data_out),
-    // debug
-    .rs1_df_data(rs1_df_data),
-    .rs2_df_data(rs2_df_data)
+    .regif_rs2_data_out(id_rs2_data_out)
     );
     
     // instantiate rv32_ex_top
-    reg [31:0] ex_pc_out, ex_iw_out, ex_alu_out;
+    reg [31:0] ex_pc_out, ex_iw_out, ex_alu_out, ex_rs2_data_out;
     reg [4:0] ex_wb_reg_out;
     reg ex_wb_enable_out;
     rv32_ex_top execute(
@@ -204,15 +185,30 @@ module SystemTop(
     .alu_out(ex_alu_out),
     .wb_reg_out(ex_wb_reg_out),
     .wb_enable_out(ex_wb_enable_out),
+    .rs2_data_out(ex_rs2_data_out),
     // df outputs to ID
     .df_ex_enable_out(df_ex_enable_out),
     .df_ex_reg_out(df_ex_reg_out),
     .df_ex_data_out(df_ex_data_out)
     );
     
-    
+    // declare data port signals coming from and going to the MEM stage
+    wire [31:2] data_memif_addr;
+    reg [31:0] data_memif_rdata;
+    wire data_memif_we;
+    wire [3:0] data_memif_be;
+    wire [31:0] data_memif_wdata;
+    // declare io port signals coming from and going to the MEM stage
+    wire [31:2] io_addr;
+    reg [31:0] io_rdata;
+    wire io_we;
+    wire [3:0] io_be;
+    wire [31:0] io_wdata;
+
     // instantiate rv32_mem_top
     reg [31:0] mem_pc_out, mem_iw_out, mem_alu_out;
+    wire [31:0] mem_memif_rdata_out, mem_io_rdata_out;
+    reg [1:0] mem_reg_write_src_out;
     reg [4:0] mem_wb_reg_out;
     reg mem_wb_enable_out;
     rv32_mem_top memory_access(
@@ -225,18 +221,65 @@ module SystemTop(
     .wb_reg_in(ex_wb_reg_out),
     .wb_enable_in(ex_wb_enable_out),
     .alu_in(ex_alu_out),
+    .ex_rs2_data_in(ex_rs2_data_out),
     // to wb
     .pc_out(mem_pc_out),
     .iw_out(mem_iw_out),
     .alu_out(mem_alu_out),
     .wb_reg_out(mem_wb_reg_out),
     .wb_enable_out(mem_wb_enable_out),
+    .memif_rdata_out(mem_memif_rdata_out),
+    .io_rdata_out(mem_io_rdata_out),
+    .reg_write_src_out(mem_reg_write_src_out),
     // df outputs to ID
     .df_mem_enable_out(df_mem_enable_out),
     .df_mem_reg_out(df_mem_reg_out),
-    .df_mem_data_out(df_mem_data_out)
+    .df_mem_data_out(df_mem_data_out),
+    // memory interface
+    .memif_addr(data_memif_addr),           // output 
+    .memif_rdata(data_memif_rdata),         // input from memory interface
+    .memif_we(data_memif_we),               // output
+    .memif_be(data_memif_be),               // output
+    .memif_wdata(data_memif_wdata),         // output
+    // io interface
+    .io_addr(io_addr),          // output
+    .io_rdata(io_rdata),        // input from io_interface
+    .io_we(io_we),              // output
+    .io_be(io_be),              // output
+    .io_wdata(io_wdata)         // output
     );
 
+    // instantiate the dual port ram
+    dual_port_ram ram1(
+    // Clock
+    .clk(clk),
+    // Instruction port (RO)  --- From/To IF
+    .i_addr(inst_memif_addr),
+    .i_rdata(inst_memif_data),
+    // Data port (RW)
+    .d_addr(data_memif_addr),
+    .d_rdata(data_memif_rdata),
+    .d_we(data_memif_we),
+    .d_be(data_memif_be),
+    .d_wdata(data_memif_wdata)
+    );
+
+    // instantiate the io module
+    io_interface io_if
+    (
+    // Clock
+    .clk(clk),
+    // data port
+    .io_addr(io_addr),
+    .io_rdata(io_rdata),
+    .io_we(io_we),
+    .io_be(io_be),
+    .io_wdata(io_wdata),
+    // io space
+    .pb(PB[1]),
+    .leds(LED[7:0])
+    );
+    
     // instantiate rv32_wb_top
     wire wb_enable;
     wire [4:0] regif_wb_reg;
@@ -251,6 +294,9 @@ module SystemTop(
     .alu_in(mem_alu_out),
     .wb_reg_in(mem_wb_reg_out),
     .wb_enable_in(mem_wb_enable_out),
+    .memif_rdata_in(mem_memif_rdata_out),
+    .io_rdata_in(mem_io_rdata_out),
+    .reg_write_src_in(mem_reg_write_src_out),
     // register interface
     .regif_wb_enable(wb_enable),
     .regif_wb_reg(regif_wb_reg),
@@ -325,16 +371,16 @@ module SystemTop(
 	.probe20(df_mem_data_out), // input wire [31:0]  probe20 
 	.probe21(df_wb_data_out), // input wire [31:0]  probe21
     
-    .probe22(id_rs1_rdata), // input wire [31:0]  probe22
-    .probe23(id_rs2_rdata), // input wire [31:0]  probe23
+    .probe22(mem_reg_write_src_out), // input wire [31:0]  probe22
+    .probe23(regif_wb_data), // input wire [31:0]  probe23
         //debug outputs
     .probe24(x1),
     .probe25(x2),
     .probe26(x3),
     .probe27(x4),
     .probe28(reset), // input wire [0:0]  probe28
-    .probe29(rs1_df_data), // input wire [31:0]  probe29 
-	.probe30(rs2_df_data) // input wire [31:0]  probe30
+    .probe29(io_wdata), // input wire [31:0]  probe29 
+	.probe30(io_rdata) // input wire [31:0]  probe30
     );
     
 endmodule

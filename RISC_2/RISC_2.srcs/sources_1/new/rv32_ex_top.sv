@@ -15,6 +15,7 @@ module rv32_ex_top(
     output reg [31:0] alu_out,
     output reg [4:0] wb_reg_out,
     output reg wb_enable_out,
+    output reg [31:0] rs2_data_out,
     // df outputs to ID
     output df_ex_enable_out,
     output [4:0] df_ex_reg_out,
@@ -35,6 +36,7 @@ module rv32_ex_top(
             wb_reg_out <= 0;
             wb_enable_out <= 0;
             alu_out <= 0;
+            rs2_data_out <= 0;
         end
         else
         begin
@@ -45,7 +47,9 @@ module rv32_ex_top(
             wb_reg_out <= wb_reg_in;
             wb_enable_out <= wb_enable_in;
             // latch alu_out_unlatched from ALU to forward to next stages of pipeline
-            alu_out <= alu_out_unlatched;        
+            alu_out <= alu_out_unlatched;   
+            // latch the rs2 data value for MEM to use in STORE instructions
+            rs2_data_out <= rs2_data_in;     
         end
     end
 

@@ -32,10 +32,7 @@ module rv32_id_top
     output reg [4:0] wb_reg_out,
     output reg wb_enable_out,
     output reg [31:0] regif_rs1_data_out,
-    output reg [31:0] regif_rs2_data_out,
-    // debug
-    output [31:0] rs1_df_data,
-    output [31:0] rs2_df_data
+    output reg [31:0] regif_rs2_data_out
 );
     
     // decode the instruction word to assign the rs1 and rs2 registers
@@ -44,6 +41,7 @@ module rv32_id_top
     
     reg send_nop;
     
+    wire [31:0] rs1_df_data, rs2_df_data;
     // handle data hazard before evaluating branching condition
     assign rs1_df_data = (df_ex_enable && (df_ex_reg == regif_rs1_reg)) ? df_ex_data :
                    (df_mem_enable && (df_mem_reg) == regif_rs1_reg) ? df_mem_data :
@@ -67,7 +65,8 @@ module rv32_id_top
     wire [31:0] imm_b = $signed({{20{iw_in[31]}}, iw_in[7], iw_in[30:25], iw_in[11:8], 1'b0});
 
     reg [31:0] jump_addr_reg;
-    always_comb begin
+    always_comb 
+    begin
         if (~send_nop) 
         begin
             if (jalr)
