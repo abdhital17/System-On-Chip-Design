@@ -58,6 +58,7 @@ if {$::dispatch::connected} {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param tcl.collectionResultDisplayLimit 0
 set_param xicom.use_bs_reader 1
+set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z007sclg400-1
 
@@ -76,21 +77,18 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/ALU.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/byteEnableGen.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/dual_port_ram.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/io_interface.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_ex_top.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_id_top.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_if_top.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_mem_top.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32_wb_top.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/rv32i_regs.sv
+  /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/shiftAndSignExtend.sv
   /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/new/SystemTop.sv
 }
-read_ip -quiet /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/ip/ila_0_2/ila_0.xci
-set_property used_in_synthesis false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_0/ila_0_ooc.xdc]
-
 read_ip -quiet /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.srcs/sources_1/ip/ila_1/ila_1.xci
 set_property used_in_synthesis false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all /home/moonknight/Documents/spring25/risc/RISC_2/RISC_2.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila_impl.xdc]
