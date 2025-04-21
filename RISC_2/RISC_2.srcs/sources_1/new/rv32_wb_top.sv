@@ -12,6 +12,7 @@ module rv32_wb_top
     input [31:0] memif_rdata_in,
     input [31:0] io_rdata_in,
     input [1:0] reg_write_src_in,
+    input mem_we_in,
     // register interface
     output regif_wb_enable,
     output [4:0] regif_wb_reg,
@@ -21,19 +22,17 @@ module rv32_wb_top
     output df_wb_enable_out,
     output [4:0] df_wb_reg_out,
     output [31:0] df_wb_data_out,
-    // debug
-    output [31:0] mem_data_unshifted,
-    output [31:0] mem_data_shifted
+    // df outputs to Ex
+    output df_wb_from_mem_wb
 );
     
     // assign df outputs
     assign df_wb_enable_out = wb_enable_in;
     assign df_wb_reg_out = wb_reg_in;
     // assign df_wb_data_out = alu_in;
+    assign df_wb_from_mem_wb = mem_we_in;
 
-
-    // todo: uncomment below line after debug and remove debug ports
-    // wire [31:0] mem_data_unshifted, mem_data_shifted;
+    wire [31:0] mem_data_unshifted, mem_data_shifted;
     // output signals that go to the register interface todo: shift and sign extend
     assign regif_wb_enable = wb_enable_in;
     assign regif_wb_reg = wb_reg_in;

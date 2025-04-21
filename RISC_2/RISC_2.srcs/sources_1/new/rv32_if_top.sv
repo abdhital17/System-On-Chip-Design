@@ -7,6 +7,7 @@ module rv32_if_top
     // from id
     input jump_enable_in,
     input [31:0] jump_addr_in,
+    input stall_pipeline,
     // memory interface
     output [31:2] memif_addr,
     input [31:0] memif_data,
@@ -31,7 +32,7 @@ module rv32_if_top
         begin
             PC <= PC_RESET;
         end
-        else if (ebreak)
+        else if (ebreak || stall_pipeline)
         begin
             PC <= PC;
         end
