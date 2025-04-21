@@ -104,6 +104,7 @@ module SystemTop(
     // from id
     .jump_enable_in(id_jump_enable_out),
     .jump_addr_in(id_jump_addr_out),
+    .stall_pipeline(id_stall_pipeline_out),
     // memory interface
     .memif_addr(inst_memif_addr),
     .memif_data(inst_memif_data),
@@ -127,7 +128,26 @@ module SystemTop(
     reg [4:0] id_wb_reg_out;
     reg id_wb_enable_out;
     
+    // registered output for the control signal that propagates up to WB stage
+    // tells that the current instruction is a LD and register will be written after a memory write
+    // used for stall generation when forwarded from EX and MEM stages
+    reg id_mem_we_out;
+
+    // These will be the unlatched signals forwarded from EX and MEM stages based on if the current instruction in that stage is a LD instruction
+    // used for stall generation
+    wire df_wb_from_mem_mem_out, df_wb_from_mem_ex_out;
     
+    // rs1 and rs2 registers latched to send to EX for data hazard handling
+    reg [4:0] id_rs1_reg_out, id_rs2_reg_out;
+
+    // stall pipeline signal sent to IF for EBREAK and other stall cases during data hazards
+    wire id_stall_pipeline_out;
+
+
+    //todo: remove debug declarations
+    wire data_hazard_in_ex, data_hazard_in_mem, stall_falling_edge, stall_pipeline_prev;
+    wire [31:0] iw_to_use, pc_to_use;
+
     rv32_id_top instruction_decode(
     // system clock and synchronous reset
     .clk(clk),
@@ -150,6 +170,7 @@ module SystemTop(
     // to if
     .jump_enable_out(id_jump_enable_out),
     .jump_addr_out(id_jump_addr_out),
+    .stall_pipeline(id_stall_pipeline_out),
     // register interface
     .regif_rs1_reg(id_rs1_reg),
     .regif_rs2_reg(id_rs2_reg),
@@ -161,13 +182,38 @@ module SystemTop(
     .wb_reg_out(id_wb_reg_out),
     .wb_enable_out(id_wb_enable_out),
     .regif_rs1_data_out(id_rs1_data_out),
-    .regif_rs2_data_out(id_rs2_data_out)
+    .regif_rs2_data_out(id_rs2_data_out),
+    .rs1_reg_out(id_rs1_reg_out),
+    .rs2_reg_out(id_rs2_reg_out),
+    // memory write enable signal
+    .mem_we_out(id_mem_we_out),
+    // register df from ex
+    .df_wb_from_mem_ex(df_wb_from_mem_ex_out),
+    // register df from mem
+    .df_wb_from_mem_mem(df_wb_from_mem_mem_out),
+    //debug
+    .data_hazard_in_ex(data_hazard_in_ex),
+    .data_hazard_in_mem(data_hazard_in_mem),
+    .iw_to_use_out(iw_to_use),
+    .pc_to_use_out(pc_to_use),
+    .stall_falling_edge_out(stall_falling_edge),
+    .stall_pipeline_prev_out(stall_pipeline_prev)
     );
     
     // instantiate rv32_ex_top
     reg [31:0] ex_pc_out, ex_iw_out, ex_alu_out, ex_rs2_data_out;
     reg [4:0] ex_wb_reg_out;
     reg ex_wb_enable_out;
+    reg ex_mem_we_out;
+
+    // The unlatched signals forwarded from WB stage based on if the current instruction in that stage is a LD instruction
+    // used for data forwarding from WB because EX stage at that point will have incorrect register values
+    wire df_wb_from_mem_wb_out;
+
+    //todo: remove debug wires
+    wire [31:0] rs1_data_corrected, rs2_data_corrected, debug_rs1_data, debug_rs2_data;
+    wire [4:0] debug_rs1_reg, debug_rs2_reg;
+
     rv32_ex_top execute(
     // system clock and synchronous reset
     .clk(clk),
@@ -179,6 +225,9 @@ module SystemTop(
     .rs2_data_in(id_rs2_data_out),
     .wb_reg_in(id_wb_reg_out),
     .wb_enable_in(id_wb_enable_out),
+    .mem_we_in(id_mem_we_out),
+    .rs1_reg_in(id_rs1_reg_out),
+    .rs2_reg_in(id_rs2_reg_out),
     // to mem
     .pc_out(ex_pc_out),
     .iw_out(ex_iw_out),
@@ -186,10 +235,23 @@ module SystemTop(
     .wb_reg_out(ex_wb_reg_out),
     .wb_enable_out(ex_wb_enable_out),
     .rs2_data_out(ex_rs2_data_out),
+    .mem_we_out(ex_mem_we_out),
     // df outputs to ID
     .df_ex_enable_out(df_ex_enable_out),
     .df_ex_reg_out(df_ex_reg_out),
-    .df_ex_data_out(df_ex_data_out)
+    .df_ex_data_out(df_ex_data_out),
+    .df_wb_from_mem_ex(df_wb_from_mem_ex_out),
+    //register df from wb (from mem_read)
+    .df_wb_from_mem_wb(df_wb_from_mem_wb_out),
+    .df_wb_reg(df_wb_reg_out),
+    .df_wb_data(df_wb_data_out),
+    // debug
+    .rs1_data_corrected_out(rs1_data_corrected),
+    .rs2_data_corrected_out(rs2_data_corrected),
+    .debug_rs1_reg_out(debug_rs1_reg),
+    .debug_rs2_reg_out(debug_rs2_reg),
+    .debug_rs1_data_out(debug_rs1_data),
+    .debug_rs2_data_out(debug_rs2_data)
     );
     
     // declare data port signals coming from and going to the MEM stage
@@ -211,6 +273,9 @@ module SystemTop(
     reg [1:0] mem_reg_write_src_out;
     reg [4:0] mem_wb_reg_out;
     reg mem_wb_enable_out;
+    
+    reg mem_mem_we_out;
+
     rv32_mem_top memory_access(
     // system clock and synchronous reset
     .clk(clk),
@@ -222,6 +287,7 @@ module SystemTop(
     .wb_enable_in(ex_wb_enable_out),
     .alu_in(ex_alu_out),
     .ex_rs2_data_in(ex_rs2_data_out),
+    .mem_we_in(ex_mem_we_out),
     // to wb
     .pc_out(mem_pc_out),
     .iw_out(mem_iw_out),
@@ -231,10 +297,12 @@ module SystemTop(
     .memif_rdata_out(mem_memif_rdata_out),
     .io_rdata_out(mem_io_rdata_out),
     .reg_write_src_out(mem_reg_write_src_out),
+    .mem_we_out(mem_mem_we_out),
     // df outputs to ID
     .df_mem_enable_out(df_mem_enable_out),
     .df_mem_reg_out(df_mem_reg_out),
     .df_mem_data_out(df_mem_data_out),
+    .df_wb_from_mem_mem(df_wb_from_mem_mem_out),
     // memory interface
     .memif_addr(data_memif_addr),           // output 
     .memif_rdata(data_memif_rdata),         // input from memory interface
@@ -297,15 +365,18 @@ module SystemTop(
     .memif_rdata_in(mem_memif_rdata_out),
     .io_rdata_in(mem_io_rdata_out),
     .reg_write_src_in(mem_reg_write_src_out),
+    .mem_we_in(mem_mem_we_out),
     // register interface
     .regif_wb_enable(wb_enable),
     .regif_wb_reg(regif_wb_reg),
     .regif_wb_data(regif_wb_data),
     .ebreak(ebreak),
-    // df outputs to ID
+    // df outputs to ID and EX
     .df_wb_enable_out(df_wb_enable_out),
     .df_wb_reg_out(df_wb_reg_out),
-    .df_wb_data_out(df_wb_data_out)
+    .df_wb_data_out(df_wb_data_out),
+    // df outputs to Ex 
+    .df_wb_from_mem_wb(df_wb_from_mem_wb_out)
     );
     
     //debug outs
@@ -379,8 +450,23 @@ module SystemTop(
     .probe26(x3),
     .probe27(x4),
     .probe28(reset), // input wire [0:0]  probe28
-    .probe29(io_wdata), // input wire [31:0]  probe29 
-	.probe30(io_rdata) // input wire [31:0]  probe30
+    // .probe29(io_wdata), // input wire [31:0]  probe29 
+	// .probe30(io_rdata) // input wire [31:0]  probe30
+    .probe29(data_hazard_in_ex), // input wire [0:0]  probe29 
+	.probe30(data_hazard_in_mem), // input wire [0:0]  probe30
+	.probe31(id_stall_pipeline_out), // input wire [0:0]  probe31 
+	.probe32(df_wb_from_mem_ex_out), // input wire [0:0]  probe32 
+	.probe33(df_wb_from_mem_mem_out), // input wire [0:0]  probe33 
+	.probe34(id_mem_we_out), // input wire [0:0]  probe34
+	.probe35(iw_to_use), // input wire [31:0]  probe35 
+	.probe36(pc_to_use), // input wire [31:0]  probe36
+	.probe37(stall_falling_edge), // input wire [0:0]  probe37 
+	.probe38(rs1_data_corrected), // input wire [31:0]  probe38
+    .probe39(rs2_data_corrected),  // input wire [31:0] probe39
+    .probe40(debug_rs1_reg), // input wire [4:0]  probe40 
+	.probe41(debug_rs2_reg), // input wire [4:0]  probe41 
+	.probe42(debug_rs1_data), // input wire [31:0]  probe42 
+	.probe43(debug_rs2_data) // input wire [31:0]  probe43
     );
     
 endmodule

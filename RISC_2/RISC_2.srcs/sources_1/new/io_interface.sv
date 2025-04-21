@@ -42,9 +42,17 @@ module io_interface
                 io[io_addr[2]][31:24] <= io_wdata[31:24];
             end
         end
-        else            // if write is not enabled and io_addr is 0x8000.0004
+        else if (!io_we && (io_addr[2]) == 1'b1)         // if write is not enabled and io_addr is 0x8000.0004
         begin
             io_rdata <= {31'b0, pb};
-        end  
+        end 
+        else if (!io_we && (io_addr[2] == 0))           // if write is not enabled and io_addr is 0x8000.0000
+        begin
+            io_rdata <= io[0][31:0];
+        end 
+        else
+        begin
+            io_rdata <= 32'b0;
+        end
     end
 endmodule

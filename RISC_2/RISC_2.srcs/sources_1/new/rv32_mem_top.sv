@@ -10,6 +10,7 @@ module rv32_mem_top
     input wb_enable_in,
     input [31:0] alu_in,
     input [31:0] ex_rs2_data_in,
+    input mem_we_in,
     // to wb
     output reg [31:0] pc_out,
     output reg [31:0] iw_out,
@@ -19,10 +20,12 @@ module rv32_mem_top
     output [31:0] memif_rdata_out,
     output [31:0] io_rdata_out,
     output reg [1:0] reg_write_src_out,
+    output reg mem_we_out,
     // df outputs to ID
     output df_mem_enable_out,
     output [4:0] df_mem_reg_out,
     output [31:0] df_mem_data_out,
+    output df_wb_from_mem_mem,
     // memory interface
     output [31:2] memif_addr,
     input [31:0] memif_rdata,
@@ -41,6 +44,7 @@ module rv32_mem_top
     assign df_mem_enable_out = wb_enable_in;
     assign df_mem_reg_out = wb_reg_in;
     assign df_mem_data_out = alu_in;
+    assign df_wb_from_mem_mem = mem_we_in;
 
     always_ff @ (posedge(clk))
     begin
@@ -51,6 +55,7 @@ module rv32_mem_top
             wb_reg_out <= 0;
             wb_enable_out <= 0;
             alu_out <= 0;
+            mem_we_out <= 0;
         end
         else
         begin
@@ -60,6 +65,7 @@ module rv32_mem_top
             wb_reg_out <= wb_reg_in;
             wb_enable_out <= wb_enable_in;
             alu_out <= alu_in;
+            mem_we_out <= mem_we_in;
         end
     end
     
