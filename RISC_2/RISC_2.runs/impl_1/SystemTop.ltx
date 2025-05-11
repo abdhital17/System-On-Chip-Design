@@ -2895,112 +2895,14 @@
                                 "id": 59,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": true,
+                                "isVector": false,
                                 "leftIndex": 0,
-                                "rightIndex": 31,
+                                "rightIndex": 0,
                                 "portIndex": 29,
                                 "nets": [
                                     {
-                                        "name": "io_wdata",
-                                        "isBus": true,
-                                        "subnets": [
-                                            {
-                                                "name": "io_wdata[31]"
-                                            },
-                                            {
-                                                "name": "io_wdata[30]"
-                                            },
-                                            {
-                                                "name": "io_wdata[29]"
-                                            },
-                                            {
-                                                "name": "io_wdata[28]"
-                                            },
-                                            {
-                                                "name": "io_wdata[27]"
-                                            },
-                                            {
-                                                "name": "io_wdata[26]"
-                                            },
-                                            {
-                                                "name": "io_wdata[25]"
-                                            },
-                                            {
-                                                "name": "io_wdata[24]"
-                                            },
-                                            {
-                                                "name": "io_wdata[23]"
-                                            },
-                                            {
-                                                "name": "io_wdata[22]"
-                                            },
-                                            {
-                                                "name": "io_wdata[21]"
-                                            },
-                                            {
-                                                "name": "io_wdata[20]"
-                                            },
-                                            {
-                                                "name": "io_wdata[19]"
-                                            },
-                                            {
-                                                "name": "io_wdata[18]"
-                                            },
-                                            {
-                                                "name": "io_wdata[17]"
-                                            },
-                                            {
-                                                "name": "io_wdata[16]"
-                                            },
-                                            {
-                                                "name": "io_wdata[15]"
-                                            },
-                                            {
-                                                "name": "io_wdata[14]"
-                                            },
-                                            {
-                                                "name": "io_wdata[13]"
-                                            },
-                                            {
-                                                "name": "io_wdata[12]"
-                                            },
-                                            {
-                                                "name": "io_wdata[11]"
-                                            },
-                                            {
-                                                "name": "io_wdata[10]"
-                                            },
-                                            {
-                                                "name": "io_wdata[9]"
-                                            },
-                                            {
-                                                "name": "io_wdata[8]"
-                                            },
-                                            {
-                                                "name": "io_wdata[7]"
-                                            },
-                                            {
-                                                "name": "io_wdata[6]"
-                                            },
-                                            {
-                                                "name": "io_wdata[5]"
-                                            },
-                                            {
-                                                "name": "io_wdata[4]"
-                                            },
-                                            {
-                                                "name": "io_wdata[3]"
-                                            },
-                                            {
-                                                "name": "io_wdata[2]"
-                                            },
-                                            {
-                                                "name": "io_wdata[1]"
-                                            },
-                                            {
-                                                "name": "io_wdata[0]"
-                                            }
-                                        ]
+                                        "name": "data_hazard_in_ex",
+                                        "isBus": false
                                     }
                                 ]
                             },
@@ -3009,110 +2911,842 @@
                                 "id": 60,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": true,
+                                "isVector": false,
                                 "leftIndex": 0,
-                                "rightIndex": 31,
+                                "rightIndex": 0,
                                 "portIndex": 30,
                                 "nets": [
                                     {
-                                        "name": "io_rdata",
+                                        "name": "data_hazard_in_mem",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe31",
+                                "id": 61,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 31,
+                                "nets": [
+                                    {
+                                        "name": "id_stall_pipeline_out",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe32",
+                                "id": 62,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 32,
+                                "nets": [
+                                    {
+                                        "name": "df_wb_from_mem_ex_out",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe33",
+                                "id": 63,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 33,
+                                "nets": [
+                                    {
+                                        "name": "df_wb_from_mem_mem_out",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe34",
+                                "id": 64,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 34,
+                                "nets": [
+                                    {
+                                        "name": "id_mem_we_out",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe35",
+                                "id": 65,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 35,
+                                "nets": [
+                                    {
+                                        "name": "iw_to_use",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "io_rdata[31]"
+                                                "name": "iw_to_use[31]"
                                             },
                                             {
-                                                "name": "io_rdata[30]"
+                                                "name": "iw_to_use[30]"
                                             },
                                             {
-                                                "name": "io_rdata[29]"
+                                                "name": "iw_to_use[29]"
                                             },
                                             {
-                                                "name": "io_rdata[28]"
+                                                "name": "iw_to_use[28]"
                                             },
                                             {
-                                                "name": "io_rdata[27]"
+                                                "name": "iw_to_use[27]"
                                             },
                                             {
-                                                "name": "io_rdata[26]"
+                                                "name": "iw_to_use[26]"
                                             },
                                             {
-                                                "name": "io_rdata[25]"
+                                                "name": "iw_to_use[25]"
                                             },
                                             {
-                                                "name": "io_rdata[24]"
+                                                "name": "iw_to_use[24]"
                                             },
                                             {
-                                                "name": "io_rdata[23]"
+                                                "name": "iw_to_use[23]"
                                             },
                                             {
-                                                "name": "io_rdata[22]"
+                                                "name": "iw_to_use[22]"
                                             },
                                             {
-                                                "name": "io_rdata[21]"
+                                                "name": "iw_to_use[21]"
                                             },
                                             {
-                                                "name": "io_rdata[20]"
+                                                "name": "iw_to_use[20]"
                                             },
                                             {
-                                                "name": "io_rdata[19]"
+                                                "name": "iw_to_use[19]"
                                             },
                                             {
-                                                "name": "io_rdata[18]"
+                                                "name": "iw_to_use[18]"
                                             },
                                             {
-                                                "name": "io_rdata[17]"
+                                                "name": "iw_to_use[17]"
                                             },
                                             {
-                                                "name": "io_rdata[16]"
+                                                "name": "iw_to_use[16]"
                                             },
                                             {
-                                                "name": "io_rdata[15]"
+                                                "name": "iw_to_use[15]"
                                             },
                                             {
-                                                "name": "io_rdata[14]"
+                                                "name": "iw_to_use[14]"
                                             },
                                             {
-                                                "name": "io_rdata[13]"
+                                                "name": "iw_to_use[13]"
                                             },
                                             {
-                                                "name": "io_rdata[12]"
+                                                "name": "iw_to_use[12]"
                                             },
                                             {
-                                                "name": "io_rdata[11]"
+                                                "name": "iw_to_use[11]"
                                             },
                                             {
-                                                "name": "io_rdata[10]"
+                                                "name": "iw_to_use[10]"
                                             },
                                             {
-                                                "name": "io_rdata[9]"
+                                                "name": "iw_to_use[9]"
                                             },
                                             {
-                                                "name": "io_rdata[8]"
+                                                "name": "iw_to_use[8]"
                                             },
                                             {
-                                                "name": "io_rdata[7]"
+                                                "name": "iw_to_use[7]"
                                             },
                                             {
-                                                "name": "io_rdata[6]"
+                                                "name": "iw_to_use[6]"
                                             },
                                             {
-                                                "name": "io_rdata[5]"
+                                                "name": "iw_to_use[5]"
                                             },
                                             {
-                                                "name": "io_rdata[4]"
+                                                "name": "iw_to_use[4]"
                                             },
                                             {
-                                                "name": "io_rdata[3]"
+                                                "name": "iw_to_use[3]"
                                             },
                                             {
-                                                "name": "io_rdata[2]"
+                                                "name": "iw_to_use[2]"
                                             },
                                             {
-                                                "name": "io_rdata[1]"
+                                                "name": "iw_to_use[1]"
                                             },
                                             {
-                                                "name": "io_rdata[0]"
+                                                "name": "iw_to_use[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe36",
+                                "id": 66,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 36,
+                                "nets": [
+                                    {
+                                        "name": "pc_to_use",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "pc_to_use[31]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[30]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[29]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[28]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[27]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[26]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[25]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[24]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[23]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[22]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[21]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[20]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[19]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[18]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[17]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[16]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[15]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[14]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[13]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[12]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[11]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[10]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[9]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[8]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[7]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[6]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[5]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[4]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[3]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[2]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[1]"
+                                            },
+                                            {
+                                                "name": "pc_to_use[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe37",
+                                "id": 67,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 37,
+                                "nets": [
+                                    {
+                                        "name": "stall_falling_edge",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe38",
+                                "id": 68,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 38,
+                                "nets": [
+                                    {
+                                        "name": "rs1_data_corrected",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "rs1_data_corrected[31]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[30]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[29]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[28]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[27]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[26]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[25]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[24]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[23]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[22]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[21]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[20]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[19]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[18]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[17]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[16]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[15]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[14]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[13]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[12]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[11]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[10]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[9]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[8]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[7]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[6]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[5]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[4]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[3]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[2]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[1]"
+                                            },
+                                            {
+                                                "name": "rs1_data_corrected[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe39",
+                                "id": 69,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 39,
+                                "nets": [
+                                    {
+                                        "name": "rs2_data_corrected",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "rs2_data_corrected[31]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[30]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[29]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[28]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[27]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[26]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[25]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[24]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[23]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[22]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[21]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[20]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[19]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[18]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[17]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[16]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[15]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[14]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[13]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[12]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[11]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[10]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[9]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[8]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[7]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[6]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[5]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[4]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[3]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[2]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[1]"
+                                            },
+                                            {
+                                                "name": "rs2_data_corrected[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe40",
+                                "id": 70,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 4,
+                                "portIndex": 40,
+                                "nets": [
+                                    {
+                                        "name": "debug_rs1_reg",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "debug_rs1_reg[4]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_reg[3]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_reg[2]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_reg[1]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_reg[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe41",
+                                "id": 71,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 4,
+                                "portIndex": 41,
+                                "nets": [
+                                    {
+                                        "name": "debug_rs2_reg",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "debug_rs2_reg[4]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_reg[3]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_reg[2]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_reg[1]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_reg[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe42",
+                                "id": 72,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 42,
+                                "nets": [
+                                    {
+                                        "name": "debug_rs1_data",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "debug_rs1_data[31]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[30]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[29]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[28]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[27]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[26]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[25]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[24]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[23]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[22]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[21]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[20]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[19]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[18]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[17]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[16]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[15]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[14]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[13]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[12]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[11]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[10]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[9]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[8]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[7]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[6]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[5]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[4]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[3]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[2]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[1]"
+                                            },
+                                            {
+                                                "name": "debug_rs1_data[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe43",
+                                "id": 73,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 43,
+                                "nets": [
+                                    {
+                                        "name": "debug_rs2_data",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "debug_rs2_data[31]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[30]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[29]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[28]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[27]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[26]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[25]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[24]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[23]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[22]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[21]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[20]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[19]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[18]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[17]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[16]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[15]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[14]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[13]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[12]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[11]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[10]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[9]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[8]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[7]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[6]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[5]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[4]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[3]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[2]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[1]"
+                                            },
+                                            {
+                                                "name": "debug_rs2_data[0]"
                                             }
                                         ]
                                     }

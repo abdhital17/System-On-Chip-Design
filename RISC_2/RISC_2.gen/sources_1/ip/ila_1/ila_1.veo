@@ -86,8 +86,21 @@ ila_1 your_instance_name (
 	.probe26(probe26), // input wire [31:0]  probe26 
 	.probe27(probe27), // input wire [31:0]  probe27 
 	.probe28(probe28), // input wire [0:0]  probe28 
-	.probe29(probe29), // input wire [31:0]  probe29 
-	.probe30(probe30) // input wire [31:0]  probe30
+	.probe29(probe29), // input wire [0:0]  probe29 
+	.probe30(probe30), // input wire [0:0]  probe30 
+	.probe31(probe31), // input wire [0:0]  probe31 
+	.probe32(probe32), // input wire [0:0]  probe32 
+	.probe33(probe33), // input wire [0:0]  probe33 
+	.probe34(probe34), // input wire [0:0]  probe34 
+	.probe35(probe35), // input wire [31:0]  probe35 
+	.probe36(probe36), // input wire [31:0]  probe36 
+	.probe37(probe37), // input wire [0:0]  probe37 
+	.probe38(probe38), // input wire [31:0]  probe38 
+	.probe39(probe39), // input wire [31:0]  probe39 
+	.probe40(probe40), // input wire [4:0]  probe40 
+	.probe41(probe41), // input wire [4:0]  probe41 
+	.probe42(probe42), // input wire [31:0]  probe42 
+	.probe43(probe43) // input wire [31:0]  probe43
 );
 
 // INST_TAG_END ------ End INSTANTIATION Template ---------
