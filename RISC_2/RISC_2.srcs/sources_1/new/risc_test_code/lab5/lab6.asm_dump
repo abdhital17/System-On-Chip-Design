@@ -1,0 +1,17 @@
+
+lab6.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00010074 <_start>:
+   10074:	00c00093          	li	ra,12
+   10078:	00d00093          	li	ra,13
+   1007c:	00e00093          	li	ra,14
+   10080:	00f00093          	li	ra,15
+   10084:	01000093          	li	ra,16
+   10088:	00008113          	mv	sp,ra
+   1008c:	00008193          	mv	gp,ra
+   10090:	00008213          	mv	tp,ra
+   10094:	00008293          	mv	t0,ra
+   10098:	00100073          	ebreak

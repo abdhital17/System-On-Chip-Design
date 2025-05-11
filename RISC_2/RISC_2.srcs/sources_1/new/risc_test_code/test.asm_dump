@@ -1,0 +1,12 @@
+
+test:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00010074 <_start>:
+   10074:	123452b7          	lui	t0,0x12345
+   10078:	67828293          	addi	t0,t0,1656 # 12345678 <__global_pointer$+0x12333df0>
+   1007c:	00028313          	mv	t1,t0
+   10080:	00000013          	nop
+   10084:	00100073          	ebreak

@@ -1,0 +1,1270 @@
+lab7.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00300093          	li	ra,3
+
+00000004 <X>:
+   4:	fff08093          	addi	ra,ra,-1
+   8:	0000c663          	bltz	ra,14 <Y>
+   c:	ff9ff16f          	jal	sp,4 <X>
+  10:	00118193          	addi	gp,gp,1 # 819 <__global_pointer$+0x1>
+
+00000014 <Y>:
+  14:	00100073          	ebreak
+
+  00300093
+fff08093
+0000c663
+ff9ff16f
+00118193
+00100073
+
+------------------------------------------------------------------------------------------------------
+
+lab7.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00300093          	li	ra,3
+
+00000004 <X>:
+   4:	fff08093          	addi	ra,ra,-1
+   8:	00008663          	beqz	ra,14 <Y>
+   c:	ff9ff16f          	jal	sp,4 <X>
+  10:	00118193          	addi	gp,gp,1 # 819 <__global_pointer$+0x1>
+
+00000014 <Y>:
+  14:	00100073          	ebreak
+
+
+--------------------------------------------------------------------------------------------------------
+
+lab7.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00300093          	li	ra,3
+
+00000004 <X>:
+   4:	fff08093          	addi	ra,ra,-1
+   8:	00008463          	beqz	ra,10 <Y>
+   c:	ff9ff16f          	jal	sp,4 <X>
+
+00000010 <Y>:
+  10:	00100073          	ebreak
+
+00300093
+fff08093
+00008463
+ff9ff16f
+00100073
+-------------------------------------------------------------------------------------------------------------
+
+
+lab7.elf:     file format elf32-littleriscv
+
+ab7.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00300093          	li	ra,3
+
+00000004 <first>:
+   4:	fff08093          	addi	ra,ra,-1
+   8:	00008463          	beqz	ra,10 <test_bne>
+   c:	ff9ff16f          	jal	sp,4 <first>
+
+00000010 <test_bne>:
+  10:	01400093          	li	ra,20
+  14:	01400113          	li	sp,20
+  18:	00209463          	bne	ra,sp,20 <false_cond>       shouldn't branch
+  1c:	008001ef          	jal	gp,24 <test_blt>
+
+00000020 <false_cond>:
+  20:	00100073          	ebreak
+
+00000024 <test_blt>:
+  24:	00a00093          	li	ra,10
+  28:	ff600113          	li	sp,-10
+  2c:	00114463          	blt	sp,ra,34 <test_bltu>            should branch    
+  30:	fd5ff1ef          	jal	gp,4 <first>                    shouldn't branch
+
+00000034 <test_bltu>:
+  34:	0020e463          	bltu	ra,sp,3c <test_bge>         should branch
+  38:	fcdff1ef          	jal	gp,4 <first>                    shouldn't branch    
+
+0000003c <test_bge>:
+  3c:	0020d463          	bge	ra,sp,44 <test_bgeu>            should branch
+  40:	fc5ff1ef          	jal	gp,4 <first>                    shouldn't branch
+
+00000044 <test_bgeu>:
+  44:	00117463          	bgeu	sp,ra,4c <test_jalr>        should branch
+  48:	fbdff1ef          	jal	gp,4 <first>                    shouldn't branch
+
+0000004c <test_jalr>:
+  4c:	0ab00313          	li	t1,171                          
+  50:	000383e7          	jalr	t2,t2                       should branch back to 0x0 at first because t2 = 0 at first
+                                                                stores 50 + 4 to t2 before branching, so when pc comes back to here in the
+                                                                second iteration, jalr will jump to 54 this time.
+
+00000054 <last>:
+  54:	f5530313          	addi	t1,t1,-171
+  58:	00030263          	beqz	t1,5c <exit>
+
+0000005c <exit>:
+  5c:	00100073          	ebreak
+
+
+00300093
+fff08093
+00008463
+ff9ff16f
+01400093
+01400113
+00209463
+008001ef
+00100073
+00a00093
+ff600113
+00114463
+fd5ff1ef
+0020e463
+fcdff1ef
+0020d463
+fc5ff1ef
+00117463
+fbdff1ef
+0ab00313
+000383e7
+f5530313
+00030263
+00100073
+
+
+----------------------------------------------------------------------------------
+00c00093
+00d00093
+00e00093
+00f00093
+01000093
+00008113
+00008193
+00008213
+00008293
+00100073
+
+.globl _start
+
+.text
+
+_start:
+
+0    li	x1, 12
+4    li  x1, 13
+8    li  x1, 14
+c    li  x1, 15
+10    li  x1, 16
+14    mv  x2, x1
+18    mv  x3, x1
+1c    mv  x4, x1
+20    mv  x5, x1
+24    EBREAK
+.end
+---------------------------------------------------------
+
+lab7_3.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00400113          	li	sp,4
+   4:	00000093          	li	ra,0
+
+00000008 <loop>:
+   8:	00108093          	addi	ra,ra,1
+   c:	00208463          	beq	ra,sp,14 <break>
+  10:	ff9ff1ef          	jal	gp,8 <loop>
+
+00000014 <break>:
+  14:	00100073          	ebreak
+
+
+-------------------------------------------------------------------
+
+00500093
+fff08093
+fff08093
+fff08093
+fff08093
+00008113
+00008193
+00008213
+00008293
+00100073
+
+df_test.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00500093          	li	ra,5
+   4:	fff08093          	addi	ra,ra,-1
+   8:	fff08093          	addi	ra,ra,-1
+   c:	fff08093          	addi	ra,ra,-1
+  10:	fff08093          	addi	ra,ra,-1
+  14:	00008113          	mv	sp,ra
+  18:	00008193          	mv	gp,ra
+  1c:	00008213          	mv	tp,ra
+  20:	00008293          	mv	t0,ra
+  24:	00100073          	ebreak
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+flash:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	800002b7          	lui	t0,0x80000
+   4:	00100313          	li	t1,1
+
+00000008 <loop>:
+   8:	00134313          	xori	t1,t1,1
+   c:	0062a023          	sw	t1,0(t0) # 80000000 <__BSS_END__+0x7fffefbc>
+  10:	000f43b7          	lui	t2,0xf4
+  14:	24038393          	addi	t2,t2,576 # f4240 <__BSS_END__+0xf31fc>
+
+00000018 <loop2>:
+  18:	fff38393          	addi	t2,t2,-1
+  1c:	fe039ee3          	bnez	t2,18 <loop2>
+  20:	fe9ff06f          	j	8 <loop>
+  24:	00000013          	nop
+  28:	00000013          	nop
+  2c:	00000013          	nop
+  30:	00000013          	nop
+  34:	00100073          	ebreak
+  38:	00000013          	nop
+  3c:	00000013          	nop
+  40:	00000013          	nop
+
+
+800002b7
+00100313
+00134313
+0062a023
+000f43b7
+24038393
+fff38393
+fe039ee3
+fe9ff06f
+00000013
+00000013
+00000013
+00000013
+00100073
+00000013
+00000013
+00000013
+
+
+
+1s flash
+
+800002b7
+00100313
+00134313
+0062a023
+05f5e3b7
+10038393
+fff38393
+fe039ee3
+fe9ff06f
+00000013
+00000013
+00000013
+00000013
+00100073
+00000013
+00000013
+00000013
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	800002b7          	lui	t0,0x80000
+   4:	00100313          	li	t1,1
+
+00000008 <loop>:
+   8:	00134313          	xori	t1,t1,1
+   c:	0062a023          	sw	t1,0(t0) # 80000000 <__BSS_END__+0x7fffefbc>
+  10:	05f5e3b7          	lui	t2,0x5f5e
+  14:	10038393          	addi	t2,t2,256 # 5f5e100 <__BSS_END__+0x5f5d0bc>
+
+00000018 <loop2>:
+  18:	fff38393          	addi	t2,t2,-1
+  1c:	fe039ee3          	bnez	t2,18 <loop2>
+  20:	fe9ff06f          	j	8 <loop>
+  24:	00000013          	nop
+  28:	00000013          	nop
+  2c:	00000013          	nop
+  30:	00000013          	nop
+  34:	00100073          	ebreak
+  38:	00000013          	nop
+  3c:	00000013          	nop
+  40:	00000013          	nop
+
+
+--------------------------------------------------------------------
+
+mem_test:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	40000537          	lui	a0,0x40000
+   4:	0aa00093          	li	ra,170
+   8:	00150023          	sb	ra,0(a0) # 40000000 <__BSS_END__+0x3fffefc0>
+   c:	00000013          	nop
+  10:	00050103          	lb	sp,0(a0)
+  14:	000011b7          	lui	gp,0x1
+  18:	23418193          	addi	gp,gp,564 # 1234 <__BSS_END__+0x1f4>
+  1c:	003510a3          	sh	gp,1(a0)
+  20:	00000013          	nop
+  24:	00151203          	lh	tp,1(a0)
+  28:	5678a0b7          	lui	ra,0x5678a
+  2c:	abc08093          	addi	ra,ra,-1348 # 56789abc <__BSS_END__+0x56788a7c>
+  30:	001521a3          	sw	ra,3(a0)
+  34:	00000013          	nop
+  38:	00352103          	lw	sp,3(a0)
+  3c:	00100073          	ebreak
+
+40000537
+0aa00093
+00150023
+00000013
+00050103
+000011b7
+23418193
+003510a3
+00000013
+00151203
+5678a0b7
+abc08093
+001521a3
+00000013
+00352103
+00100073
+
+-------------------------------------------------------------------------------------------
+
+
+mem_test:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	10000093          	li	ra,256
+   4:	abcdf137          	lui	sp,0xabcdf
+   8:	f1210113          	addi	sp,sp,-238 # abcdef12 <__BSS_END__+0xabcddee6>
+   c:	0020a023          	sw	sp,0(ra)
+  10:	00000013          	nop
+  14:	00000013          	nop
+  18:	0000a183          	lw	gp,0(ra)
+  1c:	00000013          	nop
+  20:	00000013          	nop
+  24:	00018213          	mv	tp,gp
+  28:	00100073          	ebreak
+
+10000093
+abcdf137
+f1210113
+0020a023
+00000013
+00000013
+0000a183
+00000013
+00000013
+00018213
+00100073
+
+-------------------------------------------------------------------------------------
+
+flash_all
+
+
+flash:     file format elf32-littleriscv
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000000
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	800002b7          	lui	t0,0x80000
+   4:	0ff00313          	li	t1,255
+
+00000008 <loop>:
+   8:	0ff34313          	xori	t1,t1,255
+   c:	0062a023          	sw	t1,0(t0) # 80000000 <__BSS_END__+0x7fffefbc>
+  10:	05f5e3b7          	lui	t2,0x5f5e
+  14:	10038393          	addi	t2,t2,256 # 5f5e100 <__BSS_END__+0x5f5d0bc>
+
+00000018 <loop2>:
+  18:	fff38393          	addi	t2,t2,-1
+  1c:	fe039ee3          	bnez	t2,18 <loop2>
+  20:	fe9ff06f          	j	8 <loop>
+  24:	00000013          	nop
+  28:	00000013          	nop
+  2c:	00000013          	nop
+  30:	00000013          	nop
+  34:	00100073          	ebreak
+  38:	00000013          	nop
+  3c:	00000013          	nop
+  40:	00000013          	nop
+
+
+800002b7
+0ff00313
+0ff34313
+0062a023
+05f5e3b7
+10038393
+fff38393
+fe039ee3
+fe9ff06f
+00000013
+00000013
+00000013
+00000013
+00100073
+00000013
+00000013
+00000013
+
+
+
+
+----------------------------------------------------------------------------
+
+
+
+
+stop_go:     file format elf32-littleriscv
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000000
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	800000b7          	lui	ra,0x80000
+   4:	80000137          	lui	sp,0x80000
+   8:	00410113          	addi	sp,sp,4 # 80000004 <__BSS_END__+0x7fffefcc>
+   c:	0aa00193          	li	gp,170
+  10:	0030a023          	sw	gp,0(ra) # 80000000 <__BSS_END__+0x7fffefc8>
+
+00000014 <loop>:
+  14:	00012203          	lw	tp,0(sp)
+  18:	00000013          	nop
+  1c:	00127213          	andi	tp,tp,1
+  20:	fe021ae3          	bnez	tp,14 <loop>
+  24:	0000a283          	lw	t0,0(ra)
+  28:	00000013          	nop
+  2c:	0ff2c293          	xori	t0,t0,255
+  30:	0050a023          	sw	t0,0(ra)
+  34:	fe1ff06f          	j	14 <loop>
+
+
+
+800000b7
+80000137
+00410113
+0aa00193
+0030a023
+00012203
+00000013
+00127213
+fe021ae3
+0000a283
+00000013
+0ff2c293
+0050a023
+fe1ff06f
+\
+
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+mem_test_2.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	10000293          	li	t0,256
+   4:	abcdf0b7          	lui	ra,0xabcdf
+   8:	f1208093          	addi	ra,ra,-238 # abcdef12 <__BSS_END__+0xabcdde8e>
+   c:	0012a023          	sw	ra,0(t0)
+  10:	00000013          	nop
+  14:	0002a103          	lw	sp,0(t0)
+  18:	00029183          	lh	gp,0(t0)
+  1c:	00028203          	lb	tp,0(t0)
+  20:	00000013          	nop
+  24:	00028103          	lb	sp,0(t0)
+  28:	00128103          	lb	sp,1(t0)
+  2c:	00228103          	lb	sp,2(t0)
+  30:	00328103          	lb	sp,3(t0)
+  34:	00000013          	nop
+  38:	0002c183          	lbu	gp,0(t0)
+  3c:	0012c183          	lbu	gp,1(t0)
+  40:	0022c183          	lbu	gp,2(t0)
+  44:	0032c183          	lbu	gp,3(t0)
+  48:	00000013          	nop
+  4c:	00029203          	lh	tp,0(t0)
+  50:	00129203          	lh	tp,1(t0)
+  54:	00229203          	lh	tp,2(t0)
+  58:	00329203          	lh	tp,3(t0)
+  5c:	00000013          	nop
+  60:	0002d203          	lhu	tp,0(t0)
+  64:	0012d203          	lhu	tp,1(t0)
+  68:	0022d203          	lhu	tp,2(t0)
+  6c:	0032d203          	lhu	tp,3(t0)
+  70:	00000013          	nop
+  74:	00000013          	nop
+  78:	00100073          	ebreak
+  7c:	00000013          	nop
+  80:	00000013          	nop
+
+
+
+
+10000293
+abcdf0b7
+f1208093
+0012a023
+00000013
+0002a103
+00029183
+00028203
+00000013
+00028103
+00128103
+00228103
+00328103
+00000013
+0002c183
+0012c183
+0022c183
+0032c183
+00000013
+00029203
+00129203
+00229203
+00329203
+00000013
+0002d203
+0012d203
+0022d203
+0032d203
+00000013
+00000013
+00100073
+00000013
+00000013
+
+
+
+
+
+test memory r/w (all widths and signed and unsigned)
+-------------------------------------------------------------------------
+
+.globl _start
+
+.text
+
+_start:
+    li x5, 0x100
+    li x1, 0xABCDEF12
+    sw x1, 0(x5)
+    NOP
+    lw x2, 0(x5)
+    lh x3, 0(x5) 
+    lb x4, 0(x5)
+    NOP
+    lb x2, 0(x5)
+    lb x2, 1(x5)
+    lb x2, 2(x5)
+    lb x2, 3(x5)
+    NOP
+    lbu x3, 0(x5)
+    lbu x3, 1(x5)
+    lbu x3, 2(x5)
+    lbu x3, 3(x5)
+    NOP
+    lh x4, 0(x5)
+    lh x4, 1(x5)
+    lh x4, 2(x5)
+    lh x4, 3(x5)
+    NOP
+    lhu x4, 0(x5)
+    lhu x4, 1(x5)
+    lhu x4, 2(x5)
+    lhu x4, 3(x5)
+    NOP
+    NOP
+    li x6, 0xAABBCCDD
+    li x7, 0x104
+    sb x6, 0(x7)
+    NOP
+    lb x2, 0(x7)
+    lbu x2, 0(x7)
+    sh x6, 1(x7)
+    NOP
+    lh x2, 1(x7)
+    lhu x2, 1(x7)
+    sw x6, 0(x7)
+    NOP
+    lw x2, 0(x7)
+    NOP
+    ebreak                    # Trigger breakpoint (halts program execution)
+    NOP
+    NOP
+.end
+
+
+
+10000293
+abcdf0b7
+f1208093
+0012a023
+00000013
+0002a103
+00029183
+00028203
+00000013
+00028103
+00128103
+00228103
+00328103
+00000013
+0002c183
+0012c183
+0022c183
+0032c183
+00000013
+00029203
+00129203
+00229203
+00329203
+00000013
+0002d203
+0012d203
+0022d203
+0032d203
+00000013
+00000013
+aabbd337
+cdd30313
+10400393
+00638023
+00000013
+00038103
+0003c103
+006390a3
+00000013
+00139103
+0013d103
+0063a023
+00000013
+0003a103
+00000013
+00100073
+00000013
+00000013
+
+mem_test_2.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	10000293          	li	t0,256
+   4:	abcdf0b7          	lui	ra,0xabcdf
+   8:	f1208093          	addi	ra,ra,-238 # abcdef12 <__BSS_END__+0xabcdde52>
+   c:	0012a023          	sw	ra,0(t0)
+  10:	00000013          	nop
+  14:	0002a103          	lw	sp,0(t0)
+  18:	00029183          	lh	gp,0(t0)
+  1c:	00028203          	lb	tp,0(t0)
+  20:	00000013          	nop
+  24:	00028103          	lb	sp,0(t0)
+  28:	00128103          	lb	sp,1(t0)
+  2c:	00228103          	lb	sp,2(t0)
+  30:	00328103          	lb	sp,3(t0)
+  34:	00000013          	nop
+  38:	0002c183          	lbu	gp,0(t0)
+  3c:	0012c183          	lbu	gp,1(t0)
+  40:	0022c183          	lbu	gp,2(t0)
+  44:	0032c183          	lbu	gp,3(t0)
+  48:	00000013          	nop
+  4c:	00029203          	lh	tp,0(t0)
+  50:	00129203          	lh	tp,1(t0)
+  54:	00229203          	lh	tp,2(t0)
+  58:	00329203          	lh	tp,3(t0)
+  5c:	00000013          	nop
+  60:	0002d203          	lhu	tp,0(t0)
+  64:	0012d203          	lhu	tp,1(t0)
+  68:	0022d203          	lhu	tp,2(t0)
+  6c:	0032d203          	lhu	tp,3(t0)
+  70:	00000013          	nop
+  74:	00000013          	nop
+  78:	aabbd337          	lui	t1,0xaabbd
+  7c:	cdd30313          	addi	t1,t1,-803 # aabbccdd <__BSS_END__+0xaabbbc1d>
+  80:	10400393          	li	t2,260
+  84:	00638023          	sb	t1,0(t2)
+  88:	00000013          	nop
+  8c:	00038103          	lb	sp,0(t2)
+  90:	0003c103          	lbu	sp,0(t2)
+  94:	006390a3          	sh	t1,1(t2)
+  98:	00000013          	nop
+  9c:	00139103          	lh	sp,1(t2)
+  a0:	0013d103          	lhu	sp,1(t2)
+  a4:	0063a023          	sw	t1,0(t2)
+  a8:	00000013          	nop
+  ac:	0003a103          	lw	sp,0(t2)
+  b0:	00000013          	nop
+  b4:	00100073          	ebreak
+  b8:	00000013          	nop
+  bc:	00000013          	nop
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+
+lab9.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	10000293          	li	t0,256
+   4:	0c800313          	li	t1,200
+   8:	0062a023          	sw	t1,0(t0)
+   c:	0002a103          	lw	sp,0(t0)
+  10:	0002a183          	lw	gp,0(t0)
+  14:	00310463          	beq	sp,gp,1c <loop>
+  18:	00100073          	ebreak
+
+0000001c <loop>:
+  1c:	06400313          	li	t1,100
+  20:	06900393          	li	t2,105
+  24:	0062a023          	sw	t1,0(t0)
+  28:	0072a223          	sw	t2,4(t0)
+  2c:	0002a083          	lw	ra,0(t0)
+  30:	0042a103          	lw	sp,4(t0)
+  34:	002081b3          	add	gp,ra,sp
+  38:	0000a103          	lw	sp,0(ra)
+  3c:	00012183          	lw	gp,0(sp)
+  40:	00000013          	nop
+  44:	00000013          	nop
+  48:	00100073          	ebreak
+  4c:	00000013          	nop
+  50:	00000013          	nop
+
+
+stall_pipeline
+data_hazard_in_ex
+data_hazard_in_mem
+df_wb_from_mem_ex
+df_wb_from_mem_mem
+mem_we_out
+
+10000293
+0c800313
+0062a023
+0002a103
+0002a183
+00310463
+00100073
+06400313
+06900393
+0062a023
+0072a223
+0002a083
+0042a103
+002081b3
+0000a103
+00012183
+00000013
+00000013
+00100073
+00000013
+00000013
+
+
+
+-----------------------------------------------------------------------------------------------
+
+
+lab9.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	10000293          	li	t0,256
+
+00000004 <loop>:
+   4:	06400313          	li	t1,100
+   8:	06900393          	li	t2,105
+   c:	0062a023          	sw	t1,0(t0)
+  10:	0072a223          	sw	t2,4(t0)
+  14:	0002a083          	lw	ra,0(t0)
+  18:	0042a103          	lw	sp,4(t0)
+  1c:	002081b3          	add	gp,ra,sp
+  20:	00000013          	nop
+  24:	0000a103          	lw	sp,0(ra)
+  28:	00012183          	lw	gp,0(sp)
+  2c:	00000013          	nop
+  30:	00000013          	nop
+
+00000034 <loop2>:
+  34:	0c800313          	li	t1,200
+  38:	0062a023          	sw	t1,0(t0)
+  3c:	0002a103          	lw	sp,0(t0)
+  40:	0002a183          	lw	gp,0(t0)
+  44:	fe3108e3          	beq	sp,gp,34 <loop2>
+  48:	00100073          	ebreak
+  4c:	00000013          	nop
+  50:	00000013          	nop
+
+
+
+10000293
+06400313
+06900393
+0062a023
+0072a223
+0002a083
+0042a103
+002081b3
+00000013
+0000a103
+00012183
+00000013
+00000013
+0c800313
+0062a023
+0002a103
+0002a183
+fe3108e3
+00100073
+00000013
+00000013
+
+
+
+--------------------------------------------------------------------------------------------------
+
+<<<<<<<<<<<<<<<<<<<<<<<< lab9 test code >>>>>>>>>>>>>>>>>>>>>>>>>
+
+lab9.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	10000293          	li	t0,256
+
+00000004 <loop>:
+   4:	30000313          	li	t1,768
+   8:	06400393          	li	t2,100
+   c:	0062a023          	sw	t1,0(t0)
+  10:	0072a223          	sw	t2,4(t0)
+  14:	0002a083          	lw	ra,0(t0)
+  18:	0042a103          	lw	sp,4(t0)
+  1c:	002081b3          	add	gp,ra,sp
+  20:	20000413          	li	s0,512
+  24:	0ff00493          	li	s1,255
+  28:	0080a023          	sw	s0,0(ra)
+  2c:	00942023          	sw	s1,0(s0)
+  30:	0000a103          	lw	sp,0(ra)
+  34:	00012183          	lw	gp,0(sp)
+  38:	00000013          	nop
+  3c:	00000013          	nop
+
+00000040 <loop2>:
+  40:	0c800313          	li	t1,200
+  44:	0062a023          	sw	t1,0(t0)
+  48:	0002a103          	lw	sp,0(t0)
+  4c:	0002a183          	lw	gp,0(t0)
+  50:	fe3108e3          	beq	sp,gp,40 <loop2>
+  54:	00100073          	ebreak
+  58:	00000013          	nop
+  5c:	00000013          	nop
+
+
+
+10000293
+30000313
+06400393
+0062a023
+0072a223
+0002a083
+0042a103
+002081b3
+20000413
+0ff00493
+0080a023
+00942023
+0000a103
+00012183
+00000013
+00000013
+0c800313
+0062a023
+0002a103
+0002a183
+fe3108e3
+00100073
+00000013
+00000013
+
+---------------------------------------------------------------------------------------
+
+
+
+stop_go_modified.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	000202b7          	lui	t0,0x20
+   4:	000081b7          	lui	gp,0x8
+   8:	000083b7          	lui	t2,0x8
+   c:	00438393          	addi	t2,t2,4 # 8004 <__BSS_END__+0x6fa4>
+  10:	00100713          	li	a4,1
+  14:	05500793          	li	a5,85
+  18:	00f2a623          	sw	a5,12(t0) # 2000c <__BSS_END__+0x1efac>
+  1c:	40e1a023          	sw	a4,1024(gp) # 8400 <__BSS_END__+0x73a0>
+  20:	4001a783          	lw	a5,1024(gp) # c60 <__global_pointer$+0x400>
+  24:	00478793          	addi	a5,a5,4
+  28:	00f2a623          	sw	a5,12(t0)
+
+0000002c <loop>:
+  2c:	0003ae03          	lw	t3,0(t2)
+  30:	001e7e13          	andi	t3,t3,1
+  34:	fe0e0ce3          	beqz	t3,2c <loop>
+  38:	00200793          	li	a5,2
+  3c:	00f2a623          	sw	a5,12(t0)
+  40:	00000013          	nop
+  44:	00000013          	nop
+  48:	00000013          	nop
+  4c:	00000013          	nop
+  50:	00100073          	ebreak
+  54:	00000013          	nop
+  58:	00000013          	nop
+  5c:	00000013          	nop
+
+
+000202b7
+000081b7
+000083b7
+00438393
+00100713
+05500793
+00f2a623
+40e1a023
+4001a783
+00478793
+00f2a623
+0003ae03
+001e7e13
+fe0e0ce3
+00200793
+00f2a623
+00000013
+00000013
+00000013
+00000013
+00100073
+00000013
+00000013
+00000013
+
+
+-------------------------------------------------------------------------------------
+
+<<<<<<<<< lab9 tested with this version of stopgo >>>>>>>>>>>>>>>>>>
+stop_go_modified.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	800002b7          	lui	t0,0x80000
+   4:	80000337          	lui	t1,0x80000
+   8:	00430313          	addi	t1,t1,4 # 80000004 <__BSS_END__+0x7fffefc0>
+   c:	00100713          	li	a4,1
+  10:	00e2a023          	sw	a4,0(t0) # 80000000 <__BSS_END__+0x7fffefbc>
+
+00000014 <loop>:
+  14:	00032383          	lw	t2,0(t1)
+  18:	0013f393          	andi	t2,t2,1
+  1c:	00038863          	beqz	t2,2c <switch_pressed>
+  20:	00000713          	li	a4,0
+  24:	00e2a023          	sw	a4,0(t0)
+  28:	fedff06f          	j	14 <loop>
+
+0000002c <switch_pressed>:
+  2c:	00100713          	li	a4,1
+  30:	00e2a023          	sw	a4,0(t0)
+  34:	00000013          	nop
+  38:	00000013          	nop
+  3c:	00000013          	nop
+  40:	fd5ff06f          	j	14 <loop>
+
+
+
+-------------------------------------------------------------------------------
+stop_go.c
+
+stop_go:     file format elf32-littleriscv
+
+
+Disassembly of section .init:
+
+00000000 <_start>:
+   0:	00001197          	auipc	gp,0x1
+   4:	88418193          	addi	gp,gp,-1916 # 884 <__global_pointer$>
+   8:	00020117          	auipc	sp,0x20
+   c:	ff810113          	addi	sp,sp,-8 # 20000 <__stack_top>
+  10:	00010413          	mv	s0,sp
+  14:	008000ef          	jal	1c <main>
+
+00000018 <loop_on_return_from_main>:
+  18:	0000006f          	j	18 <loop_on_return_from_main>
+
+Disassembly of section .text:
+
+0000001c <main>:
+  1c:	fe010113          	addi	sp,sp,-32
+  20:	00112e23          	sw	ra,28(sp)
+  24:	00812c23          	sw	s0,24(sp)
+  28:	02010413          	addi	s0,sp,32
+  2c:	800007b7          	lui	a5,0x80000
+  30:	00478793          	addi	a5,a5,4 # 80000004 <__stack_top+0x7ffe0004>
+  34:	fef42623          	sw	a5,-20(s0)
+  38:	800007b7          	lui	a5,0x80000
+  3c:	fef42423          	sw	a5,-24(s0)
+  40:	fe842783          	lw	a5,-24(s0)
+  44:	00100713          	li	a4,1
+  48:	00e7a023          	sw	a4,0(a5) # 80000000 <__stack_top+0x7ffe0000>
+  4c:	00000013          	nop
+  50:	fec42783          	lw	a5,-20(s0)
+  54:	0007a783          	lw	a5,0(a5)
+  58:	0017f793          	andi	a5,a5,1
+  5c:	fe078ae3          	beqz	a5,50 <main+0x34>
+  60:	fe842783          	lw	a5,-24(s0)
+  64:	00200713          	li	a4,2
+  68:	00e7a023          	sw	a4,0(a5)
+  6c:	00000793          	li	a5,0
+  70:	00078513          	mv	a0,a5
+  74:	01c12083          	lw	ra,28(sp)
+  78:	01812403          	lw	s0,24(sp)
+  7c:	02010113          	addi	sp,sp,32
+  80:	00008067          	ret
+
+
+00001197
+88418193
+00020117
+ff810113
+00010413
+008000ef
+0000006f
+fe010113
+00112e23
+00812c23
+02010413
+800007b7
+00478793
+fef42623
+800007b7
+fef42423
+fe842783
+00100713
+00e7a023
+00000013
+fec42783
+0007a783
+0017f793
+fe078ae3
+fe842783
+00200713
+00e7a023
+00000793
+00078513
+01c12083
+01812403
+02010113
+00008067
+
+------------------------------------------------------------------------------------------
+flash.c
+
+flash:     file format elf32-littleriscv
+
+
+Disassembly of section .init:
+
+00000000 <_start>:
+   0:	00001197          	auipc	gp,0x1
+   4:	87018193          	addi	gp,gp,-1936 # 870 <__global_pointer$>
+   8:	00020117          	auipc	sp,0x20
+   c:	ff810113          	addi	sp,sp,-8 # 20000 <__stack_top>
+  10:	00010413          	mv	s0,sp
+  14:	008000ef          	jal	1c <main>
+
+00000018 <loop_on_return_from_main>:
+  18:	0000006f          	j	18 <loop_on_return_from_main>
+
+Disassembly of section .text:
+
+0000001c <main>:
+  1c:	fe010113          	addi	sp,sp,-32
+  20:	00112e23          	sw	ra,28(sp)
+  24:	00812c23          	sw	s0,24(sp)
+  28:	02010413          	addi	s0,sp,32
+  2c:	800007b7          	lui	a5,0x80000
+  30:	0007a023          	sw	zero,0(a5) # 80000000 <__stack_top+0x7ffe0000>
+  34:	800007b7          	lui	a5,0x80000
+  38:	0007a703          	lw	a4,0(a5) # 80000000 <__stack_top+0x7ffe0000>
+  3c:	800007b7          	lui	a5,0x80000
+  40:	00174713          	xori	a4,a4,1
+  44:	00e7a023          	sw	a4,0(a5) # 80000000 <__stack_top+0x7ffe0000>
+  48:	fe042623          	sw	zero,-20(s0)
+  4c:	0100006f          	j	5c <main+0x40>
+  50:	fec42783          	lw	a5,-20(s0)
+  54:	00178793          	addi	a5,a5,1
+  58:	fef42623          	sw	a5,-20(s0)
+  5c:	fec42703          	lw	a4,-20(s0)
+  60:	000f47b7          	lui	a5,0xf4
+  64:	23f78793          	addi	a5,a5,575 # f423f <__stack_top+0xd423f>
+  68:	fee7f4e3          	bgeu	a5,a4,50 <main+0x34>
+  6c:	fc9ff06f          	j	34 <main+0x18>
+
+
+--------------------------------------------------------------------------------------------------------
+
+stop_go_loop
+
+
+stop_go:     file format elf32-littleriscv
+
+
+Disassembly of section .init:
+
+00000000 <_start>:
+   0:	00001197          	auipc	gp,0x1
+   4:	88418193          	addi	gp,gp,-1916 # 884 <__global_pointer$>
+   8:	00020117          	auipc	sp,0x20
+   c:	ff810113          	addi	sp,sp,-8 # 20000 <__stack_top>
+  10:	00010413          	mv	s0,sp
+  14:	008000ef          	jal	1c <main>
+
+00000018 <loop_on_return_from_main>:
+  18:	0000006f          	j	18 <loop_on_return_from_main>
+
+Disassembly of section .text:
+
+0000001c <main>:
+  1c:	fe010113          	addi	sp,sp,-32
+  20:	00112e23          	sw	ra,28(sp)
+  24:	00812c23          	sw	s0,24(sp)
+  28:	02010413          	addi	s0,sp,32
+  2c:	800007b7          	lui	a5,0x80000
+  30:	00478793          	addi	a5,a5,4 # 80000004 <__stack_top+0x7ffe0004>
+  34:	fef42623          	sw	a5,-20(s0)
+  38:	800007b7          	lui	a5,0x80000
+  3c:	fef42423          	sw	a5,-24(s0)
+  40:	fe842783          	lw	a5,-24(s0)
+  44:	00100713          	li	a4,1
+  48:	00e7a023          	sw	a4,0(a5) # 80000000 <__stack_top+0x7ffe0000>
+  4c:	00000013          	nop
+  50:	fec42783          	lw	a5,-20(s0)
+  54:	0007a783          	lw	a5,0(a5)
+  58:	0017f793          	andi	a5,a5,1
+  5c:	fe078ae3          	beqz	a5,50 <main+0x34>
+  60:	fe842783          	lw	a5,-24(s0)
+  64:	00200713          	li	a4,2
+  68:	00e7a023          	sw	a4,0(a5)
+  6c:	00000793          	li	a5,0
+  70:	00078513          	mv	a0,a5
+  74:	01c12083          	lw	ra,28(sp)
+  78:	01812403          	lw	s0,24(sp)
+  7c:	02010113          	addi	sp,sp,32
+  80:	00008067          	ret
+
+
+00001197
+88418193
+00020117
+ff810113
+00010413
+008000ef
+0000006f
+fe010113
+00112e23
+00812c23
+02010413
+800007b7
+00478793
+fef42623
+800007b7
+fef42423
+fe842783
+00100713
+00e7a023
+00000013
+fec42783
+0007a783
+0017f793
+fe078ae3
+fe842783
+00200713
+00e7a023
+00000793
+00078513
+01c12083
+01812403
+02010113
+00008067

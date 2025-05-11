@@ -1,0 +1,12 @@
+
+test:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	123452b7          	lui	t0,0x12345
+   4:	67828293          	addi	t0,t0,1656 # 12345678 <__BSS_END__+0x12344664>
+   8:	00028313          	mv	t1,t0
+   c:	00000013          	nop
+  10:	00100073          	ebreak
